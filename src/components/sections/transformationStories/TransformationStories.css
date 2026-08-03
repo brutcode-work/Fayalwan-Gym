@@ -1,0 +1,339 @@
+.transformation-stories {
+  position: relative;
+  padding: 8rem 2rem;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ts-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.ts-tag {
+  color: var(--small-labels);
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.ts-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.ts-heading span.highlight {
+  color: var(--accent-color);
+}
+
+.ts-heading span.white {
+  color: var(--text-primary);
+}
+
+.ts-subtext {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-family: "Special Gothic", sans-serif;
+  font-weight: 300;
+}
+
+/* Card Container */
+.ts-container {
+  width: 100%;
+  max-width: 1050px;
+  position: relative;
+  z-index: 2;
+  perspective: 1000px;
+}
+
+.ts-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: var(--card-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ts-card:hover {
+  background: var(--card-bg);
+  transform: translateY(-5px);
+  box-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.8),
+              0 0 40px rgba(var(--accent-color-rgb), 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+}
+
+/* Left Panel */
+.ts-card-left {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  position: relative;
+  min-height: 480px;
+}
+
+/* User Info */
+.ts-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.ts-avatar-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.2);
+}
+
+.ts-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ts-user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.ts-user-name {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  text-transform: capitalize;
+}
+
+.ts-date {
+  font-family: "Special Gothic", sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+/* Quote Graphic */
+.ts-quote-icon {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 6px;
+}
+
+.ts-quote-mark {
+  width: 24px;
+  height: 24px;
+  background-color: var(--border-color);
+  clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%);
+  display: inline-block;
+  opacity: 0.6;
+}
+
+/* Quote Text */
+.ts-quote-content {
+  flex-grow: 1;
+  margin-bottom: 2.5rem;
+}
+
+.ts-quote-text {
+  font-family: "Special Gothic", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-weight: 300;
+}
+
+/* Bottom Controls & Rating */
+.ts-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* Star Rating */
+.ts-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.ts-star-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.ts-star-box.filled {
+  background-color: var(--small-labels);
+  color: #ffffff;
+}
+
+.ts-star-box.empty {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.ts-star-icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Navigation Controls */
+.ts-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.ts-nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ts-nav-btn:hover {
+  background-color: var(--button-bg);
+  color: #000000;
+  border-color: var(--button-bg);
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(215, 255, 0, 0.35);
+}
+
+.ts-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.ts-btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Right Panel */
+.ts-card-right {
+  position: relative;
+  height: 100%;
+  min-height: 480px;
+  background-color: transparent;
+}
+
+.ts-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ts-member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.5s ease-in-out, transform 0.7s ease-out;
+}
+
+.ts-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(5, 5, 5, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}
+
+.animate-fade {
+  animation: tsFadeIn 0.5s forwards;
+}
+
+@keyframes tsFadeIn {
+  from {
+    opacity: 0.3;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 868px) {
+  .ts-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .ts-card-left {
+    min-height: auto;
+    padding: 2.5rem 2rem;
+  }
+  
+  .ts-card-right {
+    min-height: 380px;
+    height: 380px;
+  }
+  
+  .ts-image-overlay {
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .ts-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .ts-card-left {
+    padding: 2rem 1.5rem;
+  }
+  
+  .ts-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .ts-controls {
+    align-self: flex-end;
+  }
+  
+  .ts-card-right {
+    min-height: 300px;
+    height: 300px;
+  }
+}

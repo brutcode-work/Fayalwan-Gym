@@ -1,0 +1,389 @@
+/* ====================================
+   Stories That Inspire — Carousel
+   ==================================== */
+
+.stories-that-inspire {
+  padding: 8rem 0 6rem;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Background glow */
+.sti-bg-glow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(var(--accent-color-rgb), 0.05) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header */
+.sti-header {
+  text-align: left;
+  margin-bottom: 3.5rem;
+  padding: 0 5rem;
+  z-index: 2;
+}
+
+.sti-section-tag {
+  font-family: "Special Gothic", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  color: var(--small-labels);
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.sti-heading {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.sti-subtext {
+  font-family: "Special Gothic", sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 650px;
+  margin: 0;
+}
+
+/* Carousel Container */
+.sti-carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0 1rem;
+  z-index: 2;
+}
+
+.sti-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 460px;
+}
+
+.sti-carousel-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 680px;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition:
+    transform  0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity    0.6s ease,
+    filter     0.6s ease;
+  transform-origin: center center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+.sti-carousel-card:not([style*="cursor: default"]):hover {
+  filter: brightness(0.95) !important;
+  opacity: 0.95 !important;
+}
+
+.sti-carousel-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.sti-carousel-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.4) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sti-iframe-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 10;
+  border-radius: 24px;
+}
+
+.sti-carousel-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.4rem 1.5rem;
+  z-index: 2;
+}
+
+.sti-carousel-title {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0.3rem 0 0.2rem;
+  line-height: 1.2;
+}
+
+.sti-carousel-subtitle {
+  font-family: "Special Gothic", sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.sti-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.sti-play-btn:hover {
+  background: var(--button-bg);
+  border-color: var(--button-bg);
+  box-shadow: 0 0 30px rgba(215, 255, 0, 0.5);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.sti-play-icon {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+  color: #ffffff;
+  transform: translateX(1.5px);
+  transition: fill 0.3s ease, color 0.3s ease;
+}
+
+.sti-play-btn:hover .sti-play-icon {
+  fill: #000000;
+  color: #000000;
+}
+
+.sti-main-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: "Special Gothic", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--small-labels);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sti-main-badge-icon {
+  width: 11px;
+  height: 11px;
+  color: var(--small-labels);
+}
+
+.sti-carousel-side-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.sti-carousel-card:not(.pos-0):hover .sti-carousel-side-overlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.sti-side-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 20px;
+  padding: 4px 10px 4px 7px;
+  color: #ffffff;
+  font-family: "Special Gothic", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+
+.sti-side-play-small {
+  width: 12px;
+  height: 12px;
+  fill: var(--button-bg);
+  color: var(--button-bg);
+  flex-shrink: 0;
+}
+
+.sti-nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  z-index: 2;
+}
+
+.sti-nav-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  flex-shrink: 0;
+}
+
+.sti-nav-btn.prev {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.sti-nav-btn.prev:hover {
+  background: var(--button-bg);
+  border-color: var(--button-bg);
+  color: #000000;
+  transform: scale(1.08);
+}
+
+.sti-nav-btn.next {
+  background: var(--button-bg);
+  border: 1px solid var(--button-bg);
+  color: #000000;
+}
+
+.sti-nav-btn.next:hover {
+  background: var(--button-hover);
+  border-color: var(--button-hover);
+  box-shadow: 0 0 28px rgba(215, 255, 0, 0.55);
+  transform: scale(1.08);
+}
+
+.sti-nav-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+}
+
+.sti-custom-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 20;
+}
+
+.sti-ctrl-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.sti-ctrl-icon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 1200px) {
+  .stories-that-inspire {
+    padding: 6rem 0 4rem;
+  }
+  .sti-header {
+    padding: 0 3rem;
+  }
+  .sti-carousel-track {
+    height: 380px;
+  }
+  .sti-carousel-card {
+    width: 560px;
+    height: 345px;
+  }
+}
+
+@media (max-width: 900px) {
+  .stories-that-inspire {
+    padding: 5rem 0 3rem;
+  }
+  .sti-header {
+    padding: 0 2rem;
+  }
+  .sti-carousel-track {
+    height: 300px;
+  }
+  .sti-carousel-card {
+    width: 440px;
+    height: 272px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sti-header {
+    padding: 0 1.5rem;
+  }
+  .sti-carousel-track {
+    height: 220px;
+  }
+  .sti-carousel-card {
+    width: 320px;
+    height: 198px;
+  }
+}

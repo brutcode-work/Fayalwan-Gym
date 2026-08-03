@@ -1,0 +1,318 @@
+.customer-reviews {
+  padding: 8rem 5rem;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Header layout */
+.cr-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
+  width: 100%;
+}
+
+.cr-header-left {
+  max-width: 700px;
+}
+
+.cr-title {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.cr-subheading {
+  font-family: "Special Gothic", sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+/* Rating Summary & Stack */
+.cr-rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cr-avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.cr-stack-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid var(--bg-color);
+  margin-left: -14px;
+  object-fit: cover;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cr-stack-avatar:first-child {
+  margin-left: 0;
+}
+
+.cr-stack-avatar:hover {
+  transform: translateY(-6px) scale(1.1);
+  z-index: 10;
+}
+
+.cr-rating-stars-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.cr-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cr-header-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.cr-star-icon {
+  width: 16px;
+  height: 16px;
+  fill: var(--small-labels);
+  color: var(--small-labels);
+}
+
+.cr-rating-val {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.cr-rating-label {
+  font-family: "Special Gothic", sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Navigation buttons */
+.cr-header-right {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cr-nav-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cr-nav-btn.prev {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.cr-nav-btn.prev:hover {
+  background-color: var(--button-bg);
+  border-color: var(--button-bg);
+  color: #000000;
+  transform: translateX(-4px);
+}
+
+.cr-nav-btn.next {
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-bg);
+  color: #000000;
+}
+
+.cr-nav-btn.next:hover {
+  background-color: var(--button-hover);
+  border-color: var(--button-hover);
+  transform: translateX(4px);
+  box-shadow: 0 0 20px rgba(215, 255, 0, 0.3);
+}
+
+.cr-nav-btn:active {
+  transform: scale(0.92);
+}
+
+.cr-btn-arrow {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.25;
+}
+
+/* Slider Track & Cards */
+.cr-slider-container {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 1rem 0;
+}
+
+.cr-slider-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cr-slider-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  width: max-content;
+  padding: 1.5rem 0;
+}
+
+/* Review Card styles */
+.cr-card {
+  width: 400px;
+  height: 400px;
+  background: var(--card-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cr-card:hover {
+  background: var(--card-bg);
+  border-color: var(--accent-color);
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65),
+              0 0 35px rgba(var(--accent-color-rgb), 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Card Quote */
+.cr-card-quote {
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.cr-quote-svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--border-color);
+}
+
+.cr-card-text {
+  font-family: "Special Gothic", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-weight: 300;
+  height: 7.04rem;
+  margin-bottom: 2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card Stars */
+.cr-card-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 2rem;
+}
+
+.cr-card-star {
+  width: 18px;
+  height: 18px;
+  fill: var(--small-labels);
+  color: var(--small-labels);
+}
+
+/* Card Profile Footer */
+.cr-card-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.cr-profile-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--accent-color-rgb), 0.2);
+  object-fit: cover;
+}
+
+.cr-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cr-profile-name {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 1.05rem;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.cr-profile-company {
+  font-family: "Special Gothic", sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.1rem;
+}
+
+/* Responsive queries */
+@media (max-width: 1024px) {
+  .customer-reviews {
+    padding: 6rem 3rem;
+  }
+  
+  .cr-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .cr-header-right {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .customer-reviews {
+    padding: 5rem 1.5rem;
+  }
+  
+  .cr-card {
+    width: 320px;
+    height: 440px;
+    padding: 2rem 1.5rem;
+  }
+  
+  .cr-header-right {
+    align-self: flex-start;
+  }
+}

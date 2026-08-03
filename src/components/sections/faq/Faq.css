@@ -1,0 +1,182 @@
+.faq-section {
+  padding: 8rem 5rem;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+  z-index: 2;
+}
+
+.faq-title-orange {
+  color: var(--accent-color);
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.faq-title-white {
+  color: var(--text-primary);
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+  text-transform: uppercase;
+  display: block;
+}
+
+/* FAQ list container */
+.faq-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  z-index: 2;
+}
+
+/* Accordion Box */
+.faq-item {
+  background: var(--card-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.faq-item:hover {
+  background: var(--card-bg);
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.faq-item.active {
+  background: var(--card-bg);
+  border-color: var(--accent-color);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 
+              0 0 25px rgba(var(--accent-color-rgb), 0.05);
+}
+
+/* Header Row */
+.faq-question-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.2rem 2.5rem;
+  cursor: pointer;
+  user-select: none;
+  gap: 2rem;
+}
+
+.faq-question {
+  font-family: "Special Gothic", sans-serif;
+  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.faq-item:hover .faq-question {
+  color: var(--accent-color);
+}
+
+/* Toggle Circle Button */
+.faq-toggle-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--button-bg);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #000000;
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+              background-color 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.faq-toggle-btn:hover {
+  background-color: var(--button-hover);
+}
+
+.faq-item.active .faq-toggle-btn {
+  background-color: var(--button-bg);
+  color: #000000;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px rgba(215, 255, 0, 0.25);
+}
+
+.faq-btn-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+}
+
+/* Collapsible Panel */
+.faq-answer-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-answer-panel {
+  opacity: 1;
+}
+
+.faq-answer-content {
+  padding: 0 2.5rem 2.2rem 2.5rem;
+  font-family: "Special Gothic", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+/* Responsive details */
+@media (max-width: 1024px) {
+  .faq-section {
+    padding: 6rem 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 5rem 1.5rem;
+  }
+  
+  .faq-question-row {
+    padding: 1.75rem 1.5rem;
+    gap: 1rem;
+  }
+  
+  .faq-toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .faq-btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .faq-answer-content {
+    padding: 0 1.5rem 1.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
