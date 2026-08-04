@@ -22,7 +22,7 @@ export default function Home() {
       <SignaturePrograms />
 
       {/* OLD SECTIONS */}
-      {/* <Menifesto /> */}
+      <Menifesto />
       {/* <Story /> */}
       {/* <TransformationStories /> */}
       {/* <StoriesThatInspires /> */}
