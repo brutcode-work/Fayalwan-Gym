@@ -10,6 +10,7 @@ import Contact from "@/components/sections/contact/Contact";
 import Footer from "@/components/layout/Footer/Footer";
 import Introduction from "@/components/sections/introduction/Introduction";
 import FeaturedExperience from "@/components/sections/featuredExperience/FeaturedExperience";
+import SignaturePrograms from "@/components/sections/signaturePrograms/SignaturePrograms";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <Introduction />
       <FeaturedExperience />
+      <SignaturePrograms />
 
       {/* OLD SECTIONS */}
       {/* <Menifesto /> */}
