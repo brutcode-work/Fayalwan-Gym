@@ -9,6 +9,7 @@ import Faq from "@/components/sections/faq/Faq";
 import Contact from "@/components/sections/contact/Contact";
 import Footer from "@/components/layout/Footer/Footer";
 import Introduction from "@/components/sections/introduction/Introduction";
+import FeaturedExperience from "@/components/sections/featuredExperience/FeaturedExperience";
 
 export default function Home() {
   return (
@@ -16,14 +17,17 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Introduction />
+      <FeaturedExperience />
+
+      {/* OLD SECTIONS */}
       {/* <Menifesto /> */}
-      <Story />
-      <TransformationStories />
-      <StoriesThatInspires />
-      <CustomerReview />
-      <Faq />
-      <Contact />
-      <Footer />
+      {/* <Story /> */}
+      {/* <TransformationStories /> */}
+      {/* <StoriesThatInspires /> */}
+      {/* <CustomerReview /> */}
+      {/* <Faq /> */}
+      {/* <Contact /> */}
+      {/* <Footer /> */}
     </main>
   );
 }
