@@ -73,7 +73,7 @@ export default function FeaturedExperience() {
       {EXPERIENCES.map((experience) => (
         <article className="feature-chapter" key={experience.number}>
           <div className="feature-chapter__grid">
-            <p className="feature-kicker"><span>{experience.number}</span> {experience.label}</p>
+            <h2 className="feature-kicker">{experience.label}</h2>
             <div className="feature-main">
               <p className="feature-copy">{experience.copy}</p>
               <figure className="feature-image-wrap">
