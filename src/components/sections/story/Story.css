@@ -42,7 +42,7 @@
 }
 
 .story-heading {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1.8rem, 3.8vw, 2.8rem);
   font-weight: 900;
   line-height: 1.15;
@@ -53,7 +53,7 @@
 }
 
 .story-subtitle {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(0.9rem, 1.1vw, 1.05rem);
   font-weight: 400;
   color: var(--text-secondary);
@@ -73,7 +73,7 @@
 }
 
 .story-narrative-text {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.75);
@@ -118,7 +118,7 @@
 }
 
 .story-card-title {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -130,7 +130,7 @@
 }
 
 .story-card-meta {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   color: var(--text-secondary);
@@ -174,7 +174,7 @@
 }
 
 .story-stat-number {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1.4rem, 2.2vw, 1.7rem);
   font-weight: 800;
   line-height: 1.1;
@@ -182,7 +182,7 @@
 }
 
 .story-stat-plus {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--accent-color);
@@ -190,7 +190,7 @@
 }
 
 .story-stat-title {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.85);
@@ -198,7 +198,7 @@
 }
 
 .story-stat-desc {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.68rem;
   color: var(--text-secondary);
   line-height: 1.3;
@@ -229,7 +229,7 @@
 }
 
 .story-spend-card-header {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -255,7 +255,7 @@
 .story-spend-list li {
   display: flex;
   justify-content: space-between;
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.76rem;
   color: var(--text-secondary);
 }
@@ -269,7 +269,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.82rem;
   font-weight: 800;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -303,7 +303,7 @@
 }
 
 .story-check-header {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-secondary);
@@ -326,7 +326,7 @@
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.88rem;
   color: rgba(255, 255, 255, 0.75);
 }
@@ -383,7 +383,7 @@
 }
 
 .story-item-name {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -391,7 +391,7 @@
 }
 
 .story-item-price {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.35rem;
   font-weight: 800;
   color: #ffffff;
@@ -408,7 +408,7 @@
 }
 
 .story-flow-arrow-text {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.72rem;
   font-weight: 800;
   color: var(--accent-color);
@@ -483,7 +483,7 @@
 }
 
 .story-savings-table th {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -492,17 +492,17 @@
 }
 
 .story-savings-table td {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   color: rgba(255, 255, 255, 0.8);
 }
 
 .story-savings-table td:nth-child(2) {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
 }
 
 .story-savings-table td:nth-child(3) {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
 }
 
@@ -529,7 +529,7 @@
 }
 
 .story-ps-tag {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.76rem;
   font-weight: 800;
   color: #22C55E;
@@ -537,7 +537,7 @@
 }
 
 .story-ps-value {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1.8rem, 3.2vw, 2.4rem);
   font-weight: 900;
   color: #22C55E;
@@ -552,7 +552,7 @@
 }
 
 .story-ps-desc {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.76rem;
   color: var(--text-secondary);
   line-height: 1.4;
@@ -585,7 +585,7 @@
 }
 
 .story-quote-text {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1.1rem, 1.8vw, 1.45rem);
   font-weight: 600;
   line-height: 1.5;
@@ -595,7 +595,7 @@
 }
 
 .story-quote-footer {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   color: rgba(232, 93, 4, 0.6);
@@ -617,7 +617,7 @@
 }
 
 .story-closing-title {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 800;
   text-transform: uppercase;
@@ -627,7 +627,7 @@
 }
 
 .story-closing-text {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(0.95rem, 1.25vw, 1.12rem);
   line-height: 1.65;
   color: var(--text-secondary);
@@ -635,7 +635,7 @@
 }
 
 .story-closing-focus {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   font-weight: 800;
   color: var(--accent-color);
@@ -644,7 +644,7 @@
 }
 
 .story-closing-tagline {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1.4rem, 2.8vw, 2.2rem);
   font-weight: 900;
   color: #22C55E;

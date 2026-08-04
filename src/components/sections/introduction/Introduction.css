@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Introduction Section - Ultra Minimal
+   ========================================================================== */
+
+   .intro-minimal-section {
+    position: relative;
+    width: 100%;
+    padding: 10rem 5rem;
+    background-color: #050505;
+    color: #ffffff;
+    overflow: hidden;
+  }
+  
+  .intro-minimal-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .intro-minimal-spacer {
+    height: 8rem;
+    width: 100%;
+  }
+  
+  .intro-minimal-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 4rem;
+    align-items: start;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+  }
+  
+  .intro-minimal-col.left-col {
+    position: sticky;
+    top: 8rem;
+  }
+  
+  .intro-minimal-col.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+  }
+  
+  .minimal-label {
+    font-family: monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+  }
+  
+  .minimal-heading {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  .minimal-heading.large-heading {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+  }
+  
+  .minimal-accent {
+    color: #e85d04;
+    font-weight: 400;
+  }
+  
+  .minimal-paragraph {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .minimal-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .minimal-feature {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .feature-num {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #e85d04;
+  }
+  
+  .minimal-feature p {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+  
+  .minimal-quote {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 200;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .intro-minimal-section {
+      padding: 6rem 3rem;
+    }
+  
+    .intro-minimal-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  
+    .intro-minimal-col.left-col {
+      position: static;
+    }
+  
+    .intro-minimal-spacer {
+      height: 4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .intro-minimal-section {
+      padding: 4.5rem 1.5rem;
+    }
+  }

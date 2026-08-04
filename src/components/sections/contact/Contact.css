@@ -36,7 +36,7 @@
 }
 
 .contact-main-title {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   text-transform: uppercase;
   color: #ffffff;
@@ -46,7 +46,7 @@
 }
 
 .contact-subtitle {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1rem, 1.2vw, 1.2rem);
   line-height: 1.6;
   color: var(--text-secondary);
@@ -84,7 +84,7 @@
 }
 
 .panel-title {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.8rem;
   color: #ffffff;
   text-transform: uppercase;
@@ -93,7 +93,7 @@
 }
 
 .panel-intro {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
@@ -149,7 +149,7 @@
 }
 
 .info-text h4 {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.95rem;
   text-transform: uppercase;
   color: #ffffff;
@@ -157,7 +157,7 @@
 }
 
 .info-text p {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--text-secondary);
@@ -182,7 +182,7 @@
 }
 
 .social-links-container h4 {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.95rem;
   text-transform: uppercase;
   color: #ffffff;
@@ -253,7 +253,7 @@
   align-items: center;
   padding: 0.95rem 1rem;
   border-radius: 12px;
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.95rem;
   color: var(--text-secondary);
   transition: all 0.3s ease;
@@ -291,7 +291,7 @@
 }
 
 .today-badge {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.7rem;
   background-color: var(--accent-color);
   color: #000000;

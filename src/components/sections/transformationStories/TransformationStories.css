@@ -18,7 +18,7 @@
 
 .ts-tag {
   color: var(--small-labels);
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -44,7 +44,7 @@
 .ts-subtext {
   color: var(--text-secondary);
   font-size: 1.1rem;
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 300;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .ts-user-name {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.35rem;
   color: var(--text-primary);
   letter-spacing: -0.01em;
@@ -129,7 +129,7 @@
 }
 
 .ts-date {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-top: 0.2rem;
@@ -158,7 +158,7 @@
 }
 
 .ts-quote-text {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.15rem;
   line-height: 1.6;
   color: var(--text-primary);

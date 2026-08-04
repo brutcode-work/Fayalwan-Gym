@@ -33,7 +33,7 @@
 }
 
 .footer-logo {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 2rem;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -42,7 +42,7 @@
 }
 
 .footer-desc {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
@@ -57,7 +57,7 @@
 }
 
 .column-title {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -75,7 +75,7 @@
 }
 
 .footer-links-list li a {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1rem;
   color: var(--text-secondary);
   text-decoration: none;
@@ -113,7 +113,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.85rem;
   color: var(--text-secondary);
   z-index: 2;
@@ -148,7 +148,7 @@
 }
 
 .giant-bg-text {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(2rem, 7.8vw, 11.5rem);
   font-weight: 900;
   line-height: 0.8;
@@ -202,7 +202,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    font-family: "Special Gothic", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;

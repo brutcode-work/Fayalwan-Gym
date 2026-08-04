@@ -7,11 +7,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const SECTIONS = [
-  { id: "home", label: "HOME" },
-  { id: "manifesto", label: "MANIFESTO" },
-  { id: "story", label: "STORY" },
-  { id: "reviews", label: "REVIEWS" },
-  { id: "faq", label: "FAQ" },
+  { id: "home", label: "Home" },
+  { id: "manifesto", label: "Menifesto" },
+  { id: "story", label: "Story" },
+  { id: "reviews", label: "Reviews" },
+  { id: "faq", label: "Faq" },
 ];
 
 export default function Navbar() {
@@ -142,16 +142,10 @@ export default function Navbar() {
     <nav className={`navbar-container ${visible ? "" : "hidden"}`} ref={navContainerRef}>
       <div className="navbar-inner">
         <div className="navbar-logo" onClick={(e) => handleNavClick(e, "home")}>
-          <div className="logo-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="logo-svg">
-              <path d="M6 15.5a4.5 4.5 0 0 1 0-9h2.2a6 6 0 1 1 7.6 7.6" />
-              <path d="M8 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z" opacity="0.4" />
-            </svg>
-          </div>
-          <span className="logo-text">FAYALWAN GYM</span>
+          <span className="logo-text">Fahalwan Gym</span>
         </div>
 
-        <div className="navbar-pill">
+        <div className="navbar-right">
           <div className="navbar-links">
             {SECTIONS.map((section) => (
               <a
@@ -166,15 +160,15 @@ export default function Navbar() {
           </div>
           <a
             href="#contact"
-            className={`navbar-cta-btn ${activeSection === "contact" ? "active" : ""}`}
+            className="navbar-cta-btn"
             onClick={(e) => handleNavClick(e, "contact")}
           >
-            JOIN US
+            Contact Us
           </a>
         </div>
 
         <div className="mobile-toggle-btn" onClick={() => setOpen(!open)}>
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </div>
       </div>
 
@@ -192,10 +186,10 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
-            className={`mobile-cta-btn mobile-nav-link ${activeSection === "contact" ? "active" : ""}`}
+            className="mobile-cta-btn mobile-nav-link"
             onClick={(e) => handleNavClick(e, "contact")}
           >
-            JOIN US
+            Contact Us
           </a>
         </div>
       </div>

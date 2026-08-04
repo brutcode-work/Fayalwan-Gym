@@ -8,12 +8,14 @@ import CustomerReview from "@/components/sections/customerReview/CustomerReview"
 import Faq from "@/components/sections/faq/Faq";
 import Contact from "@/components/sections/contact/Contact";
 import Footer from "@/components/layout/Footer/Footer";
+import Introduction from "@/components/sections/introduction/Introduction";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
+      <Introduction />
       <Menifesto />
       <Story />
       <TransformationStories />

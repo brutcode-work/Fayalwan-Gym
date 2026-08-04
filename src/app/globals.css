@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&family=Special+Gothic:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 * {
   margin: 0;
@@ -29,7 +29,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   overflow-x: hidden;
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 16px;
 }
 
@@ -53,7 +53,7 @@ h3 *,
 h4 *,
 h5 *,
 h6 * {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 h6 {

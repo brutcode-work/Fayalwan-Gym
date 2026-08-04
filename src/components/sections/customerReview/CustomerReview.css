@@ -22,7 +22,7 @@
 }
 
 .cr-title {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(2.2rem, 4.5vw, 3.25rem);
   line-height: 1.15;
   color: #ffffff;
@@ -30,7 +30,7 @@
 }
 
 .cr-subheading {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(0.95rem, 1.2vw, 1.15rem);
   color: var(--text-secondary);
   font-weight: 300;
@@ -93,14 +93,14 @@
 }
 
 .cr-rating-val {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: #ffffff;
 }
 
 .cr-rating-label {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
@@ -219,7 +219,7 @@
 }
 
 .cr-card-text {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--text-primary);
@@ -271,14 +271,14 @@
 }
 
 .cr-profile-name {
-  font-family: "Special Gothic Expanded One", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.05rem;
   color: var(--accent-color);
   font-weight: 700;
 }
 
 .cr-profile-company {
-  font-family: "Special Gothic", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 0.85rem;
   color: var(--text-secondary);
   margin-top: 0.1rem;
