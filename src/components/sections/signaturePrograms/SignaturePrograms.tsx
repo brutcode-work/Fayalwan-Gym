@@ -33,14 +33,10 @@ export default function SignaturePrograms() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiper, setSwiper] = useState<SwiperInstance | null>(null);
-  
-  // Custom cursor states
-  const [showCursor, setShowCursor] = useState(false);
-  const [isMouseDown, setIsMouseDown] = useState(false);
 
   const goTo = (index: number) => swiper?.slideTo(index);
 
-  // Bind custom cursor quickTo coordinates tracking
+  // Bind custom cursor coordinates tracking
   useGSAP(
     () => {
       const cursor = cursorRef.current;
@@ -70,17 +66,8 @@ export default function SignaturePrograms() {
         <p className="signature-programs__intro">Choose the way you want to move. We build the plan around where you are, not a one-size-fits-all template.</p>
       </header>
 
-      {/* Wrapper to handle custom cursor events */}
-      <div
-        className="swiper-wrapper-container"
-        onMouseEnter={() => setShowCursor(true)}
-        onMouseLeave={() => {
-          setShowCursor(false);
-          setIsMouseDown(false);
-        }}
-        onMouseDown={() => setIsMouseDown(true)}
-        onMouseUp={() => setIsMouseDown(false)}
-      >
+      {/* Swiper wrapper container */}
+      <div className="swiper-wrapper-container">
         <Swiper
           className="programs-swiper"
           modules={[Navigation, Keyboard, A11y]}
@@ -100,7 +87,12 @@ export default function SignaturePrograms() {
                   <p className="program-slide__focus">{program.focus}</p>
                 </div>
                 <figure className="program-slide__media">
-                  <img src={program.image} alt={`${program.title} training`} loading="lazy" />
+                  <img 
+                    src={program.image} 
+                    alt={`${program.title} training`} 
+                    loading="lazy" 
+                    draggable="false"
+                  />
                 </figure>
               </article>
             </SwiperSlide>
@@ -124,7 +116,7 @@ export default function SignaturePrograms() {
 
       {/* Custom Swipe Cursor DOM Element */}
       <div ref={cursorRef} className="custom-swipe-cursor">
-        <div className={`custom-swipe-cursor__inner ${showCursor ? "visible" : ""} ${isMouseDown ? "active" : ""}`}>
+        <div className="custom-swipe-cursor__inner">
           <span>Swipe</span>
         </div>
       </div>

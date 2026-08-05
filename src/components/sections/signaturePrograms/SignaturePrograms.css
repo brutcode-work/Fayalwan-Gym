@@ -25,6 +25,8 @@
 .swiper-wrapper-container {
   position: relative;
   width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .swiper-wrapper-container:hover {
@@ -61,18 +63,24 @@
   letter-spacing: 0.08em;
   box-shadow: 0 8px 24px rgba(232, 93, 4, 0.25);
   
-  /* Scale and fade transition */
+  /* Scale, background, and fade transitions */
   opacity: 0;
   transform: scale(0.3);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    background 0.4s ease;
 }
 
-.custom-swipe-cursor__inner.visible {
+/* Show cursor on hover */
+.swiper-wrapper-container:hover ~ .custom-swipe-cursor .custom-swipe-cursor__inner {
   opacity: 1;
   transform: scale(1);
 }
 
-.custom-swipe-cursor__inner.active {
+/* Shrink and change background on active hold (drag/mousedown) */
+.swiper-wrapper-container:active ~ .custom-swipe-cursor .custom-swipe-cursor__inner {
+  opacity: 1;
   transform: scale(0.85);
   background: #b24300;
 }
