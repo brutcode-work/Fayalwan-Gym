@@ -135,14 +135,6 @@ export default function Hero() {
           </Swiper>
 
           <div className="banner-gradient-overlay"></div>
-
-          {/* Minimal floating badges on banner */}
-          <div className="banner-tag tag-left">
-            <span>FOUNDER</span>
-          </div>
-          <div className="banner-tag tag-right">
-            <span>CREATIVE DIRECTOR</span>
-          </div>
         </div>
       </div>
 
