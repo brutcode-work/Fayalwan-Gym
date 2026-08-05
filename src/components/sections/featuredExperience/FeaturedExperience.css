@@ -1,107 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
 .featured-experience {
-  background: #050505;
+  background: #000000;
   color: #f5f5f5;
-}
-
-.feature-chapter {
-  position: relative;
+  padding: 12vh var(--page-gutter) 16vh;
   display: flex;
-  min-height: 100vh;
+  flex-direction: column;
   align-items: center;
+  gap: 12vh;
+  position: relative;
+  z-index: 10;
+}
+
+/* Stacking Cards Container */
+.experience-cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+}
+
+/* Base card styling */
+.feature-chapter {
+  position: sticky;
+  top: 12vh;
+  width: 100%;
+  height: 75vh;
+  min-height: 520px;
+  max-height: 720px;
+  border-radius: 32px;
   overflow: hidden;
-  padding: 5rem var(--page-gutter);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  background: #0d0e10;
+  transform-origin: center top;
+  margin-bottom: 6vh;
 }
 
-.feature-chapter__grid {
+/* Layout Split */
+.feature-card__split {
   display: grid;
-  grid-template-columns: var(--editorial-rail) minmax(0, 680px);
-  gap: 0;
+  grid-template-columns: 35% 65%;
   width: 100%;
-  max-width: none;
-  margin: 0;
+  height: 100%;
 }
 
-.feature-kicker {
-  align-self: start;
-  margin: 0;
+/* Left/Right Ordering for even/odd cards */
+.feature-chapter:nth-child(even) .feature-card__split {
+  grid-template-columns: 65% 35%;
+}
+
+/* Info Panel Styling (Dark Side) */
+.feature-card__info {
+  background: #0d0e10;
+  padding: clamp(2.5rem, 4vw, 4.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   color: #f5f5f5;
+}
+
+.feature-chapter:nth-child(even) .feature-card__info {
+  background: #0f1012;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.08);
+  padding-bottom: 1.2rem;
+  width: 100%;
+}
+
+.info-kicker {
   font-family: monospace;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  line-height: 1.3;
+  color: rgba(245, 245, 245, 0.45);
+  text-transform: uppercase;
 }
 
-.feature-main {
-  max-width: 740px;
-}
-.feature-copy {
-  max-width: 700px;
-  margin: -0.25rem 0 0;
-  color: #f5f5f5;
-  font-size: clamp(1.55rem, 2vw, 2.2rem);
-  font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 1.02;
-  text-wrap: balance;
-}
-
-.feature-image-wrap {
-  width: min(100%, 430px);
-  margin: clamp(3.4rem, 6vw, 5.5rem) 0 0;
-}
-.feature-image-wrap img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1.35 / 1;
-  object-fit: cover;
-  object-position: center;
-  filter: saturate(0.78) contrast(1.08);
-  transition:
-    filter 0.35s ease,
-    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.feature-image-wrap:hover img {
-  filter: saturate(1) contrast(1.04);
-  transform: scale(1.015);
-}
-.feature-image-wrap figcaption {
-  margin-top: 0.7rem;
-  color: rgba(245, 245, 245, 0.48);
+.info-number {
   font-family: monospace;
-  font-size: 0.66rem;
-  font-weight: 600;
+  font-size: 0.68rem;
   letter-spacing: 0.1em;
+  color: rgba(245, 245, 245, 0.45);
 }
 
-@media (max-width: 1024px) {
-  .feature-chapter {
+.info-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.info-title {
+  font-size: clamp(1.6rem, 2.4vw, 2.6rem);
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.8rem;
+  color: #ffffff;
+}
+
+.info-copy {
+  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.72);
+  max-width: 100%;
+}
+
+/* Mockup Panel Styling (Light Side) */
+.feature-card__mockup {
+  background: #e5e3dd;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-chapter:nth-child(even) .feature-card__mockup {
+  background: #eae8e2;
+}
+
+.mockup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 52px;
+}
+
+.mockup-nav {
+  display: flex;
+  gap: clamp(0.8rem, 1.8vw, 1.8rem);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mockup-nav li {
+  color: rgba(0, 0, 0, 0.45);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.mockup-nav li.active,
+.mockup-nav li:hover {
+  color: #000000;
+}
+
+.mockup-body {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Standard mockup frame (for odd cards) */
+.mockup-image-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+}
+
+.mockup-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.05);
+  transition: filter 0.5s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card__mockup:hover .mockup-image-frame img {
+  filter: saturate(1.05) contrast(1.02);
+  transform: scale(1.035);
+}
+
+.mockup-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  padding: 1.8rem 1.2rem 1.2rem;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Canvas split visual mockup (for even cards) */
+.mockup-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-canvas-bg {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.mockup-canvas-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.8) contrast(1.1);
+  transition: filter 0.5s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card__mockup:hover .mockup-canvas-bg img {
+  filter: saturate(1) contrast(1.05);
+  transform: scale(1.035);
+}
+
+/* Serif Text Overlay */
+.mockup-serif-overlay {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 5.2vw, 6.2rem);
+  font-style: italic;
+  font-weight: 300;
+  color: #ffffff;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 2;
+  left: 8%;
+  bottom: 8%;
+  line-height: 0.9;
+}
+
+/* Secondary overlapping image element */
+.mockup-sub-image {
+  position: absolute;
+  bottom: 8%;
+  right: 8%;
+  width: clamp(100px, 14vw, 150px);
+  aspect-ratio: 0.75 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border: 4px solid #0d0e10;
+  z-index: 3;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mockup-sub-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-card__mockup:hover .mockup-sub-image {
+  transform: translateY(-12px) rotate(3deg);
+}
+
+/* Dark Overlay for Stacking Effect via GSAP */
+.card-stack-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* Responsive Rules */
+@media (max-width: 960px) {
+  .featured-experience {
     padding-inline: var(--page-gutter);
+    gap: 6vh;
   }
-  .feature-chapter__grid {
-    grid-template-columns: var(--editorial-rail) minmax(0, 600px);
-  }
-}
-@media (max-width: 720px) {
+
   .feature-chapter {
-    min-height: 100svh;
-    align-items: flex-start;
-    padding: 5rem 1.5rem 3.5rem;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    position: relative;
+    top: 0 !important;
+    transform: none !important;
+    border-radius: 20px;
+    margin-bottom: 4vh;
   }
-  .feature-chapter__grid {
+
+  .feature-card__split,
+  .feature-chapter:nth-child(even) .feature-card__split {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    display: flex;
+    flex-direction: column;
   }
-  .feature-copy {
-    font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+
+  .feature-card__info {
+    order: 1;
+    padding: 2.2rem 1.8rem;
   }
-  .feature-image-wrap {
-    width: min(100%, 340px);
-    margin-top: 3.2rem;
+
+  .feature-card__mockup {
+    order: 2;
+    height: 380px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .info-title {
+    margin-bottom: 1.2rem;
+  }
+
+  .info-copy {
+    max-width: 100%;
+  }
+
+  .mockup-body {
+    padding: 1.5rem;
+  }
+
+  .mockup-serif-overlay {
+    font-size: clamp(3rem, 7vw, 4.5rem);
+  }
+
+  .mockup-sub-image {
+    width: 100px;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .feature-image-wrap img {
-    transition: none;
+  .mockup-image-frame img,
+  .mockup-canvas-bg img,
+  .mockup-sub-image {
+    transition: none !important;
   }
 }
