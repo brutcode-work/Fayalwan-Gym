@@ -48,14 +48,28 @@ export default function FeaturedExperience() {
 
   useGSAP(
     () => {
+      // Header animation
+      gsap.from(".services-section-header", {
+        scrollTrigger: {
+          trigger: ".services-section-header",
+          start: "top 85%",
+          once: true,
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+
+      // Chapter items animation
       gsap.utils.toArray<HTMLElement>(".feature-chapter").forEach((chapter) => {
         const timeline = gsap.timeline({
-          scrollTrigger: { trigger: chapter, start: "top 70%", once: true },
+          scrollTrigger: { trigger: chapter, start: "top 80%", once: true },
         });
 
         timeline
-          .from(chapter.querySelectorAll(".feature-kicker, .feature-copy"), {
-            y: 28,
+          .from(chapter.querySelectorAll(".service-tag, .feature-copy"), {
+            y: 24,
             opacity: 0,
             duration: 0.75,
             stagger: 0.12,
@@ -64,38 +78,61 @@ export default function FeaturedExperience() {
           .from(
             chapter.querySelector(".feature-image-wrap"),
             {
-              y: 34,
+              y: 30,
               opacity: 0,
               duration: 0.85,
               ease: "power3.out",
             },
-            "-=0.28",
+            "-=0.28"
           );
       });
     },
-    { scope: sectionRef },
+    { scope: sectionRef }
   );
 
   return (
     <section className="featured-experience" id="experience" ref={sectionRef}>
-      {EXPERIENCES.map((experience) => (
-        <article className="feature-chapter" key={experience.number}>
-          <div className="feature-chapter__grid">
-            <h2 className="feature-kicker">{experience.label}</h2>
-            <div className="feature-main">
-              <p className="feature-copy">{experience.copy}</p>
-              <figure className="feature-image-wrap">
-                <img
-                  src={experience.image}
-                  alt={experience.label}
-                  loading="lazy"
-                />
-                <figcaption>{experience.caption}</figcaption>
-              </figure>
-            </div>
+      <div className="services-container">
+        {/* Header with title on left and paragraph on right */}
+        <header className="services-section-header">
+          <div className="services-header-title-wrap">
+            <span className="services-badge">WHAT WE OFFER</span>
+            <h2 className="services-main-title">Our Core Services</h2>
           </div>
-        </article>
-      ))}
+          <p className="services-main-desc">
+            Designed for purpose, guidance, and daily performance. We eliminate the noise so you can focus on building strength that lasts.
+          </p>
+        </header>
+
+        {/* Services List */}
+        <div className="services-list">
+          {EXPERIENCES.map((experience) => (
+            <article className="feature-chapter" key={experience.number}>
+              <div className="feature-chapter__grid">
+                {/* Left Column: Tag/Label + Description aligned vertically */}
+                <div className="feature-left">
+                  <div className="service-tag">
+                    <span className="service-tag__number">{experience.number}</span>
+                    <span className="service-tag__label">{experience.label}</span>
+                  </div>
+                  <p className="feature-copy">{experience.copy}</p>
+                </div>
+
+                {/* Right Column: Image */}
+                <figure className="feature-image-wrap">
+                  <img
+                    src={experience.image}
+                    alt={experience.label}
+                    loading="lazy"
+                  />
+                  <figcaption>{experience.caption}</figcaption>
+                </figure>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
+
