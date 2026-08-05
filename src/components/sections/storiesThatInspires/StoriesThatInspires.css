@@ -1,415 +1,334 @@
 /* ====================================
-   Drive Capital Inspired — Stories Section
+   Stories That Inspire — Carousel
    ==================================== */
 
-.drive-stories-section {
+.stories-that-inspire {
+  padding: 8rem 0 6rem;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
   position: relative;
-  padding: 7rem 4rem;
-  background-color: #050505;
-  color: #ffffff;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.drive-stories-bg-glow {
+/* Background glow */
+.sti-bg-glow {
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 800px;
+  width: 700px;
   height: 500px;
-  background: radial-gradient(ellipse, rgba(232, 93, 4, 0.04) 0%, transparent 70%);
-  filter: blur(80px);
+  background: radial-gradient(ellipse, rgba(var(--accent-color-rgb), 0.05) 0%, transparent 70%);
+  filter: blur(60px);
   pointer-events: none;
   z-index: 1;
 }
 
-.drive-stories-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1450px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-
-/* ---------- Top Header ---------- */
-.drive-stories-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  max-width: 900px;
-}
-
-.header-mono-tag {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-family: monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-}
-
-.tag-accent {
-  color: #ff6a3d;
-  font-weight: 700;
-}
-
-.tag-sep {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.drive-stories-main-title {
-  font-family: var(--font-bebas), "Outfit", sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.drive-stories-subtitle {
-  font-family: "Outfit", sans-serif;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.65);
-  font-weight: 400;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 650px;
-}
-
-/* ---------- Drive Capital Split Layout ---------- */
-.drive-stories-grid {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-/* Left Rail Chapter Buttons */
-.drive-chapters-rail {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.rail-chapter-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 1.25rem 1.4rem;
+/* Header */
+.sti-header {
   text-align: left;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  margin-bottom: 3.5rem;
+  padding: 0 5rem;
+  z-index: 2;
 }
 
-.rail-chapter-btn:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateX(4px);
-}
-
-.rail-chapter-btn.active {
-  background: rgba(255, 106, 61, 0.08);
-  border-color: #ff6a3d;
-  box-shadow: 0 4px 20px rgba(255, 106, 61, 0.15);
-}
-
-.rail-btn-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chapter-num {
-  font-family: monospace;
-  font-size: 0.7rem;
+.sti-section-tag {
+  font-family: "Outfit", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  color: var(--small-labels);
   font-weight: 700;
-  color: #ff6a3d;
+  display: inline-block;
+  margin-bottom: 0.75rem;
 }
 
-.chapter-category {
-  font-family: monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-}
-
-.rail-btn-title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.rail-headline {
-  font-family: var(--font-bebas), "Outfit", sans-serif;
-  font-size: 1.35rem;
-  letter-spacing: 0.03em;
-  font-weight: 400;
+.sti-heading {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
   color: #ffffff;
-  text-transform: uppercase;
-  margin: 0;
-  line-height: 1;
+  margin-bottom: 1rem;
 }
 
-.rail-arrow {
-  color: rgba(255, 255, 255, 0.4);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.rail-chapter-btn.active .rail-arrow {
-  color: #ff6a3d;
-  transform: translateX(3px);
-}
-
-.rail-author-tag {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: monospace;
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-}
-
-.author-icon {
-  color: #ff6a3d;
-}
-
-/* ---------- Right Stage ---------- */
-.drive-story-stage {
-  background: #0a0a0d;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-}
-
-.stage-top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.stage-category-badge {
-  font-family: monospace;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #ff6a3d;
-  background: rgba(255, 106, 61, 0.12);
-  padding: 0.3rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 106, 61, 0.25);
-  text-transform: uppercase;
-}
-
-.stage-proof-badge {
-  font-family: monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.3rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stage-headline {
-  font-family: var(--font-bebas), "Outfit", sans-serif;
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  text-transform: uppercase;
+.sti-subtext {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 650px;
   margin: 0;
 }
 
-/* Media Stage Card */
-.stage-media-card {
-  position: relative;
+/* Carousel Container */
+.sti-carousel-wrapper {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: #000000;
+  position: relative;
+  padding: 2rem 0 1rem;
+  z-index: 2;
 }
 
-.stage-thumb-wrapper {
+.sti-carousel-track {
   position: relative;
   width: 100%;
-  height: 100%;
-  cursor: pointer;
+  height: 460px;
 }
 
-.stage-thumb-img {
+.sti-carousel-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 680px;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition:
+    transform  0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity    0.6s ease,
+    filter     0.6s ease;
+  transform-origin: center center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+.sti-carousel-card:not([style*="cursor: default"]):hover {
+  filter: brightness(0.95) !important;
+  opacity: 0.95 !important;
+}
+
+.sti-carousel-thumb {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
-  filter: contrast(1.08) brightness(0.9);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
 }
 
-.stage-thumb-wrapper:hover .stage-thumb-img {
-  transform: scale(1.04);
-  filter: contrast(1.1) brightness(1);
-}
-
-.stage-thumb-overlay {
+.sti-carousel-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.4) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
-.stage-play-button {
+.sti-iframe-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 10;
+  border-radius: 24px;
+}
+
+.sti-carousel-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.4rem 1.5rem;
+  z-index: 2;
+}
+
+.sti-carousel-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0.3rem 0 0.2rem;
+  line-height: 1.2;
+}
+
+.sti-carousel-subtitle {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.sti-play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 68px;
-  height: 68px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.sti-play-btn:hover {
+  background: var(--button-bg);
+  border-color: var(--button-bg);
+  box-shadow: 0 0 30px rgba(215, 255, 0, 0.5);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.sti-play-icon {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+  color: #ffffff;
+  transform: translateX(1.5px);
+  transition: fill 0.3s ease, color 0.3s ease;
+}
+
+.sti-play-btn:hover .sti-play-icon {
+  fill: #000000;
+  color: #000000;
+}
+
+.sti-main-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--small-labels);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sti-main-badge-icon {
+  width: 11px;
+  height: 11px;
+  color: var(--small-labels);
+}
+
+.sti-carousel-side-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.sti-carousel-card:not(.pos-0):hover .sti-carousel-side-overlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.sti-side-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 20px;
+  padding: 4px 10px 4px 7px;
+  color: #ffffff;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+
+.sti-side-play-small {
+  width: 12px;
+  height: 12px;
+  fill: var(--button-bg);
+  color: var(--button-bg);
+  flex-shrink: 0;
+}
+
+.sti-nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  z-index: 2;
+}
+
+.sti-nav-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 5;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  flex-shrink: 0;
 }
 
-.play-icon {
-  fill: #ffffff;
-  transform: translateX(2px);
-  transition: transform 0.3s ease;
+.sti-nav-btn.prev {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
-.stage-thumb-wrapper:hover .stage-play-button {
-  background: #ff6a3d;
-  border-color: #ff6a3d;
+.sti-nav-btn.prev:hover {
+  background: var(--button-bg);
+  border-color: var(--button-bg);
   color: #000000;
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: scale(1.08);
 }
 
-.stage-thumb-wrapper:hover .play-icon {
-  fill: #000000;
+.sti-nav-btn.next {
+  background: var(--button-bg);
+  border: 1px solid var(--button-bg);
+  color: #000000;
 }
 
-.stage-thumb-info {
+.sti-nav-btn.next:hover {
+  background: var(--button-hover);
+  border-color: var(--button-hover);
+  box-shadow: 0 0 28px rgba(215, 255, 0, 0.55);
+  transform: scale(1.08);
+}
+
+.sti-nav-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+}
+
+.sti-custom-controls {
   position: absolute;
-  bottom: 1.25rem;
-  left: 1.5rem;
+  bottom: 1.5rem;
   right: 1.5rem;
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.thumb-author {
-  font-family: monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: #ff6a3d;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.thumb-title {
-  font-family: "Outfit", sans-serif;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: #ffffff;
-}
-
-/* Corner Viewfinder Markers */
-.corner-marker {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  pointer-events: none;
-  z-index: 6;
-}
-
-.marker-tl {
-  top: 8px;
-  left: 8px;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-}
-
-.marker-tr {
-  top: 8px;
-  right: 8px;
-  border-top: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
-}
-
-.marker-bl {
-  bottom: 8px;
-  left: 8px;
-  border-bottom: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-}
-
-.marker-br {
-  bottom: 8px;
-  right: 8px;
-  border-bottom: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
-}
-
-/* Video Player */
-.stage-video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.stage-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.stage-video-controls {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
   display: flex;
   gap: 0.5rem;
-  z-index: 10;
+  z-index: 20;
 }
 
-.stage-ctrl-btn {
-  width: 36px;
-  height: 36px;
+.sti-ctrl-btn {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   display: flex;
@@ -417,93 +336,54 @@
   justify-content: center;
   cursor: pointer;
   backdrop-filter: blur(8px);
-  transition: all 0.25s ease;
 }
 
-.stage-ctrl-btn:hover {
-  background: #ff6a3d;
-  color: #000000;
-  border-color: #ff6a3d;
+.sti-ctrl-icon {
+  width: 18px;
+  height: 18px;
 }
 
-/* Drive Capital Blockquote Card */
-.stage-quote-block {
-  position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border-left: 3px solid #ff6a3d;
-  padding: 1.5rem 1.75rem;
-  border-radius: 0 8px 8px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.quote-mark {
-  font-family: serif;
-  font-size: 3rem;
-  line-height: 1;
-  color: rgba(255, 106, 61, 0.35);
-  position: absolute;
-  top: 0.5rem;
-  left: 0.75rem;
-  pointer-events: none;
-}
-
-.quote-body {
-  position: relative;
-  z-index: 2;
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  font-weight: 300;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
-}
-
-.quote-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: monospace;
-  font-size: 0.75rem;
-}
-
-.quote-author {
-  color: #ff6a3d;
-  font-weight: 700;
-}
-
-.quote-title {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* Responsive Overrides */
-@media (max-width: 1024px) {
-  .drive-stories-section {
-    padding: 5rem 2rem;
+@media (max-width: 1200px) {
+  .stories-that-inspire {
+    padding: 6rem 0 4rem;
   }
-
-  .drive-stories-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .sti-header {
+    padding: 0 3rem;
   }
+  .sti-carousel-track {
+    height: 380px;
+  }
+  .sti-carousel-card {
+    width: 560px;
+    height: 345px;
+  }
+}
 
-  .drive-chapters-rail {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+@media (max-width: 900px) {
+  .stories-that-inspire {
+    padding: 5rem 0 3rem;
+  }
+  .sti-header {
+    padding: 0 2rem;
+  }
+  .sti-carousel-track {
+    height: 300px;
+  }
+  .sti-carousel-card {
+    width: 440px;
+    height: 272px;
   }
 }
 
 @media (max-width: 640px) {
-  .drive-stories-section {
-    padding: 3.5rem 1.25rem;
+  .sti-header {
+    padding: 0 1.5rem;
   }
-
-  .drive-chapters-rail {
-    grid-template-columns: 1fr;
+  .sti-carousel-track {
+    height: 220px;
   }
-
-  .drive-story-stage {
-    padding: 1.5rem;
+  .sti-carousel-card {
+    width: 320px;
+    height: 198px;
   }
 }
