@@ -105,7 +105,7 @@ export default function FeaturedExperience() {
         scrollTrigger: {
           trigger: ".services-section-header",
           start: "top 85%",
-          once: true,
+          toggleActions: "play none none reverse",
         },
         y: 30,
         opacity: 0,
@@ -116,7 +116,13 @@ export default function FeaturedExperience() {
       // Chapter items animation
       gsap.utils.toArray<HTMLElement>(".feature-chapter").forEach((chapter) => {
         const timeline = gsap.timeline({
-          scrollTrigger: { trigger: chapter, start: "top 75%", once: true },
+          scrollTrigger: {
+            trigger: chapter,
+            start: "top 75%",
+            // Reverses on the way back up so the orange fill resets to white and
+            // replays on the next pass down, rather than firing once forever.
+            toggleActions: "play none none reverse",
+          },
         });
 
         timeline

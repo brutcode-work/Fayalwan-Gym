@@ -118,6 +118,24 @@ Fayalwan-Gym/
 - **Files**: `src/components/layout/Navbar/Navbar.css`
 - **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), glass pill CTA button, and removed `border-bottom` (`border-bottom: none`).
 
+### I. FeaturedExperience — per-character highlight must stay `display: inline`
+- **Files**: `featuredExperience/FeaturedExperience.tsx` (`HighlightText`) & `.css` (`.accent-char`)
+- **The bug**: characters were wrapped in `.accent-char { display: inline-block }` inside
+  `.accent-word { display: inline-block }`, with the inter-word space rendered *inside* the word
+  span. An inline-block cannot collapse its whitespace against adjacent text, so that inner space
+  stacked on top of the JSX `{" "}` next to it. Measured result: the paragraph rendered **96px
+  (5.1%) wider** than the same sentence as plain text, with visible double gaps and a floating
+  space before commas. Per-character inline-blocks also kill kerning and ignore the parent's
+  `letter-spacing: -0.03em`.
+- **The fix**: no word wrapper at all; spaces are emitted as real text nodes and `.accent-char`
+  is `display: inline`. Only `color` is animated, so nothing needs its own box. All four
+  paragraphs now measure within 0.5px of plain text.
+- **If you ever need transforms per character** (y, rotate, scale), inline won't work — but then
+  wrap *words* in inline-block and keep the separating spaces **outside** those spans, never inside.
+- **Name collision**: `.accent-word` is also defined in `menifesto/Overlap.css` as a pill style for
+  "CORE"/"MODEL". These are global stylesheets — the same class name in two sections is a live
+  hazard. Check both before touching either.
+
 ### H. Fonts — never use `@import url()` in CSS on this project
 - **Files**: `src/app/layout.tsx`, `src/app/globals.css`, `introduction/Introduction.css`
 - **The trap**: **Turbopack silently strips external `@import url("https://fonts.googleapis.com/...")`
