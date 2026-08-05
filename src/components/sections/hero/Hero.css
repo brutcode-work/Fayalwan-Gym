@@ -62,7 +62,8 @@
   border-right: none;
 }
 
-.hero-square-media img {
+.hero-square-media img,
+.hero-square-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;

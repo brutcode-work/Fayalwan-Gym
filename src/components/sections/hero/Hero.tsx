@@ -9,17 +9,16 @@ import { ArrowDown } from "lucide-react";
 import "swiper/css";
 import "./Hero.css";
 
-const IMAGES = [
-  "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1517931524326-bdd55a541177?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1550345332-09e3ac987658?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=600&auto=format&fit=crop"
+const MEDIA_URLS = [
+  "https://i.pinimg.com/736x/a6/98/4c/a6984c612d4cf1113d5ebfeb6cba80fc.jpg",
+  "https://i.pinimg.com/736x/f6/3f/f2/f63ff2cf0acfae03c354b7f39084a7a9.jpg",
+  "https://v1.pinimg.com/videos/iht/hevcMp4V2/c0/c1/03/c0c10333962598c1bcb2fb44c43a1d01_t1.mp4",
+  "https://i.pinimg.com/736x/f4/68/83/f468838d85b76ba8a383af24c97cff9e.jpg",
+  "https://v1.pinimg.com/videos/iht/expMp4/cc/e3/65/cce36507c7eebcb5f775079cecec030b_720w.mp4",
+  "https://i.pinimg.com/1200x/dc/d0/26/dcd026441fc3f09b8d5eef7b90705621.jpg",
+  "https://v1.pinimg.com/videos/iht/expMp4/69/7d/0c/697d0cb6f5333fd44d7a594342e46e66_720w.mp4",
+  "https://i.pinimg.com/1200x/1c/6e/4c/1c6e4cc36fcd99713417271d95bac62e.jpg",
+  "https://i.pinimg.com/736x/ee/ad/b7/eeadb757106f016f5f25bb8f5689c280.jpg"
 ];
 
 export default function Hero() {
@@ -106,18 +105,33 @@ export default function Hero() {
             }}
             keyboard={{ enabled: true }}
           >
-            {IMAGES.map((url, index) => (
-              <SwiperSlide key={index} className="hero-swiper-slide">
-                <div className="hero-square-media">
-                  <img
-                    src={url}
-                    alt="Gym training visual"
-                    draggable="false"
-                    loading="lazy"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
+            {MEDIA_URLS.map((url, index) => {
+              const isVideo = url.endsWith(".mp4") || url.includes(".mp4");
+              return (
+                <SwiperSlide key={index} className="hero-swiper-slide">
+                  <div className="hero-square-media">
+                    {isVideo ? (
+                      <video
+                        src={url}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        draggable="false"
+                      />
+                    ) : (
+                      <img
+                        src={url}
+                        alt={`Gym training visual ${index + 1}`}
+                        draggable="false"
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
 
           <div className="banner-gradient-overlay"></div>
