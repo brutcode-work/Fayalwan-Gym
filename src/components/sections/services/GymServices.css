@@ -1,0 +1,52 @@
+.gym-services-main {
+  width: 100%;
+  padding: 2rem 0rem;
+}
+
+.gym-services-header {
+  padding: 0rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+  align-items: center;
+}
+
+.gym-services-grid {
+  width: 100%;
+  background-color: rgb(69, 24, 24);
+}
+
+.gym-services-wrapper {
+  width: 100%;
+  height: 10rem;
+  position: relative;
+  border: 1px solid red;
+}
+
+.gym-services-content {
+  width: 100%;
+  padding: 1rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.gym-services-content h4 {
+  width: 30%;
+  background-color: green;
+}
+
+.gym-services-content .gym-service-para {
+  width: 40%;
+  background-color: blue;
+  display: flex;
+}
+
+.gym-services-content h4 {
+  color: white;
+}
+
+.gym-services-content p {
+  color: rgb(166, 158, 158);
+}

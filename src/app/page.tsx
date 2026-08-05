@@ -7,6 +7,7 @@ import SignaturePrograms from "@/components/sections/signaturePrograms/Signature
 import GymFamily from "@/components/sections/gymFamily/GymFamily";
 import GymGallery from "@/components/sections/gymGallery/GymGallery";
 import Menifesto from "@/components/sections/menifesto/Menifesto";
+import GymServices from "@/components/sections/services/GymServices";
 
 export default function Home() {
   return (
@@ -17,6 +18,8 @@ export default function Home() {
       <Introduction />
       <FeaturedExperience />
       <SignaturePrograms />
+      <GymServices />
+
       <GymFamily />
       <GymGallery />
       <Menifesto />
