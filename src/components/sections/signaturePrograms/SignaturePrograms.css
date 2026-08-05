@@ -20,3 +20,71 @@
 .programs-arrows { display: flex; gap: .5rem; }.programs-arrows button { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; color: #fff; }.programs-arrows button:hover { border-color: #e85d04; color: #e85d04; }
 @media (max-width: 1024px) { .signature-programs { padding-inline: var(--page-gutter); }.signature-programs__header { grid-template-columns: var(--editorial-rail) minmax(0, 600px); }.program-slide { grid-template-columns: var(--editorial-rail) minmax(0, 1fr) minmax(220px, 330px); gap: 3rem; } }
 @media (max-width: 720px) { .signature-programs { padding: 5rem 1.5rem 2rem; }.signature-programs__header { display: block; margin-bottom: 3.5rem; }.signature-programs__intro { margin-top: 2rem; font-size: clamp(1.65rem,7.5vw,2.2rem); }.program-slide { display: flex; min-height: 0; flex-direction: column; align-items: flex-start; gap: 2.5rem; }.program-slide h2 { font-size: clamp(3.6rem,16vw,5.3rem); }.program-slide__media { max-width: 100%; align-self: stretch; }.program-slide__media img { height: 340px; }.programs-controls { width: 100%; margin-left: 0; align-items: flex-start; gap: 1.5rem; }.programs-pagination { flex-wrap: wrap; max-width: 12rem; }.programs-arrows { flex: none; } }
+
+/* ---------- custom swipe cursor ---------- */
+.swiper-wrapper-container {
+  position: relative;
+  width: 100%;
+}
+
+.swiper-wrapper-container:hover {
+  cursor: none;
+}
+
+.swiper-wrapper-container:hover .programs-swiper {
+  cursor: none;
+}
+
+.custom-swipe-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.custom-swipe-cursor__inner {
+  width: 76px;
+  height: 76px;
+  margin-left: -38px;
+  margin-top: -38px;
+  background: #e85d04;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 8px 24px rgba(232, 93, 4, 0.25);
+  
+  /* Scale and fade transition */
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-swipe-cursor__inner.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.custom-swipe-cursor__inner.active {
+  transform: scale(0.85);
+  background: #b24300;
+}
+
+@media (max-width: 1024px) {
+  .custom-swipe-cursor {
+    display: none !important;
+  }
+  .swiper-wrapper-container:hover {
+    cursor: auto;
+  }
+  .swiper-wrapper-container:hover .programs-swiper {
+    cursor: auto;
+  }
+}

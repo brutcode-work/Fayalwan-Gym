@@ -8,164 +8,188 @@ import "./Introduction.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SplitChars = ({ children }: { children: React.ReactNode }) => {
-  if (typeof children !== "string") return <>{children}</>;
-  
-  return (
-    <span aria-label={children} style={{ display: "inline-flex", flexWrap: "wrap" }}>
-      {children.split(/(\s+)/).map((word, wordIdx) => {
-        if (word.trim() === "") {
-          return <span key={wordIdx} style={{ whiteSpace: "pre" }}>{word}</span>;
-        }
-        return (
-          <span key={wordIdx} className="word" style={{ display: "inline-flex", whiteSpace: "nowrap" }}>
-            {word.split("").map((char, charIdx) => (
-              <span
-                key={charIdx}
-                className="char-mask"
-                style={{ 
-                  overflow: "hidden", 
-                  display: "inline-block", 
-                  verticalAlign: "bottom",
-                  paddingBottom: "0.15em",
-                  marginBottom: "-0.15em"
-                }}
-              >
-                <span 
-                  className="char" 
-                  style={{ 
-                    display: "inline-block", 
-                    willChange: "transform"
-                  }}
-                >
-                  {char}
-                </span>
-              </span>
-            ))}
-          </span>
-        );
-      })}
-    </span>
-  );
-};
-
 export default function Introduction() {
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Smooth scroll handler helper
+  const handleScrollTo = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string,
+  ) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const lenis =
+        typeof window !== "undefined" ? (window as any).lenis : null;
+      if (lenis) {
+        lenis.scrollTo(targetElement, { duration: 1.5 });
+      } else {
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = targetElement.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
+  const handleButtonClick = (targetId: string) => {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const lenis =
+        typeof window !== "undefined" ? (window as any).lenis : null;
+      if (lenis) {
+        lenis.scrollTo(targetElement, { duration: 1.5 });
+      } else {
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = targetElement.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   useGSAP(
     () => {
-      // 1. Intro Header
-      gsap.from(".intro-header .char", {
+      // 1. Bento Head Animation
+      gsap.from(".bento-head h2, .bento-head a", {
         scrollTrigger: {
-          trigger: ".intro-header",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-        yPercent: 120,
-        duration: 0.9,
-        stagger: 0.015,
-        ease: "power4.out",
-      });
-
-      // 2. Spend Lines (Cards)
-      gsap.from(".spend-line", {
-        scrollTrigger: {
-          trigger: ".spend-lines",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-        y: 60,
-        opacity: 0,
-        scale: 0.98,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: "power3.out",
-      });
-
-      // 3. Spend Lines Text (Chars inside Cards)
-      gsap.from(".spend-line .char", {
-        scrollTrigger: {
-          trigger: ".spend-lines",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-        yPercent: 120,
-        duration: 0.6,
-        stagger: 0.01,
-        ease: "power3.out",
-        delay: 0.15, // Let the cards lift first slightly
-      });
-
-      // 4. Conclusion Text
-      gsap.from(".intro-statement .char", {
-        scrollTrigger: {
-          trigger: ".intro-conclusion",
+          trigger: ".bento-head",
           start: "top 85%",
           toggleActions: "play none none reverse",
         },
-        yPercent: 120,
+        opacity: 0,
+        y: 25,
         duration: 0.8,
-        stagger: 0.015,
+        stagger: 0.15,
         ease: "power3.out",
       });
 
-      // 5. Conclusion Closing and Price Stamp
-      gsap.from(".intro-closing, .price-stamp", {
-        scrollTrigger: {
-          trigger: ".intro-conclusion",
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.16,
-        ease: "power3.out",
+      // 2. Bento Cells Animation (Staggered reveal simulating in-view CSS transition)
+      const cells = gsap.utils.toArray(".b-cell");
+
+      cells.forEach((cell: any) => {
+        gsap.to(cell, {
+          scrollTrigger: {
+            trigger: cell,
+            start: "top 88%",
+            onEnter: () => cell.classList.add("in-view"),
+            once: true,
+          },
+        });
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
-    <section className="investment-intro" id="introduction" ref={sectionRef}>
-      <div className="investment-intro__inner">
-        <header className="intro-header">
-          <p className="intro-kicker">
-            <span>01</span> <SplitChars>THE ₹150 QUESTION</SplitChars>
-          </p>
-          <h2 className="intro-title">
-            <SplitChars>Don't cut the</SplitChars><br />
-            <em><SplitChars>good stuff.</SplitChars></em>
+    <section
+      className="investment-bento reveal-ready"
+      id="introduction"
+      ref={sectionRef}
+    >
+      <div className="bento-inner">
+        <div className="bento-head">
+          <h2>
+            Don't cut the good stuff. <span>Just add one hour for you.</span>
           </h2>
-        </header>
-
-        <div className="spend-lines" aria-label="The difference a daily 150 rupee investment can make">
-          <div className="spend-line">
-            <span className="spend-line__number">01</span>
-            <p><SplitChars>Coffee, snacks, a quick add-on.</SplitChars></p>
-            <span className="spend-line__note"><SplitChars>a normal day</SplitChars></span>
+          <a href="#contact" onClick={(e) => handleScrollTo(e, "contact")}>
+            Start today
+          </a>
+        </div>
+        <div className="bento-grid">
+          {/* b-photo : tall image card, quote overlay */}
+          <div className="b-cell b-photo">
+            <p className="b-eyebrow">
+              <span>Why we exist</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M7 17L17 7M17 7H9M17 7V15"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </p>
+            <div>
+              <p className="b-photo__quote">
+                “Your body carries you through every ambition. It deserves one
+                hour in return.”
+              </p>
+              <span className="b-photo__by">Fayalwan Gym, TechnoPark</span>
+            </div>
           </div>
-          <div className="spend-line">
-            <span className="spend-line__number">02</span>
-            <p><SplitChars>Add one hour for your body.</SplitChars></p>
-            <span className="spend-line__note spend-line__note--accent"><SplitChars>a better habit</SplitChars></span>
+
+          {/* b-people : centered label + glass button */}
+          <div className="b-cell b-people">
+            <span className="b-people__label">Built for everyday people</span>
+            <p>
+              Whether you're starting from zero, getting back after years, or
+              chasing your next personal best— there's a place for you here.
+            </p>
+            <button
+              className="b-people__btn"
+              type="button"
+              onClick={() => handleButtonClick("contact")}
+            >
+              Start your journey
+            </button>
+          </div>
+
+          {/* b-quote : dark abstract headline card */}
+          <div className="b-cell b-quote">
+            <p className="b-eyebrow">
+              <span>Our belief</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M7 17L17 7M17 7H9M17 7V15"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </p>
+            <h3>
+              Keep the biriyani. Keep the weekends. <em>Train anyway.</em>
+            </h3>
+          </div>
+
+          {/* b-price : gradient wave stat card */}
+          <div className="b-cell b-price">
+            <span className="b-price__top">
+              <span>One hour changes</span>
+              <span>everything</span>
+            </span>
+            <p className="b-price__amount">
+              1 Hour<small>Every Day</small>
+            </p>
+            <span className="b-price__caption">
+              Less stress. More strength. Better sleep. Higher confidence.
+            </span>
+          </div>
+
+          {/* b-note : plain text card */}
+          <div className="b-cell b-note">
+            <h3>
+              The TechnoPark <em>Routine</em>
+            </h3>
+            <p>
+              Coffee. Meetings. Deadlines. Snacks. Weekend plans. <br /> Life
+              gets busy. <br />
+              Don't let your health be the thing you postpone.
+            </p>
+            <a href="#contact" onClick={(e) => handleScrollTo(e, "contact")}>
+              Move today →
+            </a>
           </div>
         </div>
-
-        <div className="intro-conclusion">
-          <p className="intro-statement">
-            <SplitChars>Keep the coffee. Keep the weekends.</SplitChars><br />
-            <strong><SplitChars>Add movement.</SplitChars></strong>
-          </p>
-          <div className="intro-closing">
-            <span><SplitChars>FAYALWAN GYM · DAILY ACCESS</SplitChars></span>
-            <strong><SplitChars>MOVE MORE. LIVE BETTER.</SplitChars></strong>
-          </div>
-        </div>
-      </div>
-      <div className="price-stamp" aria-label="Only 150 rupees per day">
-        <span>YOUR DAILY INVESTMENT</span>
-        <strong>₹150<small>/DAY</small></strong>
       </div>
     </section>
   );

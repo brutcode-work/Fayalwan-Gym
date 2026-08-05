@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Keyboard, Navigation } from "swiper/modules";
 import type { Swiper as SwiperInstance } from "swiper/types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import "swiper/css";
 import "./SignaturePrograms.css";
 
@@ -28,10 +30,38 @@ const PROGRAMS: Program[] = [
 
 export default function SignaturePrograms() {
   const sectionRef = useRef<HTMLElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiper, setSwiper] = useState<SwiperInstance | null>(null);
+  
+  // Custom cursor states
+  const [showCursor, setShowCursor] = useState(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
   const goTo = (index: number) => swiper?.slideTo(index);
+
+  // Bind custom cursor quickTo coordinates tracking
+  useGSAP(
+    () => {
+      const cursor = cursorRef.current;
+      if (!cursor) return;
+
+      const xTo = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3.out" });
+      const yTo = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3.out" });
+
+      const handleMouseMove = (e: MouseEvent) => {
+        xTo(e.clientX);
+        yTo(e.clientY);
+      };
+
+      window.addEventListener("mousemove", handleMouseMove);
+
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+      };
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section className="signature-programs" id="programs" ref={sectionRef}>
@@ -40,31 +70,43 @@ export default function SignaturePrograms() {
         <p className="signature-programs__intro">Choose the way you want to move. We build the plan around where you are, not a one-size-fits-all template.</p>
       </header>
 
-      <Swiper
-        className="programs-swiper"
-        modules={[Navigation, Keyboard, A11y]}
-        slidesPerView={1}
-        speed={700}
-        keyboard={{ enabled: true }}
-        onSwiper={setSwiper}
-        onSlideChange={(instance) => setActiveIndex(instance.realIndex)}
+      {/* Wrapper to handle custom cursor events */}
+      <div
+        className="swiper-wrapper-container"
+        onMouseEnter={() => setShowCursor(true)}
+        onMouseLeave={() => {
+          setShowCursor(false);
+          setIsMouseDown(false);
+        }}
+        onMouseDown={() => setIsMouseDown(true)}
+        onMouseUp={() => setIsMouseDown(false)}
       >
-        {PROGRAMS.map((program) => (
-          <SwiperSlide key={program.id}>
-            <article className="program-slide">
-              <div className="program-slide__content">
-                <p className="program-slide__number">{program.number} / 06</p>
-                <h2>{program.title}</h2>
-                <p className="program-slide__description">{program.description}</p>
-                <p className="program-slide__focus">{program.focus}</p>
-              </div>
-              <figure className="program-slide__media">
-                <img src={program.image} alt={`${program.title} training`} loading="lazy" />
-              </figure>
-            </article>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          className="programs-swiper"
+          modules={[Navigation, Keyboard, A11y]}
+          slidesPerView={1}
+          speed={700}
+          keyboard={{ enabled: true }}
+          onSwiper={setSwiper}
+          onSlideChange={(instance) => setActiveIndex(instance.realIndex)}
+        >
+          {PROGRAMS.map((program) => (
+            <SwiperSlide key={program.id}>
+              <article className="program-slide">
+                <div className="program-slide__content">
+                  <p className="program-slide__number">{program.number} / 06</p>
+                  <h2>{program.title}</h2>
+                  <p className="program-slide__description">{program.description}</p>
+                  <p className="program-slide__focus">{program.focus}</p>
+                </div>
+                <figure className="program-slide__media">
+                  <img src={program.image} alt={`${program.title} training`} loading="lazy" />
+                </figure>
+              </article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
       <div className="programs-controls" aria-label="Training programmes navigation">
         <div className="programs-pagination" aria-label={`Programme ${activeIndex + 1} of ${PROGRAMS.length}`}>
@@ -77,6 +119,13 @@ export default function SignaturePrograms() {
         <div className="programs-arrows">
           <button onClick={() => swiper?.slidePrev()} aria-label="Previous programme"><ArrowLeft size={18} /></button>
           <button onClick={() => swiper?.slideNext()} aria-label="Next programme"><ArrowRight size={18} /></button>
+        </div>
+      </div>
+
+      {/* Custom Swipe Cursor DOM Element */}
+      <div ref={cursorRef} className="custom-swipe-cursor">
+        <div className={`custom-swipe-cursor__inner ${showCursor ? "visible" : ""} ${isMouseDown ? "active" : ""}`}>
+          <span>Swipe</span>
         </div>
       </div>
     </section>
