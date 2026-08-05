@@ -71,13 +71,29 @@
   filter: contrast(1.05) saturate(1.1);
 }
 
-/* ---------- custom swipe cursor ---------- */
+/* Text Masks for smooth Awwwards-style reveal */
+.hero-text-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.hero-text-mask > * {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* ---------- custom swipe cursor (Gated strictly until intro sequence completes) ---------- */
 .hero-swipe-cursor {
+  display: none !important;
+  pointer-events: none !important;
   position: fixed;
   top: 0;
   left: 0;
-  pointer-events: none;
   z-index: 9999;
+}
+
+.hero-section.is-loaded .hero-swipe-cursor {
+  display: block !important;
 }
 
 .hero-swipe-cursor__inner {
@@ -107,14 +123,14 @@
     background 0.4s ease;
 }
 
-/* Show cursor on hover */
-.hero-banner-full:hover ~ .hero-swipe-cursor .hero-swipe-cursor__inner {
+/* Show cursor on hover ONLY when loaded */
+.hero-section.is-loaded .hero-banner-full:hover ~ .hero-swipe-cursor .hero-swipe-cursor__inner {
   opacity: 1;
   transform: scale(1);
 }
 
-/* Shrink and change background on active hold (drag/mousedown) */
-.hero-banner-full:active ~ .hero-swipe-cursor .hero-swipe-cursor__inner {
+/* Shrink and change background on active hold (drag/mousedown) ONLY when loaded */
+.hero-section.is-loaded .hero-banner-full:active ~ .hero-swipe-cursor .hero-swipe-cursor__inner {
   opacity: 1;
   transform: scale(0.85);
   background: #d44d24;

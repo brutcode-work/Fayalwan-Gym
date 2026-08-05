@@ -25,31 +25,39 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  // Cinematic GSAP loading timeline
+  // Awwwards-grade GSAP preloader & entrance timeline
   useGSAP(
     () => {
-      // 1. Set initial states
-      gsap.set(".hero-left-col, .hero-right-col, .hero-bottom-bar, .navbar-container", {
-        opacity: 0
-      });
-      gsap.set(".hero-banner-full", {
-        opacity: 0
-      });
+      const section = sectionRef.current;
+      if (section) section.classList.remove("is-loaded");
+
+      // 1. Initial state setup
+      gsap.set(".hero-banner-full", { opacity: 0 });
+      gsap.set(".hero-text-mask > *", { yPercent: 115, opacity: 0 });
+      gsap.set(".hero-bottom-bar", { opacity: 0, y: 15 });
+      gsap.set(".navbar-container", { y: -80, opacity: 0 });
+
       gsap.set(".loader-card", {
         x: () => (Math.random() - 0.5) * window.innerWidth * 0.75,
         y: () => (Math.random() - 0.5) * window.innerHeight * 0.75,
-        scale: () => Math.random() * 0.4 + 0.25, // random scale between 0.25 and 0.65
-        rotation: () => (Math.random() - 0.5) * 45, // random rotation
+        scale: () => Math.random() * 0.4 + 0.25,
+        rotation: () => (Math.random() - 0.5) * 45,
         opacity: 0,
       });
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        onComplete: () => {
+          // Strictly enable custom cursor ONLY when preloader & intro finishes
+          if (section) section.classList.add("is-loaded");
+        }
+      });
 
-      // 2. Fade in scattered cards
+      // 2. Fade in scattered loader cards
       tl.to(".loader-card", {
-        opacity: 0.65,
-        duration: 0.8,
-        stagger: 0.06,
+        opacity: 0.7,
+        duration: 0.7,
+        stagger: 0.05,
         ease: "power2.out"
       });
 
@@ -64,7 +72,7 @@ export default function Hero() {
 
       tl.to(progress, {
         val: 90,
-        duration: 2.5,
+        duration: 2.2,
         ease: "power1.inOut",
         onUpdate: () => {
           const numEl = document.querySelector(".loader-number");
@@ -79,31 +87,30 @@ export default function Hero() {
             labelEl.textContent = labels[labelIndex];
           }
         }
-      }, "-=0.4");
+      }, "-=0.3");
 
-      // 4. Kinetic alignment to the bottom of the viewport at 90% progress
+      // 4. Kinetic alignment to the bottom of the viewport at 90%
       tl.to(".loader-card", {
         x: (index) => {
           const cardWidth = window.innerWidth <= 820 ? 170 : 240;
-          return (index - 4) * cardWidth; // Centered alignment for 9 items
+          return (index - 4) * cardWidth;
         },
         y: () => {
           const cardHeight = window.innerWidth <= 820 ? 170 : 240;
-          // Align near the bottom of the screen (Local Y relative to viewport center)
           return window.innerHeight / 2 - cardHeight / 2 - 40;
         },
         scale: 1,
         rotation: 0,
         opacity: 1,
-        duration: 1.3,
-        stagger: 0.08,
+        duration: 1.2,
+        stagger: 0.06,
         ease: "power4.inOut"
-      }, "-=0.2");
+      }, "-=0.1");
 
       // 5. Final load push (90% to 100%)
       tl.to(progress, {
         val: 100,
-        duration: 0.6,
+        duration: 0.5,
         ease: "power2.out",
         onUpdate: () => {
           const numEl = document.querySelector(".loader-number");
@@ -123,43 +130,53 @@ export default function Hero() {
             const viewportCenterY = window.innerHeight / 2;
             return targetCenterY - viewportCenterY;
           }
-          return -150; // Fallback
+          return -150;
         },
         duration: 1.1,
         ease: "power4.inOut"
       });
 
-      // 7. Instant Swap: Hide loader overlay/cards and show actual Swiper immediately
+      // 7. Ultra-smooth FLIP handoff: reveal Swiper and dissolve preloader backdrop
       tl.to(".loader-text-container", {
         opacity: 0,
-        y: -30,
-        duration: 0.4,
+        y: -25,
+        duration: 0.35,
         ease: "power2.in"
-      }, "-=0.9")
-        .set(".hero-banner-full", { opacity: 1 })
-        .set(".loader-card", { opacity: 0 })
-        .set(".hero-preloader", { display: "none" })
+      }, "-=0.8")
+        .set(".hero-banner-full", { opacity: 1 }, "-=0.2")
+        .to(".hero-preloader", {
+          opacity: 0,
+          duration: 0.55,
+          ease: "power2.out",
+          onComplete: () => {
+            const preloader = document.querySelector(".hero-preloader");
+            if (preloader) (preloader as HTMLElement).style.display = "none";
+          }
+        }, "-=0.2")
 
-        // 8. Stagger reveal hero content text
-        .fromTo(
-          ".hero-left-col, .hero-right-col",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" },
-          "-=0.2"
+        // 8. Masked Text Reveals (Awwwards-style smooth slide up out of overflow mask)
+        .to(
+          ".hero-text-mask > *",
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1.0,
+            stagger: 0.12,
+            ease: "power4.out"
+          },
+          "-=0.55"
         )
 
-        // 9. Slide down navbar and show scroll indicator
-        .fromTo(
+        // 9. Slide down navbar & fade in scroll indicator
+        .to(
           ".navbar-container",
-          { y: -80, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-          "-=0.6"
+          { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
+          "-=0.85"
         )
-        .fromTo(
+        .to(
           ".hero-bottom-bar",
-          { opacity: 0 },
-          { opacity: 1, duration: 0.6 },
-          "-=0.4"
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+          "-=0.6"
         );
     },
     { scope: sectionRef }
@@ -266,6 +283,14 @@ export default function Hero() {
           </Swiper>
 
           <div className="banner-gradient-overlay"></div>
+
+          {/* Minimal floating badges on banner */}
+          <div className="banner-tag tag-left">
+            <span>FOUNDER</span>
+          </div>
+          <div className="banner-tag tag-right">
+            <span>CREATIVE DIRECTOR</span>
+          </div>
         </div>
       </div>
 
@@ -275,25 +300,31 @@ export default function Hero() {
         <div className="hero-content-grid">
           {/* Left Column: Subtitle & Monospace Partnership Tagline */}
           <div className="hero-left-col">
-            <p className="hero-subtext">
-              Every day you make small choices. Those choices become your
-              lifestyle.
-            </p>
+            <div className="hero-text-mask">
+              <p className="hero-subtext">
+                Every day you make small choices. Those choices become your
+                lifestyle.
+              </p>
+            </div>
 
-            <div className="hero-tagline-mono">
-              BY FAYALWAN GYM IN PARTNERSHIP
-              <br />
-              WITH DISCIPLINE ENGINE
+            <div className="hero-text-mask">
+              <div className="hero-tagline-mono">
+                BY FAYALWAN GYM IN PARTNERSHIP
+                <br />
+                WITH DISCIPLINE ENGINE
+              </div>
             </div>
           </div>
 
           {/* Right Column: Clean Medium-Weight Headline */}
           <div className="hero-right-col">
-            <h1 className="hero-title-main">
-              Your Weekly Choices
-              <br />
-              Shape Your Future.
-            </h1>
+            <div className="hero-text-mask">
+              <h1 className="hero-title-main">
+                Your Weekly Choices
+                <br />
+                Shape Your Future.
+              </h1>
+            </div>
           </div>
         </div>
 
@@ -311,7 +342,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Custom Swipe Cursor DOM Element */}
+      {/* Custom Swipe Cursor DOM Element (Strictly disabled until intro timeline finishes) */}
       <div ref={cursorRef} className="hero-swipe-cursor">
         <div className="hero-swipe-cursor__inner">
           <span>Swipe</span>
