@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Hero from "@/components/sections/hero/Hero";
+import Stats from "@/components/sections/stats/Stats";
 import Introduction from "@/components/sections/introduction/Introduction";
 import FeaturedExperience from "@/components/sections/featuredExperience/FeaturedExperience";
 import SignaturePrograms from "@/components/sections/signaturePrograms/SignaturePrograms";
@@ -12,6 +13,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <Stats />
       <Introduction />
       <FeaturedExperience />
       <SignaturePrograms />

@@ -118,9 +118,34 @@ Fayalwan-Gym/
 - **Files**: `src/components/layout/Navbar/Navbar.css`
 - **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), glass pill CTA button, and removed `border-bottom` (`border-bottom: none`).
 
-### E. GymFamily Editorial Gallery Section
+### E. GymFamily — rebuilt as "One Room, All Day"
 - **Files**: `src/components/sections/gymFamily/GymFamily.tsx` & `GymFamily.css`
-- **Changes**: Founders & Coaches gallery with asymmetric aspect ratios (`3:4`, `4:5`, `1:1`, `16:8`), category tabs, and GSAP ScrollTrigger entrance animations.
+- **Why**: The previous versions (asymmetric gallery, then a kinetic-typography pin at `19rem`
+  image-filled text) broke the site's design system. Nothing else on the page goes above ~5.5rem,
+  and no other section invents its own palette or ignores `--editorial-rail`.
+- **Concept**: One fixed window onto the training floor, observed at five hours of a single day
+  (`05:12 → 21:48`). The frame never moves; only the hour, the person, the light and the picture
+  inside it change. The final beat is the empty room.
+- **System compliance**: `#050505` canvas, `--page-gutter` / `--editorial-rail` grid (same as
+  `FeaturedExperience` / `SignaturePrograms`), Outfit only, `monospace .7rem/700/.12em` micro-labels,
+  `#e85d04` accent restricted to the kicker number and the day hairline, images desaturated
+  (`saturate(.68) contrast(1.06)`) and contained rather than full-bleed.
+- **Motion**: single pinned `ScrollTrigger` (`+=440%`, `scrub: 0.9`) built inside `gsap.matchMedia`
+  under `(prefers-reduced-motion: no-preference)`. Only `opacity` / `transform` animate — masked
+  slide on the time and name, crossfade on the frame, 1.06 → 1 Ken Burns on the plate, and a
+  `scaleX` hairline that reads as a clock from 05:00 to 22:00.
+- **Layout invariant**: all five hours are stacked in one grid cell (`grid-area: 1 / 1`), so the
+  frame, time, name and line must resolve to identical coordinates for every hour. This required
+  `min-height: 2.8em` on `.room__line` (bottom-aligned column — a one-line hour otherwise dragged
+  the numeral 25–114px off baseline) and `justify-content: flex-start` in the stacked ≤820px
+  layout (bottom-alignment there shifted the frame 22px). **Verify both if the copy changes.**
+- **Mask invariant**: spacing between the time and the name lives on `.room__mask + .room__mask`,
+  never on `.room__time` / `.room__name`. A mask box taller than its content means `yPercent: ±100`
+  shifts the element by its own height only and leaves it visible in the leftover margin — which
+  rendered all five names stacked on top of each other. Assert `maskHeight === contentHeight`.
+- **Reduced motion**: no pin, no timeline; the chapter unrolls as five static editorial spreads.
+- **Photography**: Unsplash placeholders in the `HOURS` array — swap `image` for the real shoot,
+  keep the order and the `light` colour-temperature values.
 
 ### F. 100vh GymGallery Pill Tag Removal & Bottom Heading + <p> Quote Paragraph
 - **Files**: `src/components/sections/gymGallery/GymGallery.tsx` & `GymGallery.css`
