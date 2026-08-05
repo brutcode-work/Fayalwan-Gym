@@ -37,7 +37,7 @@ Fayalwan-Gym/
 │   │   └── page.tsx           # Main homepage composition
 │   ├── components/
 │   │   ├── layout/            # Application structural components
-│   │   │   ├── Navbar/        # Navigation header & mobile overlay
+│   │   │   ├── Navbar/        # Navigation header & mobile overlay (Border-bottom removed)
 │   │   │   └── Footer/        # Footer section
 │   │   ├── providers/         # Global React context providers
 │   │   │   └── SmoothScrollProvider.tsx # Lenis + GSAP ScrollTrigger sync
@@ -47,7 +47,7 @@ Fayalwan-Gym/
 │   │   │   ├── featuredExperience/    # Interactive features & GSAP animations
 │   │   │   ├── signaturePrograms/     # Program showcases with Swiper & custom cursor
 │   │   │   ├── gymFamily/             # Founders & Coaches asymmetric editorial gallery
-│   │   │   ├── gymGallery/            # 100vh Cinema Stage with Bottom Headline & <p> Quote Paragraph
+│   │   │   ├── gymGallery/            # 100vh Cinema Theater with Bottom Headline & <p> Quote Paragraph
 │   │   │   ├── menifesto/             # Gym manifesto & core values
 │   │   │   ├── story/                 # Brand origin story
 │   │   │   ├── transformationStories/ # Client transformation showcases
@@ -114,9 +114,9 @@ Fayalwan-Gym/
 - **Files**: `src/components/sections/hero/Hero.tsx` & `Hero.css`
 - **Changes**: Cinematic GSAP preloader (scatter -> bottom align -> slide top), Awwwards `.hero-text-mask` reveals, strict `.is-loaded` cursor gating, and Pinterest video/image Swiper loop.
 
-### D. Navbar Glassmorphism & Minimal Typography
+### D. Navbar Glassmorphism & Border Removal
 - **Files**: `src/components/layout/Navbar/Navbar.css`
-- **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), and glass pill CTA button.
+- **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), glass pill CTA button, and removed `border-bottom` (`border-bottom: none`).
 
 ### E. GymFamily Editorial Gallery Section
 - **Files**: `src/components/sections/gymFamily/GymFamily.tsx` & `GymFamily.css`
