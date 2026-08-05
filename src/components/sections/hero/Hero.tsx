@@ -35,7 +35,11 @@ export default function Hero() {
       gsap.set(".hero-banner-full", { opacity: 0 });
       gsap.set(".hero-text-mask > *", { yPercent: 115, opacity: 0 });
       gsap.set(".hero-bottom-bar", { opacity: 0, y: 15 });
-      gsap.set(".navbar-container", { y: -80, opacity: 0 });
+      
+      const navEl = document.querySelector(".navbar-container");
+      if (navEl) {
+        gsap.set(navEl, { y: -80, opacity: 0 });
+      }
 
       gsap.set(".loader-card", {
         x: () => (Math.random() - 0.5) * window.innerWidth * 0.75,
@@ -165,19 +169,22 @@ export default function Hero() {
             ease: "power4.out"
           },
           "-=0.55"
-        )
+        );
 
-        // 9. Slide down navbar & fade in scroll indicator
-        .to(
-          ".navbar-container",
+      // 9. Slide down navbar & fade in scroll indicator
+      if (navEl) {
+        tl.to(
+          navEl,
           { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
           "-=0.85"
-        )
-        .to(
-          ".hero-bottom-bar",
-          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-          "-=0.6"
         );
+      }
+
+      tl.to(
+        ".hero-bottom-bar",
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+        "-=0.6"
+      );
     },
     { scope: sectionRef }
   );
