@@ -25,45 +25,156 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  // GSAP animations for hero elements and squares
+  // Cinematic GSAP loading timeline
   useGSAP(
     () => {
+      // 1. Set initial states
+      gsap.set(".hero-left-col, .hero-right-col, .hero-bottom-bar, .navbar-container", {
+        opacity: 0
+      });
+      gsap.set(".hero-banner-full", {
+        opacity: 0
+      });
+      gsap.set(".loader-card", {
+        x: () => (Math.random() - 0.5) * window.innerWidth * 0.75,
+        y: () => (Math.random() - 0.5) * window.innerHeight * 0.75,
+        scale: () => Math.random() * 0.4 + 0.25, // random scale between 0.25 and 0.65
+        rotation: () => (Math.random() - 0.5) * 45, // random rotation
+        opacity: 0,
+      });
+
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      tl.fromTo(
-        ".hero-banner-full",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, delay: 0.1 }
-      )
+      // 2. Fade in scattered cards
+      tl.to(".loader-card", {
+        opacity: 0.65,
+        duration: 0.8,
+        stagger: 0.06,
+        ease: "power2.out"
+      });
+
+      // 3. Counter Animation (0% to 90%)
+      const progress = { val: 0 };
+      const labels = [
+        "MOBILIZING ACTIVE SPACE...",
+        "ALIGNING RESILIENT ENERGY...",
+        "CURATING ELITE STRENGTH...",
+        "SHAPING YOUR FUTURE..."
+      ];
+
+      tl.to(progress, {
+        val: 90,
+        duration: 2.5,
+        ease: "power1.inOut",
+        onUpdate: () => {
+          const numEl = document.querySelector(".loader-number");
+          if (numEl) numEl.textContent = `${Math.floor(progress.val)}%`;
+
+          const labelEl = document.querySelector(".loader-label");
+          if (labelEl) {
+            const labelIndex = Math.min(
+              Math.floor((progress.val / 90) * labels.length),
+              labels.length - 1
+            );
+            labelEl.textContent = labels[labelIndex];
+          }
+        }
+      }, "-=0.4");
+
+      // 4. Kinetic alignment to the bottom of the viewport at 90% progress
+      tl.to(".loader-card", {
+        x: (index) => {
+          const cardWidth = window.innerWidth <= 820 ? 170 : 240;
+          return (index - 4) * cardWidth; // Centered alignment for 9 items
+        },
+        y: () => {
+          const cardHeight = window.innerWidth <= 820 ? 170 : 240;
+          // Align near the bottom of the screen (Local Y relative to viewport center)
+          return window.innerHeight / 2 - cardHeight / 2 - 40;
+        },
+        scale: 1,
+        rotation: 0,
+        opacity: 1,
+        duration: 1.3,
+        stagger: 0.08,
+        ease: "power4.inOut"
+      }, "-=0.2");
+
+      // 5. Final load push (90% to 100%)
+      tl.to(progress, {
+        val: 100,
+        duration: 0.6,
+        ease: "power2.out",
+        onUpdate: () => {
+          const numEl = document.querySelector(".loader-number");
+          if (numEl) numEl.textContent = `${Math.floor(progress.val)}%`;
+          const labelEl = document.querySelector(".loader-label");
+          if (labelEl) labelEl.textContent = "READY TO START";
+        }
+      }, "-=0.2");
+
+      // 6. Slide row from bottom of screen to top banner location
+      tl.to(".loader-card", {
+        y: () => {
+          const targetEl = document.querySelector(".hero-swiper-wrapper");
+          if (targetEl) {
+            const rect = targetEl.getBoundingClientRect();
+            const targetCenterY = rect.top + rect.height / 2;
+            const viewportCenterY = window.innerHeight / 2;
+            return targetCenterY - viewportCenterY;
+          }
+          return -150; // Fallback
+        },
+        duration: 1.1,
+        ease: "power4.inOut"
+      });
+
+      // 7. Crossfade: Fade out loader cards and overlay, fade in actual Swiper
+      tl.to(".loader-text-container", {
+        opacity: 0,
+        y: -30,
+        duration: 0.4,
+        ease: "power2.in"
+      }, "-=0.9")
+        .to(".hero-banner-full", {
+          opacity: 1,
+          duration: 0.4
+        }, "-=0.4")
+        .to(".loader-card", {
+          opacity: 0,
+          duration: 0.3,
+          onComplete: () => {
+            const preloader = document.querySelector(".hero-preloader");
+            if (preloader) (preloader as HTMLElement).style.display = "none";
+          }
+        }, "-=0.3")
+
+        // 8. Stagger reveal hero content text
         .fromTo(
-          ".hero-square-media",
-          { opacity: 0, scale: 0.94, y: 15 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.8, stagger: 0.05, ease: "power3.out" },
+          ".hero-left-col, .hero-right-col",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" },
           "-=0.2"
         )
+
+        // 9. Slide down navbar and show scroll indicator
         .fromTo(
-          ".hero-left-col",
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          "-=0.5"
-        )
-        .fromTo(
-          ".hero-title-main",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.9 },
+          ".navbar-container",
+          { y: -80, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
           "-=0.6"
         )
         .fromTo(
           ".hero-bottom-bar",
           { opacity: 0 },
           { opacity: 1, duration: 0.6 },
-          "-=0.3"
+          "-=0.4"
         );
     },
     { scope: sectionRef }
   );
 
-  // Bind custom cursor tracking
+  // Bind custom cursor coordinate tracking
   useGSAP(
     () => {
       const cursor = cursorRef.current;
@@ -88,6 +199,35 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className="hero-section" id="home">
+      {/* Cinematic Preloader Screen */}
+      <div className="hero-preloader">
+        <div className="loader-text-container">
+          <span className="loader-number">0%</span>
+          <span className="loader-label">DISCIPLINE ENGINE</span>
+        </div>
+        <div className="loader-cards-container">
+          {MEDIA_URLS.map((url, index) => {
+            const isVideo = url.endsWith(".mp4") || url.includes(".mp4");
+            return (
+              <div key={`loader-card-${index}`} className="loader-card">
+                {isVideo ? (
+                  <video
+                    src={url}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                  />
+                ) : (
+                  <img src={url} alt="" />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* 1. Full-Width Horizontal Visual Strip (Edge to Edge) with Swiper */}
       <div className="hero-banner-full">
         <div className="hero-swiper-wrapper">
