@@ -23,7 +23,7 @@ export default function Menifesto() {
         target.tagName === "path" ? target : target.querySelector("path");
       if (!path) return;
 
-      const pathLength = path.getTotalLength();
+      const pathLength = path.getTotalLength() || 6000;
 
       gsap.set(path, {
         strokeDasharray: pathLength,
@@ -35,9 +35,9 @@ export default function Menifesto() {
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
-          end: "bottom 90%",
-          scrub: 1,
+          start: "top 70%",
+          end: "bottom 95%",
+          scrub: 1.2,
           invalidateOnRefresh: true,
         },
       });

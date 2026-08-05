@@ -5,7 +5,8 @@
 .overlap-container {
   width: 100%;
   height: 100vh;
-  background-color: var(--accent-color);
+  background-color: #E85D04 !important;
+  background: #E85D04 !important;
   position: absolute;
   top: 0;
   left: 0;
