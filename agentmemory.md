@@ -6,6 +6,7 @@
 - **Core Value Proposition**: Elite strength training, athletic conditioning, and personalized coaching accessible at ₹120/day.
 - **Repository Location**: `c:\Users\sathl\OneDrive\Desktop\CLIENT-WORK\Fayalwan-Gym`
 - **Active Git Branch**: `viv`
+- **Memory Protocol**: **MUST update this `agentmemory.md` file after each set of architectural, component, or design changes.**
 
 ---
 
@@ -36,15 +37,15 @@ Fayalwan-Gym/
 │   │   └── page.tsx           # Main homepage composition
 │   ├── components/
 │   │   ├── layout/            # Application structural components
-│   │   │   ├── Navbar/        # Navigation header
+│   │   │   ├── Navbar/        # Navigation header & mobile overlay
 │   │   │   └── Footer/        # Footer section
 │   │   ├── providers/         # Global React context providers
 │   │   │   └── SmoothScrollProvider.tsx # Lenis + GSAP ScrollTrigger sync
 │   │   ├── sections/          # Homepage landing sections
-│   │   │   ├── hero/                  # Full-bleed hero banner & headliners
-│   │   │   ├── introduction/          # Brand intro & core philosophy
+│   │   │   ├── hero/                  # Full-bleed hero banner, preloader & gallery
+│   │   │   ├── introduction/          # Bento Grid section & core philosophy
 │   │   │   ├── featuredExperience/    # Interactive features & GSAP animations
-│   │   │   ├── signaturePrograms/     # Program showcases with Swiper
+│   │   │   ├── signaturePrograms/     # Program showcases with Swiper & custom cursor
 │   │   │   ├── menifesto/             # Gym manifesto & core values
 │   │   │   ├── story/                 # Brand origin story
 │   │   │   ├── transformationStories/ # Client transformation showcases
@@ -53,7 +54,8 @@ Fayalwan-Gym/
 │   │   │   ├── faq/                   # FAQ accordion
 │   │   │   ├── contact/               # Contact & location details
 │   │   │   └── about/                 # About section
-│   │   └── ui/                # Reusable micro UI components (buttons, badges)
+│   │   └── ui/                # Reusable micro UI components
+├── agentmemory.md             # Persistent agent memory & change log
 ├── package.json               # Node dependencies & npm scripts
 ├── next.config.ts             # Next.js framework configuration
 └── tsconfig.json              # TypeScript configuration
@@ -87,7 +89,7 @@ Fayalwan-Gym/
 ### C. Styling Rules & Aesthetics
 - **Theme**: Dark mode, sleek editorial high-contrast aesthetic.
 - **Spacing**: Standardized container padding (e.g. `5rem` horizontal padding).
-- **Typography**: Monospace taglines paired with high-impact serif/sans headers.
+- **Typography**: Minimal, neutral weights (`font-weight: 400`/`500`), monospace taglines paired with high-impact editorial headers.
 - **Styling file pattern**: Each section folder contains its own TSX component and co-located CSS file (e.g., `Hero.tsx` + `Hero.css`).
 
 ---
@@ -101,12 +103,40 @@ Fayalwan-Gym/
 
 ---
 
-## 6. Recent Work & Commit Milestones (Branch `viv`)
+## 6. Recent Session Changelog & Component Updates
 
-1. **`9994701`**: Global styles & layout components for Introduction, FeaturedExperience, and SignaturePrograms.
-2. **`963a790`**: SignaturePrograms implementation with Swiper integration.
-3. **`61600ef`**: FeaturedExperience section with GSAP-powered scroll animations.
-4. **`c759f58`**: Introduction section responsive layout with GSAP scroll animations.
+### A. Introduction Section (Bento Grid V2)
+- **Files**: `src/components/sections/introduction/Introduction.tsx` & `Introduction.css`
+- **Changes**:
+  - Rebuilt section as a 12-column responsive Bento Grid layout.
+  - Custom scoped design tokens (`--ink`, `--paper`, `--ember`, `Bricolage Grotesque`, `JetBrains Mono`).
+  - Integrated GSAP ScrollTrigger `.in-view` reveals for cards (`b-photo`, `b-people`, `b-quote`, `b-price`, `b-note`).
+  - Styled Card 5 heading ("The TechnoPark *routine*") with off-white text and brand orange `em` accent.
+  - Linked CTA buttons to smooth scroll targets (`#contact`).
+
+### B. Signature Programs Custom Swipe Cursor
+- **Files**: `src/components/sections/signaturePrograms/SignaturePrograms.tsx` & `SignaturePrograms.css`
+- **Changes**:
+  - Added a custom floating "SWIPE" cursor powered by `gsap.quickTo` tracking coordinates.
+  - Used native CSS `:hover` and `:active` selectors on `.swiper-wrapper-container` to show/hide/scale the cursor (zero React render overhead during drag).
+  - Added `draggable="false"` and `user-select: none` to prevent native browser image drag artifacts.
+
+### C. Hero Section Preloader & Infinite Swiper Gallery
+- **Files**: `src/components/sections/hero/Hero.tsx` & `Hero.css`
+- **Changes**:
+  - **Cinematic Preloader Timeline**: 9 media cards scatter randomly across the screen on load with random scale/rotation while a progress counter increments `0%` -> `90%`.
+  - **Kinetic Alignment**: At `90%`, cards align horizontally at the bottom of the screen. At `100%`, they slide up to the target hero banner position.
+  - **Awwwards Masked Reveals**: Text lines use `.hero-text-mask` (`overflow: hidden`) for smooth line slide-ups (`yPercent: 115` to `0`), and navbar slides down from top.
+  - **Strict Cursor Lifecycle Gating**: Custom cursor is gated via `.hero-section.is-loaded` added inside GSAP's `onComplete` callback.
+  - **Swiper Gallery**: Renders 9 mixed image/video Pinterest assets (`.mp4` auto-playing muted videos) in a 1:1 aspect ratio edge-to-edge Swiper (`loop={true}`, `slidesPerView="auto"`).
+  - **Height Locking**: Preserved exact desktop container height (`240px`) and mobile height (`170px`).
+
+### D. Navbar Glassmorphism & Minimal Typography
+- **Files**: `src/components/layout/Navbar/Navbar.css`
+- **Changes**:
+  - Converted navbar to a dark black glass design (`background: rgba(5, 5, 5, 0.75)`, `backdrop-filter: blur(16px) saturate(180%)`, translucent bottom border `rgba(255, 255, 255, 0.08)`).
+  - Refined typography from bold (`700`/`600`) to clean, minimal neutral weights (`font-weight: 400`/`500`) and muted off-white link tones (`rgba(255, 255, 255, 0.65)`).
+  - Contact Us button updated to a minimal glass pill button (`border-radius: 999px`).
 
 ---
 
@@ -116,3 +146,4 @@ Fayalwan-Gym/
 2. **No Ad-Hoc Utilities**: Prefer global CSS variables and co-located CSS files over inline style objects.
 3. **TypeScript Strictness**: Keep interfaces clean; avoid `any` types wherever possible.
 4. **GSAP Scope**: Always use `scope: sectionRef` in `useGSAP()` to avoid target selector leaks across components.
+5. **Memory Updating**: **ALWAYS update this `agentmemory.md` file after making architectural or design changes.**
