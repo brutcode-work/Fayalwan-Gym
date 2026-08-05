@@ -129,25 +129,16 @@ export default function Hero() {
         ease: "power4.inOut"
       });
 
-      // 7. Crossfade: Fade out loader cards and overlay, fade in actual Swiper
+      // 7. Instant Swap: Hide loader overlay/cards and show actual Swiper immediately
       tl.to(".loader-text-container", {
         opacity: 0,
         y: -30,
         duration: 0.4,
         ease: "power2.in"
       }, "-=0.9")
-        .to(".hero-banner-full", {
-          opacity: 1,
-          duration: 0.4
-        }, "-=0.4")
-        .to(".loader-card", {
-          opacity: 0,
-          duration: 0.3,
-          onComplete: () => {
-            const preloader = document.querySelector(".hero-preloader");
-            if (preloader) (preloader as HTMLElement).style.display = "none";
-          }
-        }, "-=0.3")
+        .set(".hero-banner-full", { opacity: 1 })
+        .set(".loader-card", { opacity: 0 })
+        .set(".hero-preloader", { display: "none" })
 
         // 8. Stagger reveal hero content text
         .fromTo(
