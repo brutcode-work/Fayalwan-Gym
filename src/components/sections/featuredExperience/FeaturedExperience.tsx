@@ -59,7 +59,7 @@ const EXPERIENCES = [
       </>
     ),
     image:
-      "https://i.pinimg.com/1200x/45/46/fc/4546fc5ffd64de80d59c84ab3632ecb4.jpg",
+      "https://i.pinimg.com/1200x/2a/66/48/2a664810e4ceb127f6c05012c4373d1f.jpg",
     caption: "TAILORED STRATEGY. ZERO GUESSWORK.",
   },
   {
@@ -75,7 +75,7 @@ const EXPERIENCES = [
       </>
     ),
     image:
-      "https://i.pinimg.com/1200x/38/48/e8/3848e895c7cf23b599c2d3976c46324f.jpg",
+      "https://i.pinimg.com/1200x/ca/23/f3/ca23f37dc7423d83d0f275cc31340492.jpg",
     caption: "COMPLETE HEALTH & RECOVERY.",
   },
   {
@@ -90,7 +90,7 @@ const EXPERIENCES = [
       </>
     ),
     image:
-      "https://i.pinimg.com/736x/67/e2/5c/67e25c07a15665d0f9b4540282d1b21f.jpg",
+      "https://i.pinimg.com/1200x/40/00/cf/4000cff6fe2255dd0da061d7afcb2857.jpg",
     caption: "TRAIN ON YOUR SCHEDULE.",
   },
 ];
