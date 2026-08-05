@@ -9,21 +9,19 @@ import "./Stats.css";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Stat {
-  value: string;
-  /** Rendered in the accent. A single glyph — a word here unbalances the row. */
+  target: number;
+  prefix?: string;
   suffix?: string;
   label: string;
 }
 
-/* Both value and label are `white-space: nowrap` inside an overflow-hidden mask,
-   so anything too wide for its column is silently sheared. Keep values short. */
 const STATS: Stat[] = [
-  { value: "10K", suffix: "+", label: "MEMBERS TRAINED" },
-  { value: "500", suffix: "+", label: "TRANSFORMATIONS" },
-  { value: "15", suffix: "+", label: "EXPERT TRAINERS" },
-  { value: "24/7", label: "GYM ACCESS" },
-  { value: "₹120", label: "DAY PASS RATE" },
-  { value: "5", suffix: "★", label: "CLIENT RATING" },
+  { target: 10, suffix: "K+", label: "MEMBERS TRAINED" },
+  { target: 500, suffix: "+", label: "TRANSFORMATIONS" },
+  { target: 15, suffix: "+", label: "EXPERT TRAINERS" },
+  { target: 24, suffix: "/7", label: "GYM ACCESS" },
+  { target: 120, prefix: "₹", label: "DAY PASS RATE" },
+  { target: 5, suffix: "★", label: "CLIENT RATING" },
 ];
 
 export default function Stats() {
@@ -34,63 +32,96 @@ export default function Stats() {
       const section = sectionRef.current;
       if (!section) return;
 
+      const statElements = section.querySelectorAll<HTMLElement>(".ledger__stat");
+      const counterObjects = STATS.map(() => ({ val: 0 }));
+
+      const updateCounterDisplay = (index: number, value: number) => {
+        const el = statElements[index]?.querySelector(".ledger__number");
+        if (el) {
+          el.textContent = Math.floor(value).toString();
+        }
+      };
+
+      const resetCounters = () => {
+        counterObjects.forEach((obj, idx) => {
+          obj.val = 0;
+          updateCounterDisplay(idx, 0);
+        });
+      };
+
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const q = gsap.utils.selector(section);
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 88%",
-            once: true,
-          },
-          defaults: { ease: "power4.out" },
-        });
-
-        tl.fromTo(
-          q(".ledger__rule"),
-          { scaleY: 0 },
-          { scaleY: 1, duration: 0.7, stagger: 0.06, ease: "power2.out" },
-          0,
-        )
-          .fromTo(
-            q(".ledger__value"),
-            { yPercent: 110 },
-            { yPercent: 0, duration: 1, stagger: 0.06 },
-            0.05,
-          )
-          .fromTo(
-            q(".ledger__label"),
-            { yPercent: 110 },
-            { yPercent: 0, duration: 0.9, stagger: 0.06 },
-            0.14,
+        function animateCounters() {
+          gsap.fromTo(
+            q(".ledger__stat"),
+            { opacity: 0, y: 25, scale: 0.96 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              stagger: 0.07,
+              ease: "power3.out",
+              overwrite: "auto",
+            }
           );
+
+          STATS.forEach((stat, idx) => {
+            counterObjects[idx].val = 0;
+            updateCounterDisplay(idx, 0);
+
+            gsap.to(counterObjects[idx], {
+              val: stat.target,
+              duration: 1.8,
+              ease: "power2.out",
+              delay: idx * 0.06,
+              overwrite: "auto",
+              onUpdate: () => {
+                updateCounterDisplay(idx, counterObjects[idx].val);
+              },
+            });
+          });
+        }
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 85%",
+          onEnter: () => animateCounters(),
+          onEnterBack: () => animateCounters(),
+          onLeaveBack: () => resetCounters(),
+        });
       });
 
       return () => mm.revert();
     },
-    { scope: sectionRef },
+    { scope: sectionRef }
   );
 
   return (
     <section className="ledger" ref={sectionRef} aria-label="Fayalwan Gym in numbers">
-      <dl className="ledger__row">
-        {STATS.map((stat) => (
-          <div className="ledger__stat" key={stat.label}>
-            <span className="ledger__rule" aria-hidden="true" />
-            <dt className="ledger__mask">
-              <span className="ledger__value">
-                {stat.value}
-                {stat.suffix ? <em>{stat.suffix}</em> : null}
-              </span>
-            </dt>
-            <dd className="ledger__mask">
-              <span className="ledger__label">{stat.label}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <div className="ledger__container">
+        <dl className="ledger__row">
+          {STATS.map((stat, idx) => (
+            <div className="ledger__stat" key={stat.label}>
+              {idx > 0 && <span className="ledger__rule" aria-hidden="true" />}
+              <dt className="ledger__mask">
+                <span className="ledger__value">
+                  {stat.prefix ? <span className="ledger__prefix">{stat.prefix}</span> : null}
+                  <span className="ledger__number">0</span>
+                  {stat.suffix ? <em className="ledger__suffix">{stat.suffix}</em> : null}
+                </span>
+              </dt>
+              <dd className="ledger__mask">
+                <span className="ledger__label">{stat.label}</span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   );
 }
+

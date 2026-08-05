@@ -118,6 +118,24 @@ Fayalwan-Gym/
 - **Files**: `src/components/layout/Navbar/Navbar.css`
 - **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), glass pill CTA button, and removed `border-bottom` (`border-bottom: none`).
 
+### G. Stats — thin ledger band between Hero and Introduction
+- **Files**: `src/components/sections/stats/Stats.tsx` & `Stats.css` (mounted in `page.tsx`
+  between `<Hero />` and `<Introduction />`).
+- **Design**: a small factual band (~246px tall at 1440), six entries on the page gutter, numbers
+  in Outfit 300 with `tabular-nums` and `-0.045em`, labels in the system's `monospace .68rem/700/.12em`,
+  1px vertical hairlines between entries. Accent `#e85d04` is restricted to the suffix glyph
+  (`+`, `★`). Deliberately **no top rule** — the hero's bottom bar already carries one ~40px above
+  and doubling them reads as an accident.
+- **Motion**: one `ScrollTrigger` (`start: "top 88%"`, `once: true`) inside `gsap.matchMedia`.
+  Hairlines draw down (`scaleY`), then values and labels rise out of masks with a 0.06 stagger —
+  the same masked-reveal vocabulary as `.hero-text-mask`, not a count-up ticker.
+- **Constraint**: values and labels are `white-space: nowrap` inside overflow-hidden masks, so any
+  entry too wide for its column is **silently sheared** (a `₹120/DAY` value cost 5px this way).
+  Keep values short and suffixes to a single glyph. Same mask rule as GymFamily: spacing lives on
+  `.ledger__mask + .ledger__mask`, never on the value or label.
+- **Grid**: 6 columns → 3 at ≤1080 → 2 at ≤620, with the leading hairline of each row hidden via
+  `nth-child` overrides. Re-check those overrides if the number of stats changes from six.
+
 ### E. GymFamily — rebuilt as "One Room, All Day"
 - **Files**: `src/components/sections/gymFamily/GymFamily.tsx` & `GymFamily.css`
 - **Why**: The previous versions (asymmetric gallery, then a kinetic-typography pin at `19rem`
