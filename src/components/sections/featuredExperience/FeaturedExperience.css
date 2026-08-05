@@ -1,5 +1,5 @@
 .featured-experience {
-  background: #050505;
+  background: black;
   color: #f5f5f5;
   padding: 6rem var(--page-gutter);
 }
@@ -15,9 +15,8 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 3rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 2rem;
   margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .services-header-title-wrap {
@@ -31,13 +30,13 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--small-labels, #FF8C42);
+  color: var(--small-labels, #ff8c42);
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
 
 .services-main-title {
-  font-family: var(--font-heading, 'Bricolage Grotesque', sans-serif);
+  font-family: var(--font-heading, "Bricolage Grotesque", sans-serif);
   font-size: clamp(2.8rem, 5vw, 4.2rem);
   line-height: 1;
   letter-spacing: -0.02em;
@@ -65,11 +64,6 @@
 .feature-chapter {
   position: relative;
   padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.feature-chapter:last-child {
-  border-bottom: none;
 }
 
 .feature-chapter__grid {
@@ -78,6 +72,17 @@
   gap: 4rem;
   align-items: center;
   width: 100%;
+}
+
+/* Alternating layout for desktop: even items have image on left, text on right */
+@media (min-width: 901px) {
+  .feature-chapter:nth-child(even) .feature-left {
+    order: 2;
+  }
+
+  .feature-chapter:nth-child(even) .feature-image-wrap {
+    order: 1;
+  }
 }
 
 /* Left Column: Tag/Label + Description aligned vertically */
@@ -102,7 +107,7 @@
   font-family: monospace;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--small-labels, #FF8C42);
+  color: var(--small-labels, #ff8c42);
 }
 
 .service-tag__label {
@@ -168,7 +173,7 @@
     align-items: flex-start;
     gap: 1.5rem;
   }
-  
+
   .services-main-desc {
     max-width: 100%;
   }
@@ -202,4 +207,3 @@
     transition: none;
   }
 }
-

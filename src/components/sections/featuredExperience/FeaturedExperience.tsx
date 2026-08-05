@@ -11,35 +11,35 @@ gsap.registerPlugin(ScrollTrigger);
 const EXPERIENCES = [
   {
     number: "01",
-    label: "THE TRAINING FLOOR",
-    copy: "Good training starts with room to focus. The floor is built for the work: clean equipment, smart flow, no distractions.",
+    label: "CERTIFIED TRAINERS",
+    copy: "Train under seasoned fitness professionals certified in biomechanics, strength conditioning, and injury prevention to maximize your results safely.",
     image:
-      "https://i.pinimg.com/1200x/45/46/fc/4546fc5ffd64de80d59c84ab3632ecb4.jpg",
-    caption: "EQUIPMENT THAT KEEPS UP.",
+      "https://i.pinimg.com/1200x/29/92/b9/2992b9241d3cb85047584a4072a0fad9.jpg",
+    caption: "EXPERT KNOWLEDGE. REAL RESULTS.",
   },
   {
     number: "02",
-    label: "COACHES WHO NOTICE",
-    copy: "You do not need a crowd shouting at you. You need someone who sees your form, knows your goal, and helps you progress.",
+    label: "PERSONALIZED COACHING",
+    copy: "Custom workout routines tailored to your body type, fitness level, and personal goals—ensuring direct progress every single week.",
     image:
-      "https://i.pinimg.com/1200x/29/92/b9/2992b9241d3cb85047584a4072a0fad9.jpg",
-    caption: "REAL GUIDANCE. EVERY SESSION.",
+      "https://i.pinimg.com/1200x/45/46/fc/4546fc5ffd64de80d59c84ab3632ecb4.jpg",
+    caption: "TAILORED STRATEGY. ZERO GUESSWORK.",
   },
   {
     number: "03",
-    label: "CONSISTENCY, NOT PRESSURE",
-    copy: "No extreme promises. Just a place that makes it easier to return tomorrow, then again the day after that.",
+    label: "NUTRITIONIST & GENERAL PHYSICIAN",
+    copy: "Holistic wellness support featuring expert nutritional meal planning and medical health checks to optimize your body from the inside out.",
     image:
       "https://i.pinimg.com/1200x/38/48/e8/3848e895c7cf23b599c2d3976c46324f.jpg",
-    caption: "THE HABIT IS THE WIN.",
+    caption: "COMPLETE HEALTH & RECOVERY.",
   },
   {
     number: "04",
-    label: "BUILT FOR EVERYDAY LIFE",
-    copy: "Train for more energy at work, better sleep at night, and the confidence to feel capable in your own body.",
+    label: "FLEXIBLE TIMINGS",
+    copy: "Open early morning to late night, fit your workouts seamlessly around your busy lifestyle with zero scheduling friction.",
     image:
       "https://i.pinimg.com/736x/67/e2/5c/67e25c07a15665d0f9b4540282d1b21f.jpg",
-    caption: "STRONGER OUTSIDE THE GYM, TOO.",
+    caption: "TRAIN ON YOUR SCHEDULE.",
   },
 ];
 
