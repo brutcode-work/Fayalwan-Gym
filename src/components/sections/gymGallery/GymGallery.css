@@ -1,0 +1,331 @@
+/* ---------- GymGallery 100vh WES Awwwards Gallery ---------- */
+.gym-gallery-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  background: #000000;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* 100vh Background Stage Media */
+.bg-stage-media-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.bg-stage-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bg-stage-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.3) 35%,
+    rgba(0, 0, 0, 0.45) 65%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Top Floating Media Controls (Positioned safely under fixed Navbar) */
+.gallery-top-controls {
+  position: absolute;
+  top: 5.5rem;
+  right: 3rem;
+  z-index: 10;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.ctrl-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(5, 5, 5, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ctrl-btn:hover {
+  background: #ff6a3d;
+  color: #000000;
+  border-color: #ff6a3d;
+}
+
+/* Bottom Gallery Navigation Block */
+.gallery-bottom-navigation {
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+  right: 3rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Active Slide Text Block (Headline + <p> quote paragraph right above thumbnails) */
+.active-slide-text-block {
+  width: 100%;
+  max-width: 1350px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+.active-slide-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #ff6a3d;
+  text-transform: uppercase;
+}
+
+.slide-num {
+  color: #ff6a3d;
+  font-weight: 700;
+}
+
+.slide-title-txt {
+  color: #ffffff;
+}
+
+.active-slide-quote {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 820px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.85);
+  animation: fadeInQuote 0.5s ease-out forwards;
+}
+
+@keyframes fadeInQuote {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Thumbnail Filmstrip Cards Row */
+.filmstrip-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 1350px;
+}
+
+.filmstrip-card {
+  position: relative;
+  height: 140px;
+  border-radius: 0px !important;
+  border: none !important;
+  background: #000000;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* 1. Original Base Media Layer (Always remains fully visible) */
+.original-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.08) saturate(1.05);
+  transition: transform 0.4s ease;
+}
+
+/* 2. Blur Reveal Layer (Overflow hidden container clipped via clip-path) */
+.blur-reveal-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
+  will-change: clip-path;
+}
+
+/* Blurred Copy (Full size image/video - does NOT resize!) */
+.blurred-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: blur(18px) brightness(1.05);
+  transform: scale(1.12);
+  will-change: filter, transform;
+}
+
+/* 3. Glass Tint Layer (Separate from blur, clipped via exact same clip-path) */
+.glass-tint-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: brightness(1.05);
+  -webkit-backdrop-filter: brightness(1.05);
+  will-change: clip-path;
+}
+
+/* 4. Divider Line (Moves smoothly with the reveal edge) */
+.divider-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ffffff;
+  transform: translateX(-1px);
+  z-index: 15;
+  pointer-events: none;
+  will-change: left;
+}
+
+/* 5 & 6. Camera Viewfinder Boundary Corner Brackets & Crosshair */
+.corner-bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: #ffffff;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+
+.corner-tl {
+  top: -6px;
+  left: -6px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+
+.corner-tr {
+  top: -6px;
+  right: -6px;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+}
+
+.corner-bl {
+  bottom: -6px;
+  left: -6px;
+  border-bottom: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+
+.corner-br {
+  bottom: -6px;
+  right: -6px;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+}
+
+.crosshair-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0;
+  z-index: 20;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+/* Hover & Active State: Reveal Viewfinder Corner Brackets and Crosshair */
+.filmstrip-card:hover .corner-bracket,
+.filmstrip-card.active .corner-bracket {
+  opacity: 1;
+}
+
+.filmstrip-card:hover .crosshair-icon,
+.filmstrip-card.active .crosshair-icon {
+  opacity: 1;
+}
+
+.filmstrip-card:hover .original-media {
+  transform: scale(1.04);
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .gallery-top-controls {
+    top: 4.8rem;
+    right: 1.5rem;
+  }
+
+  .gallery-bottom-navigation {
+    left: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .filmstrip-card {
+    height: 110px;
+  }
+
+  .active-slide-quote {
+    font-size: 1.35rem;
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filmstrip-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .filmstrip-card {
+    height: 90px;
+  }
+
+  .active-slide-title {
+    font-size: 0.75rem;
+  }
+
+  .active-slide-quote {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    max-width: 100%;
+  }
+}

@@ -1,16 +1,11 @@
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Hero from "@/components/sections/hero/Hero";
-import Menifesto from "@/components/sections/menifesto/Menifesto";
-import Story from "@/components/sections/story/Story";
-import TransformationStories from "@/components/sections/transformationStories/TransformationStories";
-import StoriesThatInspires from "@/components/sections/storiesThatInspires/StoriesThatInspires";
-import CustomerReview from "@/components/sections/customerReview/CustomerReview";
-import Faq from "@/components/sections/faq/Faq";
-import Contact from "@/components/sections/contact/Contact";
-import Footer from "@/components/layout/Footer/Footer";
 import Introduction from "@/components/sections/introduction/Introduction";
 import FeaturedExperience from "@/components/sections/featuredExperience/FeaturedExperience";
 import SignaturePrograms from "@/components/sections/signaturePrograms/SignaturePrograms";
+import GymFamily from "@/components/sections/gymFamily/GymFamily";
+import GymGallery from "@/components/sections/gymGallery/GymGallery";
+import Menifesto from "@/components/sections/menifesto/Menifesto";
 
 export default function Home() {
   return (
@@ -20,16 +15,9 @@ export default function Home() {
       <Introduction />
       <FeaturedExperience />
       <SignaturePrograms />
-
-      {/* OLD SECTIONS */}
+      <GymFamily />
+      <GymGallery />
       <Menifesto />
-      {/* <Story /> */}
-      {/* <TransformationStories /> */}
-      {/* <StoriesThatInspires /> */}
-      {/* <CustomerReview /> */}
-      {/* <Faq /> */}
-      {/* <Contact /> */}
-      {/* <Footer /> */}
     </main>
   );
 }

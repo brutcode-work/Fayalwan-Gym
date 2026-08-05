@@ -46,6 +46,8 @@ Fayalwan-Gym/
 │   │   │   ├── introduction/          # Bento Grid section & core philosophy
 │   │   │   ├── featuredExperience/    # Interactive features & GSAP animations
 │   │   │   ├── signaturePrograms/     # Program showcases with Swiper & custom cursor
+│   │   │   ├── gymFamily/             # Founders & Coaches asymmetric editorial gallery
+│   │   │   ├── gymGallery/            # 100vh Cinema Stage with Bottom Headline & <p> Quote Paragraph
 │   │   │   ├── menifesto/             # Gym manifesto & core values
 │   │   │   ├── story/                 # Brand origin story
 │   │   │   ├── transformationStories/ # Client transformation showcases
@@ -68,13 +70,7 @@ Fayalwan-Gym/
 ### A. Smooth Scroll & Motion Synchronization
 - **Lenis + GSAP ScrollTrigger Integration**: Managed inside `src/components/providers/SmoothScrollProvider.tsx`.
 - **GSAP Ticker**: Lenis scroll updates are wired to `gsap.ticker` to maintain frame-locked synchronization without jitter.
-- **GSAP in React 19**: Always use `useGSAP` from `@gsap/react` scoped to a `sectionRef` container for proper cleanup during renders:
-  ```tsx
-  const sectionRef = useRef<HTMLElement>(null);
-  useGSAP(() => {
-    // GSAP timelines & triggers
-  }, { scope: sectionRef });
-  ```
+- **GSAP in React 19**: Always use `useGSAP` from `@gsap/react` scoped to a `sectionRef` container for proper cleanup during renders.
 
 ### B. Component Composition in Homepage (`page.tsx`)
 - Active core sections mounted in order:
@@ -83,14 +79,15 @@ Fayalwan-Gym/
   3. `<Introduction />`
   4. `<FeaturedExperience />`
   5. `<SignaturePrograms />`
-  6. `<Menifesto />`
-- Modular design: Additional sections (`Story`, `TransformationStories`, `CustomerReview`, `Faq`, `Contact`, `Footer`) are ready in `src/components/sections/` and can be enabled/un-commented as required.
+  6. `<GymFamily />`
+  7. `<GymGallery />`
+  8. `<Menifesto />`
 
 ### C. Styling Rules & Aesthetics
 - **Theme**: Dark mode, sleek editorial high-contrast aesthetic.
 - **Spacing**: Standardized container padding (e.g. `5rem` horizontal padding).
 - **Typography**: Minimal, neutral weights (`font-weight: 400`/`500`), monospace taglines paired with high-impact editorial headers.
-- **Styling file pattern**: Each section folder contains its own TSX component and co-located CSS file (e.g., `Hero.tsx` + `Hero.css`).
+- **Styling file pattern**: Each section folder contains its own TSX component and co-located CSS file (e.g., `GymGallery.tsx` + `GymGallery.css`).
 
 ---
 
@@ -107,36 +104,30 @@ Fayalwan-Gym/
 
 ### A. Introduction Section (Bento Grid V2)
 - **Files**: `src/components/sections/introduction/Introduction.tsx` & `Introduction.css`
-- **Changes**:
-  - Rebuilt section as a 12-column responsive Bento Grid layout.
-  - Custom scoped design tokens (`--ink`, `--paper`, `--ember`, `Bricolage Grotesque`, `JetBrains Mono`).
-  - Integrated GSAP ScrollTrigger `.in-view` reveals for cards (`b-photo`, `b-people`, `b-quote`, `b-price`, `b-note`).
-  - Styled Card 5 heading ("The TechnoPark *routine*") with off-white text and brand orange `em` accent.
-  - Linked CTA buttons to smooth scroll targets (`#contact`).
+- **Changes**: Rebuilt section as a 12-column responsive Bento Grid layout with custom scoped design tokens and GSAP ScrollTrigger reveals.
 
 ### B. Signature Programs Custom Swipe Cursor
 - **Files**: `src/components/sections/signaturePrograms/SignaturePrograms.tsx` & `SignaturePrograms.css`
-- **Changes**:
-  - Added a custom floating "SWIPE" cursor powered by `gsap.quickTo` tracking coordinates.
-  - Used native CSS `:hover` and `:active` selectors on `.swiper-wrapper-container` to show/hide/scale the cursor (zero React render overhead during drag).
-  - Added `draggable="false"` and `user-select: none` to prevent native browser image drag artifacts.
+- **Changes**: Added a custom floating "SWIPE" cursor powered by `gsap.quickTo` tracking coordinates with CSS-driven state triggers.
 
 ### C. Hero Section Preloader & Infinite Swiper Gallery
 - **Files**: `src/components/sections/hero/Hero.tsx` & `Hero.css`
-- **Changes**:
-  - **Cinematic Preloader Timeline**: 9 media cards scatter randomly across the screen on load with random scale/rotation while a progress counter increments `0%` -> `90%`.
-  - **Kinetic Alignment**: At `90%`, cards align horizontally at the bottom of the screen. At `100%`, they slide up to the target hero banner position.
-  - **Awwwards Masked Reveals**: Text lines use `.hero-text-mask` (`overflow: hidden`) for smooth line slide-ups (`yPercent: 115` to `0`), and navbar slides down from top.
-  - **Strict Cursor Lifecycle Gating**: Custom cursor is gated via `.hero-section.is-loaded` added inside GSAP's `onComplete` callback.
-  - **Swiper Gallery**: Renders 9 mixed image/video Pinterest assets (`.mp4` auto-playing muted videos) in a 1:1 aspect ratio edge-to-edge Swiper (`loop={true}`, `slidesPerView="auto"`).
-  - **Height Locking**: Preserved exact desktop container height (`240px`) and mobile height (`170px`).
+- **Changes**: Cinematic GSAP preloader (scatter -> bottom align -> slide top), Awwwards `.hero-text-mask` reveals, strict `.is-loaded` cursor gating, and Pinterest video/image Swiper loop.
 
 ### D. Navbar Glassmorphism & Minimal Typography
 - **Files**: `src/components/layout/Navbar/Navbar.css`
+- **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), and glass pill CTA button.
+
+### E. GymFamily Editorial Gallery Section
+- **Files**: `src/components/sections/gymFamily/GymFamily.tsx` & `GymFamily.css`
+- **Changes**: Founders & Coaches gallery with asymmetric aspect ratios (`3:4`, `4:5`, `1:1`, `16:8`), category tabs, and GSAP ScrollTrigger entrance animations.
+
+### F. 100vh GymGallery Pill Tag Removal & Bottom Heading + <p> Quote Paragraph
+- **Files**: `src/components/sections/gymGallery/GymGallery.tsx` & `GymGallery.css`
 - **Changes**:
-  - Converted navbar to a dark black glass design (`background: rgba(5, 5, 5, 0.75)`, `backdrop-filter: blur(16px) saturate(180%)`, translucent bottom border `rgba(255, 255, 255, 0.08)`).
-  - Refined typography from bold (`700`/`600`) to clean, minimal neutral weights (`font-weight: 400`/`500`) and muted off-white link tones (`rgba(255, 255, 255, 0.65)`).
-  - Contact Us button updated to a minimal glass pill button (`border-radius: 999px`).
+  - **Removed Pill Tag**: Completely removed `.active-item-meta-center` (the rounded glass pill tag).
+  - **Bottom Active Slide Text Block**: Rendered `.active-slide-text-block` directly above the 5 thumbnail cards, featuring the category headline (`.active-slide-title`) and the quote paragraph (`.active-slide-quote`) right underneath.
+  - **Uncluttered 100vh Stage**: Left the center of the 100vh stage completely open for full-bleed media viewing, keeping all typography cleanly anchored above the thumbnail navigation filmstrip.
 
 ---
 
