@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@100..900&display=swap");
+/* Fonts are loaded in app/layout.tsx via next/font, NOT here.
+   Turbopack strips external `@import url(...)` from CSS, so an @import here is
+   silently dropped and every font falls back to system sans-serif. */
 
 * {
   margin: 0;
@@ -21,9 +23,9 @@
   --border-color: #24262B;
   --page-gutter: clamp(1.5rem, 4.17vw, 5rem);
   --editorial-rail: clamp(15rem, 30vw, 36rem);
-  --font-heading: 'Bricolage Grotesque', sans-serif;
-  --font-body: 'Outfit', sans-serif;
-  --font-bebas: 'Bricolage Grotesque', sans-serif;
+  --font-heading: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
+  --font-body: var(--font-outfit), 'Outfit', sans-serif;
+  --font-bebas: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
 
   /* Compatibility mappings */
   --accent-color: var(--svg-path);

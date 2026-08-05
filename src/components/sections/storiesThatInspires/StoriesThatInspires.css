@@ -35,7 +35,7 @@
 }
 
 .sti-section-tag {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.85rem;
@@ -46,7 +46,7 @@
 }
 
 .sti-heading {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 4.5vw, 3.25rem);
   line-height: 1.15;
   color: #ffffff;
@@ -54,7 +54,7 @@
 }
 
 .sti-subtext {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(0.95rem, 1.2vw, 1.15rem);
   color: var(--text-secondary);
   font-weight: 300;
@@ -141,7 +141,7 @@
 }
 
 .sti-carousel-title {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 800;
   color: #ffffff;
@@ -150,7 +150,7 @@
 }
 
 .sti-carousel-subtitle {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.65);
   margin: 0;
@@ -209,7 +209,7 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--small-labels);
@@ -246,7 +246,7 @@
   border-radius: 20px;
   padding: 4px 10px 4px 7px;
   color: #ffffff;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 600;
   z-index: 2;
