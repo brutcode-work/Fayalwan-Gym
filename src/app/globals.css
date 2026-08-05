@@ -21,6 +21,17 @@
   --border-color: #24262B;
   --page-gutter: clamp(1.5rem, 4.17vw, 5rem);
   --editorial-rail: clamp(15rem, 30vw, 36rem);
+  --font-bebas: 'Bebas Neue', sans-serif;
+
+  /* Compatibility mappings */
+  --accent-color: var(--svg-path);
+  --accent-color-rgb: 232, 93, 4;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow-x: hidden;
   font-family: "Outfit", sans-serif;
   font-size: 16px;
 }
