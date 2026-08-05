@@ -118,6 +118,28 @@ Fayalwan-Gym/
 - **Files**: `src/components/layout/Navbar/Navbar.css`
 - **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), glass pill CTA button, and removed `border-bottom` (`border-bottom: none`).
 
+### J. GymServices — clip-path row reveal with bespoke easing
+- **Files**: `services/GymServices.tsx` & `GymServices.css`
+- **Easing**: two `CustomEase` curves (CustomEase ships free in gsap 3.15) —
+  `servicesOut` = `M0,0 C0.16,1 0.3,1 1,1` (expo-out) for entrances, `servicesInOut` =
+  `M0,0 C0.76,0 0.24,1 1,1` (quart-in-out) for exits. Entrances and exits deliberately use
+  different curves *and* durations so leaving never reads as the entrance rewound.
+  Choreography: the orange bar leads, the image trails it by 0.06s on enter; on leave the
+  image clears faster (0.38s) than the bar (0.45s).
+- **Image reveal**: driven purely by `clip-path`, never opacity or scale. Rests at
+  `inset(0% 0% 100% 0%)` (collapsed against the top), wipes down to `inset(0% 0% 0% 0%)`.
+  On leave it *keeps going down* to `inset(100% 0% 0% 0%)` then `gsap.set`s back to the top
+  state in `onComplete`. **Both collapsed states have zero height, so that reset is
+  invisible** — that trick is what buys directional continuity without a jump, and it stays
+  interruptible because every intermediate state is a valid inset.
+- **No border-radius, border or box-shadow on the image.** The shadow is not just a style
+  choice: `clip-path` clips an element's shadow too, so it would be invisible at rest and
+  would smear during the wipe.
+- **Guard**: handlers bail on `!matchMedia("(min-width: 901px)")`, mirroring the 900px
+  breakpoint where CSS sets `clip-path: none`. Do **not** use `(hover: hover)` here — this
+  project's automated browser (and some hybrid devices) report it false, which silently
+  disables the whole interaction.
+
 ### I. FeaturedExperience — per-character highlight must stay `display: inline`
 - **Files**: `featuredExperience/FeaturedExperience.tsx` (`HighlightText`) & `.css` (`.accent-char`)
 - **The bug**: characters were wrapped in `.accent-char { display: inline-block }` inside
