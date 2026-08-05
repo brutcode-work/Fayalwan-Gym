@@ -1,735 +1,148 @@
-/* =========================================================================
-   GymFamily Section — 3 Awwwards Editorial Concepts
-   ========================================================================= */
-
-.gym-family-section {
+.gym-family {
   position: relative;
-  background-color: #050505;
-  color: #ffffff;
-  padding: 6rem 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  height: 100svh;
+  min-height: 650px;
   overflow: hidden;
+  background: #050505;
+  color: #f4f1eb;
 }
 
-.family-bg-glow {
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(232, 93, 4, 0.03) 0%, transparent 70%);
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ---------- Top Section & Concept Switcher Bar ---------- */
-.family-section-top {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.family-header-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.mono-chapter-tag {
-  color: #ff6a3d;
-  font-weight: 700;
-}
-
-.meta-divider {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.mono-title-tag {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* Concept Switcher Pills */
-.concept-switcher-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.3rem;
-  border-radius: 999px;
-}
-
-.concept-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.55);
-  border: none;
-  font-family: monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  padding: 0.45rem 0.95rem;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.concept-btn:hover {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.concept-btn.active {
-  background: #ffffff;
-  color: #000000;
-  font-weight: 700;
-}
-
-/* Container for Active Concept */
-.concept-container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1450px;
-  margin: 0 auto;
-}
-
-/* =========================================================================
-   CONCEPT 1: EDITORIAL CHAPTER (Vertical Magazine Spreads)
-   ========================================================================= */
-.concept-1-editorial {
-  display: flex;
-  flex-direction: column;
-  gap: 8rem;
-}
-
-.family-editorial-chapter {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  min-height: 70vh;
-}
-
-.family-editorial-chapter:nth-child(even) {
-  grid-template-columns: 1fr 1fr;
-  direction: rtl;
-}
-
-.family-editorial-chapter:nth-child(even) > * {
-  direction: ltr;
-}
-
-/* Media Left */
-.editorial-media-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  max-height: 700px;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: #0d0d10;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-}
-
-.editorial-portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: contrast(1.08) saturate(1.05);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.editorial-media-wrapper:hover .editorial-portrait-img {
-  transform: scale(1.04);
-}
-
-.editorial-media-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(5, 5, 5, 0.2) 0%, rgba(5, 5, 5, 0.85) 100%);
-  pointer-events: none;
-}
-
-.editorial-index-badge {
-  position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  font-family: monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #ff6a3d;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  padding: 0.3rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.corner-bracket {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  pointer-events: none;
-}
-
-.corner-bracket.top-left {
-  top: 10px;
-  left: 10px;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-}
-
-.corner-bracket.bottom-right {
-  bottom: 10px;
-  right: 10px;
-  border-bottom: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
-}
-
-/* Content Right */
-.editorial-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 580px;
-}
-
-.editorial-role-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.editorial-role-tag {
-  font-family: monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #ff6a3d;
-  text-transform: uppercase;
-}
-
-.editorial-exp-tag {
-  font-family: monospace;
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.08em;
-}
-
-.editorial-name {
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(2.5rem, 4.5vw, 4rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin: 0;
-}
-
-.editorial-specialty {
-  font-family: "Outfit", sans-serif;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 300;
-  margin: 0;
-}
-
-.editorial-quote {
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
-  border-left: 2px solid #ff6a3d;
-  padding-left: 1.25rem;
-}
-
-.editorial-footer-note {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-family: monospace;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.4);
-  margin-top: 1.5rem;
-}
-
-.footer-line {
-  flex: 1;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* =========================================================================
-   CONCEPT 2: LUXURY PORTRAIT GALLERY (Cinematic Full-Bleed Showcase)
-   ========================================================================= */
-.concept-2-portrait {
-  position: relative;
-  width: 100%;
-}
-
-.portrait-hero-stage {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  min-height: 600px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #000000;
-}
-
-.portrait-bg-layer {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.portrait-bg-layer.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.portrait-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  filter: contrast(1.1) saturate(1.05);
-}
-
-.portrait-bg-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(5, 5, 5, 0.95) 0%,
-    rgba(5, 5, 5, 0.75) 45%,
-    rgba(5, 5, 5, 0.2) 100%
-  );
-}
-
-.portrait-content-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 650px;
-}
-
-.portrait-mono-tag {
-  font-family: monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  color: #ff6a3d;
-  text-transform: uppercase;
-}
-
-.portrait-giant-title {
-  font-family: var(--font-bebas), "Outfit", sans-serif;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.9;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  margin-top: 0.75rem;
-}
-
-.portrait-active-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.portrait-role-badge {
-  font-family: monospace;
-  font-size: 0.72rem;
-  color: #ff6a3d;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.portrait-active-name {
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  font-weight: 400;
-  color: #ffffff;
-  margin: 0;
-}
-
-.portrait-active-quote {
-  font-family: "Outfit", sans-serif;
-  font-size: 1.05rem;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.45;
-  margin: 0;
-}
-
-/* Right Rail Selector */
-.portrait-rail-selector {
-  position: absolute;
-  right: 3rem;
-  bottom: 3rem;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.rail-member-item {
-  background: rgba(5, 5, 5, 0.65);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.6);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-family: monospace;
-  font-size: 0.72rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.rail-member-item:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-}
-
-.rail-member-item.active {
-  background: #ff6a3d;
-  color: #000000;
-  border-color: #ff6a3d;
-  font-weight: 700;
-}
-
-.rail-item-num {
-  font-weight: 700;
-}
-
-/* =========================================================================
-   CONCEPT 3: MINIMAL INTERACTIVE WALL (Asymmetric Grid)
-   ========================================================================= */
-.concept-3-wall {
-  width: 100%;
-}
-
-.wall-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.wall-card {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #0d0d10;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.wall-card.aspect-portrait {
-  aspect-ratio: 3 / 4;
-}
-
-.wall-card.aspect-tall {
-  aspect-ratio: 4 / 5;
-}
-
-.wall-card.aspect-square {
-  aspect-ratio: 1 / 1;
-}
-
-.wall-card.aspect-wide {
-  grid-column: span 2;
-  aspect-ratio: 16 / 8;
-}
-
-.wall-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-}
-
-.wall-media-wrap {
-  position: absolute;
-  inset: 0;
-}
-
-.wall-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: grayscale(0.7) contrast(1.1);
-  transition: transform 0.6s ease, filter 0.6s ease;
-}
-
-.wall-card:hover .wall-img {
-  filter: grayscale(0) contrast(1.1);
-  transform: scale(1.05);
-}
-
-.wall-vignette {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(5, 5, 5, 0.3) 0%, rgba(5, 5, 5, 0.9) 100%);
-}
-
-.wall-card-top {
-  position: relative;
-  z-index: 3;
-  padding: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.wall-id {
-  font-family: monospace;
-  font-size: 0.72rem;
-  color: #ff6a3d;
-  font-weight: 700;
-}
+.family-stage { position: relative; width: 100%; height: 100%; overflow: hidden; }
 
-.wall-exp {
-  font-family: monospace;
+.family-index,
+.family-question__note,
+.family-roster__intro,
+.family-person__number,
+.family-reveal__caption {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.wall-card-bottom {
-  position: relative;
-  z-index: 3;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.wall-role {
-  font-family: monospace;
-  font-size: 0.68rem;
-  color: #ff6a3d;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.wall-name {
-  font-family: "Outfit", sans-serif;
-  font-size: 1.35rem;
   font-weight: 500;
-  color: #ffffff;
-  margin: 0;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
 }
 
-.wall-hover-icon {
+.family-index {
   position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.wall-card:hover .wall-hover-icon {
-  background: #ff6a3d;
-  color: #000000;
-  transform: rotate(45deg);
-}
-
-/* Wall Modal Overlay */
-.wall-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.wall-modal-container {
-  position: relative;
-  background: #0d0d10;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  max-width: 900px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-}
-
-.wall-modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #ffffff;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  bottom: clamp(1.5rem, 4vw, 3.5rem);
+  left: clamp(1.5rem, 4.2vw, 5rem);
+  color: rgba(244, 241, 235, 0.46);
 }
 
-.wall-modal-media {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
+.family-question,
+.family-words,
+.family-roster,
+.family-reveal {
+  position: absolute;
+  inset: 0;
 }
 
-.wall-modal-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.wall-modal-content {
-  padding: 3rem 2.5rem;
+.family-question {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: clamp(2rem, 7.5vw, 9rem);
+}
+
+.family-question__line { overflow: hidden; }
+.family-question__line span {
+  display: block;
+  font-size: clamp(3.3rem, 9vw, 11rem);
+  font-weight: 300;
+  letter-spacing: -0.09em;
+  line-height: 0.76;
+  white-space: nowrap;
+}
+.family-question__line--indent { padding-left: clamp(2rem, 13vw, 18rem); }
+.family-question__note { margin-top: clamp(2rem, 6vh, 5rem); color: rgba(244, 241, 235, 0.42); }
+
+.family-words {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 0 0 clamp(1.5rem, 4.2vw, 5rem);
+}
+
+.family-word {
+  margin: 0;
+  width: max-content;
+  color: transparent;
+  background-image: linear-gradient(115deg, rgba(255,255,255,.96), rgba(174,171,166,.78)), url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=85&w=1800&auto=format&fit=crop");
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: clamp(4.6rem, 15.4vw, 19rem);
+  font-weight: 700;
+  letter-spacing: -0.115em;
+  line-height: 0.7;
+}
+.family-word--stay { margin-left: clamp(1.5rem, 16vw, 18rem); }
+.family-word--return { margin-left: clamp(0rem, 5vw, 6rem); }
+
+.family-definition {
+  position: absolute;
+  z-index: 3;
+  right: clamp(1.5rem, 8vw, 10rem);
+  bottom: clamp(5rem, 13vh, 10rem);
+  max-width: 24ch;
+  color: rgba(244, 241, 235, 0.82);
+  font-size: clamp(1.15rem, 1.65vw, 1.65rem);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+}
+
+.family-roster {
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 7vw, 8rem);
+}
+.family-roster__intro { margin-bottom: clamp(2rem, 5vh, 4rem); color: rgba(244, 241, 235, 0.46); }
+.family-roster__list { display: flex; flex-direction: column; }
+.family-person {
+  display: grid;
+  grid-template-columns: 3rem minmax(13rem, 0.9fr) 1fr;
+  align-items: baseline;
   gap: 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(244, 241, 235, 0.18);
+}
+.family-person:last-child { border-bottom: 1px solid rgba(244, 241, 235, 0.18); }
+.family-person__number { color: rgba(244, 241, 235, 0.4); }
+.family-person__name { font-size: clamp(1.6rem, 3.4vw, 4.2rem); font-weight: 300; letter-spacing: -0.07em; line-height: 0.85; }
+.family-person__line { color: rgba(244, 241, 235, 0.57); font-size: clamp(0.9rem, 1.1vw, 1.15rem); font-weight: 300; }
+
+.family-reveal { z-index: 5; margin: 0; background: #0a0a0a; }
+.family-reveal::after { position: absolute; inset: 0; content: ""; background: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,0.06) 58%, rgba(0,0,0,.2)); }
+.family-reveal img { display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(.7); }
+.family-reveal__caption { position: absolute; z-index: 1; right: clamp(1.5rem, 4.2vw, 5rem); bottom: clamp(1.5rem, 4vw, 3.5rem); color: rgba(244, 241, 235, 0.67); text-align: right; }
+.family-reveal__caption strong { color: #f4f1eb; font-weight: 500; }
+
+@media (max-width: 700px) {
+  .gym-family { min-height: 580px; }
+  .family-question { padding: 1.5rem; }
+  .family-question__line span { font-size: clamp(2.75rem, 14.4vw, 5.5rem); line-height: .8; }
+  .family-question__line--indent { padding-left: 1rem; }
+  .family-words { padding-left: 1rem; }
+  .family-word { font-size: clamp(4rem, 20.3vw, 8rem); }
+  .family-word--stay { margin-left: 1rem; }
+  .family-word--return { margin-left: 0; }
+  .family-definition { right: 1.5rem; bottom: 5.1rem; max-width: 18ch; }
+  .family-roster { padding: 1.5rem; }
+  .family-person { grid-template-columns: 1.8rem 1fr; gap: .65rem; padding: .8rem 0; }
+  .family-person__line { grid-column: 2; margin-top: .2rem; }
+  .family-person__name { font-size: clamp(1.6rem, 8.2vw, 3.2rem); }
 }
 
-.modal-role-badge {
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: #ff6a3d;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.modal-member-name {
-  font-family: "Outfit", sans-serif;
-  font-size: 2.2rem;
-  color: #ffffff;
-  margin: 0;
-}
-
-.modal-specialty {
-  font-family: "Outfit", sans-serif;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.modal-quote {
-  font-family: "Outfit", sans-serif;
-  font-size: 1.05rem;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.5;
-  border-left: 2px solid #ff6a3d;
-  padding-left: 1rem;
-  margin: 0;
-}
-
-.modal-exp-tag {
-  font-family: monospace;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.4);
-}
-
-/* ---------- Responsive Adjustments ---------- */
-@media (max-width: 1024px) {
-  .gym-family-section {
-    padding: 4rem 2rem;
-  }
-
-  .family-editorial-chapter {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    min-height: auto;
-  }
-
-  .family-editorial-chapter:nth-child(even) {
-    grid-template-columns: 1fr;
-    direction: ltr;
-  }
-
-  .portrait-hero-stage {
-    height: 70vh;
-  }
-
-  .portrait-content-overlay {
-    padding: 2.5rem;
-  }
-
-  .portrait-rail-selector {
-    right: 1.5rem;
-    bottom: 1.5rem;
-  }
-
-  .wall-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .gym-family-section {
-    padding: 3rem 1.25rem;
-  }
-
-  .concept-switcher-bar {
-    width: 100%;
-    overflow-x: auto;
-  }
-
-  .wall-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .wall-card.aspect-wide {
-    grid-column: span 1;
-    aspect-ratio: 3 / 4;
-  }
-
-  .wall-modal-container {
-    grid-template-columns: 1fr;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .gym-family { height: auto; min-height: 100svh; }
+  .family-stage { min-height: 100svh; }
+  .family-question { position: relative; min-height: 100svh; }
+  .family-question__line span { transform: none !important; }
+  .family-words, .family-definition, .family-roster { display: none; }
+  .family-reveal { position: relative; height: 100svh; }
 }
