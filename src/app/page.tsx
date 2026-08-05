@@ -5,6 +5,7 @@ import FeaturedExperience from "@/components/sections/featuredExperience/Feature
 import SignaturePrograms from "@/components/sections/signaturePrograms/SignaturePrograms";
 import GymFamily from "@/components/sections/gymFamily/GymFamily";
 import GymGallery from "@/components/sections/gymGallery/GymGallery";
+import StoriesThatInspires from "@/components/sections/storiesThatInspires/StoriesThatInspires";
 import Menifesto from "@/components/sections/menifesto/Menifesto";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <SignaturePrograms />
       <GymFamily />
       <GymGallery />
+      <StoriesThatInspires />
       <Menifesto />
     </main>
   );

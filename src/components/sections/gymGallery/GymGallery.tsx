@@ -3,8 +3,11 @@
 import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Volume2, VolumeX, Pause, Play } from "lucide-react";
 import "./GymGallery.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface GalleryMedia {
   id: string;

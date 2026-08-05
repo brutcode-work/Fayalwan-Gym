@@ -1,10 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ArrowUpRight } from "lucide-react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { X, ArrowUpRight, BookOpen, Eye, Layers } from "lucide-react";
 import "./GymFamily.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface FamilyMember {
   id: string;
@@ -15,7 +18,7 @@ interface FamilyMember {
   quote: string;
   experience: string;
   image: string;
-  aspectRatio: "portrait" | "tall" | "square" | "wide";
+  aspectRatio?: "portrait" | "tall" | "square" | "wide";
 }
 
 const FAMILY_MEMBERS: FamilyMember[] = [
@@ -89,146 +92,244 @@ const FAMILY_MEMBERS: FamilyMember[] = [
 
 export default function GymFamily() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeTab, setActiveTab] = useState<"all" | "founders" | "coaches" | "community">("all");
+  const [activeConcept, setActiveConcept] = useState<"concept1" | "concept2" | "concept3">("concept1");
+  const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
 
-  const filteredMembers = FAMILY_MEMBERS.filter(
-    (m) => activeTab === "all" || m.category === activeTab
-  );
+  // Concept 2 Active Index State for Scroll/Fade Showcase
+  const [concept2Idx, setConcept2Idx] = useState(0);
 
-  // GSAP ScrollTrigger stagger entrance
+  // GSAP Entrance Animations
   useGSAP(
     () => {
       const section = sectionRef.current;
       if (!section) return;
 
       gsap.fromTo(
-        ".gym-family-header > *",
-        { opacity: 0, y: 30 },
+        ".family-editorial-chapter",
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          stagger: 0.12,
+          duration: 1,
+          stagger: 0.25,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 80%",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        ".family-card",
-        { opacity: 0, y: 40, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.9,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".family-grid",
-            start: "top 85%",
-          },
+            start: "top 75%"
+          }
         }
       );
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [activeConcept] }
   );
 
   return (
     <section ref={sectionRef} className="gym-family-section" id="family">
-      <div className="gym-family-container">
-        {/* Section Header */}
-        <div className="gym-family-header">
-          <div className="header-left">
-            <span className="family-mono-tag">03 // THE ARCHITECTS OF FAYALWAN</span>
-            <h2 className="family-title">
-              The Family Who
-              <br />
-              Built The Sanctuary.
-            </h2>
-          </div>
+      {/* Subtle Background Glow */}
+      <div className="family-bg-glow" />
 
-          <div className="header-right">
-            <p className="family-description">
-              Fayalwan was forged by dedicated strength coaches, competitive powerlifters,
-              and athletic trainers in Kazhakoottam. We are not corporate managers—we are on
-              the gym floor daily, coaching your movement and pushing your limits.
-            </p>
-
-            {/* Category Filter Tabs */}
-            <div className="family-tabs">
-              <button
-                className={`tab-btn ${activeTab === "all" ? "active" : ""}`}
-                onClick={() => setActiveTab("all")}
-              >
-                ALL FAMILY
-              </button>
-              <button
-                className={`tab-btn ${activeTab === "founders" ? "active" : ""}`}
-                onClick={() => setActiveTab("founders")}
-              >
-                FOUNDERS
-              </button>
-              <button
-                className={`tab-btn ${activeTab === "coaches" ? "active" : ""}`}
-                onClick={() => setActiveTab("coaches")}
-              >
-                COACHES
-              </button>
-              <button
-                className={`tab-btn ${activeTab === "community" ? "active" : ""}`}
-                onClick={() => setActiveTab("community")}
-              >
-                LEADERSHIP
-              </button>
-            </div>
-          </div>
+      {/* Header & Concept Mode Switcher */}
+      <div className="family-section-top">
+        <div className="family-header-meta">
+          <span className="mono-chapter-tag">03 // THE ARCHITECTS</span>
+          <span className="meta-divider">•</span>
+          <span className="mono-title-tag">THE PEOPLE WHO BUILT THIS PLACE</span>
         </div>
 
-        {/* Asymmetric Awwwards Minimalist Gallery Grid */}
-        <div className="family-grid">
-          {filteredMembers.map((member) => (
-            <div
-              key={member.id}
-              className={`family-card aspect-${member.aspectRatio}`}
-            >
-              <div className="card-media-wrapper">
+        {/* Minimal Concept Switcher Bar */}
+        <div className="concept-switcher-bar">
+          <button
+            className={`concept-btn ${activeConcept === "concept1" ? "active" : ""}`}
+            onClick={() => setActiveConcept("concept1")}
+          >
+            <BookOpen size={13} />
+            <span>CONCEPT 1: EDITORIAL CHAPTER</span>
+          </button>
+          <button
+            className={`concept-btn ${activeConcept === "concept2" ? "active" : ""}`}
+            onClick={() => setActiveConcept("concept2")}
+          >
+            <Eye size={13} />
+            <span>CONCEPT 2: LUXURY PORTRAIT</span>
+          </button>
+          <button
+            className={`concept-btn ${activeConcept === "concept3" ? "active" : ""}`}
+            onClick={() => setActiveConcept("concept3")}
+          >
+            <Layers size={13} />
+            <span>CONCEPT 3: MINIMAL WALL</span>
+          </button>
+        </div>
+      </div>
+
+      {/* =========================================================================
+          CONCEPT 1: EDITORIAL CHAPTER (Vertical Pinned Magazine Spreads)
+          Vibe: Vogue / Apple / Awwwards editorial spread. Zero UI clutter.
+         ========================================================================= */}
+      {activeConcept === "concept1" && (
+        <div className="concept-container concept-1-editorial">
+          {FAMILY_MEMBERS.map((member, index) => (
+            <article key={member.id} className="family-editorial-chapter">
+              {/* Left Spread: Cinematic Portrait Media */}
+              <div className="editorial-media-wrapper">
                 <img
                   src={member.image}
                   alt={member.name}
                   loading="lazy"
-                  draggable="false"
+                  className="editorial-portrait-img"
                 />
-                <div className="card-gradient-overlay" />
+                <div className="editorial-media-overlay" />
+                <span className="editorial-index-badge">[{member.id}]</span>
+                <div className="corner-bracket top-left" />
+                <div className="corner-bracket bottom-right" />
               </div>
 
-              <div className="card-badge-top">
-                <span className="member-id">[{member.id}]</span>
-                <span className="member-exp">{member.experience}</span>
+              {/* Right Spread: Clean Editorial Typography & Breathing Space */}
+              <div className="editorial-content-wrapper">
+                <div className="editorial-role-row">
+                  <span className="editorial-role-tag">{member.role}</span>
+                  <span className="editorial-exp-tag">{member.experience}</span>
+                </div>
+
+                <h3 className="editorial-name">{member.name}</h3>
+
+                <p className="editorial-specialty">{member.specialty}</p>
+
+                <blockquote className="editorial-quote">
+                  &ldquo;{member.quote}&rdquo;
+                </blockquote>
+
+                <div className="editorial-footer-note">
+                  <span>CHAPTER 03 — {String(index + 1).padStart(2, "0")} / 06</span>
+                  <span className="footer-line" />
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+
+      {/* =========================================================================
+          CONCEPT 2: LUXURY PORTRAIT GALLERY (Cinematic Full-Bleed Showcase)
+          Vibe: Leica Exhibition / High Fashion / Full Canvas Takeover.
+         ========================================================================= */}
+      {activeConcept === "concept2" && (
+        <div className="concept-container concept-2-portrait">
+          <div className="portrait-hero-stage">
+            {/* Background Full-Bleed Imagery with Crossfade */}
+            {FAMILY_MEMBERS.map((member, idx) => (
+              <div
+                key={member.id}
+                className={`portrait-bg-layer ${idx === concept2Idx ? "active" : ""}`}
+              >
+                <img src={member.image} alt={member.name} className="portrait-bg-img" />
+                <div className="portrait-bg-gradient" />
+              </div>
+            ))}
+
+            {/* Left Content Overlay */}
+            <div className="portrait-content-overlay">
+              <div className="portrait-headline-block">
+                <span className="portrait-mono-tag">THE ARCHITECTS OF FAYALWAN</span>
+                <h2 className="portrait-giant-title">
+                  THE PEOPLE
+                  <br />
+                  WHO PUSH
+                  <br />
+                  YOUR LIMITS.
+                </h2>
               </div>
 
-              <div className="card-content-bottom">
-                <div className="member-info">
-                  <span className="member-role">{member.role}</span>
-                  <h3 className="member-name">{member.name}</h3>
+              <div className="portrait-active-details">
+                <span className="portrait-role-badge">
+                  {FAMILY_MEMBERS[concept2Idx].role}
+                </span>
+                <h3 className="portrait-active-name">
+                  {FAMILY_MEMBERS[concept2Idx].name}
+                </h3>
+                <blockquote className="portrait-active-quote">
+                  &ldquo;{FAMILY_MEMBERS[concept2Idx].quote}&rdquo;
+                </blockquote>
+              </div>
+            </div>
+
+            {/* Right Invisible Scroll Tracker & Selector Rails */}
+            <div className="portrait-rail-selector">
+              {FAMILY_MEMBERS.map((member, idx) => (
+                <button
+                  key={member.id}
+                  className={`rail-member-item ${idx === concept2Idx ? "active" : ""}`}
+                  onClick={() => setConcept2Idx(idx)}
+                >
+                  <span className="rail-item-num">[{member.id}]</span>
+                  <span className="rail-item-name">{member.name}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================================
+          CONCEPT 3: MINIMAL INTERACTIVE WALL (Asymmetric Editorial Grid with Mask Reveals)
+          Vibe: Swiss Design / Awwwards Wall with Grayscale-to-Color Mask Reveal.
+         ========================================================================= */}
+      {activeConcept === "concept3" && (
+        <div className="concept-container concept-3-wall">
+          <div className="wall-grid">
+            {FAMILY_MEMBERS.map((member) => (
+              <div
+                key={member.id}
+                className={`wall-card aspect-${member.aspectRatio || "portrait"}`}
+                onClick={() => setSelectedMember(member)}
+              >
+                <div className="wall-media-wrap">
+                  <img src={member.image} alt={member.name} className="wall-img" />
+                  <div className="wall-vignette" />
                 </div>
 
-                <div className="member-hover-details">
-                  <p className="member-specialty">{member.specialty}</p>
-                  <blockquote className="member-quote">&ldquo;{member.quote}&rdquo;</blockquote>
+                <div className="wall-card-top">
+                  <span className="wall-id">[{member.id}]</span>
+                  <span className="wall-exp">{member.experience}</span>
                 </div>
 
-                <div className="card-corner-icon">
-                  <ArrowUpRight size={18} />
+                <div className="wall-card-bottom">
+                  <span className="wall-role">{member.role}</span>
+                  <h3 className="wall-name">{member.name}</h3>
+                  <div className="wall-hover-icon">
+                    <ArrowUpRight size={16} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Fullscreen Editorial Modal for Concept 3 */}
+          {selectedMember && (
+            <div className="wall-modal-overlay" onClick={() => setSelectedMember(null)}>
+              <div className="wall-modal-container" onClick={(e) => e.stopPropagation()}>
+                <button className="wall-modal-close" onClick={() => setSelectedMember(null)}>
+                  <X size={20} />
+                </button>
+
+                <div className="wall-modal-media">
+                  <img src={selectedMember.image} alt={selectedMember.name} />
+                </div>
+
+                <div className="wall-modal-content">
+                  <span className="modal-role-badge">{selectedMember.role}</span>
+                  <h2 className="modal-member-name">{selectedMember.name}</h2>
+                  <p className="modal-specialty">{selectedMember.specialty}</p>
+                  <blockquote className="modal-quote">
+                    &ldquo;{selectedMember.quote}&rdquo;
+                  </blockquote>
+                  <span className="modal-exp-tag">{selectedMember.experience}</span>
                 </div>
               </div>
             </div>
-          ))}
+          )}
         </div>
-      </div>
+      )}
     </section>
   );
 }
