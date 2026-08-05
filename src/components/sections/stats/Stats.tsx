@@ -110,7 +110,10 @@ export default function Stats() {
               <dt className="ledger__mask">
                 <span className="ledger__value">
                   {stat.prefix ? <span className="ledger__prefix">{stat.prefix}</span> : null}
-                  <span className="ledger__number">0</span>
+                  {/* Render the real figure, not 0: the counter only runs inside the
+                      no-preference matchMedia, so reduced-motion users (and the SSR
+                      markup before hydration) must already see the final value. */}
+                  <span className="ledger__number">{stat.target}</span>
                   {stat.suffix ? <em className="ledger__suffix">{stat.suffix}</em> : null}
                 </span>
               </dt>

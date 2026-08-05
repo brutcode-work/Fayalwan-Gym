@@ -118,6 +118,21 @@ Fayalwan-Gym/
 - **Files**: `src/components/layout/Navbar/Navbar.css`
 - **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), glass pill CTA button, and removed `border-bottom` (`border-bottom: none`).
 
+### H. Fonts — never use `@import url()` in CSS on this project
+- **Files**: `src/app/layout.tsx`, `src/app/globals.css`, `introduction/Introduction.css`
+- **The trap**: **Turbopack silently strips external `@import url("https://fonts.googleapis.com/...")`
+  from CSS files.** No error, no warning — the rule simply never reaches the browser, so every
+  `font-family` falls back to system sans-serif while DevTools still shows the declared family.
+  Both `globals.css` and `Introduction.css` had one, so Outfit *and* Bricolage Grotesque were
+  never loading site-wide.
+- **The fix**: fonts are loaded with `next/font/google` in `app/layout.tsx`, which self-hosts them
+  and exposes `--font-bricolage` / `--font-outfit`. The `.variable` classes go on `<html>`, and
+  `globals.css` maps `--font-heading` / `--font-body` onto them.
+- **Diagnosing this again**: `[...document.fonts].map(f => f.family)` in the console. If the
+  expected families are absent, the @font-face never loaded — do **not** trust the computed
+  `font-family` string, which shows the declaration regardless. Confirm rendering by measuring the
+  same string in the target font vs a fallback; different widths prove the real face is in use.
+
 ### G. Stats — thin ledger band between Hero and Introduction
 - **Files**: `src/components/sections/stats/Stats.tsx` & `Stats.css` (mounted in `page.tsx`
   between `<Hero />` and `<Introduction />`).
