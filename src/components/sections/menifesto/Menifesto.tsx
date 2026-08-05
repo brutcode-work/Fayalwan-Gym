@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import "./Menifesto.css";
 import "./Overlap.css";
 import SvgPath from "./SvgPath";
@@ -23,7 +23,7 @@ export default function Menifesto() {
         target.tagName === "path" ? target : target.querySelector("path");
       if (!path) return;
 
-      const pathLength = path.getTotalLength() || 6000;
+      const pathLength = path.getTotalLength();
 
       gsap.set(path, {
         strokeDasharray: pathLength,
@@ -35,10 +35,9 @@ export default function Menifesto() {
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 70%",
-          end: "bottom 95%",
-          scrub: 1.2,
-          invalidateOnRefresh: true,
+          start: "top 85%",
+          end: "bottom 85%",
+          scrub: 1,
         },
       });
 
@@ -56,7 +55,6 @@ export default function Menifesto() {
               trigger: card,
               start: "top 80%",
               toggleActions: "play none none reverse",
-              invalidateOnRefresh: true,
             },
           }
         );
@@ -77,7 +75,6 @@ export default function Menifesto() {
               trigger: visual,
               start: "top 80%",
               toggleActions: "play none none reverse",
-              invalidateOnRefresh: true,
             },
           }
         );
@@ -90,8 +87,6 @@ export default function Menifesto() {
           end: "+=100%",
           scrub: true,
           pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
         },
       });
 
@@ -114,9 +109,6 @@ export default function Menifesto() {
         },
         "-=0.4"
       );
-
-      // Force refresh ScrollTrigger to align triggers after layout calculation
-      ScrollTrigger.refresh();
     },
     { scope: containerRef }
   );
