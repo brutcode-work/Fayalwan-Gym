@@ -130,6 +130,20 @@
   text-wrap: balance;
 }
 
+/* Accent Highlighted Text with Character-by-Character Orange Fill */
+.accent-highlight {
+  display: inline;
+}
+
+/* Must stay `inline`. `inline-block` gives every character its own box, which
+   destroys kerning, blocks whitespace collapsing at the edges of a highlight and
+   ignores the parent's negative letter-spacing. Only `color` is animated here,
+   so there is nothing to gain from taking these out of the text flow. */
+.accent-char {
+  display: inline;
+  color: #f5f5f5;
+}
+
 /* Right Column: Image */
 .feature-image-wrap {
   width: 100%;
