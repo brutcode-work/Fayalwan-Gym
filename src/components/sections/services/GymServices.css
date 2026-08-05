@@ -111,6 +111,13 @@
   filter: saturate(1.1);
 }
 
+.gym-service-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: orangered;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 900px) {
   .gym-services-header {
