@@ -19,33 +19,129 @@
   margin-bottom: 3.5rem;
 }
 
-.banner-image-container {
+.hero-swiper-wrapper {
   position: relative;
   width: 100%;
-  height: 240px;
-  border-radius: 0;
   overflow: hidden;
-  background: #111214;
+  background: #050505;
+  height: 240px; /* Restored to original container height */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.banner-img {
+.hero-banner-full:hover {
+  cursor: none;
+}
+
+.hero-banner-full:hover .hero-swiper {
+  cursor: none;
+}
+
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
+}
+
+.hero-swiper-slide {
+  width: auto !important;
+  height: 100%;
+}
+
+.hero-square-media {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #111214;
+  border-right: 1px solid rgba(5, 5, 5, 0.4);
+}
+
+.hero-square-media:last-child {
+  border-right: none;
+}
+
+.hero-square-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
   display: block;
   filter: contrast(1.05) saturate(1.1);
+}
+
+/* ---------- custom swipe cursor ---------- */
+.hero-swipe-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.hero-swipe-cursor__inner {
+  width: 76px;
+  height: 76px;
+  margin-left: -38px;
+  margin-top: -38px;
+  background: #ff6a3d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 8px 24px rgba(255, 106, 61, 0.25);
+  
+  /* Scale and fade transitions */
+  opacity: 0;
+  transform: scale(0.3);
+  transition: 
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    background 0.4s ease;
+}
+
+/* Show cursor on hover */
+.hero-banner-full:hover ~ .hero-swipe-cursor .hero-swipe-cursor__inner {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Shrink and change background on active hold (drag/mousedown) */
+.hero-banner-full:active ~ .hero-swipe-cursor .hero-swipe-cursor__inner {
+  opacity: 1;
+  transform: scale(0.85);
+  background: #d44d24;
+}
+
+@media (max-width: 1024px) {
+  .hero-swipe-cursor {
+    display: none !important;
+  }
+  .hero-banner-full:hover {
+    cursor: auto;
+  }
+  .hero-banner-full:hover .hero-swiper {
+    cursor: auto;
+  }
 }
 
 .banner-gradient-overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background: linear-gradient(
     180deg,
-    rgba(5, 5, 5, 0.2) 0%,
+    rgba(5, 5, 5, 0.45) 0%,
     rgba(5, 5, 5, 0.05) 50%,
-    rgba(5, 5, 5, 0.4) 100%
+    rgba(5, 5, 5, 0.55) 100%
   );
+  pointer-events: none;
 }
 
 /* Minimal Banner Badges */
@@ -196,6 +292,11 @@
     right: 3rem;
   }
 
+  .hero-swiper-wrapper {
+    height: 240px;
+  }
+
+
   .hero-right-col {
     width: 400px;
   }
@@ -218,9 +319,10 @@
     right: 1.5rem;
   }
 
-  .banner-image-container {
+  .hero-swiper-wrapper {
     height: 170px;
   }
+
 
   .hero-content-grid {
     flex-direction: column;
