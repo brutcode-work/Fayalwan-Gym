@@ -1,0 +1,179 @@
+.machines-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #050505;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.machine-cover-img {
+  position: absolute;
+  top: 20%;
+  right: 10vw;
+  width: 32vw;
+  height: 50vh;
+  overflow: hidden;
+  border-radius: 12px;
+  z-index: 2;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.machine-cover-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+  filter: contrast(1.05) brightness(0.85) saturate(1.1);
+}
+
+.bg-huge-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16vw;
+  font-weight: 900;
+  font-family: var(--font-heading, "Bricolage Grotesque", sans-serif);
+  color: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+.machine-texts {
+  position: relative;
+  z-index: 3;
+  left: 8vw;
+  max-width: 550px;
+}
+
+.machine-heading-wrapper {
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.machine-heading {
+  font-family: var(--font-heading, "Bricolage Grotesque", sans-serif);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.machine-desc-wrapper {
+  overflow: hidden;
+}
+
+.machine-desc {
+  font-family: var(--font-body, "Outfit", sans-serif);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+}
+
+.machine-selector-container {
+  position: absolute;
+  bottom: 3rem;
+  left: 8vw;
+  width: calc(100% - 16vw);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 4;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 1rem;
+}
+
+.machine-selector-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tall-machine-img {
+  flex-shrink: 0;
+  width: 80px;
+  height: 110px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.3;
+  filter: grayscale(1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tall-machine-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.tall-machine-img:hover {
+  opacity: 0.7;
+  filter: grayscale(0.2);
+  transform: translateY(-4px);
+}
+
+.tall-machine-img:hover img {
+  transform: scale(1.08);
+}
+
+.active-img {
+  opacity: 1 !important;
+  filter: grayscale(0) !important;
+  border: 2px solid orangered !important;
+  box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+  .machines-section {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    min-height: 100vh;
+    padding: 6rem 0;
+  }
+
+  .machine-cover-img {
+    position: relative;
+    width: 90vw;
+    height: 38vh;
+    top: 0;
+    right: 0;
+    margin: 2rem auto;
+  }
+
+  .machine-texts {
+    position: relative;
+    left: 0;
+    margin: 0 auto;
+    padding: 0 5vw;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .bg-huge-text {
+    font-size: 28vw;
+  }
+
+  .machine-selector-container {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 90vw;
+    margin: 3rem auto 0 auto;
+    padding-bottom: 0.5rem;
+  }
+}

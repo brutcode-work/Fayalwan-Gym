@@ -5,9 +5,10 @@ import Introduction from "@/components/sections/introduction/Introduction";
 import FeaturedExperience from "@/components/sections/featuredExperience/FeaturedExperience";
 import SignaturePrograms from "@/components/sections/signaturePrograms/SignaturePrograms";
 import GymFamily from "@/components/sections/gymFamily/GymFamily";
-import GymGallery from "@/components/sections/gymGallery/GymGallery";
+import GymEquipement from "@/components/sections/gymGallery/GymEquipment";
 import Menifesto from "@/components/sections/menifesto/Menifesto";
 import GymServices from "@/components/sections/services/GymServices";
+import MachinesSection from "@/components/sections/machines/MachinesSection";
 
 export default function Home() {
   return (
@@ -17,11 +18,12 @@ export default function Home() {
       <Stats />
       <Introduction />
       <FeaturedExperience />
-      <SignaturePrograms />
+      {/* <SignaturePrograms /> */}
       <GymServices />
+      {/* <MachinesSection /> */}
 
-      <GymFamily />
-      <GymGallery />
+      {/* <GymFamily /> */}
+      <GymEquipement />
       <Menifesto />
     </main>
   );
