@@ -9,23 +9,24 @@
 }
 
 :root {
-  --bg-color: #050505;
+  --bg-color: black;
+  --bg-secondary: #0a0a09;
   --navbar-bg: #111214;
   --navbar-bg-rgb: 17, 18, 20;
   --card-bg: #131416;
-  --svg-path: #E85D04;
+  --svg-path: #e85d04;
   --svg-glow: rgba(232, 93, 4, 0.18);
-  --text-primary: #F5F5F5;
-  --text-secondary: #9CA3AF;
-  --small-labels: #FF8C42;
-  --button-bg: #D7FF00;
-  --button-hover: #C2F000;
-  --border-color: #24262B;
+  --text-primary: #f5f5f5;
+  --text-secondary: #9ca3af;
+  --small-labels: #ff8c42;
+  --button-bg: #d7ff00;
+  --button-hover: #c2f000;
+  --border-color: #24262b;
   --page-gutter: clamp(1.5rem, 4.17vw, 5rem);
   --editorial-rail: clamp(15rem, 30vw, 36rem);
-  --font-heading: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
-  --font-body: var(--font-outfit), 'Outfit', sans-serif;
-  --font-bebas: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
+  --font-heading: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --font-body: var(--font-outfit), "Outfit", sans-serif;
+  --font-bebas: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
 
   /* Compatibility mappings */
   --accent-color: var(--svg-path);
@@ -108,4 +109,3 @@ p {
   line-height: 1.5;
   font-weight: 400;
 }
-

@@ -16,10 +16,11 @@
   --font-mono: ui-monospace, monospace;
 
   position: relative;
-  background: var(--ink);
+  background: var(--bg-secondary);
   color: var(--paper);
-  padding: clamp(4.5rem, 8vw, 7rem) var(--page-gutter) clamp(4rem, 7vw, 6rem);
+  padding: 0rem var(--page-gutter) clamp(4rem, 7vw, 6rem);
   font-family: var(--font-display);
+  padding-block: 10rem;
 }
 
 .bento-inner {
@@ -27,7 +28,6 @@
   max-width: 1400px;
   margin: 0 auto;
 }
-
 
 /* ---------- grid ---------- */
 .bento-grid {
@@ -83,7 +83,9 @@
 .reveal-ready .b-cell.in-view {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 /* ---------- b-photo : tall image card, quote overlay ---------- */
@@ -93,7 +95,11 @@
   justify-content: space-between;
   padding: 1.4rem;
   background:
-    linear-gradient(180deg, rgba(10, 10, 9, 0.05) 0%, rgba(10, 10, 9, 0.75) 100%),
+    linear-gradient(
+      180deg,
+      rgba(10, 10, 9, 0.05) 0%,
+      rgba(10, 10, 9, 0.75) 100%
+    ),
     radial-gradient(120% 90% at 20% 15%, #5b6b73 0%, #354049 42%, #171c1f 100%);
   background-blend-mode: normal;
 }
@@ -105,8 +111,16 @@
   opacity: 0.5;
   mix-blend-mode: overlay;
   background-image:
-    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25) 0, transparent 45%),
-    radial-gradient(circle at 75% 70%, rgba(255, 255, 255, 0.12) 0, transparent 40%);
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.25) 0,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 75% 70%,
+      rgba(255, 255, 255, 0.12) 0,
+      transparent 40%
+    );
   pointer-events: none;
 }
 
@@ -157,7 +171,11 @@
   padding: 1.4rem;
   text-align: center;
   background:
-    linear-gradient(180deg, rgba(10, 10, 9, 0.1) 0%, rgba(10, 10, 9, 0.45) 100%),
+    linear-gradient(
+      180deg,
+      rgba(10, 10, 9, 0.1) 0%,
+      rgba(10, 10, 9, 0.45) 100%
+    ),
     radial-gradient(110% 90% at 50% 20%, #7a8f6e 0%, #46523d 45%, #1c2018 100%);
 }
 
@@ -167,7 +185,11 @@
   inset: 0;
   opacity: 0.45;
   mix-blend-mode: overlay;
-  background-image: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.3) 0, transparent 42%);
+  background-image: radial-gradient(
+    circle at 50% 25%,
+    rgba(255, 255, 255, 0.3) 0,
+    transparent 42%
+  );
   pointer-events: none;
 }
 
@@ -195,7 +217,9 @@
   font-size: 0.82rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .b-people__btn:hover {
@@ -226,7 +250,12 @@
   right: -6rem;
   top: -6rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 106, 61, 0.5) 0%, rgba(255, 106, 61, 0.08) 55%, transparent 75%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 106, 61, 0.5) 0%,
+    rgba(255, 106, 61, 0.08) 55%,
+    transparent 75%
+  );
   filter: blur(6px);
   pointer-events: none;
 }

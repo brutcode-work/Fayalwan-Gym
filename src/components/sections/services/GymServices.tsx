@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import "./GymServices.css";
+import SectionHeader from "@/components/layout/Headers/SectionHeader";
 
 gsap.registerPlugin(CustomEase);
 
@@ -148,12 +149,14 @@ const GymServices = () => {
 
   return (
     <section className="gym-services-main" ref={containerRef}>
-      <div className="gym-services-header">
-        <h2>Signature Programs</h2>
-        <p>
-          One hour. Day after day. That’s all it takes. <br />
-          You bring the consistency. We bring the rest.
-        </p>
+      <div className="gym-services-header-wrapper">
+        <SectionHeader
+          sectionName="gym-sercvices"
+          label="SIGNATURE PROGRAMS"
+          headTop="Built Around"
+          headBottom="Your Goals."
+          description="Weight loss, muscle gain, strength training, or better fitness—find the right program and keep moving forward with confidence."
+        />
       </div>
       <div className="gym-services-grid">
         {programs.map((program) => (

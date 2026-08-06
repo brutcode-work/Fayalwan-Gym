@@ -1,11 +1,9 @@
 /* ---------- GymGallery 100vh WES Awwwards Gallery ---------- */
-.gym-equipement-header {
+.equipment-header-wrapper {
   width: 100%;
-  padding: 5rem 5rem;
-  padding-top: 10rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+  margin: 0 auto;
+  padding: 10rem var(--page-gutter) 2.5rem;
 }
 .gym-gallery-section {
   position: relative;

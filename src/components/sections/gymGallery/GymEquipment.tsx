@@ -12,6 +12,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import "./GymGallery.css";
+import SectionHeader from "@/components/layout/Headers/SectionHeader";
 
 interface GalleryMedia {
   id: string;
@@ -369,9 +370,14 @@ export default function GymEquipement() {
 
   return (
     <>
-      <div className="gym-equipement-header">
-        <h2>Gym Equipement</h2>
-        <p>Equipping you to be stronger, fitter, and healthier.</p>
+      <div className="equipment-header-wrapper">
+        <SectionHeader
+          label="PREMIUM EQUIPMENT"
+          headTop="Strength Starts,"
+          headBottom="With Better Tools."
+          description="Professional gym equipment and free weights that help you build strength, improve fitness, and train with complete confidence."
+          sectionName="equipment"
+        />
       </div>
       <section ref={sectionRef} className="gym-gallery-section" id="gallery">
         {/* 100vh Fullscreen Background Main Stage Media */}

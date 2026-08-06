@@ -1,5 +1,5 @@
 .ledger {
-  background: #050505;
+  background: black;
   color: #f5f5f5;
   padding: clamp(3rem, 5vw, 5rem) var(--page-gutter);
   display: flex;
@@ -53,7 +53,13 @@
   top: 18%;
   bottom: 18%;
   width: 1px;
-  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.12) 20%, rgba(255, 255, 255, 0.12) 80%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 20%,
+    rgba(255, 255, 255, 0.12) 80%,
+    transparent 100%
+  );
   transform-origin: top center;
   pointer-events: none;
 }
@@ -168,4 +174,3 @@
     transform: none;
   }
 }
-
