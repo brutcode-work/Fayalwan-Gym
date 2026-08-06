@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Introduction.css";
+import SectionHeader from "@/components/layout/Headers/SectionHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,6 +103,15 @@ export default function Introduction() {
             Start today
           </a>
         </div> */}
+        <SectionHeader
+          label="OUR PHILOSOPHY"
+          headTop={"Every strong body"}
+          headBottom={"starts with one decision."}
+          description={
+            "Real fitness is built one workout at a time. Show up consistently, trust the process, and let progress follow naturally."
+          }
+          sectionName={"bento"}
+        />
         <div className="bento-grid">
           {/* b-photo : tall image card, quote overlay */}
           <div className="b-cell b-photo">
