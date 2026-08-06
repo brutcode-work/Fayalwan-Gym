@@ -220,12 +220,15 @@ Fayalwan-Gym/
 - **Photography**: Unsplash placeholders in the `HOURS` array — swap `image` for the real shoot,
   keep the order and the `light` colour-temperature values.
 
-### F. 100vh GymGallery Pill Tag Removal & Bottom Heading + <p> Quote Paragraph
-- **Files**: `src/components/sections/gymGallery/GymGallery.tsx` & `GymGallery.css`
-- **Changes**:
-  - **Removed Pill Tag**: Completely removed `.active-item-meta-center` (the rounded glass pill tag).
-  - **Bottom Active Slide Text Block**: Rendered `.active-slide-text-block` directly above the 5 thumbnail cards, featuring the category headline (`.active-slide-title`) and the quote paragraph (`.active-slide-quote`) right underneath.
-  - **Uncluttered 100vh Stage**: Left the center of the 100vh stage completely open for full-bleed media viewing, keeping all typography cleanly anchored above the thumbnail navigation filmstrip.
+### K. 06 // Coaches — Minimal & Awwwards Editorial Section
+- **Files**: `src/components/sections/coaches/CoachesSection.tsx` & `CoachesSection.css` (mounted directly after `<GymServices />` in `src/app/page.tsx`).
+- **Headline / Concept**: "People buy coaches. Not gyms." — minimalist editorial layout featuring high-contrast typography, monospace section numbering (`06 // EXPERT COACHING`), and a glassmorphic manifesto banner ribbon.
+- **Coach Profiles**: Detailed profiles for 4 specialists (Alex Varghese, Priya Menon, Rahul Nair, Dr. Ananya Sharma), featuring:
+  - Experience (e.g. `12+ Years High-Performance Coaching`)
+  - Certifications (glassmorphic pills, e.g. `NSCA - CSCS`, `ISSA Master Trainer`, `Precision Nutrition L2`)
+  - Specialties (bullet list with vector SVG arrows, e.g. `Biomechanics & Hypertrophy`, `Powerlifting Peak Prep`)
+  - Pull quotes & portrait imagery with hover zoom & scale transitions.
+- **GSAP Animations**: Header rise reveal, manifesto banner slide, and staggered card entrance animations with reduced-motion support.
 
 ---
 
@@ -236,3 +239,4 @@ Fayalwan-Gym/
 3. **TypeScript Strictness**: Keep interfaces clean; avoid `any` types wherever possible.
 4. **GSAP Scope**: Always use `scope: sectionRef` in `useGSAP()` to avoid target selector leaks across components.
 5. **Memory Updating**: **ALWAYS update this `agentmemory.md` file after making architectural or design changes.**
+

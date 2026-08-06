@@ -1,0 +1,320 @@
+/* -------------------------------------------------------------------------- */
+/*  06 // COACHES — header block, then a pinned stack of full-height cards     */
+/*                                                                            */
+/*  The cards are absolutely positioned on top of one another inside the       */
+/*  pinned wrapper and slide up to cover the previous one as you scroll.       */
+/*  Tone alternates: odd cards sit on --bg-color, even cards on the accent.    */
+/*                                                                            */
+/*  Motion contract: GSAP owns `transform` on .coach-card. CSS never sets      */
+/*  transform there — insets do the layout — so nothing fights the scrub.      */
+/* -------------------------------------------------------------------------- */
+
+.coaches-section {
+  width: 100%;
+  background-color: var(--bg-secondary, #0a0a09);
+  color: var(--text-primary, #f5f5f5);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Part one — header                                                         */
+/* -------------------------------------------------------------------------- */
+
+.coaches-header-part {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(7.5rem, 12vw, 10.5rem)
+    var(--page-gutter, clamp(1.5rem, 4.17vw, 5rem)) clamp(2rem, 4vw, 3.5rem);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Part two — pinned card stack                                              */
+/* -------------------------------------------------------------------------- */
+
+.coach-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* The card is a two-layer construct:
+   .coach-card       — a transparent full-frame layer that carries the GSAP
+                       translate and centres its inner below the navbar.
+   .coach-card-inner — the visible card, sized to its own content so the image
+                       can never grow taller than the text beside it.          */
+.coach-card {
+  position: absolute;
+  inset: 0 var(--page-gutter, clamp(1.5rem, 4.17vw, 5rem));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Top clearance keeps the centred card clear of the 78px fixed navbar */
+  padding-top: clamp(6rem, 11vh, 7.5rem);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
+}
+
+.coach-card-inner {
+  width: 100%;
+  max-height: 100%;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 4.5rem);
+
+  padding: clamp(1.5rem, 2.6vw, 3rem);
+  border-radius: clamp(1rem, 1.8vw, 1.75rem);
+  overflow: hidden;
+
+  background-color: var(--tone-bg);
+  color: var(--tone-fg);
+  box-shadow: 0 30px 70px -45px rgba(0, 0, 0, 0.9);
+}
+
+/* Layer-promote only the cards that actually move, and only while the stack is
+   live (class toggled by ScrollTrigger). The first card is the static base, so
+   it is never promoted. */
+.coach-wrapper.is-live .coach-card:not(:first-child) {
+  will-change: transform;
+}
+
+.coach-card[data-tone="dark"] {
+  --tone-bg: var(--bg-color, #000000);
+  --tone-fg: #ffffff;
+  --tone-muted: rgba(255, 255, 255, 0.6);
+  --tone-faint: rgba(255, 255, 255, 0.42);
+  --tone-line: rgba(255, 255, 255, 0.14);
+  --tone-chip: rgba(255, 255, 255, 0.07);
+}
+
+.coach-card[data-tone="accent"] {
+  --tone-bg: var(--svg-path, #e85d04);
+  --tone-fg: #0b0b0c;
+  --tone-muted: rgba(11, 11, 12, 0.72);
+  --tone-faint: rgba(11, 11, 12, 0.58);
+  --tone-line: rgba(11, 11, 12, 0.18);
+  --tone-chip: rgba(255, 255, 255, 0.22);
+}
+
+/* Alternating sides, mirroring the tone flip */
+.coach-card[data-flip="true"] .coach-card-media {
+  order: 2;
+}
+
+/* ---- Media ---- */
+
+/* The image is absolutely positioned so it adds no intrinsic height to the
+   grid. The row height is therefore driven entirely by the text column, and
+   align-items:stretch sizes the media to match it — so the photo tracks the
+   text height exactly instead of ballooning past it. */
+.coach-card-media {
+  position: relative;
+  align-self: stretch;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: clamp(0.6rem, 1.1vw, 1.15rem);
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.coach-card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+/* ---- Body ---- */
+
+.coach-card-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-right: clamp(0rem, 2vw, 2.5rem);
+}
+
+.coach-card-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  font-family: monospace, var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tone-faint);
+}
+
+.eyebrow-num {
+  color: var(--tone-fg);
+}
+
+.coach-card-name {
+  margin: clamp(1.25rem, 2.8vw, 2.5rem) 0 0;
+
+  font-family: var(--font-heading, "Bricolage Grotesque", sans-serif);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  color: var(--tone-fg);
+  text-wrap: balance;
+}
+
+.coach-card-quote {
+  margin: clamp(1.25rem, 2.6vw, 2.25rem) 0 0;
+  max-width: 32ch;
+
+  font-family: var(--font-body, "Outfit", sans-serif);
+  font-size: clamp(1.05rem, 1.3vw, 1.4rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--tone-muted);
+
+  /* The card is a fixed-height box inside a pinned frame — copy length must
+     never be able to push content past the clip edge. */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---- Stats ---- */
+
+.coach-card-stats {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 2.25rem);
+}
+
+.coach-card-stats li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.stat-icon {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  flex-shrink: 0;
+
+  border-radius: 0.55rem;
+  background-color: var(--tone-chip);
+  color: var(--tone-fg);
+}
+
+.stat-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.stat-text strong {
+  font-family: var(--font-body, "Outfit", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--tone-fg);
+}
+
+.stat-text em {
+  font-family: monospace, var(--font-body);
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tone-faint);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Responsive                                                                */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .coach-card-inner {
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .coach-card-name {
+    font-size: clamp(1.75rem, 4.4vw, 2.75rem);
+  }
+
+  .coach-card-quote {
+    -webkit-line-clamp: 2;
+  }
+
+  .coach-card-stats {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .coach-card-inner {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  /* Stacked layout: give the media a fixed aspect so the absolute image has a
+     box to fill, since the text no longer sits beside it to drive its height. */
+  .coach-card-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Media stays on top on small screens regardless of the tone flip */
+  .coach-card[data-flip="true"] .coach-card-media {
+    order: 0;
+  }
+
+  .coach-card-body {
+    padding-right: 0;
+    justify-content: center;
+  }
+
+  .coach-card-quote {
+    -webkit-line-clamp: 2;
+    max-width: none;
+  }
+}
+
+/* Short viewports: shed the optional row rather than let the card clip */
+@media (max-height: 620px) {
+  .coach-card-quote {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Reduced motion — no pin, no slide, cards read as a plain column           */
+/* -------------------------------------------------------------------------- */
+
+.coaches-section[data-static="true"] .coach-wrapper {
+  height: auto;
+  overflow: visible;
+  padding: 0 var(--page-gutter, clamp(1.5rem, 4.17vw, 5rem))
+    clamp(4rem, 8vw, 7rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.coaches-section[data-static="true"] .coach-card {
+  position: relative;
+  inset: auto;
+  padding: 0;
+}
+
+.coaches-section[data-static="true"] .coach-card-media {
+  min-height: 20rem;
+}
