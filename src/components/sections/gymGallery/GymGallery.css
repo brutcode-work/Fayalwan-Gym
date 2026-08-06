@@ -1,7 +1,7 @@
 /* ---------- GymGallery 100vh WES Awwwards Gallery ---------- */
 .equipment-header-wrapper {
   width: 100%;
-
+  background-color: var(--bg-secondary);
   margin: 0 auto;
   padding: 10rem var(--page-gutter) 2.5rem;
 }
@@ -10,7 +10,7 @@
   width: 100%;
   height: 100vh;
   min-height: 700px;
-  background: #000000;
+  background: var(--bg-secondary);
   color: #ffffff;
   overflow: hidden;
 }

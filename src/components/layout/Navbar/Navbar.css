@@ -85,14 +85,14 @@
 
 /* Contact Us Button */
 .navbar-cta-btn {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: rgba(255, 255, 255);
+  color: #000;
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
   padding: 0.6rem 1.35rem;
-  border-radius: 10px;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
