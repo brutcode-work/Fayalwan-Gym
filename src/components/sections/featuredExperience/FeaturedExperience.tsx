@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./FeaturedExperience.css";
+import SectionHeader from "@/components/layout/Headers/SectionHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,11 +35,9 @@ const EXPERIENCES = [
     label: "CERTIFIED TRAINERS",
     copy: (
       <>
-        Train under seasoned{" "}
-        <HighlightText text="fitness professionals" />{" "}
+        Train under seasoned <HighlightText text="fitness professionals" />{" "}
         <HighlightText text="certified in biomechanics" />, strength
-        conditioning, and{" "}
-        <HighlightText text="injury prevention" /> to maximize
+        conditioning, and <HighlightText text="injury prevention" /> to maximize
         your results safely.
       </>
     ),
@@ -53,9 +52,8 @@ const EXPERIENCES = [
       <>
         Custom workout routines tailored to your body type,{" "}
         <HighlightText text="fitness level" />, and{" "}
-        <HighlightText text="personal goals" />—ensuring{" "}
-        <HighlightText text="direct progress" /> every single
-        week.
+        <HighlightText text="personal goals" />
+        —ensuring <HighlightText text="direct progress" /> every single week.
       </>
     ),
     image:
@@ -67,11 +65,10 @@ const EXPERIENCES = [
     label: "NUTRITIONIST & GENERAL PHYSICIAN",
     copy: (
       <>
-        <HighlightText text="Holistic wellness" /> support
-        featuring expert{" "}
-        <HighlightText text="nutritional meal planning" /> and
-        medical <HighlightText text="health checks" /> to optimize
-        your body from the inside out.
+        <HighlightText text="Holistic wellness" /> support featuring expert{" "}
+        <HighlightText text="nutritional meal planning" /> and medical{" "}
+        <HighlightText text="health checks" /> to optimize your body from the
+        inside out.
       </>
     ),
     image:
@@ -84,8 +81,8 @@ const EXPERIENCES = [
     copy: (
       <>
         Open <HighlightText text="early morning" /> to{" "}
-        <HighlightText text="late night" />, fit your workouts
-        seamlessly around your busy lifestyle with{" "}
+        <HighlightText text="late night" />, fit your workouts seamlessly around
+        your busy lifestyle with{" "}
         <HighlightText text="zero scheduling friction" />.
       </>
     ),
@@ -141,7 +138,7 @@ export default function FeaturedExperience() {
               stagger: 0.025,
               ease: "power1.inOut",
             },
-            "-=0.4"
+            "-=0.4",
           )
           .from(
             chapter.querySelector(".feature-image-wrap"),
@@ -151,26 +148,23 @@ export default function FeaturedExperience() {
               duration: 0.85,
               ease: "power3.out",
             },
-            "-=0.4"
+            "-=0.4",
           );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
     <section className="featured-experience" id="experience" ref={sectionRef}>
       <div className="services-container">
-        {/* Header with title on left and paragraph on right */}
-        <header className="services-section-header">
-          <div className="services-header-title-wrap">
-            <span className="services-badge">WHAT WE OFFER</span>
-            <h2 className="services-main-title">Our Core Services</h2>
-          </div>
-          <p className="services-main-desc">
-            Designed for purpose, guidance, and daily performance. We eliminate the noise so you can focus on building strength that lasts.
-          </p>
-        </header>
+        <SectionHeader
+          label="WHAT WE OFFER"
+          headTop="Your Fitness Journey"
+          headBottom="Starts Right Here Today."
+          description="Get expert guidance, personalized workouts, and the motivation you need to stay consistent and reach your fitness goals with confidence."
+          sectionName="services"
+        />
 
         {/* Services List */}
         <div className="services-list">
@@ -180,8 +174,12 @@ export default function FeaturedExperience() {
                 {/* Left Column: Tag/Label + Description aligned vertically */}
                 <div className="feature-left">
                   <div className="service-tag">
-                    <span className="service-tag__number">{experience.number}</span>
-                    <span className="service-tag__label">{experience.label}</span>
+                    <span className="service-tag__number">
+                      {experience.number}
+                    </span>
+                    <span className="service-tag__label">
+                      {experience.label}
+                    </span>
                   </div>
                   <p className="feature-copy">{experience.copy}</p>
                 </div>
@@ -203,4 +201,3 @@ export default function FeaturedExperience() {
     </section>
   );
 }
-
