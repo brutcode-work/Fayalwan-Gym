@@ -94,14 +94,14 @@ export default function Introduction() {
       ref={sectionRef}
     >
       <div className="bento-inner">
-        <div className="bento-head">
+        {/* <div className="bento-head">
           <h2>
             Don't cut the good stuff. <span>Just add one hour for you.</span>
           </h2>
           <a href="#contact" onClick={(e) => handleScrollTo(e, "contact")}>
             Start today
           </a>
-        </div>
+        </div> */}
         <div className="bento-grid">
           {/* b-photo : tall image card, quote overlay */}
           <div className="b-cell b-photo">

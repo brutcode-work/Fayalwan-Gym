@@ -168,21 +168,26 @@ export default function GymEquipement() {
   const blurVideoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
   const viewportRef = useRef<HTMLDivElement>(null);
 
+  const elapsedRef = useRef(0);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isInView, setIsInView] = useState(false);
 
   const activeItem = GALLERY_ITEMS[activeIndex];
 
   // Helper to advance to next slide
   const nextSlide = () => {
+    elapsedRef.current = 0;
     setProgress(0);
     setActiveIndex((prev) => (prev + 1) % GALLERY_ITEMS.length);
   };
 
   // Select card manually
   const selectMedia = (index: number) => {
+    elapsedRef.current = 0;
     setProgress(0);
     setActiveIndex(index);
   };
@@ -199,42 +204,67 @@ export default function GymEquipement() {
     }
   };
 
-  // Auto-scroll active item into view
+  // Track section visibility — everything below stays idle while off-screen
   useEffect(() => {
-    const activeEl = viewportRef.current?.querySelector(
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.25 },
+    );
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-center active item inside the filmstrip ONLY.
+  // scrollIntoView() is deliberately avoided here: it scrolls every scrollable
+  // ancestor (including the page), which yanked the user back to this section
+  // whenever the timer advanced while they were reading another section.
+  useEffect(() => {
+    if (!isInView) return;
+
+    const viewport = viewportRef.current;
+    const activeEl = viewport?.querySelector<HTMLElement>(
       ".filmstrip-card.active",
     );
-    if (activeEl) {
-      activeEl.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
-  }, [activeIndex]);
+    if (!viewport || !activeEl) return;
 
-  // Handle Image timer progress
+    const cardRect = activeEl.getBoundingClientRect();
+    const viewportRect = viewport.getBoundingClientRect();
+    const delta =
+      cardRect.left +
+      cardRect.width / 2 -
+      (viewportRect.left + viewportRect.width / 2);
+
+    viewport.scrollTo({
+      left: viewport.scrollLeft + delta,
+      behavior: "smooth",
+    });
+  }, [activeIndex, isInView]);
+
+  // Handle Image timer progress — paused entirely while off-screen,
+  // and resumed from where it left off when the section comes back.
   useEffect(() => {
-    setProgress(0);
+    if (!isInView || activeItem.type !== "image") return;
 
-    if (activeItem.type === "image") {
-      const intervalMs = 40;
-      const step = (intervalMs / DEFAULT_IMAGE_DURATION_MS) * 100;
+    const intervalMs = 40;
 
-      const timer = setInterval(() => {
-        setProgress((prev) => {
-          if (prev + step >= 100) {
-            clearInterval(timer);
-            nextSlide();
-            return 100;
-          }
-          return prev + step;
-        });
-      }, intervalMs);
+    const timer = setInterval(() => {
+      elapsedRef.current += intervalMs;
+      const pct = (elapsedRef.current / DEFAULT_IMAGE_DURATION_MS) * 100;
 
-      return () => clearInterval(timer);
-    }
-  }, [activeIndex, activeItem.type]);
+      if (pct >= 100) {
+        setProgress(100);
+        nextSlide();
+      } else {
+        setProgress(pct);
+      }
+    }, intervalMs);
+
+    return () => clearInterval(timer);
+  }, [activeIndex, activeItem.type, isInView]);
 
   // Video timeupdate progress tracking & video frame sync
   const handleVideoTimeUpdate = () => {
@@ -283,13 +313,32 @@ export default function GymEquipement() {
     }
   };
 
-  // Ensure video plays when active index changes
+  // Ensure video plays when active index changes (only while on-screen)
   useEffect(() => {
-    if (bgVideoRef.current && activeItem.type === "video") {
+    if (isInView && bgVideoRef.current && activeItem.type === "video") {
       bgVideoRef.current.play().catch(() => {});
       setIsPlaying(true);
     }
-  }, [activeIndex, activeItem]);
+  }, [activeIndex, activeItem, isInView]);
+
+  // Suspend / resume every video element with the section's visibility
+  useEffect(() => {
+    const thumbs = [
+      ...Object.values(origVideoRefs.current),
+      ...Object.values(blurVideoRefs.current),
+    ];
+
+    if (!isInView) {
+      bgVideoRef.current?.pause();
+      thumbs.forEach((vid) => vid?.pause());
+      return;
+    }
+
+    thumbs.forEach((vid) => vid?.play().catch(() => {}));
+    if (isPlaying && activeItem.type === "video") {
+      bgVideoRef.current?.play().catch(() => {});
+    }
+  }, [isInView, isPlaying, activeItem.type]);
 
   // GSAP ScrollTrigger Entrance Animation
   useGSAP(
