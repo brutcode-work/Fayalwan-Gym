@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./FeaturedExperience.css";
 import SectionHeader from "@/components/layout/Headers/SectionHeader";
+import TagLabel from "@/components/ui/TagLabel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -173,14 +174,7 @@ export default function FeaturedExperience() {
               <div className="feature-chapter__grid">
                 {/* Left Column: Tag/Label + Description aligned vertically */}
                 <div className="feature-left">
-                  <div className="service-tag">
-                    <span className="service-tag__number">
-                      {experience.number}
-                    </span>
-                    <span className="service-tag__label">
-                      {experience.label}
-                    </span>
-                  </div>
+                  <TagLabel label={experience.label} className="service-tag" />
                   <p className="feature-copy">{experience.copy}</p>
                 </div>
 
