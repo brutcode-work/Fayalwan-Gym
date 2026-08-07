@@ -1,8 +1,7 @@
 .section-header {
   width: 100%;
-  margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
+  margin-bottom: clamp(1.75rem, 5vw, 2.75rem);
 }
-
 
 /* ---------- Content ---------- */
 

@@ -226,15 +226,16 @@ Fayalwan-Gym/
   - Pull quotes & portrait imagery with hover zoom & scale transitions.
 - **GSAP Animations**: Header rise reveal, manifesto banner slide, and staggered card entrance animations with reduced-motion support.
 
-### L. 07 // Transformation Stories — Exact Palazzo Monti Pinned Horizontal Scroll
-- **Files**: `src/components/sections/transformationStories/TransformationStories.tsx`, `TransformationStories.css`, & `src/app/layout.tsx`.
-- **Palazzo Monti Reverse-Engineered Architecture**:
-  - Full 100vh column layout matching [palazzomonti.org](https://palazzomonti.org/).
-  - **Panel 01 Editorial Intro**: Replaced `SectionHeader` with clean, full-width Palazzo Monti style editorial paragraphs (`.pm-intro-headline` & `.pm-intro-paragraph`) matching the reference website text column.
-  - **Giant Vertical Architectural Letter Dividers**: (`"F"`, `"P"`, `"R"`, `"O"`, `"V"`, `"E"`): styled with `font-family: var(--font-bricolage), var(--font-heading) !important` (`Bricolage Grotesque`), `font-weight: 500 !important` (matching the exact variable font-weight tier of `h2` headings to prevent browser font fallback), `height: 100vh`, `font-size: clamp(75vh, 100vh, 120vh) !important`, `z-index: 50` (sitting on top of every layer), and `pointer-events: none !important` (allowing mouse/drag events to pass through to images and interactive controls underneath).
-  - Full-height 100vh media columns (`.pm-col-visual-full` with interactive Before/After drag wipe engine & `.pm-col-media-full` full 100vh story imagery).
-  - Editorial text columns with top clearance for fixed Navbar (`padding-top: clamp(6.5rem, 11vh, 8.5rem)`).
-- **Strict Borderless Rule**: `border: none !important` across all elements.
+### L. 07 // Transformation Stories — Single Section 3-Story Gallery Architecture
+- **Files**: `src/components/sections/transformationStories/TransformationStories.tsx` & `TransformationStories.css`.
+- **Architecture**:
+  - **Single Compact Section**: Built as ONE clean landing section (`.mg-single-transformation-section`), removing multi-panel horizontal scroll pinning.
+  - **SectionHeader Outside Map**: `<SectionHeader sectionName="transformation" label="07 // PROVEN EVOLUTION" headTop="TRANSFORMATION STORIES." headBottom="REAL MEMBERS. UNDENIABLE RESULTS." description="..." />` mounted ONCE at the top.
+  - **3-Story Gallery Grid**: Side-by-side 3-column grid displaying the 3 featured member stories (`Devika Nair`, `Karan Malhotra`, `Rohan Sharma`):
+    - High-impact portrait imagery (`aspect-ratio: 4 / 4.5`).
+    - Interactive hover video badge (`WATCH STORY`) triggering the 4K video documentary lightbox modal.
+    - Clean metadata footer below each image (Member Name, Net Fat Drop, Duration, Program, and Focus Story Snippet).
+- **Strict Borderless Rule**: `border: none !important` across all cards, containers, images, and buttons.
 
 ---
 
