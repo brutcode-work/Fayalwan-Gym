@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import "./TransformationStories.css";
-import SectionHeader from "@/components/layout/Headers/SectionHeader";
 import {
   Play,
   X,
@@ -50,7 +49,7 @@ export const STORIES: TransformationStory[] = [
     durationLabel: "6 Months",
     weightChange: "-14.2 KG",
     bodyFatChange: "31% → 18% BF",
-    letter: "P",
+    letter: "E",
     beforeImg:
       "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1200&auto=format&fit=crop",
     afterImg:
@@ -74,7 +73,7 @@ export const STORIES: TransformationStory[] = [
     durationLabel: "4 Months",
     weightChange: "-18.5 KG",
     bodyFatChange: "26% → 12.5% BF",
-    letter: "R",
+    letter: "S",
     beforeImg: "/assets/transformation_1.png",
     afterImg: "/assets/transformation_2.png",
     avatar: "/assets/avatar_2.png",
@@ -96,7 +95,7 @@ export const STORIES: TransformationStory[] = [
     durationLabel: "8 Months",
     weightChange: "-11.0 KG",
     bodyFatChange: "22% → 11% BF",
-    letter: "O",
+    letter: "E",
     beforeImg:
       "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop",
     afterImg:
@@ -120,7 +119,7 @@ export const STORIES: TransformationStory[] = [
     durationLabel: "5 Months",
     weightChange: "-12.8 KG",
     bodyFatChange: "29% → 17% BF",
-    letter: "V",
+    letter: "T",
     beforeImg:
       "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200&auto=format&fit=crop",
     afterImg:
@@ -138,7 +137,11 @@ export const STORIES: TransformationStory[] = [
 
 export default function TransformationStories() {
   const [sliderPos, setSliderPos] = useState(50);
-  const [activeVideo, setActiveVideo] = useState<{ url: string; title: string; name: string } | null>(null);
+  const [activeVideo, setActiveVideo] = useState<{
+    url: string;
+    title: string;
+    name: string;
+  } | null>(null);
   const [isDragging, setIsDragging] = useState(false);
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -154,25 +157,28 @@ export default function TransformationStories() {
 
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 769px) and (prefers-reduced-motion: no-preference)", () => {
-        const getScrollAmount = () => track.scrollWidth - window.innerWidth;
+      mm.add(
+        "(min-width: 769px) and (prefers-reduced-motion: no-preference)",
+        () => {
+          const getScrollAmount = () => track.scrollWidth - window.innerWidth;
 
-        gsap.to(track, {
-          x: () => -getScrollAmount(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            pin: true,
-            scrub: 1,
-            start: "top top",
-            end: () => `+=${getScrollAmount()}`,
-            invalidateOnRefresh: true,
-            anticipatePin: 1,
-          },
-        });
-      });
+          gsap.to(track, {
+            x: () => -getScrollAmount(),
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              pin: true,
+              scrub: 1,
+              start: "top top",
+              end: () => `+=${getScrollAmount()}`,
+              invalidateOnRefresh: true,
+              anticipatePin: 1,
+            },
+          });
+        },
+      );
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   // Drag logic for Before/After Wipe Slider in Panel 1
@@ -221,22 +227,30 @@ export default function TransformationStories() {
       id="transformations"
     >
       <div className="pm-horizontal-track" ref={trackRef}>
-        {/* PANEL 01: INTRO SECTION HEADER + GIANT LETTER "F" + FULL-HEIGHT BEFORE/AFTER SLIDER */}
+        {/* PANEL 01: PALAZZO MONTI EDITORIAL INTRO + GIANT LETTER "F" + FULL-HEIGHT BEFORE/AFTER SLIDER */}
         <div className="pm-panel pm-panel-intro">
-          {/* Column 1: Text Intro */}
+          {/* Column 1: Editorial Text Intro (Palazzo Monti Style) */}
           <div className="pm-col pm-col-text-intro">
-            <SectionHeader
-              sectionName="transformation"
-              label="07 // PROVEN EVOLUTION"
-              headTop="TRANSFORMATION STORIES."
-              headBottom="REAL MEMBERS. UNDENIABLE RESULTS."
-              description="True physical re-engineering isn't just about weight—it's raw discipline, structural strength, and peak human performance."
-            />
+            <span className="pm-intro-label">07 // PROVEN EVOLUTION</span>
+            <h2 className="pm-intro-headline">
+              Fayalwan Gym is Kazhakoottam's high-performance strength
+              sanctuary—where physical limits are re-engineered into lasting
+              power.
+            </h2>
+            <p className="pm-intro-paragraph">
+              Every transformation story featured here is mathematically
+              verified by InBody 770 clinical body composition analysis and
+              1-on-1 certified biomechanics coaching.
+            </p>
+            <p className="pm-intro-paragraph">
+              Scroll horizontally to explore real member evolutions, verifiable
+              metrics, and authentic documentary video stories.
+            </p>
           </div>
 
           {/* Column 2: Giant Architectural Letter "F" (Palazzo Monti Style) */}
           <div className="pm-col pm-col-giant-letter" aria-hidden="true">
-            <span className="pm-giant-char">F</span>
+            <span className="pm-giant-char">R</span>
           </div>
 
           {/* Column 3: Full-Height Interactive Before/After Engine */}
@@ -250,10 +264,7 @@ export default function TransformationStories() {
             >
               {/* After Image Layer */}
               <div className="pm-wipe-layer pm-wipe-after">
-                <img
-                  src={featuredAfterImg}
-                  alt="Member After Transformation"
-                />
+                <img src={featuredAfterImg} alt="Member After Transformation" />
                 <span className="pm-wipe-tag pm-tag-after">AFTER</span>
               </div>
 
@@ -270,10 +281,7 @@ export default function TransformationStories() {
               </div>
 
               {/* Vertical Drag Handle */}
-              <div
-                className="pm-wipe-bar"
-                style={{ left: `${sliderPos}%` }}
-              >
+              <div className="pm-wipe-bar" style={{ left: `${sliderPos}%` }}>
                 <div className="pm-wipe-knob">
                   <Sliders size={14} />
                 </div>
@@ -331,9 +339,13 @@ export default function TransformationStories() {
               <div className="pm-story-meta-line">
                 <span className="pm-meta-name">{story.name}</span>
                 <span className="pm-meta-dot">•</span>
-                <span>{story.age} yrs, {story.profession}</span>
+                <span>
+                  {story.age} yrs, {story.profession}
+                </span>
                 <span className="pm-meta-dot">•</span>
-                <span>Coached by <strong>{story.coach}</strong></span>
+                <span>
+                  Coached by <strong>{story.coach}</strong>
+                </span>
               </div>
 
               <p className="pm-story-body">{story.fullStory}</p>
@@ -345,7 +357,9 @@ export default function TransformationStories() {
                   <span className="pm-stat-lbl">DURATION</span>
                 </div>
                 <div className="pm-stat-box">
-                  <span className="pm-stat-num pm-accent-val">{story.weightChange}</span>
+                  <span className="pm-stat-num pm-accent-val">
+                    {story.weightChange}
+                  </span>
                   <span className="pm-stat-lbl">NET FAT DROP</span>
                 </div>
                 <div className="pm-stat-box">
@@ -374,16 +388,19 @@ export default function TransformationStories() {
         ))}
 
         {/* PANEL 06: PALAZZO MONTI CTA COLUMN */}
+
         <div className="pm-panel pm-panel-cta">
           <div className="pm-col pm-col-giant-letter" aria-hidden="true">
-            <span className="pm-giant-char">E</span>
+            <h1 className="pm-giant-char">E</h1>
           </div>
 
           <div className="pm-col pm-col-cta-card">
             <span className="pm-cta-tag">SCIENTIFIC METRIC ACCURACY</span>
             <h2 className="pm-cta-headline">YOUR BODY. RE-ENGINEERED.</h2>
             <p className="pm-cta-text">
-              Every transformation at Fayalwan is backed by InBody 770 clinical body composition analysis and 1-on-1 certified coaching. No guesswork, no fad diets.
+              Every transformation at Fayalwan is backed by InBody 770 clinical
+              body composition analysis and 1-on-1 certified coaching. No
+              guesswork, no fad diets.
             </p>
 
             <div className="pm-cta-list">

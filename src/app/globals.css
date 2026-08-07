@@ -26,7 +26,7 @@
   --editorial-rail: clamp(15rem, 30vw, 36rem);
   --font-heading: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
   --font-body: var(--font-outfit), "Outfit", sans-serif;
-  --font-bebas: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --font-giant: var(--font-syne), "Syne", sans-serif;
 
   /* Compatibility mappings */
   --accent-color: var(--svg-path);

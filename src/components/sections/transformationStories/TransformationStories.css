@@ -62,44 +62,52 @@
 }
 
 .pm-giant-char {
-  /* height: 100%; */
-  font-family: var(--font-bebas);
-  font-size: clamp(85vh, 150vh, 150vh);
-  /* font-weight: 900; */
-  line-height: 0.75;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: -0.06em;
-  pointer-events: none !important;
-  z-index: 50;
-  display: block;
+  font-family: var(--font-heading) !important;
+  font-size: 150vh !important;
+  font-weight: 400 !important;
+  line-height: 0.8 !important;
+  letter-spacing: -0.04em !important;
 }
 
 /* ---------- 3. INTRO PANEL COLUMNS ---------- */
 
 .pm-col-text-intro {
-  width: clamp(480px, 40vw, 680px);
+  width: clamp(500px, 42vw, 720px);
   padding-top: clamp(6.5rem, 11vh, 8.5rem);
   padding-bottom: clamp(3rem, 5vh, 4rem);
-  padding-left: clamp(3rem, 5vw, 5rem);
-  padding-right: clamp(2rem, 3vw, 3.5rem);
+  padding-left: clamp(3.5rem, 5vw, 6rem);
+  padding-right: clamp(2.5rem, 3.5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
 }
 
-.pm-col-text-intro .section-header {
-  margin-bottom: 0;
+.pm-intro-label {
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--svg-path, #e85d04);
 }
 
-.pm-col-text-intro .section-header h2 {
-  font-size: clamp(2.4rem, 3.8vw, 3.8rem);
-  line-height: 1.05;
+.pm-intro-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0;
 }
 
-.pm-col-text-intro .section-header p {
-  width: 100%;
-  margin-top: 1.25rem;
-  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-  line-height: 1.6;
+.pm-intro-paragraph {
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+  line-height: 1.65;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.65);
+  margin: 0;
 }
 
 /* Full-Height 100vh Before/After Component */

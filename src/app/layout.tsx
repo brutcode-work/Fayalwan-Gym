@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Outfit } from "next/font/google";
+import { Bricolage_Grotesque, Outfit, Syne, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 
@@ -15,6 +15,20 @@ const bricolage = Bricolage_Grotesque({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
+  display: "swap",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
   display: "swap",
 });
 
@@ -35,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${outfit.variable}`}
+      className={`${bricolage.variable} ${outfit.variable} ${syne.variable} ${bebas.variable}`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>

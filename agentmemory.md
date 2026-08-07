@@ -208,11 +208,7 @@ Fayalwan-Gym/
   slide on the time and name, crossfade on the frame, 1.06 → 1 Ken Burns on the plate, and a
   `scaleX` hairline that reads as a clock from 05:00 to 22:00.
 - **Layout invariant**: all five hours are stacked in one grid cell (`grid-area: 1 / 1`), so the
-  frame, time, name and line must resolve to identical coordinates for every hour. This required
-  `min-height: 2.8em` on `.room__line` (bottom-aligned column — a one-line hour otherwise dragged
-  the numeral 25–114px off baseline) and `justify-content: flex-start` in the stacked ≤820px
-  layout (bottom-alignment there shifted the frame 22px). **Verify both if the copy changes.**
-- **Mask invariant**: spacing between the time and the name lives on `.room__mask + .room__mask`,
+  frame, time- **Mask invariant**: spacing between the time and the name lives on `.room__mask + .room__mask`,
   never on `.room__time` / `.room__name`. A mask box taller than its content means `yPercent: ±100`
   shifts the element by its own height only and leaves it visible in the leftover margin — which
   rendered all five names stacked on top of each other. Assert `maskHeight === contentHeight`.
@@ -231,11 +227,11 @@ Fayalwan-Gym/
 - **GSAP Animations**: Header rise reveal, manifesto banner slide, and staggered card entrance animations with reduced-motion support.
 
 ### L. 07 // Transformation Stories — Exact Palazzo Monti Pinned Horizontal Scroll
-- **Files**: `src/components/sections/transformationStories/TransformationStories.tsx` & `TransformationStories.css` (mounted directly after `<CoachesSection />` in `src/app/page.tsx`).
-- **Header**: Standardized `<SectionHeader sectionName="transformation" label="07 // PROVEN EVOLUTION" headTop="TRANSFORMATION STORIES." headBottom="REAL MEMBERS. UNDENIABLE RESULTS." description="..." />`.
+- **Files**: `src/components/sections/transformationStories/TransformationStories.tsx`, `TransformationStories.css`, & `src/app/layout.tsx`.
 - **Palazzo Monti Reverse-Engineered Architecture**:
   - Full 100vh column layout matching [palazzomonti.org](https://palazzomonti.org/).
-  - Giant vertical letter dividers (`"F"`, `"P"`, `"R"`, `"O"`, `"V"`, `"E"`): styled with `height: 100vh`, `font-size: clamp(85vh, 108vh, 125vh)`, `z-index: 50` (sitting on top of every layer), and `pointer-events: none !important` (allowing mouse/drag events to pass through to images and interactive controls underneath).
+  - **Panel 01 Editorial Intro**: Replaced `SectionHeader` with clean, full-width Palazzo Monti style editorial paragraphs (`.pm-intro-headline` & `.pm-intro-paragraph`) matching the reference website text column.
+  - **Giant Vertical Architectural Letter Dividers**: (`"F"`, `"P"`, `"R"`, `"O"`, `"V"`, `"E"`): styled with `font-family: var(--font-bricolage), var(--font-heading) !important` (`Bricolage Grotesque`), `font-weight: 500 !important` (matching the exact variable font-weight tier of `h2` headings to prevent browser font fallback), `height: 100vh`, `font-size: clamp(75vh, 100vh, 120vh) !important`, `z-index: 50` (sitting on top of every layer), and `pointer-events: none !important` (allowing mouse/drag events to pass through to images and interactive controls underneath).
   - Full-height 100vh media columns (`.pm-col-visual-full` with interactive Before/After drag wipe engine & `.pm-col-media-full` full 100vh story imagery).
   - Editorial text columns with top clearance for fixed Navbar (`padding-top: clamp(6.5rem, 11vh, 8.5rem)`).
 - **Strict Borderless Rule**: `border: none !important` across all elements.
@@ -248,5 +244,7 @@ Fayalwan-Gym/
 2. **No Ad-Hoc Utilities**: Prefer global CSS variables and co-located CSS files over inline style objects.
 3. **TypeScript Strictness**: Keep interfaces clean; avoid `any` types wherever possible.
 4. **GSAP Scope**: Always use `scope: sectionRef` in `useGSAP()` to avoid target selector leaks across components.
+5. **Memory Updating**: **ALWAYS update this `agentmemory.md` file after making architectural or design changes.** CSS variables and co-located CSS files over inline style objects.
+3. **TypeScript Strictness**: Keep interfaces clean; avoid `any` types wherever possible.
+4. **GSAP Scope**: Always use `scope: sectionRef` in `useGSAP()` to avoid target selector leaks across components.
 5. **Memory Updating**: **ALWAYS update this `agentmemory.md` file after making architectural or design changes.**
-
