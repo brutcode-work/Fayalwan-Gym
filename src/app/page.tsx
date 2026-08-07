@@ -20,7 +20,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <YoutubeGallery />
+
       <Stats />
       <Introduction />
       <FeaturedExperience />
@@ -31,6 +31,7 @@ export default function Home() {
       <TransformationStories />
       <PricingSection />
       <CurrentOffers />
+      <YoutubeGallery />
 
       {/* <MachinesSection /> */}
 
