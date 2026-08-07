@@ -1,0 +1,199 @@
+/* ==========================================================================
+   MINIMAL AWWWARDS EDITORIAL PRICING CARDS
+   ========================================================================== */
+
+.pricing-section {
+  position: relative;
+  background-color: var(--bg-secondary);
+  color: #ffffff;
+  width: 100%;
+  padding: clamp(6rem, 10vh, 9rem) var(--page-gutter);
+  box-sizing: border-box;
+  border: none !important;
+}
+
+.pricing-container {
+  max-width: 1550px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- 4-COLUMN PRICING CARDS GRID ---------- */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.2rem, 1.8vw, 1.8rem);
+  width: 100%;
+  align-items: stretch;
+}
+
+.pricing-card {
+  background-color: var(--bg-color);
+  padding: clamp(1.8rem, 2.2vw, 2.2rem) clamp(1.4rem, 1.8vw, 1.8rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  border: none !important;
+  height: 100%;
+}
+
+/* Pure Accent Background Hover (No Opacity) */
+.pricing-card:hover {
+  background-color: var(--svg-path) !important;
+  color: #000000 !important;
+}
+
+.pricing-card:hover .plan-index,
+.pricing-card:hover .plan-label-name,
+.pricing-card:hover .price-amount,
+.pricing-card:hover .price-period,
+.pricing-card:hover .plan-description,
+.pricing-card:hover .plan-feature-row,
+.pricing-card:hover .feature-check-icon,
+.pricing-card:hover .plan-cta-btn {
+  color: #000000 !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.card-top-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. Small Editorial Index & Label */
+
+.plan-label-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.plan-index {
+  color: #e85d04;
+}
+
+.plan-label-name {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 2. Large Dominant Price */
+
+.plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.price-amount {
+  font-family: var(--font-body);
+  font-size: clamp(2.4rem, 3.2vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.035em;
+}
+
+.price-period {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* 3. Short Supporting Sentence */
+
+.plan-description {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0 0 1.25rem 0;
+  min-height: 2.6rem; /* Ensures equal description height across all 4 cards */
+}
+
+/* 4. Minimal Feature List (Exactly 3 Rows) */
+
+.plan-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.plan-feature-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.feature-check-icon {
+  color: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.pricing-card:hover .feature-check-icon {
+  color: #e85d04;
+}
+
+/* 5. Bottom Anchored CTA with Divider */
+
+.plan-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+  margin-top: auto;
+}
+
+.plan-cta-btn:hover {
+  color: #e85d04;
+  border-color: rgba(232, 93, 4, 0.4);
+}
+
+/* ---------- RESPONSIVE BREAKPOINTS ---------- */
+
+@media (max-width: 1200px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plan-description {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}

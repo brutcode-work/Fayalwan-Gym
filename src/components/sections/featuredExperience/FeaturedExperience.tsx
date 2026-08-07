@@ -5,49 +5,91 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./FeaturedExperience.css";
+import SectionHeader from "@/components/layout/Headers/SectionHeader";
+import TagLabel from "@/components/ui/TagLabel";
 
 gsap.registerPlugin(ScrollTrigger);
+
+/* Spaces are emitted as real text nodes, not wrapped in a span, and the character
+   spans stay `display: inline`. An inline-block cannot collapse its whitespace
+   against adjacent text, so wrapping words in one stacked the space inside the
+   span on top of the JSX `{" "}` beside it and inflated the line by ~5%. */
+function HighlightText({ text }: { text: string }) {
+  return (
+    <span className="accent-highlight">
+      {Array.from(text).map((char, index) =>
+        char === " " ? (
+          " "
+        ) : (
+          <span key={index} className="accent-char">
+            {char}
+          </span>
+        ),
+      )}
+    </span>
+  );
+}
 
 const EXPERIENCES = [
   {
     number: "01",
-    label: "THE TRAINING FLOOR",
-    copy: "Good training starts with room to focus. The floor is built for the work: clean equipment, smart flow, no distractions.",
-    image: "https://i.pinimg.com/1200x/45/46/fc/4546fc5ffd64de80d59c84ab3632ecb4.jpg",
-    subImage: "https://i.pinimg.com/1200x/29/92/b9/2992b9241d3cb85047584a4072a0fad9.jpg",
-    caption: "EQUIPMENT THAT KEEPS UP.",
-    navLinks: ["equipment", "platforms", "benches", "racks", "barbells"],
-    titleSerif: "STRENGTH"
+    label: "CERTIFIED TRAINERS",
+    copy: (
+      <>
+        Train under seasoned <HighlightText text="fitness professionals" />{" "}
+        <HighlightText text="certified in biomechanics" />, strength
+        conditioning, and <HighlightText text="injury prevention" /> to maximize
+        your results safely.
+      </>
+    ),
+    image:
+      "https://i.pinimg.com/1200x/29/92/b9/2992b9241d3cb85047584a4072a0fad9.jpg",
+    caption: "EXPERT KNOWLEDGE. REAL RESULTS.",
   },
   {
     number: "02",
-    label: "COACHES WHO NOTICE",
-    copy: "You do not need a crowd shouting at you. You need someone who sees your form, knows your goal, and helps you progress.",
-    image: "https://i.pinimg.com/1200x/29/92/b9/2992b9241d3cb85047584a4072a0fad9.jpg",
-    subImage: "https://i.pinimg.com/1200x/38/48/e8/3848e895c7cf23b599c2d3976c46324f.jpg",
-    caption: "REAL GUIDANCE. EVERY SESSION.",
-    navLinks: ["philosophy", "roster", "guidance", "hours"],
-    titleSerif: "ATTENTION"
+    label: "PERSONALIZED COACHING",
+    copy: (
+      <>
+        Custom workout routines tailored to your body type,{" "}
+        <HighlightText text="fitness level" />, and{" "}
+        <HighlightText text="personal goals" />
+        —ensuring <HighlightText text="direct progress" /> every single week.
+      </>
+    ),
+    image:
+      "https://i.pinimg.com/1200x/2a/66/48/2a664810e4ceb127f6c05012c4373d1f.jpg",
+    caption: "TAILORED STRATEGY. ZERO GUESSWORK.",
   },
   {
     number: "03",
-    label: "CONSISTENCY, NOT PRESSURE",
-    copy: "No extreme promises. Just a place that makes it easier to return tomorrow, then again the day after that.",
-    image: "https://i.pinimg.com/1200x/38/48/e8/3848e895c7cf23b599c2d3976c46324f.jpg",
-    subImage: "https://i.pinimg.com/736x/67/e2/5c/67e25c07a15665d0f9b4540282d1b21f.jpg",
-    caption: "THE HABIT IS THE WIN.",
-    navLinks: ["routine", "habit", "rhythm", "community"],
-    titleSerif: "RHYTHM"
+    label: "NUTRITIONIST & GENERAL PHYSICIAN",
+    copy: (
+      <>
+        <HighlightText text="Holistic wellness" /> support featuring expert{" "}
+        <HighlightText text="nutritional meal planning" /> and medical{" "}
+        <HighlightText text="health checks" /> to optimize your body from the
+        inside out.
+      </>
+    ),
+    image:
+      "https://i.pinimg.com/1200x/ca/23/f3/ca23f37dc7423d83d0f275cc31340492.jpg",
+    caption: "COMPLETE HEALTH & RECOVERY.",
   },
   {
     number: "04",
-    label: "BUILT FOR EVERYDAY LIFE",
-    copy: "Train for more energy at work, better sleep at night, and the confidence to feel capable in your own body.",
-    image: "https://i.pinimg.com/736x/67/e2/5c/67e25c07a15665d0f9b4540282d1b21f.jpg",
-    subImage: "https://i.pinimg.com/1200x/45/46/fc/4546fc5ffd64de80d59c84ab3632ecb4.jpg",
-    caption: "STRONGER OUTSIDE THE GYM, TOO.",
-    navLinks: ["vitality", "sleep", "recovery", "longevity"],
-    titleSerif: "VITALITY"
+    label: "FLEXIBLE TIMINGS",
+    copy: (
+      <>
+        Open <HighlightText text="early morning" /> to{" "}
+        <HighlightText text="late night" />, fit your workouts seamlessly around
+        your busy lifestyle with{" "}
+        <HighlightText text="zero scheduling friction" />.
+      </>
+    ),
+    image:
+      "https://i.pinimg.com/1200x/40/00/cf/4000cff6fe2255dd0da061d7afcb2857.jpg",
+    caption: "TRAIN ON YOUR SCHEDULE.",
   },
 ];
 
@@ -57,166 +99,99 @@ export default function FeaturedExperience() {
 
   useGSAP(
     () => {
-      const cards = gsap.utils.toArray<HTMLElement>(".feature-chapter");
-      
-      // 1. Entrance reveals for each card
-      cards.forEach((card) => {
-        const infoHeader = card.querySelector(".info-header");
-        const infoTitle = card.querySelector(".info-title");
-        const infoCopy = card.querySelector(".info-copy");
-        const mockupBody = card.querySelector(".mockup-body");
+      // Header animation
+      gsap.from(".services-section-header", {
+        scrollTrigger: {
+          trigger: ".services-section-header",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
 
-        const tl = gsap.timeline({
+      // Chapter items animation
+      gsap.utils.toArray<HTMLElement>(".feature-chapter").forEach((chapter) => {
+        const timeline = gsap.timeline({
           scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            once: true,
+            trigger: chapter,
+            start: "top 75%",
+            // Reverses on the way back up so the orange fill resets to white and
+            // replays on the next pass down, rather than firing once forever.
+            toggleActions: "play none none reverse",
           },
         });
 
-        tl.fromTo(
-          [infoHeader, infoTitle, infoCopy],
-          { opacity: 0, y: 35 },
-          { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: "power3.out" }
-        );
-
-        tl.fromTo(
-          mockupBody,
-          { opacity: 0, scale: 0.96, y: 25 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.6"
-        );
-      });
-
-      // 2. Responsive stacking scroll animations
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 961px)", () => {
-        cards.forEach((card, index) => {
-          if (index === cards.length - 1) return; // Last card stays default
-
-          const nextCard = cards[index + 1];
-          const overlay = card.querySelector(".card-stack-overlay");
-
-          gsap.to(card, {
-            scrollTrigger: {
-              trigger: nextCard,
-              start: "top 95%",
-              end: "top 12%",
-              scrub: true,
+        timeline
+          .from(chapter.querySelectorAll(".service-tag, .feature-copy"), {
+            y: 24,
+            opacity: 0,
+            duration: 0.75,
+            stagger: 0.12,
+            ease: "power3.out",
+          })
+          .to(
+            chapter.querySelectorAll(".accent-char"),
+            {
+              color: "#E85D04",
+              duration: 0.05,
+              stagger: 0.025,
+              ease: "power1.inOut",
             },
-            scale: 0.94,
-            yPercent: -4,
-            ease: "none",
-          });
-
-          if (overlay) {
-            gsap.to(overlay, {
-              scrollTrigger: {
-                trigger: nextCard,
-                start: "top 95%",
-                end: "top 12%",
-                scrub: true,
-              },
-              opacity: 0.5,
-              ease: "none",
-            });
-          }
-        });
+            "-=0.4",
+          )
+          .from(
+            chapter.querySelector(".feature-image-wrap"),
+            {
+              y: 30,
+              opacity: 0,
+              duration: 0.85,
+              ease: "power3.out",
+            },
+            "-=0.4",
+          );
       });
-
-      return () => mm.revert();
     },
     { scope: sectionRef }
   );
 
   return (
     <section className="featured-experience" id="experience" ref={sectionRef}>
-      <div className="experience-cards-container" ref={containerRef}>
-        {EXPERIENCES.map((experience, index) => {
-          const isOdd = index % 2 === 0;
+      <div className="services-container">
+        <SectionHeader
+          label="WHAT WE OFFER"
+          headTop="Your Fitness Journey"
+          headBottom="Starts Right Here Today."
+          description="Get expert guidance, personalized workouts, and the motivation you need to stay consistent and reach your fitness goals with confidence."
+          sectionName="services"
+        />
 
-          return (
-            <article
-              className="feature-chapter"
-              key={experience.number}
-              style={{ zIndex: (index + 1) * 10 }}
-            >
-              <div className="card-stack-overlay" />
-              <div className="feature-card__split">
-                {isOdd ? (
-                  <>
-                    {/* Left: Info */}
-                    <div className="feature-card__info">
-                      <div className="info-header">
-                        <span className="info-kicker">FAHALWAN GYM CHAPTER</span>
-                        <span className="info-number">{experience.number} // 2026</span>
-                      </div>
-                      <div className="info-content">
-                        <h2 className="info-title">{experience.label}</h2>
-                        <p className="info-copy">{experience.copy}</p>
-                      </div>
-                    </div>
+        {/* Services List */}
+        <div className="services-list">
+          {EXPERIENCES.map((experience) => (
+            <article className="feature-chapter" key={experience.number}>
+              <div className="feature-chapter__grid">
+                {/* Left Column: Tag/Label + Description aligned vertically */}
+                <div className="feature-left">
+                  <TagLabel label={experience.label} className="service-tag" />
+                  <p className="feature-copy">{experience.copy}</p>
+                </div>
 
-                    {/* Right: Mockup */}
-                    <div className="feature-card__mockup">
-                      <div className="mockup-body">
-                        <div className="mockup-image-frame">
-                          <img
-                            src={experience.image}
-                            alt={experience.label}
-                            loading="lazy"
-                          />
-                          <div className="mockup-caption-overlay">
-                            {experience.caption}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Left: Canvas Overlap Design */}
-                    <div className="feature-card__mockup">
-                      <div className="mockup-body">
-                        <div className="mockup-canvas">
-                          <div className="mockup-canvas-bg">
-                            <img
-                              src={experience.image}
-                              alt={experience.label}
-                              loading="lazy"
-                            />
-                          </div>
-                          <span className="mockup-serif-overlay">
-                            {experience.titleSerif}
-                          </span>
-                          <div className="mockup-sub-image">
-                            <img
-                              src={experience.subImage}
-                              alt="Detail visual"
-                              loading="lazy"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right: Info */}
-                    <div className="feature-card__info">
-                      <div className="info-header">
-                        <span className="info-kicker">FAHALWAN GYM CHAPTER</span>
-                        <span className="info-number">{experience.number} // 2026</span>
-                      </div>
-                      <div className="info-content">
-                        <h2 className="info-title">{experience.label}</h2>
-                        <p className="info-copy">{experience.copy}</p>
-                      </div>
-                    </div>
-                  </>
-                )}
+                {/* Right Column: Image */}
+                <figure className="feature-image-wrap">
+                  <img
+                    src={experience.image}
+                    alt={experience.label}
+                    loading="lazy"
+                  />
+                  <figcaption>{experience.caption}</figcaption>
+                </figure>
               </div>
             </article>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
