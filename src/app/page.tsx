@@ -17,7 +17,6 @@ import YoutubeGallery from "@/components/sections/youtube/YoutubeGallery";
 import Faq from "@/components/sections/faq/Faq";
 import Contact from "@/components/sections/contact/Contact";
 import CustomerReview from "@/components/sections/customerReview/CustomerReview";
->>>>>>> akhil
 
 export default function Home() {
   return (
