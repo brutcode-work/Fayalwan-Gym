@@ -57,6 +57,65 @@ Fayalwan-Gym/
 │   │   │   ├── contact/               # Contact & location details
 │   │   │   └── about/                 # About section
 │   │   └── ui/                # Reusable micro UI components
+# Agent Memory - Fayalwan Gym
+
+## 1. Executive Summary & Project Mission
+**Fayalwan Gym** is a high-performance fitness sanctuary located in Kazhakoottam, Trivandrum, Kerala.
+- **Brand Slogan**: *"Turn Physical Limits Into Strength That Endures"*
+- **Core Value Proposition**: Elite strength training, athletic conditioning, and personalized coaching accessible at ₹120/day.
+- **Repository Location**: `c:\Users\sathl\OneDrive\Desktop\CLIENT-WORK\Fayalwan-Gym`
+- **Active Git Branch**: `viv`
+- **Memory Protocol**: **MUST update this `agentmemory.md` file after each set of architectural, component, or design changes.**
+
+---
+
+## 2. Tech Stack & Key Dependencies
+
+| Layer | Technology / Library | Version | Description |
+|---|---|---|---|
+| **Framework** | Next.js (App Router) | `16.2.12` | Server-rendered & client-hydrated modern web app |
+| **UI Library** | React | `19.2.4` | Modern React 19 concurrent features |
+| **Language** | TypeScript | `^5.0.0` | Strict static typing across all components |
+| **Styling** | Vanilla CSS / CSS Modules | Custom | Global CSS tokens + per-component CSS scoping |
+| **Smooth Scrolling** | Lenis | `1.3.25` | Inertia-based butter-smooth scroll behavior |
+| **Animations** | GSAP & `@gsap/react` | `3.15.0` / `2.1.2` | Timeline animations, ScrollTrigger transitions |
+| **Carousels** | Swiper | `14.0.7` | Touch-enabled responsive sliders |
+| **Icons** | Lucide React | `1.28.0` | Clean SVG icon set |
+
+---
+
+## 3. Project Architecture & Directory Layout
+
+```
+Fayalwan-Gym/
+├── public/                    # Static assets (images, icons, SVG badges)
+├── src/
+│   ├── app/                   # Next.js App Router root
+│   │   ├── globals.css        # Global CSS variables, reset, font imports
+│   │   ├── layout.tsx         # Root layout wrapping SmoothScrollProvider
+│   │   └── page.tsx           # Main homepage composition
+│   ├── components/
+│   │   ├── layout/            # Application structural components
+│   │   │   ├── Navbar/        # Navigation header & mobile overlay (Border-bottom removed)
+│   │   │   └── Footer/        # Footer section
+│   │   ├── providers/         # Global React context providers
+│   │   │   └── SmoothScrollProvider.tsx # Lenis + GSAP ScrollTrigger sync
+│   │   ├── sections/          # Homepage landing sections
+│   │   │   ├── hero/                  # Full-bleed hero banner, preloader & gallery
+│   │   │   ├── introduction/          # Bento Grid section & core philosophy
+│   │   │   ├── featuredExperience/    # Interactive features & GSAP animations
+│   │   │   ├── signaturePrograms/     # Program showcases with Swiper & custom cursor
+│   │   │   ├── gymFamily/             # Founders & Coaches asymmetric editorial gallery
+│   │   │   ├── gymGallery/            # 100vh Cinema Theater with Bottom Headline & <p> Quote Paragraph
+│   │   │   ├── menifesto/             # Gym manifesto & core values
+│   │   │   ├── story/                 # Brand origin story
+│   │   │   ├── transformationStories/ # Client transformation showcases
+│   │   │   ├── storiesThatInspires/   # Inspiration feature cards
+│   │   │   ├── customerReview/        # Testimonials & reviews
+│   │   │   ├── faq/                   # FAQ accordion
+│   │   │   ├── contact/               # Contact & location details
+│   │   │   └── about/                 # About section
+│   │   └── ui/                # Reusable micro UI components
 ├── agentmemory.md             # Persistent agent memory & change log
 ├── package.json               # Node dependencies & npm scripts
 ├── next.config.ts             # Next.js framework configuration
@@ -76,12 +135,15 @@ Fayalwan-Gym/
 - Active core sections mounted in order:
   1. `<Navbar />`
   2. `<Hero />`
-  3. `<Introduction />`
-  4. `<FeaturedExperience />`
-  5. `<SignaturePrograms />`
-  6. `<GymFamily />`
-  7. `<GymGallery />`
-  8. `<Menifesto />`
+  3. `<Stats />`
+  4. `<Introduction />`
+  5. `<FeaturedExperience />`
+  6. `<GymEquipement />`
+  7. `<GymServices />`
+  8. `<CoachesSection />`
+  9. `<TransformationStories />`
+  10. `<PricingSection />`
+  11. `<Menifesto />`
 
 ### C. Styling Rules & Aesthetics
 - **Theme**: Dark mode, sleek editorial high-contrast aesthetic.
@@ -92,7 +154,6 @@ Fayalwan-Gym/
 ---
 
 ## 5. Development & Build Commands
-
 - **Development Server**: `npm run dev`
 - **Production Build**: `npm run build`
 - **Start Production Server**: `npm run start`
@@ -102,119 +163,9 @@ Fayalwan-Gym/
 
 ## 6. Recent Session Changelog & Component Updates
 
-### A. Introduction Section (Bento Grid V2)
-- **Files**: `src/components/sections/introduction/Introduction.tsx` & `Introduction.css`
-- **Changes**: Rebuilt section as a 12-column responsive Bento Grid layout with custom scoped design tokens and GSAP ScrollTrigger reveals.
-
-### B. Signature Programs Custom Swipe Cursor
-- **Files**: `src/components/sections/signaturePrograms/SignaturePrograms.tsx` & `SignaturePrograms.css`
-- **Changes**: Added a custom floating "SWIPE" cursor powered by `gsap.quickTo` tracking coordinates with CSS-driven state triggers.
-
-### C. Hero Section Preloader & Infinite Swiper Gallery
-- **Files**: `src/components/sections/hero/Hero.tsx` & `Hero.css`
-- **Changes**: Cinematic GSAP preloader (scatter -> bottom align -> slide top), Awwwards `.hero-text-mask` reveals, strict `.is-loaded` cursor gating, and Pinterest video/image Swiper loop.
-
-### D. Navbar Glassmorphism & Border Removal
+### A. Navbar Solid Black Background
 - **Files**: `src/components/layout/Navbar/Navbar.css`
-- **Changes**: Dark black glassmorphic styling (`rgba(5, 5, 5, 0.75)` + `backdrop-filter: blur(16px)`), neutral typography weights (`400`/`500`), glass pill CTA button, and removed `border-bottom` (`border-bottom: none`).
-
-### J. GymServices — clip-path row reveal with bespoke easing
-- **Files**: `services/GymServices.tsx` & `GymServices.css`
-- **Easing**: two `CustomEase` curves (CustomEase ships free in gsap 3.15) —
-  `servicesOut` = `M0,0 C0.16,1 0.3,1 1,1` (expo-out) for entrances, `servicesInOut` =
-  `M0,0 C0.76,0 0.24,1 1,1` (quart-in-out) for exits. Entrances and exits deliberately use
-  different curves *and* durations so leaving never reads as the entrance rewound.
-  Choreography: the orange bar leads, the image trails it by 0.06s on enter; on leave the
-  image clears faster (0.38s) than the bar (0.45s).
-- **Image reveal**: driven purely by `clip-path`, never opacity or scale. Rests at
-  `inset(0% 0% 100% 0%)` (collapsed against the top), wipes down to `inset(0% 0% 0% 0%)`.
-  On leave it *keeps going down* to `inset(100% 0% 0% 0%)` then `gsap.set`s back to the top
-  state in `onComplete`. **Both collapsed states have zero height, so that reset is
-  invisible** — that trick is what buys directional continuity without a jump, and it stays
-  interruptible because every intermediate state is a valid inset.
-- **No border-radius, border or box-shadow on the image.** The shadow is not just a style
-  choice: `clip-path` clips an element's shadow too, so it would be invisible at rest and
-  would smear during the wipe.
-- **Guard**: handlers bail on `!matchMedia("(min-width: 901px)")`, mirroring the 900px
-  breakpoint where CSS sets `clip-path: none`. Do **not** use `(hover: hover)` here — this
-  project's automated browser (and some hybrid devices) report it false, which silently
-  disables the whole interaction.
-
-### I. FeaturedExperience — per-character highlight must stay `display: inline`
-- **Files**: `featuredExperience/FeaturedExperience.tsx` (`HighlightText`) & `.css` (`.accent-char`)
-- **The bug**: characters were wrapped in `.accent-char { display: inline-block }` inside
-  `.accent-word { display: inline-block }`, with the inter-word space rendered *inside* the word
-  span. An inline-block cannot collapse its whitespace against adjacent text, so that inner space
-  stacked on top of the JSX `{" "}` next to it. Measured result: the paragraph rendered **96px
-  (5.1%) wider** than the same sentence as plain text, with visible double gaps and a floating
-  space before commas. Per-character inline-blocks also kill kerning and ignore the parent's
-  `letter-spacing: -0.03em`.
-- **The fix**: no word wrapper at all; spaces are emitted as real text nodes and `.accent-char`
-  is `display: inline`. Only `color` is animated, so nothing needs its own box. All four
-  paragraphs now measure within 0.5px of plain text.
-- **If you ever need transforms per character** (y, rotate, scale), inline won't work — but then
-  wrap *words* in inline-block and keep the separating spaces **outside** those spans, never inside.
-- **Name collision**: `.accent-word` is also defined in `menifesto/Overlap.css` as a pill style for
-  "CORE"/"MODEL". These are global stylesheets — the same class name in two sections is a live
-  hazard. Check both before touching either.
-
-### H. Fonts — never use `@import url()` in CSS on this project
-- **Files**: `src/app/layout.tsx`, `src/app/globals.css`, `introduction/Introduction.css`
-- **The trap**: **Turbopack silently strips external `@import url("https://fonts.googleapis.com/...")`
-  from CSS files.** No error, no warning — the rule simply never reaches the browser, so every
-  `font-family` falls back to system sans-serif while DevTools still shows the declared family.
-  Both `globals.css` and `Introduction.css` had one, so Outfit *and* Bricolage Grotesque were
-  never loading site-wide.
-- **The fix**: fonts are loaded with `next/font/google` in `app/layout.tsx`, which self-hosts them
-  and exposes `--font-bricolage` / `--font-outfit`. The `.variable` classes go on `<html>`, and
-  `globals.css` maps `--font-heading` / `--font-body` onto them.
-- **Diagnosing this again**: `[...document.fonts].map(f => f.family)` in the console. If the
-  expected families are absent, the @font-face never loaded — do **not** trust the computed
-  `font-family` string, which shows the declaration regardless. Confirm rendering by measuring the
-  same string in the target font vs a fallback; different widths prove the real face is in use.
-
-### G. Stats — thin ledger band between Hero and Introduction
-- **Files**: `src/components/sections/stats/Stats.tsx` & `Stats.css` (mounted in `page.tsx`
-  between `<Hero />` and `<Introduction />`).
-- **Design**: a small factual band (~246px tall at 1440), six entries on the page gutter, numbers
-  in Outfit 300 with `tabular-nums` and `-0.045em`, labels in the system's `monospace .68rem/700/.12em`,
-  1px vertical hairlines between entries. Accent `#e85d04` is restricted to the suffix glyph
-  (`+`, `★`). Deliberately **no top rule** — the hero's bottom bar already carries one ~40px above
-  and doubling them reads as an accident.
-- **Motion**: one `ScrollTrigger` (`start: "top 88%"`, `once: true`) inside `gsap.matchMedia`.
-  Hairlines draw down (`scaleY`), then values and labels rise out of masks with a 0.06 stagger —
-  the same masked-reveal vocabulary as `.hero-text-mask`, not a count-up ticker.
-- **Constraint**: values and labels are `white-space: nowrap` inside overflow-hidden masks, so any
-  entry too wide for its column is **silently sheared** (a `₹120/DAY` value cost 5px this way).
-  Keep values short and suffixes to a single glyph. Same mask rule as GymFamily: spacing lives on
-  `.ledger__mask + .ledger__mask`, never on the value or label.
-- **Grid**: 6 columns → 3 at ≤1080 → 2 at ≤620, with the leading hairline of each row hidden via
-  `nth-child` overrides. Re-check those overrides if the number of stats changes from six.
-
-### E. GymFamily — rebuilt as "One Room, All Day"
-- **Files**: `src/components/sections/gymFamily/GymFamily.tsx` & `GymFamily.css`
-- **Why**: The previous versions (asymmetric gallery, then a kinetic-typography pin at `19rem`
-  image-filled text) broke the site's design system. Nothing else on the page goes above ~5.5rem,
-  and no other section invents its own palette or ignores `--editorial-rail`.
-- **Concept**: One fixed window onto the training floor, observed at five hours of a single day
-  (`05:12 → 21:48`). The frame never moves; only the hour, the person, the light and the picture
-  inside it change. The final beat is the empty room.
-- **System compliance**: `#050505` canvas, `--page-gutter` / `--editorial-rail` grid (same as
-  `FeaturedExperience` / `SignaturePrograms`), Outfit only, `monospace .7rem/700/.12em` micro-labels,
-  `#e85d04` accent restricted to the kicker number and the day hairline, images desaturated
-  (`saturate(.68) contrast(1.06)`) and contained rather than full-bleed.
-- **Motion**: single pinned `ScrollTrigger` (`+=440%`, `scrub: 0.9`) built inside `gsap.matchMedia`
-  under `(prefers-reduced-motion: no-preference)`. Only `opacity` / `transform` animate — masked
-  slide on the time and name, crossfade on the frame, 1.06 → 1 Ken Burns on the plate, and a
-  `scaleX` hairline that reads as a clock from 05:00 to 22:00.
-- **Layout invariant**: all five hours are stacked in one grid cell (`grid-area: 1 / 1`), so the
-  frame, time- **Mask invariant**: spacing between the time and the name lives on `.room__mask + .room__mask`,
-  never on `.room__time` / `.room__name`. A mask box taller than its content means `yPercent: ±100`
-  shifts the element by its own height only and leaves it visible in the leftover margin — which
-  rendered all five names stacked on top of each other. Assert `maskHeight === contentHeight`.
-- **Reduced motion**: no pin, no timeline; the chapter unrolls as five static editorial spreads.
-- **Photography**: Unsplash placeholders in the `HOURS` array — swap `image` for the real shoot,
-  keep the order and the `light` colour-temperature values.
+- **Changes**: Set `.navbar-container` and `.mobile-menu-overlay` background to solid black (`background: #000000 !important; background-color: #000000 !important;`).
 
 ### K. 06 // Coaches — Minimal & Awwwards Editorial Section
 - **Files**: `src/components/sections/coaches/CoachesSection.tsx` & `CoachesSection.css` (mounted directly after `<GymServices />` in `src/app/page.tsx`).
@@ -236,6 +187,20 @@ Fayalwan-Gym/
     - Interactive hover video badge (`WATCH STORY`) triggering the 4K video documentary lightbox modal.
     - Clean metadata footer below each image (Member Name, Net Fat Drop, Duration, Program, and Focus Story Snippet).
 - **Strict Borderless Rule**: `border: none !important` across all cards, containers, images, and buttons.
+
+### M. 08 // Pricing Section — Minimal Awwwards Editorial Architecture
+- **Files**: `src/components/sections/pricing/PricingSection.tsx` & `PricingSection.css`.
+- **Refactored Minimal Pricing Card Architecture**:
+  - **Header Configuration**: Removed custom `font-size` CSS override (`clamp(2rem, 3.2vw, 3.4rem)`) so the heading inherits the exact standard site-wide `SectionHeader` font size (`clamp(3rem, 5vw, 5rem)`). Label set to `"ACCESSIBLE PRICING"`, top line set to 3 words (`headTop="Transparent Athletic Tiering."`), bottom line set to 2 words (`headBottom="World-Class Access."`).
+  - **Background Colors & Pure Accent Hover**: Section background mapped to `var(--bg-secondary)` (`#0a0a09`), and all 4 cards mapped uniformly to `var(--bg-color)` (`black`).
+  - **Pure Accent Hover State**: On hover (`.pricing-card:hover`), cards transition to pure accent background (`var(--svg-path)` / `#e85d04` with no opacity/dark mixing and no scale/lift transform), and text/checkmarks/CTA automatically invert to high-contrast `#000000` text for maximum editorial impact.
+  - **Exact Refined Content**:
+    - **CARD 01**: `01  DAILY ACCESS` | `₹120 / day` | `Drop in. Train hard. No commitment.` | 3 features (`Full gym access`, `Olympic & strength equipment`, `Locker & shower`) | `GET DAY PASS  →`.
+    - **CARD 02**: `02  MONTHLY ATHLETE` | `₹1,999 / month` | `Consistent progress. Built for regular training.` | 3 features (`Unlimited gym floor access`, `Biweekly InBody 770 scan`, `Locker & recovery zone`) | `START MONTHLY  →`.
+    - **CARD 03**: `03  QUARTERLY RECOMP` | `₹4,999 / 3 months` | `A structured path toward measurable change.` | 3 features (`3 months unlimited access`, `3 InBody 770 scans`, `Custom workout blueprint`) | `JOIN PROGRAM  →`.
+    - **CARD 04**: `04  ANNUAL SANCTUARY` | `₹14,999 / year` | `Maximum value for long-term commitment.` | 3 features (`12 months unlimited access`, `Monthly InBody 770 scans`, `Dedicated coach reviews`) | `CLAIM ANNUAL PASS  →`.
+  - **Visual Alignment**: 4-column desktop layout with equal height cards (`display: flex; flex-direction: column; justify-content: space-between;`), anchored bottom CTA with `border-top` divider.
+- **Strict Borderless Rule**: `border: none !important` across all cards, containers, and buttons.
 
 ---
 

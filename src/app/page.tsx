@@ -10,6 +10,7 @@ import Menifesto from "@/components/sections/menifesto/Menifesto";
 import GymServices from "@/components/sections/services/GymServices";
 import CoachesSection from "@/components/sections/coaches/CoachesSection";
 import TransformationStories from "@/components/sections/transformationStories/TransformationStories";
+import PricingSection from "@/components/sections/pricing/PricingSection";
 import MachinesSection from "@/components/sections/machines/MachinesSection";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <GymServices />
       <CoachesSection />
       <TransformationStories />
+      <PricingSection />
       {/* <MachinesSection /> */}
 
       {/* <GymFamily /> */}

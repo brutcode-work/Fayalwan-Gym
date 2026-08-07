@@ -9,9 +9,8 @@
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
-  background: rgba(10, 10, 10, 0.5);
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
+  background: #000000 !important;
+  background-color: #000000 !important;
 }
 
 .navbar-container.hidden {
@@ -138,9 +137,8 @@
   overflow: hidden;
   margin: 0 1.5rem 1rem 1.5rem;
   border-radius: 16px;
-  background: rgba(12, 12, 14, 0.95);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: #000000 !important;
+  background-color: #000000 !important;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
