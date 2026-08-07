@@ -2,11 +2,34 @@
 
 import "./CurrentOffers.css";
 import SectionHeader from "@/components/layout/Headers/SectionHeader";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { ArrowRight, Check } from "lucide-react";
+import { useRef } from "react";
 
 export default function CurrentOffers() {
+  const sectionRef = useRef(null);
+  const bannerRef = useRef(null);
+
+  useGSAP(() => {
+    const timeLine = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 30%",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    });
+
+    timeLine.to(bannerRef.current, {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+    });
+  }, []);
   return (
-    <section className="current-offers-section" id="offers">
+    <section ref={sectionRef} className="current-offers-section" id="offers">
       <div className="offers-container">
         {/* SectionHeader Component */}
         <SectionHeader
@@ -16,7 +39,9 @@ export default function CurrentOffers() {
           description="Unlock special seasonal rates, zero registration fees, and complimentary InBody 770 clinical tracking engineered for Trivandrum's athletes."
           sectionName="offers"
         />
-
+        <div ref={bannerRef} className="promotional-banner">
+          <img src="/promotion/promotion-banner.png" alt="" />
+        </div>
         {/* Wide Editorial Offer Container */}
         <div className="editorial-offer-card">
           {/* Top Meta Row */}
@@ -40,7 +65,8 @@ export default function CurrentOffers() {
               </span>
 
               <p className="offer-editorial-desc">
-                A limited-time offer for athletes ready to commit to serious training.
+                A limited-time offer for athletes ready to commit to serious
+                training.
               </p>
             </div>
 

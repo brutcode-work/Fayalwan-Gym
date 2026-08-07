@@ -24,6 +24,14 @@
   text-transform: none !important;
 }
 
+/* banner */
+
+.promotional-banner {
+  width: 100%;
+  clip-path: polygon(10% 20%, 90% 20%, 90% 80%, 10% 80%);
+  will-change: clip-path;
+}
+
 /* ---------- WIDE EDITORIAL OFFER CONTAINER ---------- */
 
 .editorial-offer-card {
