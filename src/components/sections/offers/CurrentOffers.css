@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CURRENT OFFERS SECTION — SINGLE FEATURED PROMOTION ARCHITECTURE
+   CURRENT OFFERS SECTION — WIDE EDITORIAL PROMOTION ARCHITECTURE
    ========================================================================== */
 
 .current-offers-section {
@@ -20,172 +20,245 @@
   flex-direction: column;
 }
 
-/* ---------- SECTION HEADER OVERRIDES ---------- */
-
 .offers-section-header h2 {
   text-transform: none !important;
 }
 
-/* ---------- SINGLE FEATURED SHOWCASE CARD ---------- */
+/* ---------- WIDE EDITORIAL OFFER CONTAINER ---------- */
 
-.single-offer-card {
+.editorial-offer-card {
   background-color: var(--bg-secondary);
-  padding: clamp(2.5rem, 4vw, 4rem);
+  padding: clamp(2.5rem, 4.5vw, 4.5rem);
   width: 100%;
   box-sizing: border-box;
-  border: none !important;
-}
-
-.single-offer-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: clamp(3rem, 5vw, 6rem);
-  align-items: center;
-}
-
-/* Left Main Info Column */
-
-.single-offer-main {
   display: flex;
   flex-direction: column;
+  border: none !important;
+  transition: background-color 0.3s ease;
 }
 
-.single-offer-meta-row {
+.editorial-offer-card:hover {
+  background-color: var(--svg-path) !important;
+  color: #000000 !important;
+}
+
+/* Top Meta Row */
+
+.offer-editorial-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
-}
-
-.single-offer-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   font-family: monospace;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #e85d04;
   text-transform: uppercase;
 }
 
-.single-offer-index {
-  font-family: monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
+.offer-label-badge {
+  color: #e85d04;
+  transition: color 0.3s ease;
+}
+
+.editorial-offer-card:hover .offer-label-badge {
+  color: #000000 !important;
+}
+
+.offer-label-index {
   color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
 }
 
-.single-offer-title {
+.editorial-offer-card:hover .offer-label-index {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Dividers */
+
+.offer-editorial-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  transition: background-color 0.3s ease;
+}
+
+.editorial-offer-card:hover .offer-editorial-divider {
+  background-color: rgba(0, 0, 0, 0.18) !important;
+}
+
+/* ---------- MAIN TWO-COLUMN EDITORIAL GRID ---------- */
+
+.offer-editorial-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: start;
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+}
+
+/* Left Column */
+
+.offer-col-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-editorial-title {
   font-family: var(--font-body);
-  font-size: clamp(2rem, 3.2vw, 3.2rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.08;
   color: #ffffff;
-  margin: 0 0 0.85rem 0;
-  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.03em;
+  transition: color 0.3s ease;
 }
 
-.single-offer-discount {
+.editorial-offer-card:hover .offer-editorial-title {
+  color: #000000 !important;
+}
+
+.offer-editorial-discount {
   display: inline-block;
-  align-self: flex-start;
   font-family: monospace;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #e85d04;
   text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.35rem;
+  transition: color 0.3s ease;
 }
 
-.single-offer-desc {
+.editorial-offer-card:hover .offer-editorial-discount {
+  color: #000000 !important;
+  font-weight: 800;
+}
+
+.offer-editorial-desc {
   font-family: var(--font-body);
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0 0 1.5rem 0;
-  max-width: 650px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  max-width: 580px;
+  transition: color 0.3s ease;
 }
 
-.single-offer-validity {
-  font-family: monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.45);
-  text-transform: uppercase;
+.editorial-offer-card:hover .offer-editorial-desc {
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Right Inclusions Side Column */
+/* Right Column: Inclusions */
 
-.single-offer-side {
+.offer-col-right {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-color);
-  padding: clamp(1.8rem, 2.5vw, 2.5rem);
-  border: none !important;
+  gap: 1.2rem;
 }
 
-.side-features-label {
+.inclusions-title {
   font-family: monospace;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  transition: color 0.3s ease;
 }
 
-.single-offer-features {
+.editorial-offer-card:hover .inclusions-title {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.inclusions-list {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  margin-bottom: 2.2rem;
 }
 
-.single-feature-row {
+.inclusion-item {
   display: flex;
   align-items: center;
   gap: 0.65rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease;
 }
 
-.feature-check {
+.editorial-offer-card:hover .inclusion-item {
+  color: #000000 !important;
+}
+
+.inclusion-check {
   color: #e85d04;
   flex-shrink: 0;
+  transition: color 0.3s ease;
 }
 
-/* CTA Action Button */
+.editorial-offer-card:hover .inclusion-check {
+  color: #000000 !important;
+}
 
-.single-offer-cta {
+/* ---------- BOTTOM ROW ---------- */
+
+.offer-editorial-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.offer-bottom-validity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.editorial-offer-card:hover .offer-bottom-validity {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.offer-editorial-cta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 1rem 1.25rem;
-  background-color: var(--svg-path);
-  color: #000000;
+  gap: 0.6rem;
+  color: #ffffff;
   font-family: monospace;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 0.25s ease;
-  border: none !important;
+  transition: color 0.25s ease;
 }
 
-.single-offer-cta:hover {
-  background-color: #ffffff;
+.editorial-offer-card:hover .offer-editorial-cta {
+  color: #000000 !important;
 }
 
 /* ---------- RESPONSIVE BREAKPOINTS ---------- */
 
 @media (max-width: 1000px) {
-  .single-offer-layout {
+  .offer-editorial-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .offer-editorial-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
 }

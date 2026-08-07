@@ -2,24 +2,7 @@
 
 import "./CurrentOffers.css";
 import SectionHeader from "@/components/layout/Headers/SectionHeader";
-import { ArrowRight, Tag, Check } from "lucide-react";
-
-export const FEATURED_OFFER = {
-  id: "featured-offer",
-  category: "SPECIAL PROMOTION",
-  title: "Seasonal Athletic Recomp Pass",
-  discountBadge: "FLAT 20% OFF + 1 MONTH FREE",
-  description:
-    "Exclusive seasonal promotion for high-performance memberships. Lock in zero admission fees and full InBody 770 clinical tracking.",
-  validity: "Limited Season Window • First 50 Enrolments",
-  features: [
-    "Applicable on 3M & 12M plans",
-    "Biweekly InBody 770 clinical scans",
-    "Zero admission or registration fee",
-    "1-on-1 Biomechanics coach assessment",
-  ],
-  ctaText: "CLAIM SPECIAL OFFER",
-};
+import { ArrowRight, Check } from "lucide-react";
 
 export default function CurrentOffers() {
   return (
@@ -34,42 +17,70 @@ export default function CurrentOffers() {
           sectionName="offers"
         />
 
-        {/* Single Featured Offer Showcase Card */}
-        <div className="single-offer-card">
-          <div className="single-offer-layout">
-            {/* Left Column: Metadata & Headline */}
-            <div className="single-offer-main">
-              <div className="single-offer-meta-row">
-                <div className="single-offer-badge">
-                  <Tag size={14} />
-                  <span>{FEATURED_OFFER.category}</span>
+        {/* Wide Editorial Offer Container */}
+        <div className="editorial-offer-card">
+          {/* Top Meta Row */}
+          <div className="offer-editorial-top">
+            <span className="offer-label-badge">SPECIAL PROMOTION</span>
+            <span className="offer-label-index">01 / 01</span>
+          </div>
+
+          <div className="offer-editorial-divider" />
+
+          {/* Main 2-Column Editorial Grid */}
+          <div className="offer-editorial-grid">
+            {/* Left Column: Title, Discount & Description */}
+            <div className="offer-col-left">
+              <h3 className="offer-editorial-title">
+                Seasonal Athletic <br /> Recomp Pass
+              </h3>
+
+              <span className="offer-editorial-discount">
+                FLAT 20% OFF + 1 MONTH FREE
+              </span>
+
+              <p className="offer-editorial-desc">
+                A limited-time offer for athletes ready to commit to serious training.
+              </p>
+            </div>
+
+            {/* Right Column: What's Included */}
+            <div className="offer-col-right">
+              <span className="inclusions-title">WHAT'S INCLUDED</span>
+              <div className="inclusions-list">
+                <div className="inclusion-item">
+                  <Check size={14} className="inclusion-check" />
+                  <span>Applicable on 3M & 12M plans</span>
                 </div>
-                <span className="single-offer-index">01 / 01</span>
+                <div className="inclusion-item">
+                  <Check size={14} className="inclusion-check" />
+                  <span>Biweekly InBody 770 scans</span>
+                </div>
+                <div className="inclusion-item">
+                  <Check size={14} className="inclusion-check" />
+                  <span>Zero admission or registration fee</span>
+                </div>
+                <div className="inclusion-item">
+                  <Check size={14} className="inclusion-check" />
+                  <span>1-on-1 biomechanics assessment</span>
+                </div>
               </div>
+            </div>
+          </div>
 
-              <h3 className="single-offer-title">{FEATURED_OFFER.title}</h3>
-              <span className="single-offer-discount">{FEATURED_OFFER.discountBadge}</span>
-              <p className="single-offer-desc">{FEATURED_OFFER.description}</p>
-              <span className="single-offer-validity">{FEATURED_OFFER.validity}</span>
+          <div className="offer-editorial-divider" />
+
+          {/* Bottom Meta & CTA Row */}
+          <div className="offer-editorial-bottom">
+            <div className="offer-bottom-validity">
+              <span>LIMITED SEASON WINDOW</span>
+              <span>FIRST 50 ENROLMENTS</span>
             </div>
 
-            {/* Right Column: Inclusions & CTA */}
-            <div className="single-offer-side">
-              <span className="side-features-label">WHAT'S INCLUDED:</span>
-              <div className="single-offer-features">
-                {FEATURED_OFFER.features.map((feat, idx) => (
-                  <div key={idx} className="single-feature-row">
-                    <Check size={14} className="feature-check" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-
-              <a href="#contact" className="single-offer-cta">
-                <span>{FEATURED_OFFER.ctaText}</span>
-                <ArrowRight size={14} />
-              </a>
-            </div>
+            <a href="#contact" className="offer-editorial-cta">
+              <span>CLAIM OFFER</span>
+              <ArrowRight size={14} />
+            </a>
           </div>
         </div>
       </div>

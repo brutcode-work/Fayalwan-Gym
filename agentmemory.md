@@ -200,14 +200,15 @@ Fayalwan-Gym/
     - **CARD 03**: `03  QUARTERLY RECOMP` | `₹4,999 / 3 months` | `A structured path toward measurable change.` | 3 features (`3 months unlimited access`, `3 InBody 770 scans`, `Custom workout blueprint`) | `JOIN PROGRAM  →`.
     - **CARD 04**: `04  ANNUAL SANCTUARY` | `₹14,999 / year` | `Maximum value for long-term commitment.` | 3 features (`12 months unlimited access`, `Monthly InBody 770 scans`, `Dedicated coach reviews`) | `CLAIM ANNUAL PASS  →`.
   - **Visual Alignment**: 4-column desktop layout with equal height cards (`display: flex; flex-direction: column; justify-content: space-between;`), anchored bottom CTA with `border-top` divider.
-### N. 09 // Current Offers — Single Featured Promotion Architecture
+### N. 09 // Current Offers — Wide 2-Column Desktop Editorial Architecture
 - **Files**: `src/components/sections/offers/CurrentOffers.tsx` & `CurrentOffers.css` (mounted directly after `<PricingSection />` in `src/app/page.tsx`).
-- **Single Featured Offer Architecture**:
-  - **Tabs Removed**: Removed category tab bar as requested (`only one offer displayed`).
-  - **Showcase Card**: Single high-impact 2-column showcase card displaying the active client promotion:
-    - **Headline & Offer Details**: `Seasonal Athletic Recomp Pass` (`FLAT 20% OFF + 1 MONTH FREE`), muted description & validity indicator (`Limited Season Window • First 50 Enrolments`).
-    - **Inclusions & CTA**: Key inclusions checklist with SVG checkmarks & high-contrast CTA button (`CLAIM SPECIAL OFFER  →`).
-- **Strict Borderless Rule**: `border: none !important` across all cards, containers, and buttons.
+- **Wide Editorial Layout (85–90% Content Width)**:
+  - **Full Container Alignment**: Removed narrow `max-width: 900px` limitation. Container expands to full section width (`100%`, `max-width: 1550px`), consistent with the pricing section grid above.
+  - **Desktop 2-Column Grid**:
+    - **Left Column**: Title (`Seasonal Athletic Recomp Pass`), Discount Tag (`FLAT 20% OFF + 1 MONTH FREE`), and refined description (`"A limited-time offer for athletes ready to commit to serious training."`).
+    - **Right Column**: `WHAT'S INCLUDED` checklist with 4 checkmark rows.
+  - **Top & Bottom Rows**: Top meta (`SPECIAL PROMOTION` / `01 / 01`) and bottom row (`LIMITED SEASON WINDOW / FIRST 50 ENROLMENTS` on left, `CLAIM OFFER  →` on right).
+- **Strict Borderless Rule**: `border: none !important` across all containers, dividers, and buttons.
 
 ---
 
