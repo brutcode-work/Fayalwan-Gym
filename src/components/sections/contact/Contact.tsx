@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import "./Contact.css";
 import { MapPin, Phone, Compass, Clock } from "lucide-react";
+import SectionHeader from "@/components/layout/Headers/SectionHeader";
 
 interface Timing {
   day: string;
@@ -29,14 +30,14 @@ export default function Contact() {
 
   return (
     <section className="contact-section" id="contact">
-      <div className="contact-banner">
-        <div className="contact-banner-overlay"></div>
-        <div className="contact-banner-content">
-          <h2 className="contact-main-title">Contact Us</h2>
-          <p className="contact-subtitle">
-            Fayalwan Gym is ready to provide the right training environment and expert coaching tailored to your needs.
-          </p>
-        </div>
+      <div className="contact-header-wrapper">
+        <SectionHeader
+          sectionName="contact"
+          label="CONTACT US"
+          headTop="Get In Touch"
+          headBottom="With Us."
+          description="Fayalwan Gym is ready to provide the right training environment and expert coaching tailored to your needs."
+        />
       </div>
 
       <div className="contact-wrapper">
