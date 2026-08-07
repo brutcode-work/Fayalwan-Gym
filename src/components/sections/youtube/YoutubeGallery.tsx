@@ -157,6 +157,131 @@ const YoutubeGallery = () => {
 
   useGSAP(
     () => {
+      const cleanups: Array<() => void> = [];
+
+      // ------------------------------------------------------------------
+      // MARQUEE ANIMATIONS — only run when they can actually be seen.
+      // Skip entirely for users who prefer reduced motion.
+      // ------------------------------------------------------------------
+      const allowMotion = !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (allowMotion) {
+        // 1. GSAP Infinite Marquee Animations (paused by default)
+        const marqueeLeft = gsap.to(".yt-track-left", {
+          xPercent: -50,
+          repeat: -1,
+          duration: 36,
+          ease: "none",
+          paused: true,
+        });
+
+        const marqueeRight = gsap.fromTo(
+          ".yt-track-right",
+          { xPercent: -50 },
+          {
+            xPercent: 0,
+            repeat: -1,
+            duration: 36,
+            ease: "none",
+            paused: true,
+          }
+        );
+
+        const marqueeLeftFast = gsap.to(".yt-track-left-fast", {
+          xPercent: -50,
+          repeat: -1,
+          duration: 42,
+          ease: "none",
+          paused: true,
+        });
+
+        const marquees = [marqueeLeft, marqueeRight, marqueeLeftFast];
+
+        // Track DOM nodes so we can promote them to their own GPU layer
+        // ONLY while they are actively animating (avoids permanent layers).
+        const trackEls = gsap.utils.toArray<HTMLElement>([
+          ".yt-track-left",
+          ".yt-track-right",
+          ".yt-track-left-fast",
+        ]);
+
+        // Single source of truth for whether each row should be animating.
+        let inView = false;
+        const rowHover = [false, false, false];
+        const isVisible = () => document.visibilityState === "visible";
+        const layersActive = { current: false };
+
+        const setLayers = (on: boolean) => {
+          if (layersActive.current === on) return;
+          layersActive.current = on;
+          trackEls.forEach((el) => {
+            el.style.willChange = on ? "transform" : "auto";
+          });
+        };
+
+        const syncRow = (idx: number) => {
+          const m = marquees[idx];
+          if (!m) return;
+          if (inView && isVisible() && !rowHover[idx]) m.play();
+          else m.pause();
+        };
+
+        const syncAll = () => {
+          const active = inView && isVisible();
+          setLayers(active); // promote/demote layers with viewport + tab state
+          marquees.forEach((_, i) => syncRow(i));
+        };
+
+        // 2. Play marquees only while the section is in the viewport.
+        //    Uses an IntersectionObserver rather than a second ScrollTrigger:
+        //    the section is pinned (wrapped in a pin-spacer) by the timeline
+        //    below, which corrupts start/end position math for a sibling
+        //    ScrollTrigger. IntersectionObserver reads real rendered geometry,
+        //    is immune to the pin-spacer, and reports the correct state
+        //    immediately on mount.
+        if (sectionRef.current) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              inView = entries[0].isIntersecting;
+              syncAll();
+            },
+            { threshold: 0 }
+          );
+          io.observe(sectionRef.current);
+          cleanups.push(() => io.disconnect());
+        }
+
+        // 2b. Stop everything when the browser tab is backgrounded — no point
+        // spending RAF/GPU on an animation the user cannot see.
+        const onVisibilityChange = () => syncAll();
+        document.addEventListener("visibilitychange", onVisibilityChange);
+        cleanups.push(() =>
+          document.removeEventListener("visibilitychange", onVisibilityChange)
+        );
+
+        // 2c. Pause the hovered row for readability, resume on leave.
+        const rows = sectionRef.current?.querySelectorAll(".yt-row");
+        rows?.forEach((row, idx) => {
+          const onEnter = () => {
+            rowHover[idx] = true;
+            syncRow(idx);
+          };
+          const onLeave = () => {
+            rowHover[idx] = false;
+            syncRow(idx);
+          };
+          row.addEventListener("mouseenter", onEnter);
+          row.addEventListener("mouseleave", onLeave);
+          cleanups.push(() => {
+            row.removeEventListener("mouseenter", onEnter);
+            row.removeEventListener("mouseleave", onLeave);
+          });
+        });
+      }
+
+      // 3. Dynamic vertical overlap target calculation
       const getTargetY = () => {
         if (!sectionRef.current || !wrapperRef.current) return -window.innerHeight;
         const sectionH = sectionRef.current.offsetHeight;
@@ -171,6 +296,7 @@ const YoutubeGallery = () => {
         }
       };
 
+      // 4. Pinned Overlap ScrollTrigger Timeline
       const timeLine = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -178,7 +304,6 @@ const YoutubeGallery = () => {
           end: "+=180%",
           pin: true,
           scrub: 1,
-          anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
@@ -201,6 +326,11 @@ const YoutubeGallery = () => {
           },
           0
         );
+
+      // Cleanup manually-added listeners on unmount / HMR re-run.
+      return () => {
+        cleanups.forEach((fn) => fn());
+      };
     },
     { scope: sectionRef }
   );

@@ -78,41 +78,8 @@
   display: flex;
   gap: 1rem;
   width: max-content;
-  will-change: transform;
-}
-
-.yt-track-left {
-  animation: ytMarqueeLeft 40s linear infinite;
-}
-
-.yt-track-right {
-  animation: ytMarqueeRight 40s linear infinite;
-}
-
-.yt-track-left-fast {
-  animation: ytMarqueeLeft 48s linear infinite;
-}
-
-.yt-row:hover .yt-track {
-  animation-play-state: paused;
-}
-
-@keyframes ytMarqueeLeft {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes ytMarqueeRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
+  /* will-change is toggled from JS only while the marquee is actively
+     animating (in viewport + tab visible) so idle rows don't hold GPU layers. */
 }
 
 /* ---------- YOUTUBE CARD STYLING ---------- */
