@@ -13,6 +13,7 @@ import TransformationStories from "@/components/sections/transformationStories/T
 import PricingSection from "@/components/sections/pricing/PricingSection";
 import CurrentOffers from "@/components/sections/offers/CurrentOffers";
 import MachinesSection from "@/components/sections/machines/MachinesSection";
+import YoutubeGallery from "@/components/sections/youtube/YoutubeGallery";
 import Faq from "@/components/sections/faq/Faq";
 import Contact from "@/components/sections/contact/Contact";
 import CustomerReview from "@/components/sections/customerReview/CustomerReview";
@@ -22,6 +23,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+
       <Stats />
       <Introduction />
       <FeaturedExperience />
@@ -32,6 +34,8 @@ export default function Home() {
       <TransformationStories />
       <PricingSection />
       <CurrentOffers />
+      <YoutubeGallery />
+
       {/* <MachinesSection /> */}
 
       {/* <GymFamily /> */}
