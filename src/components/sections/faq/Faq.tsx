@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./Faq.css";
-import { Plus } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface FaqData {
   id: number;
@@ -44,8 +44,6 @@ interface FaqItemProps {
 }
 
 const FaqItem = ({ item, isActive, onToggle }: FaqItemProps) => {
-  const panelRef = useRef<HTMLDivElement>(null);
-
   return (
     <div className={`faq-item ${isActive ? "active" : ""}`}>
       <div className="faq-question-row" onClick={onToggle}>
@@ -55,17 +53,11 @@ const FaqItem = ({ item, isActive, onToggle }: FaqItemProps) => {
           aria-expanded={isActive}
           aria-label={isActive ? "Close FAQ answer" : "Open FAQ answer"}
         >
-          <Plus className="faq-btn-icon" />
+          <ArrowRight className="faq-btn-icon" />
         </button>
       </div>
 
-      <div
-        ref={panelRef}
-        className="faq-answer-panel"
-        style={{
-          maxHeight: isActive ? `${panelRef.current?.scrollHeight}px` : "0px",
-        }}
-      >
+      <div className="faq-answer-panel">
         <div className="faq-answer-content">
           <p>{item.answer}</p>
         </div>
