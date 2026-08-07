@@ -1,6 +1,7 @@
 .customer-reviews {
   padding: 8rem 5rem;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
+   background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   position: relative;
