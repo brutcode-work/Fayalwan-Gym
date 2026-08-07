@@ -8,26 +8,37 @@ import { ArrowRight, Check } from "lucide-react";
 import { useRef } from "react";
 
 export default function CurrentOffers() {
-  const sectionRef = useRef(null);
-  const bannerRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const timeLine = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 30%",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-    });
+  useGSAP(
+    () => {
+      const timeLine = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 20%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      });
 
-    timeLine.to(bannerRef.current, {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      opacity: 1,
-      duration: 1,
-      ease: "power2.out",
-    });
-  }, []);
+      timeLine
+        .to(bannerRef.current, {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+        })
+        .to(cardRef.current, {
+          y: -150,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+    },
+    { scope: sectionRef },
+  );
+
   return (
     <section ref={sectionRef} className="current-offers-section" id="offers">
       <div className="offers-container">
@@ -39,11 +50,16 @@ export default function CurrentOffers() {
           description="Unlock special seasonal rates, zero registration fees, and complimentary InBody 770 clinical tracking engineered for Trivandrum's athletes."
           sectionName="offers"
         />
+
         <div ref={bannerRef} className="promotional-banner">
-          <img src="/promotion/promotion-banner.png" alt="" />
+          <img
+            src="/promotion/promotion-banner.png"
+            alt="Current Promotion Banner"
+          />
         </div>
+
         {/* Wide Editorial Offer Container */}
-        <div className="editorial-offer-card">
+        <div ref={cardRef} className="editorial-offer-card">
           {/* Top Meta Row */}
           <div className="offer-editorial-top">
             <span className="offer-label-badge">SPECIAL PROMOTION</span>
@@ -70,7 +86,7 @@ export default function CurrentOffers() {
               </p>
             </div>
 
-            {/* Right Column: What's Included */}
+            {/* Right Column: What's Included & Solid CTA Button */}
             <div className="offer-col-right">
               <span className="inclusions-title">WHAT'S INCLUDED</span>
               <div className="inclusions-list">
@@ -91,22 +107,13 @@ export default function CurrentOffers() {
                   <span>1-on-1 biomechanics assessment</span>
                 </div>
               </div>
+
+              {/* Solid High-Impact CTA Button */}
+              <a href="#contact" className="offer-solid-cta-btn">
+                <span>CLAIM OFFER</span>
+                <ArrowRight size={15} />
+              </a>
             </div>
-          </div>
-
-          <div className="offer-editorial-divider" />
-
-          {/* Bottom Meta & CTA Row */}
-          <div className="offer-editorial-bottom">
-            <div className="offer-bottom-validity">
-              <span>LIMITED SEASON WINDOW</span>
-              <span>FIRST 50 ENROLMENTS</span>
-            </div>
-
-            <a href="#contact" className="offer-editorial-cta">
-              <span>CLAIM OFFER</span>
-              <ArrowRight size={14} />
-            </a>
           </div>
         </div>
       </div>

@@ -203,11 +203,10 @@ Fayalwan-Gym/
 ### N. 09 // Current Offers — Wide 2-Column Desktop Editorial Architecture
 - **Files**: `src/components/sections/offers/CurrentOffers.tsx` & `CurrentOffers.css` (mounted directly after `<PricingSection />` in `src/app/page.tsx`).
 - **Wide Editorial Layout (85–90% Content Width)**:
-  - **Full Container Alignment**: Removed narrow `max-width: 900px` limitation. Container expands to full section width (`100%`, `max-width: 1550px`), consistent with the pricing section grid above.
-  - **Desktop 2-Column Grid**:
-    - **Left Column**: Title (`Seasonal Athletic Recomp Pass`), Discount Tag (`FLAT 20% OFF + 1 MONTH FREE`), and refined description (`"A limited-time offer for athletes ready to commit to serious training."`).
-    - **Right Column**: `WHAT'S INCLUDED` checklist with 4 checkmark rows.
-  - **Top & Bottom Rows**: Top meta (`SPECIAL PROMOTION` / `01 / 01`) and bottom row (`LIMITED SEASON WINDOW / FIRST 50 ENROLMENTS` on left, `CLAIM OFFER  →` on right).
+  - **Card Footer Removed**: Removed the bottom validity text footer and hairline divider line from the offer card.
+  - **Solid High-Impact CTA Button**: Replaced text link with `.offer-solid-cta-btn` positioned directly in the right column under `WHAT'S INCLUDED`.
+  - **Button Hover Interaction**: Inverts to solid black (`#000000`) with white text (`#ffffff`) when the card is hovered, with a subtle 2px lift on hover.
+  - **Desktop 2-Column Grid**: Left column (Title, Discount, Description) + Right column (`WHAT'S INCLUDED` checklist & solid CTA button).
 - **Strict Borderless Rule**: `border: none !important` across all containers, dividers, and buttons.
 
 ---

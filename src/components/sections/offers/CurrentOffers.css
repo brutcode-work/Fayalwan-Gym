@@ -35,7 +35,9 @@
 /* ---------- WIDE EDITORIAL OFFER CONTAINER ---------- */
 
 .editorial-offer-card {
-  background-color: var(--bg-secondary);
+  position: relative;
+  z-index: 2;
+  background-color: var(--bg-color);
   padding: clamp(2.5rem, 4.5vw, 4.5rem);
   width: 100%;
   box-sizing: border-box;
@@ -43,6 +45,7 @@
   flex-direction: column;
   border: none !important;
   transition: background-color 0.3s ease;
+  will-change: transform;
 }
 
 .editorial-offer-card:hover {
@@ -103,7 +106,6 @@
   grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(3rem, 6vw, 7rem);
   align-items: start;
-  margin-bottom: clamp(2rem, 3.5vw, 3rem);
 }
 
 /* Left Column */
@@ -159,7 +161,7 @@
   color: rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Right Column: Inclusions */
+/* Right Column: Inclusions & CTA */
 
 .offer-col-right {
   display: flex;
@@ -185,6 +187,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  margin-bottom: 0.5rem;
 }
 
 .inclusion-item {
@@ -211,47 +214,37 @@
   color: #000000 !important;
 }
 
-/* ---------- BOTTOM ROW ---------- */
+/* Solid High-Contrast CTA Button */
 
-.offer-editorial-bottom {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.offer-bottom-validity {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  font-family: monospace;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-.editorial-offer-card:hover .offer-bottom-validity {
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.offer-editorial-cta {
-  display: flex;
+.offer-solid-cta-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  color: #ffffff;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.6rem;
+  background-color: #ffffff;
+  color: #000000;
   font-family: monospace;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: color 0.25s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease;
+  border: none !important;
+  margin-top: 1.25rem;
 }
 
-.editorial-offer-card:hover .offer-editorial-cta {
-  color: #000000 !important;
+.editorial-offer-card:hover .offer-solid-cta-btn {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.offer-solid-cta-btn:hover {
+  transform: translateY(-2px);
 }
 
 /* ---------- RESPONSIVE BREAKPOINTS ---------- */
@@ -260,13 +253,5 @@
   .offer-editorial-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-}
-
-@media (max-width: 650px) {
-  .offer-editorial-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
   }
 }
