@@ -1,5 +1,5 @@
 .contact-section {
-  background-color: var(--bg-color);
+  background-color: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: radial-gradient(circle at top, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(0, 0, 0, 0) 70%), #050505;
+  /* background: radial-gradient(circle at top, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(0, 0, 0, 0) 70%), #050505; */
 }
 
 .contact-banner-overlay {
