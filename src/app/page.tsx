@@ -9,6 +9,7 @@ import GymEquipement from "@/components/sections/gymGallery/GymEquipment";
 import Menifesto from "@/components/sections/menifesto/Menifesto";
 import GymServices from "@/components/sections/services/GymServices";
 import CoachesSection from "@/components/sections/coaches/CoachesSection";
+import TransformationStories from "@/components/sections/transformationStories/TransformationStories";
 import MachinesSection from "@/components/sections/machines/MachinesSection";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       {/* <SignaturePrograms /> */}
       <GymServices />
       <CoachesSection />
+      <TransformationStories />
       {/* <MachinesSection /> */}
 
       {/* <GymFamily /> */}

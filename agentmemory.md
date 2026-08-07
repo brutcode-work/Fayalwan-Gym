@@ -230,6 +230,16 @@ Fayalwan-Gym/
   - Pull quotes & portrait imagery with hover zoom & scale transitions.
 - **GSAP Animations**: Header rise reveal, manifesto banner slide, and staggered card entrance animations with reduced-motion support.
 
+### L. 07 // Transformation Stories — Exact Palazzo Monti Pinned Horizontal Scroll
+- **Files**: `src/components/sections/transformationStories/TransformationStories.tsx` & `TransformationStories.css` (mounted directly after `<CoachesSection />` in `src/app/page.tsx`).
+- **Header**: Standardized `<SectionHeader sectionName="transformation" label="07 // PROVEN EVOLUTION" headTop="TRANSFORMATION STORIES." headBottom="REAL MEMBERS. UNDENIABLE RESULTS." description="..." />`.
+- **Palazzo Monti Reverse-Engineered Architecture**:
+  - Full 100vh column layout matching [palazzomonti.org](https://palazzomonti.org/).
+  - Giant vertical letter dividers (`"F"`, `"P"`, `"R"`, `"O"`, `"V"`, `"E"`): styled with `height: 100vh`, `font-size: clamp(85vh, 108vh, 125vh)`, `z-index: 50` (sitting on top of every layer), and `pointer-events: none !important` (allowing mouse/drag events to pass through to images and interactive controls underneath).
+  - Full-height 100vh media columns (`.pm-col-visual-full` with interactive Before/After drag wipe engine & `.pm-col-media-full` full 100vh story imagery).
+  - Editorial text columns with top clearance for fixed Navbar (`padding-top: clamp(6.5rem, 11vh, 8.5rem)`).
+- **Strict Borderless Rule**: `border: none !important` across all elements.
+
 ---
 
 ## 7. Guidelines for AI Agents Working on this Repo
