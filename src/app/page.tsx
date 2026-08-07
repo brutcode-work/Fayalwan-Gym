@@ -13,12 +13,14 @@ import TransformationStories from "@/components/sections/transformationStories/T
 import PricingSection from "@/components/sections/pricing/PricingSection";
 import CurrentOffers from "@/components/sections/offers/CurrentOffers";
 import MachinesSection from "@/components/sections/machines/MachinesSection";
+import YoutubeGallery from "@/components/sections/youtube/YoutubeGallery";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
+      <YoutubeGallery />
       <Stats />
       <Introduction />
       <FeaturedExperience />
@@ -29,6 +31,7 @@ export default function Home() {
       <TransformationStories />
       <PricingSection />
       <CurrentOffers />
+
       {/* <MachinesSection /> */}
 
       {/* <GymFamily /> */}
