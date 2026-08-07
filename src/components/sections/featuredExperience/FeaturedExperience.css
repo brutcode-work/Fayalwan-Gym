@@ -24,7 +24,7 @@
 }
 
 /* Layout Split */
-.feature-card__split {
+.feature-chapter__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
