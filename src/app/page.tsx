@@ -14,6 +14,10 @@ import PricingSection from "@/components/sections/pricing/PricingSection";
 import CurrentOffers from "@/components/sections/offers/CurrentOffers";
 import MachinesSection from "@/components/sections/machines/MachinesSection";
 import YoutubeGallery from "@/components/sections/youtube/YoutubeGallery";
+import Faq from "@/components/sections/faq/Faq";
+import Contact from "@/components/sections/contact/Contact";
+import CustomerReview from "@/components/sections/customerReview/CustomerReview";
+>>>>>>> akhil
 
 export default function Home() {
   return (
@@ -36,6 +40,9 @@ export default function Home() {
       {/* <MachinesSection /> */}
 
       {/* <GymFamily /> */}
+      <CustomerReview />
+      <Faq />
+      <Contact />
       <Menifesto />
     </main>
   );

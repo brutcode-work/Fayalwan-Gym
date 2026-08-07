@@ -95,6 +95,7 @@ const EXPERIENCES = [
 
 export default function FeaturedExperience() {
   const sectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -153,7 +154,7 @@ export default function FeaturedExperience() {
           );
       });
     },
-    { scope: sectionRef },
+    { scope: sectionRef }
   );
 
   return (

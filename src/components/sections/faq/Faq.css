@@ -1,182 +1,235 @@
 .faq-section {
-  padding: 8rem 5rem;
+  width: 100%;
+  max-width: 100%;
   background-color: var(--bg-color);
+  padding: 8rem var(--page-gutter);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid var(--border-color);
   position: relative;
-  overflow: hidden;
+  z-index: 2;
 }
 
 .faq-header {
-  text-align: center;
-  margin-bottom: 4.5rem;
-  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .faq-title-orange {
-  color: var(--accent-color);
-  font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
-  text-transform: uppercase;
   display: block;
-  margin-bottom: 0.25rem;
+  font-family: var(--font-heading, "Bricolage Grotesque", sans-serif);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  color: var(--accent-color);
+  text-transform: uppercase;
 }
 
 .faq-title-white {
-  color: var(--text-primary);
-  font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
-  text-transform: uppercase;
   display: block;
+  font-family: var(--font-heading, "Bricolage Grotesque", sans-serif);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  color: rgba(255, 255, 255, 0.58);
+  text-transform: uppercase;
 }
 
-/* FAQ list container */
 .faq-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  z-index: 2;
 }
 
-/* Accordion Box */
+/* Accordion Item Default (Collapsed) State */
 .faq-item {
-  background: var(--card-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  width: 100%;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  padding: 2.25rem 2.5rem;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 0px;
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    border-radius 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+  box-sizing: border-box;
 }
 
-.faq-item:hover {
-  background: var(--card-bg);
-  border-color: var(--accent-color);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-}
-
+/* Accordion Item Active (Hovered or Toggled) State */
+.faq-item:hover,
 .faq-item.active {
-  background: var(--card-bg);
-  border-color: var(--accent-color);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 
-              0 0 25px rgba(var(--accent-color-rgb), 0.05);
+  background-color: var(--svg-path, #e85d04);
+  border: 1px solid var(--svg-path, #e85d04);
+  /* border-radius: 20px; */
+  padding: 2.25rem 2.5rem; /* Matches collapsed padding exactly to prevent horizontal/vertical shifts */
+  margin: 0; /* Matches collapsed margin exactly to prevent layout reflow push */
+  box-shadow: 0 25px 60px rgba(232, 93, 4, 0.25);
 }
 
-/* Header Row */
+/* Question Row Styling */
 .faq-question-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.2rem 2.5rem;
-  cursor: pointer;
-  user-select: none;
   gap: 2rem;
+  cursor: pointer;
+  width: 100%;
 }
 
 .faq-question {
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
-  font-weight: 500;
+  font-family: var(--font-heading, "Bricolage Grotesque", sans-serif);
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
+  margin: 0;
   transition: color 0.3s ease;
+  user-select: none;
 }
 
-.faq-item:hover .faq-question {
-  color: var(--accent-color);
+/* Active or Hovered State Title: Matches Editorial Offer Card Hover (pure black) */
+.faq-item:hover .faq-question,
+.faq-item.active .faq-question {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: #000000;
+  font-weight: 500;
 }
 
-/* Toggle Circle Button */
+/* Circular Toggle Button Styling */
 .faq-toggle-btn {
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  min-height: 54px;
   border-radius: 50%;
-  background-color: var(--button-bg);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #000000;
-  flex-shrink: 0;
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-              background-color 0.3s ease,
-              color 0.3s ease,
-              box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 0;
+  outline: none;
 }
 
-.faq-toggle-btn:hover {
-  background-color: var(--button-hover);
-}
-
+/* Hover or Active state for button: Matches Editorial Offer Card Hover (black background, white arrow) */
+.faq-item:hover .faq-toggle-btn,
 .faq-item.active .faq-toggle-btn {
-  background-color: var(--button-bg);
-  color: #000000;
-  transform: rotate(45deg);
-  box-shadow: 0 0 15px rgba(215, 255, 0, 0.25);
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
 }
 
+/* Icon & micro-animation rotation */
 .faq-btn-icon {
-  width: 20px;
-  height: 20px;
-  stroke-width: 2.5;
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.5px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Collapsible Panel */
+/* When active or hovered, rotate arrow by -45deg to point top-right (↗) */
+.faq-item:hover .faq-btn-icon,
+.faq-item.active .faq-btn-icon {
+  transform: rotate(-45deg);
+}
+
+/* Answer Panel Smooth Reveal (CSS Grid Auto-Height Transition) */
 .faq-answer-panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-              opacity 0.3s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
   opacity: 0;
 }
 
+.faq-item:hover .faq-answer-panel,
 .faq-item.active .faq-answer-panel {
+  grid-template-rows: 1fr;
   opacity: 1;
 }
 
 .faq-answer-content {
-  padding: 0 2.5rem 2.2rem 2.5rem;
-  font-family: var(--font-body);
-  font-size: 1.05rem;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.faq-answer-content p {
+  padding-top: 1.75rem;
+  max-width: 78%; /* Prevents paragraph from wrapping underneath the button */
+  font-family: var(--font-body, "Outfit", sans-serif);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   line-height: 1.65;
   color: var(--text-secondary);
   font-weight: 300;
+  margin: 0;
+  transition: color 0.3s ease;
 }
 
-/* Responsive details */
-@media (max-width: 1024px) {
-  .faq-section {
-    padding: 6rem 3rem;
-  }
+/* Hover or Active state for paragraph: Matches Editorial Offer Card Hover (dark readable text on orange background) */
+.faq-item:hover .faq-answer-content p,
+.faq-item.active .faq-answer-content p {
+  color: rgba(0, 0, 0, 0.8);
 }
 
+/* Responsive Media Queries */
 @media (max-width: 768px) {
   .faq-section {
-    padding: 5rem 1.5rem;
+    padding: 6rem 1.5rem 4rem 1.5rem;
   }
-  
-  .faq-question-row {
+
+  .faq-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .faq-item {
     padding: 1.75rem 1.5rem;
-    gap: 1rem;
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
   }
-  
+
+  .faq-item:hover,
+  .faq-item.active {
+    padding: 1.75rem 1.5rem; /* Matches collapsed mobile padding exactly */
+    margin: 0; /* Matches collapsed mobile margin exactly */
+    border-radius: 16px;
+    border: 1px solid var(--svg-path, #e85d04);
+  }
+
+  .faq-question {
+    font-size: clamp(1.15rem, 4vw, 1.4rem);
+  }
+
   .faq-toggle-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
   }
-  
+
   .faq-btn-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
-  
-  .faq-answer-content {
-    padding: 0 1.5rem 1.75rem 1.5rem;
-    font-size: 0.95rem;
+
+  .faq-answer-content p {
+    max-width: 100%;
+    padding-top: 1.25rem;
   }
 }

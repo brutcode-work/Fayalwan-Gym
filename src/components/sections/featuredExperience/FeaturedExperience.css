@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
 .featured-experience {
   background: black;
   color: #f5f5f5;
@@ -21,6 +23,7 @@
   padding: 2.5rem 0;
 }
 
+/* Layout Split */
 .feature-chapter__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -137,7 +140,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .feature-image-wrap img {
-    transition: none;
+  .mockup-image-frame img,
+  .mockup-canvas-bg img,
+  .mockup-sub-image {
+    transition: none !important;
   }
 }

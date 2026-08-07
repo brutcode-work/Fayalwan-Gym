@@ -1,6 +1,7 @@
 .customer-reviews {
   padding: 8rem 5rem;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
+   background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -184,26 +185,51 @@
 .cr-card {
   width: 400px;
   height: 400px;
-  background: var(--card-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
+  background-color: var(--bg-color, #000000);
+  border: none !important;
+  border-radius: 0px;
   padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .cr-card:hover {
-  background: var(--card-bg);
-  border-color: var(--accent-color);
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65),
-              0 0 35px rgba(var(--accent-color-rgb), 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background-color: var(--svg-path, #e85d04) !important;
+  color: #000000 !important;
+}
+
+/* Invert all nested items to black/dark color schemes on hover, matching pricing-card hover rules */
+.cr-card:hover .cr-card-text {
+  color: #000000 !important;
+}
+
+.cr-card:hover .cr-quote-svg {
+  fill: #000000 !important;
+  opacity: 0.45;
+}
+
+.cr-card:hover .cr-card-star {
+  fill: #000000 !important;
+  color: #000000 !important;
+}
+
+.cr-card:hover .cr-card-profile {
+  border-top: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+.cr-card:hover .cr-profile-name {
+  color: #000000 !important;
+}
+
+.cr-card:hover .cr-profile-company {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.cr-card:hover .cr-profile-avatar {
+  border-color: rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Card Quote */
@@ -216,6 +242,7 @@
   width: 32px;
   height: 32px;
   fill: var(--border-color);
+  transition: fill 0.3s ease;
 }
 
 .cr-card-text {
@@ -232,6 +259,7 @@
   line-clamp: 4;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.3s ease;
 }
 
 /* Card Stars */
@@ -246,6 +274,7 @@
   height: 18px;
   fill: var(--small-labels);
   color: var(--small-labels);
+  transition: fill 0.3s ease, color 0.3s ease;
 }
 
 /* Card Profile Footer */
@@ -255,6 +284,7 @@
   gap: 1rem;
   border-top: 1px solid var(--border-color);
   padding-top: 1.5rem;
+  transition: border-color 0.3s ease;
 }
 
 .cr-profile-avatar {
@@ -263,6 +293,7 @@
   border-radius: 50%;
   border: 2px solid rgba(var(--accent-color-rgb), 0.2);
   object-fit: cover;
+  transition: border-color 0.3s ease;
 }
 
 .cr-profile-info {
@@ -275,6 +306,7 @@
   font-size: 1.05rem;
   color: var(--accent-color);
   font-weight: 700;
+  transition: color 0.3s ease;
 }
 
 .cr-profile-company {
@@ -282,6 +314,7 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
   margin-top: 0.1rem;
+  transition: color 0.3s ease;
 }
 
 /* Responsive queries */
