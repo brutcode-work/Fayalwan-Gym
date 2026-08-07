@@ -128,6 +128,7 @@ Fayalwan-Gym/
 
 ### A. Smooth Scroll & Motion Synchronization
 - **Lenis + GSAP ScrollTrigger Integration**: Managed inside `src/components/providers/SmoothScrollProvider.tsx`.
+- **Buttery Awwwards Damping Config**: Configured with `duration: 2.2` (increased inertia damping time) and `wheelMultiplier: 0.72` (controlled, slower scroll velocity per wheel notch) for an ultra-smooth, weighted Awwwards feel.
 - **GSAP Ticker**: Lenis scroll updates are wired to `gsap.ticker` to maintain frame-locked synchronization without jitter.
 - **GSAP in React 19**: Always use `useGSAP` from `@gsap/react` scoped to a `sectionRef` container for proper cleanup during renders.
 
