@@ -200,6 +200,13 @@ Fayalwan-Gym/
     - **CARD 03**: `03  QUARTERLY RECOMP` | `₹4,999 / 3 months` | `A structured path toward measurable change.` | 3 features (`3 months unlimited access`, `3 InBody 770 scans`, `Custom workout blueprint`) | `JOIN PROGRAM  →`.
     - **CARD 04**: `04  ANNUAL SANCTUARY` | `₹14,999 / year` | `Maximum value for long-term commitment.` | 3 features (`12 months unlimited access`, `Monthly InBody 770 scans`, `Dedicated coach reviews`) | `CLAIM ANNUAL PASS  →`.
   - **Visual Alignment**: 4-column desktop layout with equal height cards (`display: flex; flex-direction: column; justify-content: space-between;`), anchored bottom CTA with `border-top` divider.
+### N. 09 // Current Offers — Single Featured Promotion Architecture
+- **Files**: `src/components/sections/offers/CurrentOffers.tsx` & `CurrentOffers.css` (mounted directly after `<PricingSection />` in `src/app/page.tsx`).
+- **Single Featured Offer Architecture**:
+  - **Tabs Removed**: Removed category tab bar as requested (`only one offer displayed`).
+  - **Showcase Card**: Single high-impact 2-column showcase card displaying the active client promotion:
+    - **Headline & Offer Details**: `Seasonal Athletic Recomp Pass` (`FLAT 20% OFF + 1 MONTH FREE`), muted description & validity indicator (`Limited Season Window • First 50 Enrolments`).
+    - **Inclusions & CTA**: Key inclusions checklist with SVG checkmarks & high-contrast CTA button (`CLAIM SPECIAL OFFER  →`).
 - **Strict Borderless Rule**: `border: none !important` across all cards, containers, and buttons.
 
 ---
