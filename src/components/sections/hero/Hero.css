@@ -180,6 +180,7 @@
 /* Middle Main Content Grid */
 .hero-content-grid {
   display: flex;
+  flex-direction: row-reverse;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
@@ -217,8 +218,8 @@
 
 /* Right Column - Width 520px matches navbar-right width so left edge aligns with "Home" */
 .hero-right-col {
-  width: 520px;
-  flex-shrink: 0;
+  width: 750px;
+  flex-shrink: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -226,11 +227,11 @@
 
 .hero-title-main {
   font-family: var(--font-heading);
-  font-size: clamp(2.3rem, 3.8vw, 3.4rem);
-  font-weight: 500;
+  font-size: clamp(2.3rem, 3.8vw, 3.5rem);
+  font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.025em;
-  color: #ffffff;
+  color: var(--accent-color);
   margin: 0;
 }
 

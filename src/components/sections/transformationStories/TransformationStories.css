@@ -231,7 +231,7 @@
 }
 
 .pm-sparkle-orange {
-  color: #e85d04;
+  color: var(--accent-color);
 }
 
 .pm-modal-close-btn {

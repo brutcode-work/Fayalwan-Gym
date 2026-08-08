@@ -31,7 +31,7 @@
 }
 .signature-programs__kicker span {
   margin-right: 0.75rem;
-  color: #e85d04;
+  color: var(--accent-color);
 }
 .signature-programs__intro {
   max-width: 590px;
@@ -61,7 +61,7 @@
   padding-bottom: 0.25rem;
 }
 .program-slide__number {
-  color: #e85d04;
+  color: var(--accent-color);
 }
 .program-slide h2 {
   margin: 1rem 0 1.15rem;
@@ -80,7 +80,7 @@
 }
 .program-slide__focus {
   margin-top: 2.5rem;
-  color: #e85d04;
+  color: var(--accent-color);
 }
 .program-slide__media {
   grid-column: 3;
@@ -136,7 +136,7 @@
 }
 .programs-pagination button:hover,
 .programs-pagination .is-active {
-  color: #e85d04;
+  color: var(--accent-color);
 }
 .programs-pagination .is-active {
   text-decoration: underline;
@@ -156,8 +156,8 @@
   color: #fff;
 }
 .programs-arrows button:hover {
-  border-color: #e85d04;
-  color: #e85d04;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 @media (max-width: 1024px) {
   .signature-programs {
@@ -247,7 +247,7 @@
   height: 76px;
   margin-left: -38px;
   margin-top: -38px;
-  background: #e85d04;
+  background: var(--accent-color);
   border-radius: 50%;
   display: flex;
   align-items: center;

@@ -68,7 +68,7 @@
 }
 
 .offer-label-badge {
-  color: #e85d04;
+  color: var(--accent-color);
   transition: color 0.3s ease;
 }
 
@@ -136,7 +136,7 @@
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #e85d04;
+  color: var(--accent-color);
   text-transform: uppercase;
   margin-bottom: 1.35rem;
   transition: color 0.3s ease;
@@ -205,7 +205,7 @@
 }
 
 .inclusion-check {
-  color: #e85d04;
+  color: var(--accent-color);
   flex-shrink: 0;
   transition: color 0.3s ease;
 }

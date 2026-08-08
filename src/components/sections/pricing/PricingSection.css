@@ -82,7 +82,7 @@
 }
 
 .plan-index {
-  color: #e85d04;
+  color: var(--accent-color);
 }
 
 .plan-label-name {
@@ -150,7 +150,7 @@
 }
 
 .pricing-card:hover .feature-check-icon {
-  color: #e85d04;
+  color: var(--accent-color);
 }
 
 /* 5. Bottom Anchored CTA with Divider */
@@ -176,8 +176,8 @@
 }
 
 .plan-cta-btn:hover {
-  color: #e85d04;
-  border-color: rgba(232, 93, 4, 0.4);
+  color: var(--accent-color);
+  border-color: rgba(var(--accent-color-rgb), 0.4);
 }
 
 /* ---------- RESPONSIVE BREAKPOINTS ---------- */
