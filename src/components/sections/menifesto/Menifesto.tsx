@@ -11,34 +11,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Menifesto() {
-  const pathRef = useRef<SVGPathElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      const target = pathRef.current;
-      if (!target) return;
+      const paths = gsap.utils.toArray<SVGPathElement>(".manifesto-path");
+      paths.forEach((path) => {
+        const pathLength = path.getTotalLength();
 
-      const path =
-        target.tagName === "path" ? target : target.querySelector("path");
-      if (!path) return;
+        gsap.set(path, {
+          strokeDasharray: pathLength,
+          strokeDashoffset: pathLength,
+        });
 
-      const pathLength = path.getTotalLength();
-
-      gsap.set(path, {
-        strokeDasharray: pathLength,
-        strokeDashoffset: pathLength,
-      });
-
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 85%",
-          end: "bottom 85%",
-          scrub: 1,
-        },
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+            end: "bottom 85%",
+            scrub: 1,
+          },
+        });
       });
 
       const cards = gsap.utils.toArray<HTMLElement>(".manifesto-card");
@@ -245,7 +240,7 @@ export default function Menifesto() {
       </div>
 
       <div className="svg-path">
-        <SvgPath ref={pathRef} />
+        <SvgPath />
       </div>
     </section>
   );

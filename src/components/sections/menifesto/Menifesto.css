@@ -44,6 +44,27 @@
   display: block;
 }
 
+.svg-path-desktop {
+  display: block !important;
+}
+
+.svg-path-mobile {
+  display: none !important;
+}
+
+.manifesto-path {
+  filter: drop-shadow(0 0 16px rgba(var(--accent-color-rgb), 0.5));
+}
+
+@media (max-width: 1023px) {
+  .svg-path-desktop {
+    display: none !important;
+  }
+  .svg-path-mobile {
+    display: block !important;
+  }
+}
+
 /* Glassmorphism Typography Card — mobile-first */
 .manifesto-card {
   width: 100%;
