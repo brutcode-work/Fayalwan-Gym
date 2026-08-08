@@ -3,7 +3,7 @@
   width: 100%;
   background-color: var(--bg-secondary);
   margin: 0 auto;
-  padding: 10rem var(--page-gutter) 2.5rem;
+  padding: 120px var(--page-gutter) 120px;
 }
 .gym-gallery-section {
   position: relative;

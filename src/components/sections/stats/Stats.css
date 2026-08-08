@@ -1,7 +1,7 @@
 .ledger {
   background: black;
   color: #f5f5f5;
-  padding: clamp(3rem, 5vw, 5rem) var(--page-gutter);
+  padding: 120px var(--page-gutter);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,6 @@
 .signature-programs {
   overflow: hidden;
-  padding: clamp(6rem, 10vw, 10rem) var(--page-gutter) 4rem;
+  padding: 120px var(--page-gutter);
   background: #050505;
   color: #f5f5f5;
 }

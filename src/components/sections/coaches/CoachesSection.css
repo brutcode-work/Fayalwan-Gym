@@ -23,8 +23,7 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(7.5rem, 12vw, 10.5rem)
-    var(--page-gutter, clamp(1.5rem, 4.17vw, 5rem)) clamp(2rem, 4vw, 3.5rem);
+  padding: 120px var(--page-gutter, clamp(1.5rem, 4.17vw, 5rem)) 0px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -51,9 +50,8 @@
   align-items: center;
   justify-content: center;
 
-  /* Top clearance keeps the centred card clear of the 78px fixed navbar */
-  padding-top: clamp(6rem, 11vh, 7.5rem);
-  padding-bottom: clamp(1.5rem, 4vh, 3rem);
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .coach-card-inner {

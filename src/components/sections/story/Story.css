@@ -3,7 +3,7 @@
 .story-section {
   background-color: var(--bg-color);
   width: 100%;
-  padding: 8rem 0;
+  padding: 120px 0;
   color: var(--text-primary);
   position: relative;
   overflow: hidden;

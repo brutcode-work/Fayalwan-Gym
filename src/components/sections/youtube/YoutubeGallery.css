@@ -39,8 +39,8 @@
 /* ---------- MARQUEE WRAPPER ---------- */
 
 .yt-gallery-wrapper {
-  padding-top: 10rem;
-  padding-bottom: 5rem;
+  padding-top: 120px;
+  padding-bottom: 120px;
   background-color: var(--bg-color);
   width: 100%;
   position: absolute;

@@ -3,7 +3,7 @@
 .featured-experience {
   background: black;
   color: #f5f5f5;
-  padding: 10rem var(--page-gutter);
+  padding: 120px var(--page-gutter);
 }
 
 .services-container {

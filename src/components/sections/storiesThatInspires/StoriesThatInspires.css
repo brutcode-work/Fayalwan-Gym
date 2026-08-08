@@ -3,7 +3,7 @@
    ==================================== */
 
 .stories-that-inspire {
-  padding: 8rem 0 6rem;
+  padding: 120px 0;
   background-color: var(--bg-color);
   display: flex;
   flex-direction: column;

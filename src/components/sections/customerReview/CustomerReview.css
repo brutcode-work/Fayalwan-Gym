@@ -1,5 +1,5 @@
 .customer-reviews {
-  padding: 8rem 5rem;
+  padding: 120px var(--page-gutter);
   /* background-color: var(--bg-color); */
   background-color: var(--bg-secondary);
   display: flex;

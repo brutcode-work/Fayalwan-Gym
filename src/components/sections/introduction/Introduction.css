@@ -20,7 +20,7 @@
   color: var(--paper);
   padding: 0rem var(--page-gutter) clamp(4rem, 7vw, 6rem);
   font-family: var(--font-display);
-  padding-block: 10rem;
+  padding-block: 120px;
 }
 
 .bento-inner {

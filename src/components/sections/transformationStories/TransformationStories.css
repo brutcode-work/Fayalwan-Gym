@@ -7,7 +7,7 @@
   background-color: #000000;
   color: #ffffff;
   width: 100%;
-  padding: clamp(6rem, 10vh, 9rem) var(--page-gutter);
+  padding: 120px var(--page-gutter);
   box-sizing: border-box;
   border: none !important;
 }
