@@ -73,8 +73,7 @@
 }
 
 .nav-link-item:hover {
-  color: #ffffff;
-  opacity: 0.8;
+  color: var(--accent-color);
 }
 
 .nav-link-item.active {
@@ -107,6 +106,13 @@
   border: 2px solid var(--accent-color);
   transform: translateY(-1px);
   box-shadow: 0 4px 20px rgba(var(--accent-color-rgb), 0.25);
+}
+
+.nav-link-item:active,
+.mobile-nav-link:active,
+.navbar-cta-btn:active,
+.mobile-cta-btn:active {
+  transform: scale(0.95);
 }
 
 /* Mobile Toggle Hamburger Icon */

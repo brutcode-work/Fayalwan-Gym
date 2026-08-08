@@ -8,10 +8,11 @@ import gsap from "gsap";
 
 const SECTIONS = [
   { id: "home", label: "Home" },
-  { id: "manifesto", label: "Menifesto" },
-  { id: "story", label: "Story" },
-  { id: "reviews", label: "Reviews" },
-  { id: "faq", label: "Faq" },
+  { id: "experience", label: "Experience" },
+  { id: "services", label: "Services" },
+  { id: "coaches", label: "Coaches" },
+  { id: "pricing", label: "Pricing" },
+  { id: "faq", label: "FAQ" },
 ];
 
 export default function Navbar() {
@@ -76,9 +77,10 @@ export default function Navbar() {
 
       const sectionIds = [
         "home",
-        "manifesto",
-        "story",
-        "reviews",
+        "experience",
+        "services",
+        "coaches",
+        "pricing",
         "faq",
         "contact",
       ];

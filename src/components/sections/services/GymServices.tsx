@@ -148,7 +148,7 @@ const GymServices = () => {
   );
 
   return (
-    <section className="gym-services-main" ref={containerRef}>
+    <section className="gym-services-main" ref={containerRef} id="services">
       <div className="gym-services-header-wrapper">
         <SectionHeader
           sectionName="gym-sercvices"
