@@ -92,13 +92,12 @@ export default function Menifesto() {
       );
 
       overlapTl.fromTo(
-        ".split-word",
-        { opacity: 0, y: 40, rotateX: -35 },
+        ".footer-reveal",
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          rotateX: 0,
-          stagger: 0.08,
+          stagger: 0.05,
           ease: "power2.out",
           duration: 0.8,
         },
@@ -193,50 +192,131 @@ export default function Menifesto() {
           </div>
         </div>
 
-        <div className="overlap-container">
-          <div className="overlap-content">
-            <div className="overlap-badge split-word">
-              <span className="overlap-badge-dot"></span>
-              THE REVOLUTIONARY FAYALWAN MODEL
-            </div>
+        <footer className="overlap-container">
+          <div className="footer-container">
+            <div className="footer-grid">
+              <div className="footer-brand-col footer-reveal">
+                <h3 className="footer-logo">FAYALWAN GYM</h3>
+                <p className="footer-desc">
+                  Fayalwan Gym is a premier fitness sanctuary designed to unleash
+                  your inner champion. We specialize in elite strength training,
+                  high-performance conditioning, and personalized coaching.
+                </p>
+              </div>
 
-            <h2 className="overlap-heading">
-              {["THAT'S", "HOW", "OUR", "CORE", "MODEL", "WORKS."].map(
-                (word, index) => (
-                  <span
-                    key={index}
-                    className={`split-word ${
-                      word === "CORE" || word === "MODEL" ? "accent-word" : ""
-                    }`}
-                  >
-                    {word}
-                  </span>
-                ),
-              )}
-            </h2>
+              <div className="footer-links-col footer-reveal">
+                <h6 className="column-title">Quick link</h6>
+                <ul className="footer-links-list">
+                  <li>
+                    <a href="#home">Home</a>
+                  </li>
+                  <li>
+                    <a href="#about">About us</a>
+                  </li>
+                  <li>
+                    <a href="#services">Services</a>
+                  </li>
+                  <li>
+                    <a href="#contact">Contact us</a>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="overlap-price-hero">
-              <span className="split-word price-label">JUST</span>
-              <span className="split-word price-number">₹120</span>
-              <span className="split-word price-suffix">/ DAY</span>
-            </div>
+              <div className="footer-links-col footer-reveal">
+                <h6 className="column-title">Explore</h6>
+                <ul className="footer-links-list">
+                  <li>
+                    <a href="#faq">FAQ</a>
+                  </li>
+                  <li>
+                    <a href="#reviews">Google reviews</a>
+                  </li>
+                  <li>
+                    <a href="#stories">Stories that inspires us</a>
+                  </li>
+                </ul>
+              </div>
 
-            <p className="overlap-description split-word">
-              No hidden annual contracts. No extortionate gym memberships. Just
-              pure, daily access to premium equipment, expert trainers, and a
-              relentless community for ₹120 per day.
-            </p>
-
-            <div className="overlap-cta-group split-word">
-              <button className="overlap-btn-primary">
-                CLAIM YOUR DAY 01 ACCESS
-              </button>
-              <div className="overlap-guarantee">
-                ✓ Pay Only When You Train • Cancel Anytime
+              <div className="footer-links-col footer-reveal">
+                <h6 className="column-title">Social</h6>
+                <ul className="footer-links-list">
+                  <li>
+                    <a
+                      href="https://facebook.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://twitter.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Twitter
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
+
+            <div className="footer-info-row footer-reveal">
+              <span className="copyright-text">
+                ©{new Date().getFullYear()} Fayalwan Gym All rights reserved.
+              </span>
+              <span className="credits-text">
+                Designed by{" "}
+                <a
+                  href="https://brutcode.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  BrutCode
+                </a>
+              </span>
+            </div>
+
+            <div className="footer-copyright-mobile footer-reveal">
+              <span>
+                ©{new Date().getFullYear()} Fayalwan Gym All rights reserved.
+              </span>
+              <span>
+                Designed by{" "}
+                <a
+                  href="https://brutcode.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  BrutCode
+                </a>
+              </span>
+            </div>
+
+            <div className="giant-text-container footer-reveal">
+              <h1 className="giant-bg-text">FAYALWAN GYM</h1>
+            </div>
           </div>
-        </div>
+        </footer>
       </div>
 
       <div className="svg-path">
