@@ -56,7 +56,7 @@ export default function Menifesto() {
               start: "top 80%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         );
       });
 
@@ -76,7 +76,7 @@ export default function Menifesto() {
               start: "top 80%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         );
       });
 
@@ -93,7 +93,7 @@ export default function Menifesto() {
       overlapTl.fromTo(
         ".overlap-container",
         { yPercent: 100 },
-        { yPercent: 0, ease: "none", duration: 1 }
+        { yPercent: 0, ease: "none", duration: 1 },
       );
 
       overlapTl.fromTo(
@@ -107,10 +107,10 @@ export default function Menifesto() {
           ease: "power2.out",
           duration: 0.8,
         },
-        "-=0.4"
+        "-=0.4",
       );
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
@@ -181,11 +181,14 @@ export default function Menifesto() {
         <div className="manifesto-card card-right price-card">
           <span className="editorial-phase-num gold">03 // PHASE THREE</span>
           <h3 className="editorial-title">
-            FITNESS BECOMES<br />YOUR IDENTITY
+            FITNESS BECOMES
+            <br />
+            YOUR IDENTITY
           </h3>
           <p className="editorial-desc">
-            You no longer force yourself to work out. Discipline has become a habit,
-            confidence has replaced excuses, and showing up is simply who you are.
+            You no longer force yourself to work out. Discipline has become a
+            habit, confidence has replaced excuses, and showing up is simply who
+            you are.
           </p>
 
           <div className="editorial-meta-row">
@@ -213,7 +216,7 @@ export default function Menifesto() {
                   >
                     {word}
                   </span>
-                )
+                ),
               )}
             </h2>
 
@@ -224,7 +227,9 @@ export default function Menifesto() {
             </div>
 
             <p className="overlap-description split-word">
-              No hidden annual contracts. No extortionate gym memberships. Just pure, daily access to premium equipment, expert trainers, and a relentless community for ₹120 per day.
+              No hidden annual contracts. No extortionate gym memberships. Just
+              pure, daily access to premium equipment, expert trainers, and a
+              relentless community for ₹120 per day.
             </p>
 
             <div className="overlap-cta-group split-word">

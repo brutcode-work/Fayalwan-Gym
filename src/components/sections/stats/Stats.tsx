@@ -32,7 +32,8 @@ export default function Stats() {
       const section = sectionRef.current;
       if (!section) return;
 
-      const statElements = section.querySelectorAll<HTMLElement>(".ledger__stat");
+      const statElements =
+        section.querySelectorAll<HTMLElement>(".ledger__stat");
       const counterObjects = STATS.map(() => ({ val: 0 }));
 
       const updateCounterDisplay = (index: number, value: number) => {
@@ -66,7 +67,7 @@ export default function Stats() {
               stagger: 0.07,
               ease: "power3.out",
               overwrite: "auto",
-            }
+            },
           );
 
           STATS.forEach((stat, idx) => {
@@ -97,11 +98,15 @@ export default function Stats() {
 
       return () => mm.revert();
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
-    <section className="ledger" ref={sectionRef} aria-label="Fayalwan Gym in numbers">
+    <section
+      className="ledger"
+      ref={sectionRef}
+      aria-label="Fayalwan Gym in numbers"
+    >
       <div className="ledger__container">
         <dl className="ledger__row">
           {STATS.map((stat, idx) => (
@@ -109,12 +114,16 @@ export default function Stats() {
               {idx > 0 && <span className="ledger__rule" aria-hidden="true" />}
               <dt className="ledger__mask">
                 <span className="ledger__value">
-                  {stat.prefix ? <span className="ledger__prefix">{stat.prefix}</span> : null}
+                  {stat.prefix ? (
+                    <span className="ledger__prefix">{stat.prefix}</span>
+                  ) : null}
                   {/* Render the real figure, not 0: the counter only runs inside the
                       no-preference matchMedia, so reduced-motion users (and the SSR
                       markup before hydration) must already see the final value. */}
                   <span className="ledger__number">{stat.target}</span>
-                  {stat.suffix ? <em className="ledger__suffix">{stat.suffix}</em> : null}
+                  {stat.suffix ? (
+                    <em className="ledger__suffix">{stat.suffix}</em>
+                  ) : null}
                 </span>
               </dt>
               <dd className="ledger__mask">
@@ -127,4 +136,3 @@ export default function Stats() {
     </section>
   );
 }
-

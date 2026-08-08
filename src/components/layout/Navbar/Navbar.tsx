@@ -42,10 +42,10 @@ export default function Navbar() {
             stagger: 0.05,
             ease: "power2.out",
           },
-          "-=0.15"
+          "-=0.15",
         );
     },
-    { scope: navContainerRef }
+    { scope: navContainerRef },
   );
 
   useGSAP(() => {
@@ -74,7 +74,14 @@ export default function Navbar() {
       }
       prevScrollY.current = currentScrollY;
 
-      const sectionIds = ["home", "manifesto", "story", "reviews", "faq", "contact"];
+      const sectionIds = [
+        "home",
+        "manifesto",
+        "story",
+        "reviews",
+        "faq",
+        "contact",
+      ];
       let currentActive = "home";
       const triggerOffset = window.innerHeight * 0.4;
 
@@ -104,7 +111,8 @@ export default function Navbar() {
     setOpen(false);
 
     if (sectionId === "home") {
-      const lenis = typeof window !== "undefined" ? (window as any).lenis : null;
+      const lenis =
+        typeof window !== "undefined" ? (window as any).lenis : null;
       if (lenis) {
         lenis.scrollTo(0, {
           duration: 1.5,
@@ -120,7 +128,8 @@ export default function Navbar() {
 
     const targetElement = document.getElementById(sectionId);
     if (targetElement) {
-      const lenis = typeof window !== "undefined" ? (window as any).lenis : null;
+      const lenis =
+        typeof window !== "undefined" ? (window as any).lenis : null;
       if (lenis) {
         lenis.scrollTo(targetElement, {
           duration: 1.5,
@@ -139,7 +148,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`navbar-container ${visible ? "" : "hidden"}`} ref={navContainerRef}>
+    <nav
+      className={`navbar-container ${visible ? "" : "hidden"}`}
+      ref={navContainerRef}
+    >
       <div className="navbar-inner">
         <div className="navbar-logo" onClick={(e) => handleNavClick(e, "home")}>
           <span className="logo-text">Fahalwan Gym</span>

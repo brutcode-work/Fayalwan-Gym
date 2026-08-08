@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Outfit, Syne, Bebas_Neue } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  Outfit,
+  Syne,
+  Bebas_Neue,
+} from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 

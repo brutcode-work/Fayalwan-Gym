@@ -18,7 +18,7 @@ const MEDIA_URLS = [
   "https://i.pinimg.com/1200x/dc/d0/26/dcd026441fc3f09b8d5eef7b90705621.jpg",
   "https://v1.pinimg.com/videos/iht/expMp4/69/7d/0c/697d0cb6f5333fd44d7a594342e46e66_720w.mp4",
   "https://i.pinimg.com/1200x/1c/6e/4c/1c6e4cc36fcd99713417271d95bac62e.jpg",
-  "https://i.pinimg.com/736x/ee/ad/b7/eeadb757106f016f5f25bb8f5689c280.jpg"
+  "https://i.pinimg.com/736x/ee/ad/b7/eeadb757106f016f5f25bb8f5689c280.jpg",
 ];
 
 export default function Hero() {
@@ -35,7 +35,7 @@ export default function Hero() {
       gsap.set(".hero-banner-full", { opacity: 0 });
       gsap.set(".hero-text-mask > *", { yPercent: 115, opacity: 0 });
       gsap.set(".hero-bottom-bar", { opacity: 0, y: 15 });
-      
+
       const navEl = document.querySelector(".navbar-container");
       if (navEl) {
         gsap.set(navEl, { y: -80, opacity: 0 });
@@ -54,7 +54,7 @@ export default function Hero() {
         onComplete: () => {
           // Strictly enable custom cursor ONLY when preloader & intro finishes
           if (section) section.classList.add("is-loaded");
-        }
+        },
       });
 
       // 2. Fade in scattered loader cards
@@ -62,7 +62,7 @@ export default function Hero() {
         opacity: 0.7,
         duration: 0.7,
         stagger: 0.05,
-        ease: "power2.out"
+        ease: "power2.out",
       });
 
       // 3. Counter Animation (0% to 90%)
@@ -71,58 +71,70 @@ export default function Hero() {
         "MOBILIZING ACTIVE SPACE...",
         "ALIGNING RESILIENT ENERGY...",
         "CURATING ELITE STRENGTH...",
-        "SHAPING YOUR FUTURE..."
+        "SHAPING YOUR FUTURE...",
       ];
 
-      tl.to(progress, {
-        val: 90,
-        duration: 2.2,
-        ease: "power1.inOut",
-        onUpdate: () => {
-          const numEl = document.querySelector(".loader-number");
-          if (numEl) numEl.textContent = `${Math.floor(progress.val)}%`;
+      tl.to(
+        progress,
+        {
+          val: 90,
+          duration: 2.2,
+          ease: "power1.inOut",
+          onUpdate: () => {
+            const numEl = document.querySelector(".loader-number");
+            if (numEl) numEl.textContent = `${Math.floor(progress.val)}%`;
 
-          const labelEl = document.querySelector(".loader-label");
-          if (labelEl) {
-            const labelIndex = Math.min(
-              Math.floor((progress.val / 90) * labels.length),
-              labels.length - 1
-            );
-            labelEl.textContent = labels[labelIndex];
-          }
-        }
-      }, "-=0.3");
+            const labelEl = document.querySelector(".loader-label");
+            if (labelEl) {
+              const labelIndex = Math.min(
+                Math.floor((progress.val / 90) * labels.length),
+                labels.length - 1,
+              );
+              labelEl.textContent = labels[labelIndex];
+            }
+          },
+        },
+        "-=0.3",
+      );
 
       // 4. Kinetic alignment to the bottom of the viewport at 90%
-      tl.to(".loader-card", {
-        x: (index) => {
-          const cardWidth = window.innerWidth <= 820 ? 170 : 240;
-          return (index - 4) * cardWidth;
+      tl.to(
+        ".loader-card",
+        {
+          x: (index) => {
+            const cardWidth = window.innerWidth <= 820 ? 170 : 240;
+            return (index - 4) * cardWidth;
+          },
+          y: () => {
+            const cardHeight = window.innerWidth <= 820 ? 170 : 240;
+            return window.innerHeight / 2 - cardHeight / 2 - 40;
+          },
+          scale: 1,
+          rotation: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.06,
+          ease: "power4.inOut",
         },
-        y: () => {
-          const cardHeight = window.innerWidth <= 820 ? 170 : 240;
-          return window.innerHeight / 2 - cardHeight / 2 - 40;
-        },
-        scale: 1,
-        rotation: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.06,
-        ease: "power4.inOut"
-      }, "-=0.1");
+        "-=0.1",
+      );
 
       // 5. Final load push (90% to 100%)
-      tl.to(progress, {
-        val: 100,
-        duration: 0.5,
-        ease: "power2.out",
-        onUpdate: () => {
-          const numEl = document.querySelector(".loader-number");
-          if (numEl) numEl.textContent = `${Math.floor(progress.val)}%`;
-          const labelEl = document.querySelector(".loader-label");
-          if (labelEl) labelEl.textContent = "READY TO START";
-        }
-      }, "-=0.2");
+      tl.to(
+        progress,
+        {
+          val: 100,
+          duration: 0.5,
+          ease: "power2.out",
+          onUpdate: () => {
+            const numEl = document.querySelector(".loader-number");
+            if (numEl) numEl.textContent = `${Math.floor(progress.val)}%`;
+            const labelEl = document.querySelector(".loader-label");
+            if (labelEl) labelEl.textContent = "READY TO START";
+          },
+        },
+        "-=0.2",
+      );
 
       // 6. Slide row from bottom of screen to top banner location
       tl.to(".loader-card", {
@@ -137,26 +149,34 @@ export default function Hero() {
           return -150;
         },
         duration: 1.1,
-        ease: "power4.inOut"
+        ease: "power4.inOut",
       });
 
       // 7. Ultra-smooth FLIP handoff: reveal Swiper and dissolve preloader backdrop
-      tl.to(".loader-text-container", {
-        opacity: 0,
-        y: -25,
-        duration: 0.35,
-        ease: "power2.in"
-      }, "-=0.8")
-        .set(".hero-banner-full", { opacity: 1 }, "-=0.2")
-        .to(".hero-preloader", {
+      tl.to(
+        ".loader-text-container",
+        {
           opacity: 0,
-          duration: 0.55,
-          ease: "power2.out",
-          onComplete: () => {
-            const preloader = document.querySelector(".hero-preloader");
-            if (preloader) (preloader as HTMLElement).style.display = "none";
-          }
-        }, "-=0.2")
+          y: -25,
+          duration: 0.35,
+          ease: "power2.in",
+        },
+        "-=0.8",
+      )
+        .set(".hero-banner-full", { opacity: 1 }, "-=0.2")
+        .to(
+          ".hero-preloader",
+          {
+            opacity: 0,
+            duration: 0.55,
+            ease: "power2.out",
+            onComplete: () => {
+              const preloader = document.querySelector(".hero-preloader");
+              if (preloader) (preloader as HTMLElement).style.display = "none";
+            },
+          },
+          "-=0.2",
+        )
 
         // 8. Masked Text Reveals (Awwwards-style smooth slide up out of overflow mask)
         .to(
@@ -166,9 +186,9 @@ export default function Hero() {
             opacity: 1,
             duration: 1.0,
             stagger: 0.12,
-            ease: "power4.out"
+            ease: "power4.out",
           },
-          "-=0.55"
+          "-=0.55",
         );
 
       // 9. Slide down navbar & fade in scroll indicator
@@ -176,17 +196,17 @@ export default function Hero() {
         tl.to(
           navEl,
           { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
-          "-=0.85"
+          "-=0.85",
         );
       }
 
       tl.to(
         ".hero-bottom-bar",
         { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-        "-=0.6"
+        "-=0.6",
       );
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   // Bind custom cursor coordinate tracking
@@ -195,8 +215,14 @@ export default function Hero() {
       const cursor = cursorRef.current;
       if (!cursor) return;
 
-      const xTo = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3.out" });
-      const yTo = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3.out" });
+      const xTo = gsap.quickTo(cursor, "x", {
+        duration: 0.35,
+        ease: "power3.out",
+      });
+      const yTo = gsap.quickTo(cursor, "y", {
+        duration: 0.35,
+        ease: "power3.out",
+      });
 
       const handleMouseMove = (e: MouseEvent) => {
         xTo(e.clientX);
@@ -209,7 +235,7 @@ export default function Hero() {
         window.removeEventListener("mousemove", handleMouseMove);
       };
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (

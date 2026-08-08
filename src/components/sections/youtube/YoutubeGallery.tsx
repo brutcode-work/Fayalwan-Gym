@@ -163,9 +163,8 @@ const YoutubeGallery = () => {
       // MARQUEE ANIMATIONS — only run when they can actually be seen.
       // Skip entirely for users who prefer reduced motion.
       // ------------------------------------------------------------------
-      const allowMotion = !window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+      const allowMotion = !window.matchMedia("(prefers-reduced-motion: reduce)")
+        .matches;
 
       if (allowMotion) {
         // 1. GSAP Infinite Marquee Animations (paused by default)
@@ -186,7 +185,7 @@ const YoutubeGallery = () => {
             duration: 36,
             ease: "none",
             paused: true,
-          }
+          },
         );
 
         const marqueeLeftFast = gsap.to(".yt-track-left-fast", {
@@ -247,7 +246,7 @@ const YoutubeGallery = () => {
               inView = entries[0].isIntersecting;
               syncAll();
             },
-            { threshold: 0 }
+            { threshold: 0 },
           );
           io.observe(sectionRef.current);
           cleanups.push(() => io.disconnect());
@@ -258,7 +257,7 @@ const YoutubeGallery = () => {
         const onVisibilityChange = () => syncAll();
         document.addEventListener("visibilitychange", onVisibilityChange);
         cleanups.push(() =>
-          document.removeEventListener("visibilitychange", onVisibilityChange)
+          document.removeEventListener("visibilitychange", onVisibilityChange),
         );
 
         // 2c. Pause the hovered row for readability, resume on leave.
@@ -283,7 +282,8 @@ const YoutubeGallery = () => {
 
       // 3. Dynamic vertical overlap target calculation
       const getTargetY = () => {
-        if (!sectionRef.current || !wrapperRef.current) return -window.innerHeight;
+        if (!sectionRef.current || !wrapperRef.current)
+          return -window.innerHeight;
         const sectionH = sectionRef.current.offsetHeight;
         const wrapperH = wrapperRef.current.offsetHeight;
 
@@ -315,7 +315,7 @@ const YoutubeGallery = () => {
             y: getTargetY,
             ease: "power1.inOut",
           },
-          0
+          0,
         )
         .to(
           headerRef.current,
@@ -324,7 +324,7 @@ const YoutubeGallery = () => {
             scale: 0.92,
             ease: "power1.inOut",
           },
-          0
+          0,
         );
 
       // Cleanup manually-added listeners on unmount / HMR re-run.
@@ -332,7 +332,7 @@ const YoutubeGallery = () => {
         cleanups.forEach((fn) => fn());
       };
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (

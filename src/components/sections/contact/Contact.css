@@ -299,7 +299,7 @@
   .contact-card {
     grid-template-columns: 1fr;
   }
-  
+
   .contact-info-panel {
     border-right: none;
     border-bottom: 1px solid var(--border-color);

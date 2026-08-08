@@ -2,7 +2,19 @@
 
 import { useState, useRef, MouseEvent } from "react";
 import "./StoriesThatInspires.css";
-import { Play, Pause, Volume2, VolumeX, Trophy, Flame, Sparkles, Dumbbell, ChevronLeft, ChevronRight, LucideIcon } from "lucide-react";
+import {
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Trophy,
+  Flame,
+  Sparkles,
+  Dumbbell,
+  ChevronLeft,
+  ChevronRight,
+  LucideIcon,
+} from "lucide-react";
 
 interface StoryItem {
   id: string;
@@ -85,7 +97,7 @@ const ytCommand = (iframe: HTMLIFrameElement | null, cmd: string) => {
   if (!iframe) return;
   iframe.contentWindow?.postMessage(
     JSON.stringify({ event: "command", func: cmd, args: [] }),
-    "*"
+    "*",
   );
 };
 
@@ -185,7 +197,10 @@ export default function StoriesThatInspires() {
                   className="sti-carousel-thumb"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    if (target.src.includes("maxresdefault") || target.src.includes("mqdefault")) {
+                    if (
+                      target.src.includes("maxresdefault") ||
+                      target.src.includes("mqdefault")
+                    ) {
                       target.src = `https://img.youtube.com/vi/${story.id}/hqdefault.jpg`;
                     }
                   }}
@@ -267,10 +282,18 @@ export default function StoriesThatInspires() {
       </div>
 
       <div className="sti-nav-buttons">
-        <button className="sti-nav-btn prev" onClick={handlePrevVideo} aria-label="Previous video">
+        <button
+          className="sti-nav-btn prev"
+          onClick={handlePrevVideo}
+          aria-label="Previous video"
+        >
           <ChevronLeft className="sti-nav-icon" />
         </button>
-        <button className="sti-nav-btn next" onClick={handleNextVideo} aria-label="Next video">
+        <button
+          className="sti-nav-btn next"
+          onClick={handleNextVideo}
+          aria-label="Next video"
+        >
           <ChevronRight className="sti-nav-icon" />
         </button>
       </div>

@@ -154,7 +154,7 @@ export default function FeaturedExperience() {
           );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (

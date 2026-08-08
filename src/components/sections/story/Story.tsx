@@ -26,7 +26,7 @@ export default function Story() {
             trigger: ".story-header-wrapper",
             start: "top 85%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -41,7 +41,7 @@ export default function Story() {
             trigger: ".story-narrative-card",
             start: "top 80%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -56,7 +56,7 @@ export default function Story() {
             trigger: ".story-split-grid",
             start: "top 80%",
           },
-        }
+        },
       );
 
       const stats = gsap.utils.toArray<HTMLElement>(".story-stat-number");
@@ -91,7 +91,7 @@ export default function Story() {
             trigger: ".story-checklist-card",
             start: "top 80%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -105,7 +105,7 @@ export default function Story() {
             trigger: ".story-vertical-arrow-box",
             start: "top 75%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -120,7 +120,7 @@ export default function Story() {
             trigger: ".story-savings-card",
             start: "top 80%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -136,7 +136,7 @@ export default function Story() {
             trigger: ".story-quote-card",
             start: "top 85%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -151,10 +151,10 @@ export default function Story() {
             trigger: ".story-closing",
             start: "top 85%",
           },
-        }
+        },
       );
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -162,37 +162,52 @@ export default function Story() {
       <div className="story-container">
         <div className="story-header-wrapper">
           <div className="story-tag">LIFESTYLE DYNAMICS</div>
-          <h2 className="story-heading">Your Weekly Choices Shape Your Future</h2>
-          <p className="story-subtitle">Every day you make small choices. Those choices become your lifestyle.</p>
+          <h2 className="story-heading">
+            Your Weekly Choices Shape Your Future
+          </h2>
+          <p className="story-subtitle">
+            Every day you make small choices. Those choices become your
+            lifestyle.
+          </p>
         </div>
 
         <div className="story-narrative-card">
           <p className="story-narrative-text">
-            Imagine someone working near <strong>TechnoPark</strong>. Monday to Friday they spend money on 
-            coffee, snacks, biriyani, shawarma, soft drinks and weekend outings. That's a normal part of enjoying life. 
-            But they rarely realize how easily a tiny fraction of that budget could completely transform their health. 
-            The goal isn't to stop enjoying life. <strong>The goal is balance.</strong> Just one hour of movement 
-            every day can reduce stress, improve energy, increase confidence and help prevent lifestyle diseases. 
-            Whether you choose Fayalwan Gym or any other fitness center, make physical activity part of your life. 
-            Because your body is the only place you'll live forever.
+            Imagine someone working near <strong>TechnoPark</strong>. Monday to
+            Friday they spend money on coffee, snacks, biriyani, shawarma, soft
+            drinks and weekend outings. That's a normal part of enjoying life.
+            But they rarely realize how easily a tiny fraction of that budget
+            could completely transform their health. The goal isn't to stop
+            enjoying life. <strong>The goal is balance.</strong> Just one hour
+            of movement every day can reduce stress, improve energy, increase
+            confidence and help prevent lifestyle diseases. Whether you choose
+            Fayalwan Gym or any other fitness center, make physical activity
+            part of your life. Because your body is the only place you'll live
+            forever.
           </p>
         </div>
 
         <div className="story-split-grid">
           <div className="story-card">
             <h3 className="story-card-title">Nearby Lifestyle</h3>
-            <p className="story-card-meta">Based on businesses within approximately 2 km of Fayalwan Gym.</p>
-            
+            <p className="story-card-meta">
+              Based on businesses within approximately 2 km of Fayalwan Gym.
+            </p>
+
             <div className="story-stats-grid">
               <div className="story-stat-box">
                 <span className="story-box-emoji">🍔</span>
                 <div className="story-stat-info">
                   <div style={{ display: "flex", alignItems: "baseline" }}>
-                    <span className="story-stat-number" data-target="35">0</span>
+                    <span className="story-stat-number" data-target="35">
+                      0
+                    </span>
                     <span className="story-stat-plus">+</span>
                   </div>
                   <span className="story-stat-title">Restaurants Nearby</span>
-                  <span className="story-stat-desc">Popular Choices Around You</span>
+                  <span className="story-stat-desc">
+                    Popular Choices Around You
+                  </span>
                 </div>
               </div>
 
@@ -200,11 +215,15 @@ export default function Story() {
                 <span className="story-box-emoji">☕</span>
                 <div className="story-stat-info">
                   <div style={{ display: "flex", alignItems: "baseline" }}>
-                    <span className="story-stat-number" data-target="20">0</span>
+                    <span className="story-stat-number" data-target="20">
+                      0
+                    </span>
                     <span className="story-stat-plus">+</span>
                   </div>
                   <span className="story-stat-title">Cafes Nearby</span>
-                  <span className="story-stat-desc">Your Daily Coffee Stop</span>
+                  <span className="story-stat-desc">
+                    Your Daily Coffee Stop
+                  </span>
                 </div>
               </div>
 
@@ -212,7 +231,9 @@ export default function Story() {
                 <span className="story-box-emoji">🏨</span>
                 <div className="story-stat-info">
                   <div style={{ display: "flex", alignItems: "baseline" }}>
-                    <span className="story-stat-number" data-target="12">0</span>
+                    <span className="story-stat-number" data-target="12">
+                      0
+                    </span>
                     <span className="story-stat-plus">+</span>
                   </div>
                   <span className="story-stat-title">Hotels</span>
@@ -224,11 +245,15 @@ export default function Story() {
                 <span className="story-box-emoji">🩺</span>
                 <div className="story-stat-info">
                   <div style={{ display: "flex", alignItems: "baseline" }}>
-                    <span className="story-stat-number" data-target="8">0</span>
+                    <span className="story-stat-number" data-target="8">
+                      0
+                    </span>
                     <span className="story-stat-plus">+</span>
                   </div>
                   <span className="story-stat-title">Physiotherapy</span>
-                  <span className="story-stat-desc">Recovery & Rehabilitation</span>
+                  <span className="story-stat-desc">
+                    Recovery & Rehabilitation
+                  </span>
                 </div>
               </div>
             </div>
@@ -236,32 +261,61 @@ export default function Story() {
 
           <div className="story-card">
             <h3 className="story-card-title">Average Daily Spending</h3>
-            <p className="story-card-meta">Within 2 km of Fayalwan Gym. Typical spending on coffee, snacks, meals, soft drinks and weekend social outings.</p>
-            
+            <p className="story-card-meta">
+              Within 2 km of Fayalwan Gym. Typical spending on coffee, snacks,
+              meals, soft drinks and weekend social outings.
+            </p>
+
             <div className="story-spending-columns">
               <div className="story-spend-card">
                 <h4 className="story-spend-card-header">Weekdays</h4>
                 <ul className="story-spend-list">
-                  <li><span>Coffee</span><span>₹80</span></li>
-                  <li><span>Lunch Outside</span><span>₹180</span></li>
-                  <li><span>Evening Snacks</span><span>₹120</span></li>
-                  <li><span>Dinner/Tea</span><span>₹270</span></li>
+                  <li>
+                    <span>Coffee</span>
+                    <span>₹80</span>
+                  </li>
+                  <li>
+                    <span>Lunch Outside</span>
+                    <span>₹180</span>
+                  </li>
+                  <li>
+                    <span>Evening Snacks</span>
+                    <span>₹120</span>
+                  </li>
+                  <li>
+                    <span>Dinner/Tea</span>
+                    <span>₹270</span>
+                  </li>
                 </ul>
                 <div className="story-spend-total weekday">
-                  <span>Average</span><span>₹650/day</span>
+                  <span>Average</span>
+                  <span>₹650/day</span>
                 </div>
               </div>
 
               <div className="story-spend-card">
                 <h4 className="story-spend-card-header highlight">Weekend</h4>
                 <ul className="story-spend-list">
-                  <li><span>Breakfast</span><span>₹200</span></li>
-                  <li><span>Lunch</span><span>₹350</span></li>
-                  <li><span>Coffee</span><span>₹180</span></li>
-                  <li><span>Dinner</span><span>₹470</span></li>
+                  <li>
+                    <span>Breakfast</span>
+                    <span>₹200</span>
+                  </li>
+                  <li>
+                    <span>Lunch</span>
+                    <span>₹350</span>
+                  </li>
+                  <li>
+                    <span>Coffee</span>
+                    <span>₹180</span>
+                  </li>
+                  <li>
+                    <span>Dinner</span>
+                    <span>₹470</span>
+                  </li>
                 </ul>
                 <div className="story-spend-total weekend">
-                  <span>Average</span><span>₹1,200/day</span>
+                  <span>Average</span>
+                  <span>₹1,200/day</span>
                 </div>
               </div>
             </div>
@@ -270,25 +324,56 @@ export default function Story() {
 
         <div className="story-card story-checklist-card">
           <h3 className="story-card-title">Proportional Harmony</h3>
-          <p className="story-card-meta">True wellness is about combining the joy of daily social outings with the benefits of active physical movement.</p>
+          <p className="story-card-meta">
+            True wellness is about combining the joy of daily social outings
+            with the benefits of active physical movement.
+          </p>
           <div className="story-checklist-grid">
             <div className="story-checklist-side eating-out">
-              <h4 className="story-check-header">🍔 Indulgences (Moderation)</h4>
+              <h4 className="story-check-header">
+                🍔 Indulgences (Moderation)
+              </h4>
               <ul className="story-check-list">
-                <li><span className="story-check-bullet">🍕</span> Enjoying meals with friends</li>
-                <li><span className="story-check-bullet">☕</span> Daily cafe and social stops</li>
-                <li><span className="story-check-bullet">🍟</span> Quick comfort foods</li>
-                <li><span className="story-check-bullet">💸</span> Treating yourself in moderation</li>
+                <li>
+                  <span className="story-check-bullet">🍕</span> Enjoying meals
+                  with friends
+                </li>
+                <li>
+                  <span className="story-check-bullet">☕</span> Daily cafe and
+                  social stops
+                </li>
+                <li>
+                  <span className="story-check-bullet">🍟</span> Quick comfort
+                  foods
+                </li>
+                <li>
+                  <span className="story-check-bullet">💸</span> Treating
+                  yourself in moderation
+                </li>
               </ul>
             </div>
 
             <div className="story-checklist-side gym-membership">
-              <h4 className="story-check-header highlight">🏋️ Movement (Daily Investment)</h4>
+              <h4 className="story-check-header highlight">
+                🏋️ Movement (Daily Investment)
+              </h4>
               <ul className="story-check-list">
-                <li><span className="story-check-bullet text-success">🛌</span> Better sleep and deep recovery</li>
-                <li><span className="story-check-bullet text-success">🦾</span> Stronger, highly functional body</li>
-                <li><span className="story-check-bullet text-success">🧘</span> Reduced daily stress and anxiety</li>
-                <li><span className="story-check-bullet text-success">🧠</span> Unbreakable confidence and energy</li>
+                <li>
+                  <span className="story-check-bullet text-success">🛌</span>{" "}
+                  Better sleep and deep recovery
+                </li>
+                <li>
+                  <span className="story-check-bullet text-success">🦾</span>{" "}
+                  Stronger, highly functional body
+                </li>
+                <li>
+                  <span className="story-check-bullet text-success">🧘</span>{" "}
+                  Reduced daily stress and anxiety
+                </li>
+                <li>
+                  <span className="story-check-bullet text-success">🧠</span>{" "}
+                  Unbreakable confidence and energy
+                </li>
               </ul>
             </div>
           </div>
@@ -312,15 +397,22 @@ export default function Story() {
           <div className="story-vertical-item gym">
             <span className="story-item-emoji">🏋️</span>
             <div className="story-item-details">
-              <span className="story-item-name text-success">Daily Body Investment</span>
-              <span className="story-item-price text-success">Only ₹120/day</span>
+              <span className="story-item-name text-success">
+                Daily Body Investment
+              </span>
+              <span className="story-item-price text-success">
+                Only ₹120/day
+              </span>
             </div>
           </div>
         </div>
 
         <div className="story-card story-savings-card">
           <h3 className="story-card-title">Proportional Allocation</h3>
-          <p className="story-card-meta">A comparison demonstrating how a tiny fraction of your monthly food and leisure budget secures full fitness access.</p>
+          <p className="story-card-meta">
+            A comparison demonstrating how a tiny fraction of your monthly food
+            and leisure budget secures full fitness access.
+          </p>
           <div className="story-savings-grid">
             <div className="story-savings-table-wrapper">
               <table className="story-savings-table">
@@ -353,8 +445,14 @@ export default function Story() {
 
             <div className="story-potential-savings-box">
               <span className="story-ps-tag">HEALTH-TO-LEISURE RATIO</span>
-              <span className="story-ps-value">18%<span className="story-ps-per"> of budget</span></span>
-              <p className="story-ps-desc">Your body investment is just 18% of what is typically allocated for casual dining. Balancing both yields true lifestyle vitality.</p>
+              <span className="story-ps-value">
+                18%<span className="story-ps-per"> of budget</span>
+              </span>
+              <p className="story-ps-desc">
+                Your body investment is just 18% of what is typically allocated
+                for casual dining. Balancing both yields true lifestyle
+                vitality.
+              </p>
             </div>
           </div>
         </div>
@@ -362,23 +460,24 @@ export default function Story() {
         <div className="story-quote-card">
           <div className="story-quote-decor">“</div>
           <p className="story-quote-text">
-            "Good health isn't an expense. It's the foundation that makes every other part of life better."
+            "Good health isn't an expense. It's the foundation that makes every
+            other part of life better."
           </p>
-          <span className="story-quote-footer">— Your body will remember every investment</span>
+          <span className="story-quote-footer">
+            — Your body will remember every investment
+          </span>
         </div>
 
         <div className="story-closing">
           <h3 className="story-closing-title">Your Future Starts Today</h3>
           <p className="story-closing-text">
-            Whether you choose Fayalwan Gym, another gym, or simply start walking every morning—
-            the important thing is to start today.
+            Whether you choose Fayalwan Gym, another gym, or simply start
+            walking every morning— the important thing is to start today.
           </p>
           <div className="story-closing-focus">
             Your body is the only place you'll ever live.
           </div>
-          <div className="story-closing-tagline">
-            Move More. Live Better.
-          </div>
+          <div className="story-closing-tagline">Move More. Live Better.</div>
         </div>
       </div>
     </section>

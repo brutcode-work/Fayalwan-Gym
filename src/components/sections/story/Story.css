@@ -69,7 +69,9 @@
   padding: 2.2rem;
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .story-narrative-text {
@@ -102,7 +104,9 @@
   padding: 2.2rem;
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -112,8 +116,8 @@
 .story-card:hover {
   transform: translateY(-4px);
   border-color: rgba(232, 93, 4, 0.45);
-  box-shadow: 
-    0 30px 70px rgba(0, 0, 0, 0.9), 
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.9),
     0 0 30px rgba(232, 93, 4, 0.15);
 }
 
@@ -312,7 +316,7 @@
 }
 
 .story-check-header.highlight {
-  color: #22C55E;
+  color: #22c55e;
 }
 
 .story-check-list {
@@ -356,19 +360,27 @@
   padding: 1.15rem 1.85rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .story-vertical-item:hover {
   transform: scale(1.02);
   border-color: rgba(232, 93, 4, 0.45);
-  background: linear-gradient(135deg, rgba(32, 33, 37, 0.8) 0%, rgba(16, 17, 18, 0.92) 100%);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 30px rgba(232, 93, 4, 0.15);
+  background: linear-gradient(
+    135deg,
+    rgba(32, 33, 37, 0.8) 0%,
+    rgba(16, 17, 18, 0.92) 100%
+  );
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(232, 93, 4, 0.15);
 }
 
 .story-item-emoji {
@@ -424,7 +436,7 @@
 
 .story-arrow-line-vertical {
   width: 2px;
-  background: linear-gradient(180deg, var(--accent-color) 0%, #22C55E 100%);
+  background: linear-gradient(180deg, var(--accent-color) 0%, #22c55e 100%);
   flex-grow: 1;
   transform-origin: top;
   margin-top: -10px;
@@ -434,15 +446,20 @@
 .story-arrow-head-vertical {
   width: 18px;
   height: 18px;
-  color: #22C55E;
+  color: #22c55e;
   margin-top: -6px;
   z-index: 2;
   animation: bounce-vertical 2s infinite ease-in-out;
 }
 
 @keyframes bounce-vertical {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 /* 6. Real Savings Table Matrix */
@@ -471,7 +488,7 @@
   text-align: left;
 }
 
-.story-savings-table th, 
+.story-savings-table th,
 .story-savings-table td {
   padding: 1.1rem 1.4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -511,7 +528,7 @@
 }
 
 .story-text-success {
-  color: #22C55E !important;
+  color: #22c55e !important;
 }
 
 .story-potential-savings-box {
@@ -532,7 +549,7 @@
   font-family: var(--font-body);
   font-size: 0.76rem;
   font-weight: 800;
-  color: #22C55E;
+  color: #22c55e;
   letter-spacing: 0.1em;
 }
 
@@ -540,7 +557,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3.2vw, 2.4rem);
   font-weight: 900;
-  color: #22C55E;
+  color: #22c55e;
   margin: 0.5rem 0;
   text-shadow: 0 0 20px rgba(34, 197, 94, 0.35);
 }
@@ -569,9 +586,9 @@
   text-align: center;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 
+  box-shadow:
     0 30px 60px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.10);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
 .story-quote-decor {
@@ -647,7 +664,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 2.8vw, 2.2rem);
   font-weight: 900;
-  color: #22C55E;
+  color: #22c55e;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-shadow: 0 0 25px rgba(34, 197, 94, 0.25);
@@ -696,7 +713,7 @@
     padding-top: 1.5rem;
   }
 
-  .story-savings-table th, 
+  .story-savings-table th,
   .story-savings-table td {
     padding: 0.85rem 1rem;
     font-size: 0.8rem;

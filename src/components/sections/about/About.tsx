@@ -33,7 +33,13 @@ export default function About() {
           </div>
 
           <div className="about-img-card">
-            <video autoPlay muted loop playsInline src="/gym-inspiration.mp4"></video>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              src="/gym-inspiration.mp4"
+            ></video>
             <div className="about-card-tag">Performance Recovery</div>
           </div>
 

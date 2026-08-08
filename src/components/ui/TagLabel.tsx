@@ -32,5 +32,4 @@ const TagLabel = ({
   );
 };
 
-
 export default TagLabel;
