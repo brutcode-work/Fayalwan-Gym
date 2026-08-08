@@ -19,8 +19,15 @@
 }
 
 .navbar-container.hidden {
-  transform: translateY(-100%);
+  transform: translateY(-100%) !important;
+  opacity: 0 !important;
+}
+
+/* Initial hidden state to prevent flashing of content during preloader */
+.navbar-container:has(~ #home .hero-preloader) {
   opacity: 0;
+  transform: translateY(-80px);
+  pointer-events: none;
 }
 
 /* Inner bar — mobile-first base */

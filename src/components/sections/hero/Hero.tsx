@@ -54,6 +54,10 @@ export default function Hero() {
         onComplete: () => {
           // Strictly enable custom cursor ONLY when preloader & intro finishes
           if (section) section.classList.add("is-loaded");
+
+          // Remove preloader from DOM to trigger CSS selector updates
+          const preloader = document.querySelector(".hero-preloader");
+          if (preloader) preloader.remove();
         },
       });
 
@@ -170,10 +174,6 @@ export default function Hero() {
             opacity: 0,
             duration: 0.55,
             ease: "power2.out",
-            onComplete: () => {
-              const preloader = document.querySelector(".hero-preloader");
-              if (preloader) (preloader as HTMLElement).style.display = "none";
-            },
           },
           "-=0.2",
         )
@@ -195,7 +195,13 @@ export default function Hero() {
       if (navEl) {
         tl.to(
           navEl,
-          { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: "power3.out",
+            clearProps: "transform,opacity",
+          },
           "-=0.85",
         );
       }
