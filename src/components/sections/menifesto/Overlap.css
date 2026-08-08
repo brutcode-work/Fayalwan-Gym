@@ -1,3 +1,8 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   OVERLAP (CTA) — Mobile-first (Rule 1)
+   Standard breakpoints: 768px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
+
 .row-3 {
   position: relative;
 }
@@ -68,8 +73,9 @@
   box-shadow: 0 0 10px var(--button-bg);
 }
 
+/* Mobile-first heading */
 .overlap-heading {
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-size: 2.2rem;
   font-weight: 900;
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -91,14 +97,14 @@
 }
 
 .price-label {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.7);
   letter-spacing: -0.01em;
 }
 
 .price-number {
-  font-size: clamp(4rem, 8vw, 6.5rem);
+  font-size: 3.5rem;
   font-weight: 950;
   line-height: 0.9;
   letter-spacing: -0.04em;
@@ -106,7 +112,7 @@
 }
 
 .price-suffix {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.75);
   letter-spacing: 0.05em;
@@ -130,13 +136,13 @@
 
 .overlap-btn-primary {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #000000;
   background-color: var(--button-bg);
-  padding: 1.1rem 2.5rem;
+  padding: 0.9rem 1.8rem;
   border: none;
   border-radius: 100px;
   cursor: pointer;
@@ -145,6 +151,7 @@
     transform 0.3s ease,
     background-color 0.3s ease,
     box-shadow 0.3s ease;
+  min-height: 44px;
 }
 
 .overlap-btn-primary:hover {
@@ -162,22 +169,23 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
+/* ── Tablet: 768px — larger typography ── */
+@media (min-width: 768px) {
   .overlap-heading {
-    font-size: 2.2rem;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
   }
 
   .price-number {
-    font-size: 3.5rem;
+    font-size: clamp(4rem, 8vw, 6.5rem);
   }
 
   .price-label,
   .price-suffix {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
   .overlap-btn-primary {
-    padding: 0.9rem 1.8rem;
-    font-size: 0.88rem;
+    padding: 1.1rem 2.5rem;
+    font-size: 1rem;
   }
 }

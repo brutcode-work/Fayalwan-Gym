@@ -1,13 +1,14 @@
-/* ==========================================================================
-   CURRENT OFFERS SECTION — WIDE EDITORIAL PROMOTION ARCHITECTURE
-   ========================================================================== */
+/* ═══════════════════════════════════════════════════════════════════════
+   CURRENT OFFERS — Mobile-first (Rule 1)
+   Standard breakpoints: 1024px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
 
 .current-offers-section {
   position: relative;
   background-color: var(--bg-color);
   color: #ffffff;
   width: 100%;
-  padding: 120px var(--page-gutter);
+  padding: var(--section-py) var(--page-gutter);
   box-sizing: border-box;
   border: none !important;
 }
@@ -25,14 +26,13 @@
 }
 
 /* banner */
-
 .promotional-banner {
   width: 100%;
   clip-path: polygon(10% 20%, 90% 20%, 90% 80%, 10% 80%);
   will-change: clip-path;
 }
 
-/* ---------- WIDE EDITORIAL OFFER CONTAINER ---------- */
+/* ── WIDE EDITORIAL OFFER CONTAINER ── */
 
 .editorial-offer-card {
   position: relative;
@@ -54,7 +54,6 @@
 }
 
 /* Top Meta Row */
-
 .offer-editorial-top {
   display: flex;
   align-items: center;
@@ -86,7 +85,6 @@
 }
 
 /* Dividers */
-
 .offer-editorial-divider {
   width: 100%;
   height: 1px;
@@ -99,17 +97,16 @@
   background-color: rgba(0, 0, 0, 0.18) !important;
 }
 
-/* ---------- MAIN TWO-COLUMN EDITORIAL GRID ---------- */
+/* ── MAIN EDITORIAL GRID — mobile: 1 column ── */
 
 .offer-editorial-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(3rem, 6vw, 7rem);
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
   align-items: start;
 }
 
 /* Left Column */
-
 .offer-col-left {
   display: flex;
   flex-direction: column;
@@ -162,7 +159,6 @@
 }
 
 /* Right Column: Inclusions & CTA */
-
 .offer-col-right {
   display: flex;
   flex-direction: column;
@@ -215,7 +211,6 @@
 }
 
 /* Solid High-Contrast CTA Button */
-
 .offer-solid-cta-btn {
   display: inline-flex;
   align-items: center;
@@ -236,6 +231,7 @@
     transform 0.25s ease;
   border: none !important;
   margin-top: 1.25rem;
+  min-height: 44px;
 }
 
 .editorial-offer-card:hover .offer-solid-cta-btn {
@@ -247,11 +243,10 @@
   transform: translateY(-2px);
 }
 
-/* ---------- RESPONSIVE BREAKPOINTS ---------- */
-
-@media (max-width: 1000px) {
+/* ── Laptop: 1024px — 2-column grid ── */
+@media (min-width: 1024px) {
   .offer-editorial-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(3rem, 6vw, 7rem);
   }
 }

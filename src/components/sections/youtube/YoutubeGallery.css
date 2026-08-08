@@ -1,10 +1,12 @@
-/* ==========================================================================
-   YOUTUBE GALLERY SECTION — 3 ROW MARQUEE
-   ========================================================================== */
+/* ═══════════════════════════════════════════════════════════════════════
+   YOUTUBE GALLERY — Mobile-first (Rule 1)
+   Standard breakpoints: 768px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
 
 .youtube-gallery {
   width: 100%;
   height: 100vh;
+  min-height: 600px;
   position: relative;
   background-color: var(--bg-secondary);
   overflow: hidden;
@@ -36,11 +38,11 @@
   color: var(--svg-path, #e85d04);
 }
 
-/* ---------- MARQUEE WRAPPER ---------- */
+/* ── MARQUEE WRAPPER ── */
 
 .yt-gallery-wrapper {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
   background-color: var(--bg-color);
   width: 100%;
   position: absolute;
@@ -78,14 +80,12 @@
   display: flex;
   gap: 1rem;
   width: max-content;
-  /* will-change is toggled from JS only while the marquee is actively
-     animating (in viewport + tab visible) so idle rows don't hold GPU layers. */
 }
 
-/* ---------- YOUTUBE CARD STYLING ---------- */
+/* ── YOUTUBE CARD — mobile-first base ── */
 
 .yt-card {
-  width: clamp(290px, 23vw, 370px);
+  width: 290px;
   flex-shrink: 0;
   background-color: #0c0c0c;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -169,7 +169,7 @@
 
 .yt-card-title {
   font-family: var(--font-body);
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: #ffffff;
   margin: 0;
@@ -182,26 +182,24 @@
 
 .yt-card-stats {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
   margin: 0;
   letter-spacing: 0.01em;
 }
 
-/* ---------- RESPONSIVE BREAKPOINTS ---------- */
-
-@media (max-width: 768px) {
+/* ── Tablet: 768px — slightly larger cards ── */
+@media (min-width: 768px) {
   .yt-card {
-    width: 290px;
-    padding: 10px;
+    width: clamp(290px, 23vw, 370px);
   }
 
   .yt-card-title {
-    font-size: 0.95rem;
+    font-size: 1.02rem;
   }
 
   .yt-card-stats {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }

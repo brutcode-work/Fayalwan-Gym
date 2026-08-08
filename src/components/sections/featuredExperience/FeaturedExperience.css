@@ -1,9 +1,15 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   FEATURED EXPERIENCE — Mobile-first (Rule 1)
+   Standard breakpoints: 1024px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
+
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
+/* Mobile-first base */
 .featured-experience {
   background: black;
   color: #f5f5f5;
-  padding: 120px var(--page-gutter);
+  padding: var(--section-py) 1.25rem;
 }
 
 .services-container {
@@ -15,32 +21,21 @@
 .services-list {
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 2.5rem;
 }
 
 .feature-chapter {
   position: relative;
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
 }
 
-/* Layout Split */
+/* Layout Split — mobile: 1 column */
 .feature-chapter__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: center;
   width: 100%;
-}
-
-/* Alternating layout for desktop: even items have image on left, text on right */
-@media (min-width: 901px) {
-  .feature-chapter:nth-child(even) .feature-left {
-    order: 2;
-  }
-
-  .feature-chapter:nth-child(even) .feature-image-wrap {
-    order: 1;
-  }
 }
 
 /* Left Column: Tag/Label + Description aligned vertically */
@@ -55,7 +50,7 @@
   max-width: 580px;
   margin: 0;
   color: #f5f5f5;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1.25;
@@ -67,10 +62,6 @@
   display: inline;
 }
 
-/* Must stay `inline`. `inline-block` gives every character its own box, which
-   destroys kerning, blocks whitespace collapsing at the edges of a highlight and
-   ignores the parent's negative letter-spacing. Only `color` is animated here,
-   so there is nothing to gain from taking these out of the text flow. */
 .accent-char {
   display: inline;
   color: #f5f5f5;
@@ -112,29 +103,36 @@
   text-transform: uppercase;
 }
 
-/* Responsive styles */
-@media (max-width: 900px) {
-  .feature-chapter__grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .feature-copy {
-    font-size: clamp(1.3rem, 4vw, 1.8rem);
-  }
-}
-
-@media (max-width: 600px) {
+/* ── Laptop: 1024px — 2-column grid with alternation ── */
+@media (min-width: 1024px) {
   .featured-experience {
-    padding: 3.5rem 1.25rem;
+    padding: var(--section-py) var(--page-gutter);
   }
 
   .services-list {
-    gap: 2.5rem;
+    gap: 3.5rem;
   }
 
   .feature-chapter {
-    padding: 1.5rem 0;
+    padding: 2.5rem 0;
+  }
+
+  .feature-chapter__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .feature-copy {
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+  }
+
+  /* Alternating layout for desktop */
+  .feature-chapter:nth-child(even) .feature-left {
+    order: 2;
+  }
+
+  .feature-chapter:nth-child(even) .feature-image-wrap {
+    order: 1;
   }
 }
 

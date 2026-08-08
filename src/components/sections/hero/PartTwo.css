@@ -1,5 +1,10 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   HERO PART TWO — Mobile-first (Rule 1, 24)
+   Standard breakpoints: 768px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
+
 .hero-part-2 {
-  width: 100vw;
+  width: 100%;  /* Rule 24: avoid 100vw */
   height: 100vh;
   background-color: var(--bg-color);
   position: absolute;
@@ -42,9 +47,10 @@
   pointer-events: none;
 }
 
+/* Mobile-first base */
 .part-two-text {
   position: absolute;
-  top: 17%;
+  top: 8%;
   text-align: center;
   color: var(--text-primary);
   z-index: 20;
@@ -78,10 +84,11 @@
   margin-top: 4.5rem;
 }
 
+/* Mobile-first card sizing */
 .card {
   position: absolute;
-  width: 260px;
-  height: 360px;
+  width: 200px;
+  height: 280px;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow:
@@ -147,14 +154,14 @@
   margin-top: 0.25rem;
 }
 
-/* Responsive adjust for mobile */
-@media (max-width: 768px) {
+/* ── Tablet: 768px — larger cards, repositioned text ── */
+@media (min-width: 768px) {
   .card {
-    width: 200px;
-    height: 280px;
+    width: 260px;
+    height: 360px;
   }
 
   .part-two-text {
-    top: 8%;
+    top: 17%;
   }
 }

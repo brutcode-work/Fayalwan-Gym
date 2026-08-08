@@ -1,13 +1,14 @@
-/* ==========================================================================
-   MINIMAL AWWWARDS EDITORIAL PRICING CARDS
-   ========================================================================== */
+/* ═══════════════════════════════════════════════════════════════════════
+   PRICING — Mobile-first (Rule 1)
+   Standard breakpoints: 768px, 1440px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
 
 .pricing-section {
   position: relative;
   background-color: var(--bg-secondary);
   color: #ffffff;
   width: 100%;
-  padding: 120px var(--page-gutter);
+  padding: var(--section-py) var(--page-gutter);
   box-sizing: border-box;
   border: none !important;
 }
@@ -20,11 +21,11 @@
   flex-direction: column;
 }
 
-/* ---------- 4-COLUMN PRICING CARDS GRID ---------- */
+/* ── PRICING GRID — mobile: 1 column ── */
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: clamp(1.2rem, 1.8vw, 1.8rem);
   width: 100%;
   align-items: stretch;
@@ -44,7 +45,7 @@
   height: 100%;
 }
 
-/* Pure Accent Background Hover (No Opacity) */
+/* Pure Accent Background Hover */
 .pricing-card:hover {
   background-color: var(--svg-path) !important;
   color: #000000 !important;
@@ -68,7 +69,6 @@
 }
 
 /* 1. Small Editorial Index & Label */
-
 .plan-label-row {
   display: flex;
   align-items: center;
@@ -90,7 +90,6 @@
 }
 
 /* 2. Large Dominant Price */
-
 .plan-price-row {
   display: flex;
   align-items: baseline;
@@ -115,18 +114,16 @@
 }
 
 /* 3. Short Supporting Sentence */
-
 .plan-description {
   font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.62);
   margin: 0 0 1.25rem 0;
-  min-height: 2.6rem; /* Ensures equal description height across all 4 cards */
+  min-height: auto;
 }
 
-/* 4. Minimal Feature List (Exactly 3 Rows) */
-
+/* 4. Minimal Feature List */
 .plan-features-list {
   display: flex;
   flex-direction: column;
@@ -154,7 +151,6 @@
 }
 
 /* 5. Bottom Anchored CTA with Divider */
-
 .plan-cta-btn {
   display: flex;
   align-items: center;
@@ -173,6 +169,7 @@
     color 0.25s ease,
     border-color 0.25s ease;
   margin-top: auto;
+  min-height: 44px;
 }
 
 .plan-cta-btn:hover {
@@ -180,20 +177,20 @@
   border-color: rgba(var(--accent-color-rgb), 0.4);
 }
 
-/* ---------- RESPONSIVE BREAKPOINTS ---------- */
-
-@media (max-width: 1200px) {
+/* ── Tablet: 768px — 2-column grid ── */
+@media (min-width: 768px) {
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .plan-description {
-    min-height: auto;
+    min-height: 2.6rem;
   }
 }
 
-@media (max-width: 650px) {
+/* ── Desktop: 1440px — 4-column grid ── */
+@media (min-width: 1440px) {
   .pricing-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 }

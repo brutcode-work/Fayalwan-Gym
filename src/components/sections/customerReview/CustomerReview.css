@@ -1,6 +1,11 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   CUSTOMER REVIEWS — Mobile-first (Rule 1)
+   Standard breakpoints: 768px, 1024px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Mobile-first base */
 .customer-reviews {
-  padding: 120px var(--page-gutter);
-  /* background-color: var(--bg-color); */
+  padding: var(--section-py) 1.5rem;
   background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
@@ -9,11 +14,12 @@
   border-top: 1px solid var(--border-color);
 }
 
-/* Header layout */
+/* Header layout — mobile: stacked */
 .cr-header-row {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
   margin-bottom: 3.5rem;
   width: 100%;
 }
@@ -106,11 +112,12 @@
   color: var(--text-secondary);
 }
 
-/* Navigation buttons */
+/* Navigation buttons — mobile: left aligned */
 .cr-header-right {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.5rem;
+  align-self: flex-start;
 }
 
 .cr-nav-btn {
@@ -122,6 +129,8 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .cr-nav-btn.prev {
@@ -181,14 +190,14 @@
   padding: 1.5rem 0;
 }
 
-/* Review Card styles */
+/* Review Card — mobile-first base */
 .cr-card {
-  width: 400px;
-  height: 400px;
+  width: 320px;
+  height: 440px;
   background-color: var(--bg-color, #000000);
   border: none !important;
   border-radius: 0px;
-  padding: 3rem 2.5rem;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -203,7 +212,7 @@
   color: #000000 !important;
 }
 
-/* Invert all nested items to black/dark color schemes on hover, matching pricing-card hover rules */
+/* Invert all nested items on hover */
 .cr-card:hover .cr-card-text {
   color: #000000 !important;
 }
@@ -321,16 +330,25 @@
   transition: color 0.3s ease;
 }
 
-/* Responsive queries */
-@media (max-width: 1024px) {
+/* ── Tablet: 768px ── */
+@media (min-width: 768px) {
+  .cr-card {
+    width: 400px;
+    height: 400px;
+    padding: 3rem 2.5rem;
+  }
+}
+
+/* ── Laptop: 1024px — side-by-side header ── */
+@media (min-width: 1024px) {
   .customer-reviews {
-    padding: 6rem 3rem;
+    padding: var(--section-py) 3rem;
   }
 
   .cr-header-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
   }
 
   .cr-header-right {
@@ -338,18 +356,9 @@
   }
 }
 
-@media (max-width: 768px) {
+/* ── Desktop: 1440px ── */
+@media (min-width: 1440px) {
   .customer-reviews {
-    padding: 5rem 1.5rem;
-  }
-
-  .cr-card {
-    width: 320px;
-    height: 440px;
-    padding: 2rem 1.5rem;
-  }
-
-  .cr-header-right {
-    align-self: flex-start;
+    padding: var(--section-py) var(--page-gutter);
   }
 }

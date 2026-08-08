@@ -1,3 +1,8 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   NAVBAR — Mobile-first (Rule 1, 18)
+   Standard breakpoints: 768px, 1024px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
+
 /* Navbar Container */
 .navbar-container {
   position: fixed;
@@ -18,15 +23,14 @@
   opacity: 0;
 }
 
-/* Inner bar matching screenshot design */
+/* Inner bar — mobile-first base */
 .navbar-inner {
   pointer-events: auto;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 5rem;
-
+  padding: 1.25rem 1.5rem;
   border: none;
   border-bottom: none;
   box-shadow: none;
@@ -49,9 +53,9 @@
   letter-spacing: -0.01em;
 }
 
-/* Desktop Right Nav (Links + Button) */
+/* Desktop Right Nav (Links + Button) — hidden on mobile */
 .navbar-right {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 2.5rem;
 }
@@ -115,9 +119,9 @@
   transform: scale(0.95);
 }
 
-/* Mobile Toggle Hamburger Icon */
+/* Mobile Toggle Hamburger Icon — visible by default on mobile */
 .mobile-toggle-btn {
-  display: none;
+  display: flex;
   cursor: pointer;
   color: #ffffff;
   padding: 0.5rem;
@@ -128,16 +132,20 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: all 0.2s ease;
   pointer-events: auto;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.18);
 }
 
-/* Mobile Menu Glassy Overlay */
+/* Mobile Menu Glassy Overlay — visible by default on mobile */
 .mobile-menu-overlay {
   pointer-events: auto;
-  display: none;
+  display: block;
   opacity: 0;
   height: 0;
   overflow: hidden;
@@ -167,6 +175,10 @@
   width: 100%;
   text-align: center;
   transition: all 0.2s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-nav-link:hover,
@@ -186,34 +198,36 @@
   width: 80%;
   margin-top: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 44px;
 }
 
-/* Tablet Screens Responsive */
-@media (max-width: 1024px) {
-  .navbar-inner {
-    padding: 1.5rem 2.5rem;
-  }
-
+/* ── Tablet: 768px — show desktop nav, hide mobile ── */
+@media (min-width: 768px) {
   .navbar-right {
+    display: flex;
     gap: 1.5rem;
-  }
-}
-
-/* Mobile Screens Responsive */
-@media (max-width: 820px) {
-  .navbar-right {
-    display: none;
   }
 
   .mobile-toggle-btn {
-    display: flex;
+    display: none;
   }
 
   .mobile-menu-overlay {
-    display: block;
+    display: none;
   }
 
   .navbar-inner {
-    padding: 1.25rem 1.5rem;
+    padding: 1.5rem 2.5rem;
+  }
+}
+
+/* ── Laptop: 1024px — wider padding, full spacing ── */
+@media (min-width: 1024px) {
+  .navbar-inner {
+    padding: 1.25rem 5rem;
+  }
+
+  .navbar-right {
+    gap: 2.5rem;
   }
 }

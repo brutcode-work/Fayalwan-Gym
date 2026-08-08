@@ -1,13 +1,17 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   GYM SERVICES — Mobile-first (Rule 1)
+   Standard breakpoints: 1024px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
+
 .gym-services-main {
   width: 100%;
-
   background: var(--bg-color);
   color: #f5f5f5;
 }
 
 .gym-services-header-wrapper {
   width: 100%;
-  padding: 120px var(--page-gutter) 0 var(--page-gutter);
+  padding: var(--section-py) var(--page-gutter) 0 var(--page-gutter);
 }
 
 .gym-services-grid {
@@ -15,16 +19,18 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding-bottom: 120px;
+  padding-bottom: var(--section-py);
 }
 
+/* Mobile-first base */
 .gym-services-wrapper {
   width: 100%;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 4rem 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   transition:
     background-color 0.3s ease,
     z-index 0s;
@@ -40,13 +46,13 @@
   border-bottom: none;
 }
 
-/* 2-column grid with padding on right for absolute image */
+/* Mobile: 1-column grid */
 .gym-services-content {
-  padding: 0 18rem 0 5rem;
+  padding: 0 2rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
   align-items: center;
   position: relative;
   z-index: 2;
@@ -78,19 +84,17 @@
   max-width: 600px;
 }
 
+/* Mobile: image is visible, no clip-path */
 .gym-services-img {
-  position: absolute;
-  right: 5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 170px;
+  position: relative;
+  right: auto;
+  top: auto;
+  transform: none;
+  width: 100%;
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  /* Resting state: collapsed against the top edge. The reveal is driven purely by
-     clip-path — no opacity, no scale — so the image is wiped in, never faded in.
-     No box-shadow here: clip-path clips an element's shadow too, so it would be
-     invisible at rest and would smear during the wipe. */
-  clip-path: inset(0% 0% 100% 0%);
+  clip-path: none;
+  margin-top: 1rem;
   pointer-events: none;
   z-index: 12;
 }
@@ -116,30 +120,27 @@
   pointer-events: none;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 900px) {
-  .gym-services-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
+/* ── Laptop: 1024px — 2-column grid with absolute image ── */
+@media (min-width: 1024px) {
+  .gym-services-wrapper {
+    flex-direction: row;
+    align-items: center;
   }
 
   .gym-services-content {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 0 2rem;
+    padding: 0 18rem 0 5rem;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
   }
 
   .gym-services-img {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
+    position: absolute;
+    right: 5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 170px;
     aspect-ratio: 4 / 5;
-    /* No hover on touch, so the image is simply always visible. The JS handlers
-       bail out on (hover: none) so they never write an inline clip-path here. */
-    clip-path: none;
-    margin-top: 1rem;
+    clip-path: inset(0% 0% 100% 0%);
+    margin-top: 0;
   }
 }

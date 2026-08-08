@@ -1,7 +1,12 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STATS (LEDGER) — Mobile-first (Rule 1)
+   Standard breakpoints: 768px, 1024px (Rule 2)
+   ═══════════════════════════════════════════════════════════════════════ */
+
 .ledger {
   background: black;
   color: #f5f5f5;
-  padding: 120px var(--page-gutter);
+  padding: var(--section-py) var(--page-gutter);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,18 +24,17 @@
   align-items: center;
 }
 
+/* Mobile-first: 2-column grid */
 .ledger__row {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: 0.75rem;
   margin: 0 auto;
   width: 100%;
 }
 
 /* Individual Stat Div */
 .ledger__stat {
-  flex: 1 1 0px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -62,6 +66,12 @@
   );
   transform-origin: top center;
   pointer-events: none;
+  display: block;
+}
+
+/* Hide divider on first item of each 2-col row */
+.ledger__stat:nth-child(2n + 1) .ledger__rule {
+  display: none;
 }
 
 .ledger__mask {
@@ -122,49 +132,44 @@
   will-change: transform;
 }
 
-/* Responsive Grid Adjustments */
-@media (max-width: 1080px) {
+/* ── Tablet: 768px — 3 columns ── */
+@media (min-width: 768px) {
   .ledger__row {
-    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 0.75rem;
   }
 
-  .ledger__stat {
-    flex: initial;
-    width: 100%;
-  }
-
-  .ledger__rule {
+  /* Reset 2-col rule hiding */
+  .ledger__stat:nth-child(2n + 1) .ledger__rule {
     display: block;
   }
 
+  /* Hide divider on first item of each 3-col row */
   .ledger__stat:nth-child(3n + 1) .ledger__rule {
     display: none;
   }
 }
 
-@media (max-width: 640px) {
+/* ── Laptop: 1024px — single flex row ── */
+@media (min-width: 1024px) {
   .ledger__row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 0.75rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0;
   }
 
   .ledger__stat {
-    flex: initial;
-    width: 100%;
+    flex: 1 1 0px;
   }
 
-  .ledger__rule {
-    display: block;
-  }
-
+  /* Reset all divider hiding from grid modes */
+  .ledger__stat:nth-child(2n + 1) .ledger__rule,
   .ledger__stat:nth-child(3n + 1) .ledger__rule {
     display: block;
   }
 
-  .ledger__stat:nth-child(2n + 1) .ledger__rule {
+  /* Only hide divider on the very first stat */
+  .ledger__stat:first-child .ledger__rule {
     display: none;
   }
 }
