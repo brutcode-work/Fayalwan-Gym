@@ -10,6 +10,7 @@ const SvgPath = forwardRef<SVGPathElement, SVGProps<SVGSVGElement>>(
         viewBox="0 0 1612 3157"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
       >
         <path
           ref={ref}
