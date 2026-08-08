@@ -13,6 +13,35 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Menifesto() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const handleFooterLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    e.preventDefault();
+    if (sectionId === "home") {
+      const lenis = typeof window !== "undefined" ? (window as any).lenis : null;
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.5 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
+    const targetElement = document.getElementById(sectionId);
+    if (targetElement) {
+      const lenis = typeof window !== "undefined" ? (window as any).lenis : null;
+      if (lenis) {
+        lenis.scrollTo(targetElement, { duration: 1.5 });
+      } else {
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = targetElement.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        window.scrollTo({ top: elementPosition, behavior: "smooth" });
+      }
+    }
+  };
+
   useGSAP(
     () => {
       const paths = gsap.utils.toArray<SVGPathElement>(".manifesto-path");
@@ -208,16 +237,24 @@ export default function Menifesto() {
                 <h6 className="column-title">Quick link</h6>
                 <ul className="footer-links-list">
                   <li>
-                    <a href="#home">Home</a>
+                    <a href="#home" onClick={(e) => handleFooterLinkClick(e, "home")}>
+                      Home
+                    </a>
                   </li>
                   <li>
-                    <a href="#about">About us</a>
+                    <a href="#experience" onClick={(e) => handleFooterLinkClick(e, "experience")}>
+                      Experience
+                    </a>
                   </li>
                   <li>
-                    <a href="#services">Services</a>
+                    <a href="#services" onClick={(e) => handleFooterLinkClick(e, "services")}>
+                      Services
+                    </a>
                   </li>
                   <li>
-                    <a href="#contact">Contact us</a>
+                    <a href="#coaches" onClick={(e) => handleFooterLinkClick(e, "coaches")}>
+                      Coaches
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -226,13 +263,24 @@ export default function Menifesto() {
                 <h6 className="column-title">Explore</h6>
                 <ul className="footer-links-list">
                   <li>
-                    <a href="#faq">FAQ</a>
+                    <a href="#pricing" onClick={(e) => handleFooterLinkClick(e, "pricing")}>
+                      Pricing
+                    </a>
                   </li>
                   <li>
-                    <a href="#reviews">Google reviews</a>
+                    <a href="#faq" onClick={(e) => handleFooterLinkClick(e, "faq")}>
+                      FAQ
+                    </a>
                   </li>
                   <li>
-                    <a href="#stories">Stories that inspires us</a>
+                    <a href="#reviews" onClick={(e) => handleFooterLinkClick(e, "reviews")}>
+                      Reviews
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#contact" onClick={(e) => handleFooterLinkClick(e, "contact")}>
+                      Contact Us
+                    </a>
                   </li>
                 </ul>
               </div>

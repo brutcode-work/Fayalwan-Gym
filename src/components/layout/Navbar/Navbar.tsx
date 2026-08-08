@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, MouseEvent } from "react";
 import "./Navbar.css";
-import { Menu, X } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -20,44 +19,75 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [visible, setVisible] = useState(true);
   const navContainerRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const prevScrollY = useRef(0);
 
   useGSAP(
     () => {
-      timelineRef.current = gsap
-        .timeline({ paused: true })
-        .to(".mobile-menu-overlay", {
-          height: "auto",
-          opacity: 1,
-          padding: "1.5rem 1rem",
-          duration: 0.4,
-          ease: "power3.inOut",
-        })
-        .from(
-          ".mobile-nav-link",
-          {
+      if (open) {
+        gsap
+          .timeline()
+          .to(".mobile-menu-overlay", {
+            autoAlpha: 1,
+            duration: 0.4,
+            ease: "power3.inOut",
+          })
+          .fromTo(
+            ".mobile-nav-link",
+            { opacity: 0, y: 35, rotate: 2 },
+            {
+              opacity: 1,
+              y: 0,
+              rotate: 0,
+              duration: 0.45,
+              stagger: 0.06,
+              ease: "power3.out",
+            },
+            "-=0.25",
+          )
+          .fromTo(
+            ".mobile-menu-footer",
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              ease: "power3.out",
+            },
+            "-=0.2",
+          );
+      } else {
+        gsap
+          .timeline()
+          .to(".mobile-nav-link", {
             opacity: 0,
             y: -15,
             duration: 0.25,
-            stagger: 0.05,
-            ease: "power2.out",
-          },
-          "-=0.15",
-        );
-    },
-    { scope: navContainerRef },
-  );
-
-  useGSAP(() => {
-    if (timelineRef.current) {
-      if (open) {
-        timelineRef.current.play();
-      } else {
-        timelineRef.current.reverse();
+            stagger: 0.03,
+            ease: "power2.in",
+          })
+          .to(
+            ".mobile-menu-footer",
+            {
+              opacity: 0,
+              y: 10,
+              duration: 0.2,
+              ease: "power2.in",
+            },
+            "-=0.2",
+          )
+          .to(
+            ".mobile-menu-overlay",
+            {
+              autoAlpha: 0,
+              duration: 0.35,
+              ease: "power3.inOut",
+            },
+            "-=0.1",
+          );
       }
-    }
-  }, [open]);
+    },
+    { dependencies: [open], scope: navContainerRef },
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -181,30 +211,49 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="mobile-toggle-btn" onClick={() => setOpen(!open)}>
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </div>
+        <button
+          className={`mobile-hamburger-btn ${open ? "is-open" : ""}`}
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle Menu"
+        >
+          <span className="hamburger-line line-1"></span>
+          <span className="hamburger-line line-2"></span>
+          <span className="hamburger-line line-3"></span>
+        </button>
       </div>
 
       <div className="mobile-menu-overlay">
-        <div className="mobile-menu-links">
-          {SECTIONS.map((section) => (
+        <div className="mobile-menu-inner">
+          <div className="mobile-menu-links">
+            {SECTIONS.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className={`mobile-nav-link ${activeSection === section.id ? "active" : ""}`}
+                onClick={(e) => handleNavClick(e, section.id)}
+              >
+                {section.label}
+              </a>
+            ))}
             <a
-              key={section.id}
-              href={`#${section.id}`}
-              className={`mobile-nav-link ${activeSection === section.id ? "active" : ""}`}
-              onClick={(e) => handleNavClick(e, section.id)}
+              href="#contact"
+              className="mobile-cta-btn mobile-nav-link"
+              onClick={(e) => handleNavClick(e, "contact")}
             >
-              {section.label}
+              Contact Us
             </a>
-          ))}
-          <a
-            href="#contact"
-            className="mobile-cta-btn mobile-nav-link"
-            onClick={(e) => handleNavClick(e, "contact")}
-          >
-            Contact Us
-          </a>
+          </div>
+
+          <div className="mobile-menu-footer">
+            <div className="mobile-footer-info">
+              <span className="mobile-footer-label">Location</span>
+              <p className="mobile-footer-value">Kazhakoottam, Trivandrum</p>
+            </div>
+            <div className="mobile-footer-info">
+              <span className="mobile-footer-label">Access</span>
+              <p className="mobile-footer-value">₹120 / Day Access</p>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
