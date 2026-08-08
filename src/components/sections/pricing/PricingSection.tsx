@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import "./PricingSection.css";
 import SectionHeader from "@/components/layout/Headers/SectionHeader";
 import { Check, ArrowRight } from "lucide-react";
@@ -74,7 +75,55 @@ export const PRICING_PLANS: PricingPlan[] = [
   },
 ];
 
+export const PERSONAL_TRAINING_PLANS: PricingPlan[] = [
+  {
+    id: "pt-monthly",
+    index: "01",
+    name: "PERSONAL PT",
+    tagline: "One-on-one coaching focused entirely on your goals.",
+    priceINR: 6500,
+    period: "/ month",
+    features: [
+      "Dedicated personal trainer",
+      "Customized workout plan",
+      "Progress & performance tracking",
+    ],
+    ctaText: "START PERSONAL PT",
+  },
+  {
+    id: "pt-group",
+    index: "02",
+    name: "GROUP PT",
+    tagline: "Train together. Stay accountable. Push your limits.",
+    priceINR: 2500,
+    period: "/ month",
+    features: [
+      "Small group training",
+      "Trainer-led workouts",
+      "Progress tracking",
+    ],
+    ctaText: "JOIN GROUP PT",
+  },
+  {
+    id: "pt-sections",
+    index: "03",
+    name: "SECTIONS PT",
+    tagline: "Focused training built around specific fitness goals.",
+    priceINR: 3500,
+    period: "/ month",
+    features: [
+      "Goal-specific training",
+      "Structured workout sessions",
+      "Trainer guidance & corrections",
+    ],
+    ctaText: "JOIN SECTIONS PT",
+  },
+];
+
 export default function PricingSection() {
+  const [isPersonal, setIsPersonal] = useState(false);
+  const activePlans = isPersonal ? PERSONAL_TRAINING_PLANS : PRICING_PLANS;
+
   return (
     <section className="pricing-section" id="pricing">
       <div className="pricing-container">
@@ -87,9 +136,26 @@ export default function PricingSection() {
           sectionName="pricing"
         />
 
+        {/* Pricing Toggle Switch */}
+        <div className="pricing-toggle-container">
+          <span className={`toggle-label ${!isPersonal ? "active" : ""}`}>
+            Regular Pricing
+          </span>
+          <button
+            className={`pricing-toggle-switch ${isPersonal ? "active" : ""}`}
+            onClick={() => setIsPersonal(!isPersonal)}
+            aria-label="Toggle pricing type"
+          >
+            <span className="toggle-slider"></span>
+          </button>
+          <span className={`toggle-label ${isPersonal ? "active" : ""}`}>
+            Personal Training
+          </span>
+        </div>
+
         {/* Minimal Editorial Pricing Cards Grid */}
-        <div className="pricing-grid">
-          {PRICING_PLANS.map((plan) => (
+        <div className={`pricing-grid ${isPersonal ? "grid-3-cols" : ""}`}>
+          {activePlans.map((plan) => (
             <div key={plan.id} className="pricing-card">
               {/* Top Meta Content */}
               <div className="card-top-content">

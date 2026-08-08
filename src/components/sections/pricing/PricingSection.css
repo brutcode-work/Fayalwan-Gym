@@ -193,4 +193,130 @@
   .pricing-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+  .pricing-grid.grid-3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── PRICING TOGGLE ── */
+.pricing-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 1.5rem 0 3rem 0;
+  width: 100%;
+}
+
+.toggle-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+  user-select: none;
+  letter-spacing: -0.01em;
+}
+
+.toggle-label.active {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.pricing-toggle-switch {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.pricing-toggle-switch:hover {
+  border-color: var(--accent-color);
+}
+
+.pricing-toggle-switch.active {
+  background-color: rgba(232, 93, 4, 0.15);
+  border-color: var(--accent-color);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+.pricing-toggle-switch.active .toggle-slider {
+  transform: translateX(28px);
+  background-color: var(--accent-color);
+}
+
+/* ── EMPTY PERSONAL TRAINING CARDS ── */
+.empty-card {
+  border: 1px dashed rgba(255, 255, 255, 0.15) !important;
+  background-color: transparent !important;
+  min-height: 400px;
+  cursor: default !important;
+}
+
+.empty-card:hover {
+  background-color: transparent !important;
+  color: inherit !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.empty-card-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.skeleton-line {
+  height: 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 25%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.02) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s infinite linear;
+  border-radius: 4px;
+}
+
+.skeleton-line.line-short {
+  width: 45%;
+  height: 38px;
+  border-radius: 8px;
+}
+
+.skeleton-line.line-medium {
+  width: 70%;
+  height: 14px;
+}
+
+.skeleton-line.line-long {
+  width: 85%;
+  height: 14px;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
