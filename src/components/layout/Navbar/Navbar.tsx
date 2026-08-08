@@ -19,7 +19,6 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [visible, setVisible] = useState(true);
   const navContainerRef = useRef<HTMLDivElement>(null);
-  const prevScrollY = useRef(0);
 
   useGSAP(
     () => {
@@ -89,52 +88,62 @@ export default function Navbar() {
     { dependencies: [open], scope: navContainerRef },
   );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+  const prevY = useRef(0);
 
-      if (open) {
-        setVisible(true);
-      } else {
-        const diff = currentScrollY - prevScrollY.current;
-        if (currentScrollY > 100 && diff > 10) {
+  useEffect(() => {
+    let rafId: number;
+
+    const loop = () => {
+      const y = window.scrollY;
+      const prev = prevY.current;
+
+      if (y !== prev) {
+        const dir = y > prev ? 1 : -1;
+        prevY.current = y;
+
+        if (open) {
+          setVisible(true);
+        } else if (y <= 50) {
+          setVisible(true);
+        } else if (dir === 1) {
           setVisible(false);
-        } else if (diff < -10 || currentScrollY <= 100) {
+        } else {
           setVisible(true);
         }
-      }
-      prevScrollY.current = currentScrollY;
 
-      const sectionIds = [
-        "home",
-        "experience",
-        "services",
-        "coaches",
-        "pricing",
-        "faq",
-        "contact",
-      ];
-      let currentActive = "home";
-      const triggerOffset = window.innerHeight * 0.4;
+        // Active section tracking
+        const sectionIds = [
+          "home",
+          "experience",
+          "services",
+          "coaches",
+          "pricing",
+          "faq",
+          "contact",
+        ];
+        let currentActive = "home";
+        const triggerOffset = window.innerHeight * 0.4;
 
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= triggerOffset && rect.bottom >= triggerOffset) {
-            currentActive = id;
-            break;
+        for (const id of sectionIds) {
+          const el = document.getElementById(id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= triggerOffset && rect.bottom >= triggerOffset) {
+              currentActive = id;
+              break;
+            }
           }
         }
+        setActiveSection(currentActive);
       }
-      setActiveSection(currentActive);
+
+      rafId = requestAnimationFrame(loop);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    rafId = requestAnimationFrame(loop);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
     };
   }, [open]);
 
