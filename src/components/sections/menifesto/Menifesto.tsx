@@ -243,7 +243,7 @@ export default function Menifesto() {
                   </li>
                   <li>
                     <a href="#experience" onClick={(e) => handleFooterLinkClick(e, "experience")}>
-                      Experience
+                      About us
                     </a>
                   </li>
                   <li>
@@ -252,8 +252,8 @@ export default function Menifesto() {
                     </a>
                   </li>
                   <li>
-                    <a href="#coaches" onClick={(e) => handleFooterLinkClick(e, "coaches")}>
-                      Coaches
+                    <a href="#contact" onClick={(e) => handleFooterLinkClick(e, "contact")}>
+                      Contact us
                     </a>
                   </li>
                 </ul>
@@ -263,23 +263,18 @@ export default function Menifesto() {
                 <h6 className="column-title">Explore</h6>
                 <ul className="footer-links-list">
                   <li>
-                    <a href="#pricing" onClick={(e) => handleFooterLinkClick(e, "pricing")}>
-                      Pricing
-                    </a>
-                  </li>
-                  <li>
                     <a href="#faq" onClick={(e) => handleFooterLinkClick(e, "faq")}>
                       FAQ
                     </a>
                   </li>
                   <li>
                     <a href="#reviews" onClick={(e) => handleFooterLinkClick(e, "reviews")}>
-                      Reviews
+                      Google reviews
                     </a>
                   </li>
                   <li>
-                    <a href="#contact" onClick={(e) => handleFooterLinkClick(e, "contact")}>
-                      Contact Us
+                    <a href="#transformations" onClick={(e) => handleFooterLinkClick(e, "transformations")}>
+                      Stories that inspires us
                     </a>
                   </li>
                 </ul>
@@ -359,10 +354,10 @@ export default function Menifesto() {
                 </a>
               </span>
             </div>
+          </div>
 
-            <div className="giant-text-container footer-reveal">
-              <h1 className="giant-bg-text">FAYALWAN GYM</h1>
-            </div>
+          <div className="giant-text-container footer-reveal">
+            <h1 className="giant-bg-text">FAYALWAN GYM</h1>
           </div>
         </footer>
       </div>
