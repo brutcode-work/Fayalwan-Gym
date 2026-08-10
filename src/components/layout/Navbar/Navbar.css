@@ -310,11 +310,18 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* ── Tablet: 768px — show desktop nav, hide mobile ── */
+/* ── Tablet: 768px — slightly wider padding only ── */
 @media (min-width: 768px) {
+  .navbar-inner {
+    padding: 1.5rem 2.5rem;
+  }
+}
+
+/* ── Laptop: 1024px — show desktop nav, hide mobile ── */
+@media (min-width: 1024px) {
   .navbar-right {
     display: flex;
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 
   .mobile-hamburger-btn {
@@ -326,17 +333,6 @@
   }
 
   .navbar-inner {
-    padding: 1.5rem 2.5rem;
-  }
-}
-
-/* ── Laptop: 1024px — wider padding, full spacing ── */
-@media (min-width: 1024px) {
-  .navbar-inner {
     padding: 1.25rem 5rem;
-  }
-
-  .navbar-right {
-    gap: 2.5rem;
   }
 }
