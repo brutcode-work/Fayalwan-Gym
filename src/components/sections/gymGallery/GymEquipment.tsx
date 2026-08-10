@@ -373,7 +373,7 @@ export default function GymEquipement() {
       <div className="equipment-header-wrapper">
         <SectionHeader
           label="PREMIUM EQUIPMENT"
-          headTop="Strength Starts,"
+          headTop="Strength Starts"
           headBottom="With Better Tools."
           description="Professional gym equipment and free weights that help you build strength, improve fitness, and train with complete confidence."
           sectionName="equipment"

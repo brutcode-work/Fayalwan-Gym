@@ -17,6 +17,10 @@
   padding: var(--section-py) var(--page-gutter, clamp(1.5rem, 4.17vw, 5rem)) 0px;
 }
 
+.coaches-header-part h2 {
+  color: var(--accent-color) !important;
+}
+
 /* ── Part two — pinned card stack ── */
 .coach-wrapper {
   position: relative;

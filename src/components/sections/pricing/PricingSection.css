@@ -21,6 +21,10 @@
   flex-direction: column;
 }
 
+.section-header.pricing-section-header h2 {
+  color: var(--accent-color) !important;
+}
+
 /* ── PRICING GRID — mobile: 1 column ── */
 
 .pricing-grid {
@@ -216,6 +220,11 @@
   transition: color 0.3s ease;
   user-select: none;
   letter-spacing: -0.01em;
+  cursor: pointer;
+}
+
+.toggle-label:hover:not(.active) {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .toggle-label.active {

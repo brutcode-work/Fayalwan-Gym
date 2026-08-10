@@ -147,16 +147,16 @@
 }
 
 .cr-nav-btn.next {
-  background-color: var(--button-bg);
-  border: 1px solid var(--button-bg);
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
   color: #000000;
 }
 
 .cr-nav-btn.next:hover {
-  background-color: var(--button-hover);
-  border-color: var(--button-hover);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
   transform: translateX(4px);
-  box-shadow: 0 0 20px rgba(215, 255, 0, 0.3);
+  box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.3);
 }
 
 .cr-nav-btn:active {

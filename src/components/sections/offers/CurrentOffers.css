@@ -21,8 +21,9 @@
   flex-direction: column;
 }
 
-.offers-section-header h2 {
+.section-header.offers-section-header h2 {
   text-transform: none !important;
+  color: var(--accent-color) !important;
 }
 
 /* banner */

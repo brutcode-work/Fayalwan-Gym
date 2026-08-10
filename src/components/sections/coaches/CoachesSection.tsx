@@ -184,8 +184,8 @@ export default function CoachesSection() {
       <div className="coaches-header-part">
         <SectionHeader
           label="06 // EXPERT COACHING"
-          headTop="People Buy Coaches."
-          headBottom="Not Gyms."
+          headTop="People Build Progress."
+          headBottom="Coaches Build People."
           description="Machines don't correct your posture. Dumbbells don't fix your nutrition. Four people do — and you work with all of them."
           sectionName="coaches"
         />

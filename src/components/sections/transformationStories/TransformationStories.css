@@ -41,7 +41,7 @@
   font-size: clamp(2rem, 3.2vw, 3.4rem);
   line-height: 1.06;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--accent-color);
   margin: 0;
 }
 

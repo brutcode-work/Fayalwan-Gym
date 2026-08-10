@@ -130,15 +130,18 @@ export default function PricingSection() {
         {/* SectionHeader Component */}
         <SectionHeader
           label="ACCESSIBLE PRICING"
-          headTop="Transparent Athletic Tiering."
-          headBottom="World-Class Access."
+          headTop="Invest in Your Strength."
+          headBottom="Not Hidden Fees."
           description="No hidden admission fees, no locked-in contracts. Premium strength training engineered for real progress in Kazhakoottam."
           sectionName="pricing"
         />
 
         {/* Pricing Toggle Switch */}
         <div className="pricing-toggle-container">
-          <span className={`toggle-label ${!isPersonal ? "active" : ""}`}>
+          <span
+            className={`toggle-label ${!isPersonal ? "active" : ""}`}
+            onClick={() => setIsPersonal(false)}
+          >
             Regular Pricing
           </span>
           <button
@@ -148,7 +151,10 @@ export default function PricingSection() {
           >
             <span className="toggle-slider"></span>
           </button>
-          <span className={`toggle-label ${isPersonal ? "active" : ""}`}>
+          <span
+            className={`toggle-label ${isPersonal ? "active" : ""}`}
+            onClick={() => setIsPersonal(true)}
+          >
             Personal Training
           </span>
         </div>

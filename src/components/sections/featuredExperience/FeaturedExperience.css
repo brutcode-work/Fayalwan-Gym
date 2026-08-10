@@ -17,6 +17,10 @@
   margin: 0 auto;
 }
 
+.services-container h2 {
+  color: var(--accent-color) !important;
+}
+
 /* Services List and Items */
 .services-list {
   display: flex;
