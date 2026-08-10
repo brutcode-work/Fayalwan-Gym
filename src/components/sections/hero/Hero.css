@@ -6,12 +6,10 @@
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  padding-top: 6.5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 5rem;
+  padding-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background-color: var(--bg-color);
   color: #ffffff;
   overflow: hidden;
@@ -20,7 +18,7 @@
 /* 1. FULL WIDTH Image Banner Strip (Edge to Edge) */
 .hero-banner-full {
   width: 100%;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-swiper-wrapper {
@@ -162,8 +160,6 @@
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
 }
 
 /* Middle Main Content Grid — mobile: stacked column */
@@ -172,8 +168,8 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  gap: 2.5rem;
-  margin-bottom: 4rem;
+  gap: 1rem;
+  margin-bottom: 0;
 }
 
 /* Left Column */
@@ -191,7 +187,7 @@
   font-weight: 400;
   line-height: 1.5;
   color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hero-tagline-mono {
@@ -215,7 +211,7 @@
 
 .hero-title-main {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: 1.85rem;
   font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.025em;
@@ -259,12 +255,25 @@
 
 /* ── Tablet: 768px ── */
 @media (min-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+    justify-content: space-between;
+    padding-top: 6.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-banner-full {
+    margin-bottom: 3.5rem;
+  }
+
   .hero-swiper-wrapper {
     height: 240px;
   }
 
   .hero-content-container {
     padding: 0 3rem;
+    justify-content: space-between;
+    flex: 1;
   }
 
   .hero-content-grid {
@@ -272,6 +281,15 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .hero-subtext {
+    margin-bottom: 2rem;
+  }
+
+  .hero-title-main {
+    font-size: 2.2rem;
   }
 
   .hero-left-col {
