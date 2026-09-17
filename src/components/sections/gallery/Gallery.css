@@ -1,0 +1,41 @@
+.gallery-section {
+  width: 100%;
+  padding: 4rem 2rem;
+  margin-top: var(--header-height);
+}
+
+.gallery-section-header {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.gallery-media-container {
+  width: 100%;
+  display: flex;
+  gap: 15rem;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.gallery-media-container .col {
+  display: flex;
+  flex-direction: column;
+  gap: 15rem;
+}
+.col-2 {
+  margin-top: 12rem;
+}
+
+.gallery-media-container .col .gallery-media-img {
+  aspect-ratio: 1/1;
+  background-color: red;
+  width: 15rem;
+  height: auto;
+}
+
+.gallery-media-container .col .gallery-media-img .img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -17,6 +17,7 @@ import YoutubeGallery from "@/components/sections/youtube/YoutubeGallery";
 import Faq from "@/components/sections/faq/Faq";
 import Contact from "@/components/sections/contact/Contact";
 import CustomerReview from "@/components/sections/customerReview/CustomerReview";
+import Gallery from "@/components/sections/gallery/Gallery";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
       <CoachesSection />
       <TransformationStories />
       <PricingSection />
+      <Gallery />
       <CurrentOffers />
       <YoutubeGallery />
 
